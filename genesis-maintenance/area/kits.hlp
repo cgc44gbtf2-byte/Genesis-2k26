@@ -1,81 +1,104 @@
 #HELPS
 
-0 CLASSES KITS CLASSKITS~
-GENESIS: 2k26 | CLASS GUIDE | 19 standalone parent classes
+0 CLASS CLASSES KITS CLASSKITS~
+GENESIS: 2k26 | CLASS HELP
 
-Class         Progression / identity                  Help topic
-------------  --------------------------------------  ------------
-Angel         Angel mastery and support               ANGEL
-Cyborg        Components, systems and nanites          CYBORG
-Deathknight   Deathbound mastery and soul energy      DEATHKNIGHT
-Demon         Unified mastery, souls and pacts         DEMON
-Dragon        Dragon skills and transformation        DRAGON
-Drow          Prayer, disciplines and favor           DROW
-Elemental     Independent elemental tracks            ELEMENTAL
-Gargoyle      Visceratika and stone energy            GARGOYLE
-Highlander    Blademastery and weapon progression     HIGHLANDER
-Kuei-jin      Chi, Dharma and discipline tracks       KUEIJIN
-Mage          Arete, spheres and quintessence          MAGE
-Monk          Martial and spiritual training          MONK
-Moogle        Pom mastery and supportive magic        MOOGLE
-Ninja         Principles, michi and Ki                NINJA
-Phoenix       Phoenix mastery                         PHOENIX
-Sorcerer      Written spells and book colors          BOOKMAGIC
-Vampire       Generation, blood and disciplines       VAMPIRE
-Werewolf      Breed, auspice and tribe gifts          WEREWOLF
-Wraith        Arcanoi and pathos                      WRAITH
+Genesis has 19 standalone parent classes, each with its own progression,
+resources and powers. Use AUTOCLASS to see enrollment choices and
+AUTOCLASS <class> [clan] to join when eligible.
 
-Use AUTOCLASS to inspect entry requirements and AUTOCLASS <class> to join.
-Sorcerer is the book mage; Mage is the separate sphere/Arete class.
-Chaos Book Mage is a Sorcerer playstyle, not a twentieth hybrid parent.
-Use HELP <topic> for details. HELP CLASSMENUS explains the table displays.
-Hybrid conversion, ascension and respec are not currently enabled.
+Available classes - open the matching help page for kit details:
+
+ - Angel         - HELP ANGEL
+ - Cyborg        - HELP CYBORG
+ - Deathknight   - HELP DEATHKNIGHT
+ - Demon         - HELP DEMON
+ - Dragon        - HELP DRAGON
+ - Drow          - HELP DROW
+ - Elemental     - HELP ELEMENTAL
+ - Gargoyle      - HELP GARGOYLE
+ - Highlander    - HELP HIGHLANDER
+ - Kuei-jin      - HELP KUEIJIN
+ - Mage          - HELP MAGE
+ - Monk          - HELP MONK
+ - Moogle        - HELP MOOGLE
+ - Ninja         - HELP NINJA
+ - Phoenix       - HELP PHOENIX
+ - Sorcerer      - HELP SORCERER
+ - Vampire       - HELP VAMPIRE
+ - Werewolf      - HELP WEREWOLF
+ - Wraith        - HELP WRAITH
+
+Sorcerer is the book mage, including the Chaos Book Mage playstyle.
+Mage is the separate sphere/Arete class. HELP CLASSBONUSES explains
+progression benefits; HELP CLASSMENUS explains the live menu columns.
+HELP KITSTATUS states verification limits. Hybrid conversion, ascension
+and respec are not enabled.
 ~
 
 0 VAMPIRE VAMPIRES VAMPIREKIT~
-Vampire uses generation, blood, Beast and disciplines. Use DISCIPLINES
-to inspect your character's available training and mastery.
-The kit includes Animalism, Auspex, Celerity, Chimerstry, Daimoinon,
-Dominate, Fortitude, Melpominee, Mortis, Necromancy, Obfuscate,
-Obtenebration, Potence, Presence, Protean, Quietus, Serpentis,
-Thaumaturgy and Vicissitude.
+VAMPIRE | DISCIPLINE GUIDE
+
+Topic         Details
+------------  ----------------------------------------------------------
+Menu          DISCIPLINES shows available training and mastery
+Progression   Generation, blood, Beast and individual discipline ranks
+Combat        Celerity, Fortitude, Potence, Protean, Quietus, Serpentis
+Senses        Animalism, Auspex, Chimerstry, Obfuscate, Presence
+Control       Dominate, Obtenebration
+Magic         Necromancy, Thaumaturgy, Vicissitude
+
 Powers retain their blood, form, visibility, target and PK requirements;
 learning a discipline does not remove a power's individual prerequisites.
 Related: HELP DISCIPLINES, HELP FRENZY, HELP KITSTATUS.
 ~
 
 0 WEREWOLF WEREWOLVES WEREWOLFKIT~
-Werewolf uses breed, auspice and tribe gifts in addition to shapeshifting.
+WEREWOLF | GIFT GUIDE
+
+Track         Details
+------------  ----------------------------------------------------------
+Breed         Breed gifts; HELP BREED
+Auspice       Auspice gifts; HELP AUSPICE
+Tribe         Tribal gifts; HELP TRIBE
+Other powers  Shapeshifting, Primal Anger, Burrow, Spirit Ward
+Gift examples Jam Technology, Blur, Mother's Touch, Wyld gifts
+Utility       Spirit interaction; tribal attacks and defenses
+
 Progression and gift prerequisites remain separate: a tribe gift is not
 automatically available merely because another track has been mastered.
-The kit includes Primal Anger, Burrow, Spirit Ward, Jam Technology, Blur,
-Mother's Touch, Wyld gifts, spirit interaction and tribal attacks/defenses.
 Restored gifts use named effects, native costs/saving throws, cooldowns
 and the usual protected-target rules.
 Related: HELP BREED, HELP AUSPICE, HELP TRIBE, HELP RESTOREDGIFTS.
 ~
 
 0 SORCERER SORCERERS BOOKMAGE BOOKMAGIC CHAOSMAGE CHAOSBOOKMAGE~
-Sorcerer is the book mage, distinct from the sphere-based Mage.
-AUTOCLASS SORCERER chooses normal book magic.
-AUTOCLASS CHAOSMAGE or AUTOCLASS SORCERER CHAOS chooses Chaos book magic.
-Existing Sorcerers may claim their once-per-character kit:
-  sorccreate starter
-It contains a primer, pen, instruction pages and three finished spells:
-  Spark (page 2, targeted damage), Mend (page 3, targeted healing),
-  Minor Ward (page 4, protective armor blessing).
-  hold primer
-  read primer
-  turn primer 0
-  turn primer 4
-  chant self
-The index is page 0. Read pages 1 and 5 for navigation and writing/binding.
+SORCERER | BOOK MAGIC AND STARTER KIT
+
+Action        Command / result
+------------  ----------------------------------------------------------
+Normal class  AUTOCLASS SORCERER
+Chaos class   AUTOCLASS CHAOSMAGE or AUTOCLASS SORCERER CHAOS
+Claim kit     SORCCREATE STARTER; once per character
+Use primer    HOLD PRIMER; READ PRIMER; TURN PRIMER <page>
+Cast page     CHANT <target>; CHANT SELF for a suitable self spell
+
+Page          Starter content
+------------  ----------------------------------------------------------
+0             Index
+1 and 5       Navigation and executable writing/binding instructions
+2             Spark: targeted damage; 200 mana at normal starter mastery
+3             Mend: targeted healing; 400 mana at normal starter mastery
+4             Minor Ward: protective armor; 1560 mana at starter mastery
+
+The kit includes a primer, pen and instruction pages. Example:
+TURN PRIMER 4 followed by CHANT SELF casts Minor Ward.
+Sorcerer is distinct from the sphere-based Mage.
 Normal mages start with at least rank 1 blue/green/yellow; Chaos starts
 with all six colors at rank 1. Higher existing mastery is preserved.
 Chaos books roll a fresh color on EACH chant; colors may repeat.
 Healing remains healing, attacks remain attacks and blessings keep their
 written purpose. Travel/action pages keep their written operation.
-Spark costs 200 mana, Mend 400, Minor Ward 1560 at normal starter mastery.
 Chaos damage/healing costs vary by rolled color. Minor Ward has two ticks
 of native duration and RAISES armor: higher armor improves Genesis defense.
 Do not put REVERSED on a protective armor script. Same-color wards do not
@@ -86,14 +109,22 @@ Related: HELP SORCCREATE, HELP CHANT, HELP WRITE, HELP COLORS.
 ~
 
 0 MAGE MAGES MAGEKIT~
-Mage is the sphere/arete class, NOT the Sorcerer/book mage.
-Its kit uses Arete, sphere mastery, quintessence and paradox.
-MAGEPOWERS lists your learned abilities; SPHERE <name> shows the real power
-menu rather than the old placeholder. SPHERE <name> LEARN trains as before.
-Commands include rift, analyze, brittle bones, mutate ephemera, sculpture,
-alterweight, invisibility, spirit sense/caress, step sideways, dreamshell,
-heart's blood, holy smote, enchantment, paradox ward, healing, better body,
-polymorph, friction curse, electrical chaos, inferno and contingency.
+MAGE | SPHERES AND ARETE
+
+Topic         Details
+------------  ----------------------------------------------------------
+Abilities     MAGEPOWERS lists learned abilities
+Sphere menu   SPHERE <name> shows real powers and requirements
+Training      SPHERE <name> LEARN; Arete uses separate progression
+Resources     Arete, sphere mastery, quintessence and paradox
+Movement      Rift, Step Sideways; spirit senses and caresses
+Body/matter   Brittle Bones, Mutate Ephemera, Sculpture, Alterweight
+Defense       Invisibility, Dreamshell, Enchantment, Paradox Ward
+Restoration   Healing, Better Body, Heart's Blood, Polymorph
+Other powers  Analyze, Holy Smote, Friction Curse, Electrical Chaos
+Other powers  Inferno, Contingency
+
+Mage is NOT the Sorcerer/book mage.
 Use HELP <ability> for its existing command name and prerequisites.
 Friction Curse uses: frictioncurse <target> <nonnegative quintessence>.
 It checks costs and target protection before charging and restores the
@@ -104,32 +135,59 @@ does not claim that all old sphere spells have been independently certified.
 ~
 
 0 DROW DROWKIT~
-Drow has prayer/disciplines, acid bolt, faeriefire, spider summoning,
-globe of darkness, Door, armor and ranged shooting.
+DROW | PRAYER AND DISCIPLINES
+
+Topic         Details
+------------  ----------------------------------------------------------
+Menu          HELP DROWPOWERS; HELP PRAY for progression
+Progression   Prayer, disciplines and required favor
+Attacks       Acid Bolt, Faeriefire, ranged shooting
+Utility       Spider summoning, Globe of Darkness, Door
+Defense       Armor and trained discipline benefits
+
 Progression, required favor and target/room protections still apply.
 Use HELP DROWPOWERS and existing ability help for command details.
 Related: HELP PRAY, HELP FAERIEFIRE, HELP KITSTATUS.
 ~
 
 0 HIGHLANDER HIGHLANDERS HIGHLANDERKIT~
-Highlander is the immortal blademaster class. Its kit includes Blade Flash,
-Bash, Hilt Twist, Judgement, Lunge and weapon forge/increase progression.
-Use HELP FORGE and HELP INCREASE for the existing progression rules.
+HIGHLANDER | BLADEMASTERY
+
+Topic         Details
+------------  ----------------------------------------------------------
+Identity      Immortal blademaster
+Attacks       Blade Flash, Bash, Hilt Twist, Judgement, Lunge
+Weapon growth Forge/increase progression; HELP FORGE and HELP INCREASE
+Training      Blademastery, weapon, stance and trained-stat requirements
+
 Weapon, stance and trained-stat requirements remain distinct.
 Related: HELP STANCE, HELP SKILL, HELP KITSTATUS.
 ~
 
 0 DRAGON DRAGONS DRAGONKIT~
-Dragon uses dragonform, breath attacks, Dust, tail attacks, horns, wings
-and dragon-skill progression. Form and learned-power checks remain required.
+DRAGON | FORM AND DRAGON SKILLS
+
+Topic         Details
+------------  ----------------------------------------------------------
+Form          Dragonform; HELP DRAGONFORM for syntax
+Attacks       Breath attacks, Dust, tail attacks
+Traits        Horns, wings and dragon-skill progression
+Requirements  Learned powers and the appropriate form
+
 Use HELP DRAGONFORM and existing breath/dragon ability help for syntax.
 Related: HELP KITSTATUS.
 ~
 
 0 NINJA NINJAS NINJAKIT~
-Ninja uses principles, michi, Ki and stealth/combat progression.
-The kit includes Kakusu, Mienaku, Tsumazuku, Tsume, Shuurai,
-Hakunetsu, Harakiri and the Bomuzite sleep bomb.
+NINJA | PRINCIPLES AND KI
+
+Topic         Details
+------------  ----------------------------------------------------------
+Progression   Principles, michi, Ki and stealth/combat training
+Powers        Kakusu, Mienaku, Tsumazuku, Tsume, Shuurai
+Powers        Hakunetsu, Harakiri
+Sleep bomb    Bomuzite; requires its Sora tier and 20 Ki
+
 Bomuzite requires its Sora tier and 20 Ki. It cannot sleep self, party
 members, protected/non-PK targets or already sleeping targets, and it ends
 the relevant native combat state before putting a valid target to sleep.
@@ -137,19 +195,31 @@ Related: HELP MICHI, HELP PRINCIPLES, HELP KITSTATUS.
 ~
 
 0 MONK MONKS MONKKIT~
-Monk is the unarmed martial/spiritual class. Its kit includes Aura Shot,
-Blitz, Cripple, Darkblaze, Stun Fist, Chimera, Healing Touch, Almighty,
-Celestial, Life Cloak and monk training.
+MONK | MARTIAL AND SPIRITUAL TRAINING
+
+Topic         Details
+------------  ----------------------------------------------------------
+Identity      Unarmed martial/spiritual class
+Training      HELP MONKTRAIN; Art, Tech and Mantra progression
+Attacks       Aura Shot, Blitz, Cripple, Darkblaze, Stun Fist
+Other powers  Chimera, Healing Touch, Almighty, Celestial, Life Cloak
+
 Support and group effects require valid recipients and sufficient resources;
 an already-active blessing does not justify charging for an empty recast.
 Related: HELP MONKTRAIN, HELP KITSTATUS.
 ~
 
 0 ELEMENTAL ELEMENTALIST ELEMENTALKIT~
-Elemental uses independent elemental progression and native timed effects.
-Its kit includes Flare Arrow, Fireblade, Icicle Storm, Water Travel,
-Aqua Barrier, Wind Wings, Wind Blades, Stone Blast, Local Quake,
-Holy Aura, Solar Flash, Ultima Wave, Slow and elemental defenses/senses.
+ELEMENTAL | INDEPENDENT ELEMENTAL TRACKS
+
+Topic         Details
+------------  ----------------------------------------------------------
+Progression   Independent elemental training and native timed effects
+Fire/water    Flare Arrow, Fireblade, Icicle Storm, Water Travel
+Wind/earth    Wind Wings, Wind Blades, Stone Blast, Local Quake
+Other powers  Aqua Barrier, Holy Aura, Solar Flash, Ultima Wave, Slow
+Utility       Elemental defenses and senses
+
 Native effects persist through save/relogin and expire through character
 updates. Travel, combat safety and individual prerequisites still apply.
 Werewolf command: ELEMENTAL <fire|water|earth|air> <target> instead invokes
@@ -159,14 +229,19 @@ Related: HELP KITSTATUS.
 ~
 
 0 ANGEL ANGELS ANGELKIT~
-Use ANGEL for the live ability menu; ANGEL TRAIN advances mastery to 8.
-The kit includes aura, claws, angelform, feet, nightsight, wings, might,
-toughness, speed, travel, shadowsight, emergency_inferno, windwall,
-heightened_senses, read_aura, spiritshare, strengthen, guardianangel,
-purifyspirit, empower, angelarmour and halo.
-Reference controls include scry, eyespy, cherub, unveil, astral_projection,
-weaponform, humanform, object_move, object_leap, object_magic,
-object_lifespan and inpart.
+ANGEL | MASTERY AND SUPPORT
+
+Topic         Details
+------------  ----------------------------------------------------------
+Menu/train    ANGEL; ANGEL TRAIN advances mastery to 8
+Traits/forms  Aura, claws, angelform, feet, wings, might, toughness, speed
+Senses/travel  Nightsight, shadowsight, heightened_senses, read_aura, travel
+Defense       Windwall, angelarmour, halo, emergency_inferno
+Support       Spiritshare, strengthen, guardianangel, purifyspirit, empower
+Reference     Scry, eyespy, cherub, unveil, astral_projection, inpart
+Object forms  Weaponform, humanform, object_move, object_leap
+Object forms  Object_magic, object_lifespan
+
 Support requires willing/grouped recipients. Read Aura reports visible
 NPC alignment, not a restored player-alignment system.
 Object/familiar forms have ownership, room and safe return/cleanup rules.
@@ -196,7 +271,7 @@ Nanites       convert <mana>; factory on/off; repair
 Weapons       taser <target>; snipe <target>; launch <target>
 Explosives    make_bomb; arm; arm off; detonate <target>; mine
 Control       stuntubes <target>; oilspit <target>; web <target>
-Forms        cubeform; terminator; cloak; shadowwalk; upload
+Forms         cubeform; terminator; cloak; shadowwalk; upload
 Senses        mechsight; scry <target>; read_aura <NPC>
 Utility       radio <message>; transmit <grouped player>; lloth; darkness
 Equipment     cyborgeq <piece>
@@ -220,6 +295,26 @@ Cyborgeq pieces: whip/ring/collar/armor/helmet/leggings/boots/gloves/sleeves/
 cloak/belt/bracer/mask; each costs 100 primal and duplicate carried pieces
 are refused. Systems persist across save/relogin; deployed mines do not.
 The class is a standalone and planned hybrid parent. Conversion remains off.
+~
+
+4 WIZHELP STAFFCOMMANDS~
+WIZHELP | STAFF COMMAND INDEX
+
+Syntax: wizhelp [all|builder|immortal|implementor|storyteller|4-7]
+
+Role          Minimum level  Scope
+------------- -------------  ------------------------------------------
+Builder             4        Building, inspection and basic staff tools
+Immortal            5        Player support and administration
+Implementor         6        Server administration and world management
+Storyteller         7        Highest registered command access
+
+The default lists commands up to your effective trust, grouped by their
+registered minimum level and alphabetized within each group.
+Use a role name or number to show one accessible group.
+Safety-prefix guard entries are omitted; command permissions are unchanged.
+Extra identity, state and authority checks still apply inside each command.
+WIZLIST is a maintained information page, not an online-staff listing.
 ~
 
 0 CLASSMENUS CLASSMENU POWERMENU~
@@ -280,30 +375,51 @@ the verification limits; documentation is not full gameplay certification.
 ~
 
 0 DEMON DEMONS DEMONKIT~
-Use DEMON for the live ability menu; DEMON TRAIN advances mastery to 8.
-The kit includes fangs, claws, demonform, hooves, wings, horns, tail,
-senses, might/toughness/speed, infernal attacks, curses and defensive aspects.
-Reference systems include souls, pact, offersoul, champions, inpart, warps,
-redeem and gifts. Their consent, authority, resources and variant requirements
-are enforced separately; use the live menus instead of guessing grant syntax.
-The unified Demon also has familiar/object forms, demon/animal shapes,
-weapon enchantments, wards, travel and courier functionality.
+DEMON | UNIFIED MASTERY AND REFERENCE SYSTEMS
+
+Topic         Details
+------------  ----------------------------------------------------------
+Menu/train    DEMON; DEMON TRAIN advances mastery to 8
+Traits/forms  Fangs, claws, demonform, hooves, wings, horns, tail
+Traits        Senses, might, toughness, speed
+Powers        Infernal attacks, curses and defensive aspects
+Reference     Souls, pact, offersoul, champions, inpart, warps, redeem, gifts
+Other forms   Familiar/object forms, demon/animal shapes
+Utility       Weapon enchantments, wards, travel and courier functions
+
+Consent, authority, resources and variant requirements are enforced
+separately; use the live menus instead of guessing grant syntax.
 Soul/pact powers do not bypass protected players or grant staff authority.
 All reference mechanics are Genesis adaptations; hybrid conversion remains off.
 ~
 
 0 PHOENIX PHOENIXKIT~
-Use PHOENIX for the live menu and PHOENIX TRAIN for progression.
-Abilities: emberbolt, featherward, flamingwings, ashwalk, phoenixtears,
-solarflare, renewal and ascendantaspect.
+PHOENIX | FLAME AND RENEWAL
+
+Topic         Details
+------------  ----------------------------------------------------------
+Menu/train    PHOENIX; PHOENIX TRAIN for progression
+Attacks       Emberbolt, solarflare
+Defense/form  Featherward, flamingwings, ascendantaspect
+Restoration   Phoenixtears, renewal
+Travel        Ashwalk
+
 The kit uses native damage, named timed defenses/flight, healing and bounded
 travel. Existing effects cannot stack from duplicate casts or repeated load.
 Related: HELP KITSTATUS.
 ~
 
 0 GARGOYLE GARGOYLEKIT~
-Use GARGOYLE for the live menu; visceratika trains the track to 5.
-Abilities: stonefist, wings, stone_rest, statue and statue back.
+GARGOYLE | VISCERATIKA AND STONE ENERGY
+
+Topic         Details
+------------  ----------------------------------------------------------
+Menu          GARGOYLE for the live ability/training menu
+Progression   Visceratika trains the track to 5
+Powers        Stonefist, wings, stone_rest, statue, statue back
+Resilience    5% physical absorption per rank; maximum 25%
+Awareness     Rank 2; observer and target must both be grounded
+
 Stone resilience reduces physical damage by 5% per rank, capped at 25%.
 Ground awareness starts at rank 2 when observer and target are grounded.
 Living Statue is a real owned object form with safe return/expiry cleanup.
@@ -311,37 +427,62 @@ Related: HELP KITSTATUS.
 ~
 
 0 KUEI-JIN KUEIJIN KUEIJINKIT~
-Use KUEIJIN for the live kit menu, track training and dharma progression.
-The kit has independent Chi/Dharma progression and 18 tracks, including
-Blood/Bone/Jade/Flesh/Ghost Shintai, Yin/Yang/Hun/Po, noble disciplines,
-battle aspects, spirit senses, travel, healing, chi crafting and Akuma.
+KUEI-JIN | CHI, DHARMA AND DISCIPLINES
+
+Topic         Details
+------------  ----------------------------------------------------------
+Menu          KUEIJIN for abilities, track training and Dharma progression
+Progression   Independent Chi/Dharma system and 18 tracks
+Shintai       Blood, Bone, Jade, Flesh, Ghost
+Other tracks  Yin, Yang, Hun, Po and noble disciplines
+Powers        Battle aspects, spirit senses, travel, healing
+Other powers  Chi crafting, Akuma
+
 These are Genesis effects, not reused Vampire progression or flags.
 Use the live menu for the full ability list and current focus/costs.
 Related: HELP KITSTATUS.
 ~
 
 0 DEATHKNIGHT DEATHKNIGHTKIT~
-Use DEATHKNIGHT for the live menu, training and focus.
-Deathknight has an independent Genesis-native kit: deathknight progression,
-runeblade combat, frost/unholy effects, dark defenses and bounded restoration.
+DEATHKNIGHT | DEATHBOUND MASTERY
+
+Topic         Details
+------------  ----------------------------------------------------------
+Menu          DEATHKNIGHT for abilities, training, costs and focus
+Identity      Independent Genesis-native progression and kit
+Combat        Runeblade combat, frost/unholy effects
+Defense       Dark defenses and bounded restoration
+
 It is not an imported composite class-bit combination.
 Use the live menu for the exact abilities, costs and focus requirements.
 Related: HELP KITSTATUS.
 ~
 
 0 MOOGLE MOOGLEKIT~
-Use MOOGLE for the live menu, training and focus.
-Moogle has an independent Genesis-native kit with supportive magic,
-combat, defensive aspects and bounded crafting/restoration.
+MOOGLE | POM MASTERY
+
+Topic         Details
+------------  ----------------------------------------------------------
+Menu          MOOGLE for abilities, training, focus and currency needs
+Identity      Independent Genesis-native progression and kit
+Powers        Supportive magic, combat and defensive aspects
+Utility       Bounded crafting and restoration
+
 Use the live menu for the exact ability list and focus/currency requirements.
 Its identity and state do not alias another class.
 Related: HELP KITSTATUS.
 ~
 
 0 WRAITH WRAITHKIT~
-Use WRAITH for the live menu and independent track progression.
-Wraith has its own Arcanos-style powers, spirit/object forms, phantasms,
-fire/force attacks, weather control and supportive Usury.
+WRAITH | ARCANOI AND PATHOS
+
+Topic         Details
+------------  ----------------------------------------------------------
+Menu          WRAITH for abilities, costs and independent track progression
+Forms         Owned spirit/object forms
+Attacks       Phantasms, fire/force attacks, weather control
+Support       Usury
+
 Owned forms have safe return, expiry and load-cleanup rules.
 Use the live menu for the full abilities, costs and prerequisites.
 Related: HELP KITSTATUS.
@@ -433,6 +574,48 @@ The armor stat rises, but current NPC avoidance uses level, not armor.
 The offensive bonuses are the NPC combat buff. Repeated applications do
 not stack; expiry/removal restores the old values.
 The spell name is darkblessing; normal spell or item requirements apply.
+~
+
+0 CLASSBONUSES CLASSBENEFITS TRAININGBENEFITS~
+CLASS BENEFITS | training, passives and activated powers
+
+Class         Examples of real benefits
+------------  ----------------------------------------------------------
+Angel         Mastery traits; active wards, healing and support
+Cyborg        Limbs/body combat bonuses; installed component traits
+Deathknight   STR/CON/WIS mastery traits; deathbound powers
+Demon         Mastery traits; active shapes, warps and powers
+Dragon        Dragon-form rolls, armor, cap, soak and speed
+Drow          Speed/roll/cap training; prayer and discipline unlocks
+Elemental     Fire/Infinity cap; Earth soak; Wind/Time speed
+Gargoyle      Visceratika armor, STR/CON and physical absorption
+Highlander    Attack speed/roll/cap; Defense armor/soak
+Kuei-jin      Track-based STR/CON/WIS; discipline unlocks
+Mage          Mind cap; Time speed; sphere-based spell unlocks
+Monk          Art combat bonuses; Tech/Mantra powers
+Moogle        INT/WIS/DEX mastery traits; pom and support powers
+Ninja         Ningenno speed; Chikyu cap; principle powers
+Phoenix       Mastery unlocks paid flame powers, protection and flight
+Sorcerer      Color-based native chanting; written spells and book tools
+Vampire       Potence damage; Fortitude defense; active Celerity speed
+Werewolf      Rank/tribe bonuses; breed and auspice powers
+Wraith        Track-based DEX/WIS/CON; Arcanoi powers and utility
+
+Training can unlock a power instead of adding a flat stat bonus.
+Passives may start at a threshold. Active powers require activation,
+resources, valid targets and normal prerequisites. Class pages explain them.
+Bonuses are derived; passive restoration does not retrain base stats.
+Normal integer rounding and combat caps still apply.
+
+Werewolf corrections:
+Skill         Benefit / restriction
+------------  ----------------------------------------------------------
+Philodox 3    +100 damage cap; reads auspice, not an unrelated tribe
+Theurge 4     Order visible NPC spirits; never other players or another
+              character's follower/familiar; named/all use the same gate
+
+This table is not a promise that every individual legacy variant has been
+certified. HELP KITSTATUS distinguishes implementation and tested coverage.
 ~
 
 5 PSET PSETCURRENCIES STAFFCURRENCIES~

@@ -635,28 +635,41 @@ static int reference_command(CHAR_DATA *ch, char *argument)
         cap = p->kind == REF_BODY ? 6 : p->kind == REF_DEMOLITION ? 12 : 5;
         cost = p->kind == REF_DEMOLITION ? 15 * (*track + 1) : 12500L << *track;
         if (!arg[0] || !str_cmp(arg, "show")) {
-            snprintf(buf, sizeof(buf), "%.30s: %ld/%d; next cost %ld %s. Use improve.\n\r",
+            if(*track>=cap)
+                snprintf(buf,sizeof(buf),"%.30s: %ld/%d; mastery complete; no next cost.\n\r",p->key,*track,cap);
+            else snprintf(buf, sizeof(buf), "%.30s: %ld/%d; next cost %ld %s. Use improve.\n\r",
                 p->key, *track, cap, cost, p->kind == REF_DEMOLITION ? "primal" : "bionics");
             stc(buf, ch); return 1;
         }
-        if (str_cmp(arg, "improve") || !management_ready(ch) || *track >= cap) {
-            stc("Use improve while at peace, below the system's mastery cap.\n\r", ch); return 1;
+        if (str_cmp(arg,"improve")) { stc("Use <system> improve to train it.\n\r",ch); return 1; }
+        if (!management_ready(ch)) return 1;
+        if (*track>=cap) { stc("That system has reached its mastery cap.\n\r",ch); return 1; }
+        if (p->kind==REF_BODY && s->limbs<1) {
+            stc("Body training requires limb implants at level 1 first.\n\r",ch); return 1;
         }
-        if ((p->kind == REF_BODY && s->limbs < 1)
-            || (p->kind == REF_FACE && s->face == 4 && s->body < 4)
-            || (p->kind == REF_DEMOLITION ? ch->primal < cost : s->bionic < cost)) {
-            stc("Missing implant prerequisites or training currency.\n\r", ch); return 1;
+        if (p->kind==REF_FACE && s->face==4 && s->body<4) {
+            stc("Face level 5 requires body implants at level 4 first.\n\r",ch); return 1;
+        }
+        if (p->kind==REF_DEMOLITION ? ch->primal<cost : s->bionic<cost) {
+            snprintf(buf,sizeof(buf),"You need %ld %s for that system upgrade.\n\r",
+                cost,p->kind==REF_DEMOLITION ? "primal" : "bionics");
+            stc(buf,ch); return 1;
         }
         next = *s;
         if (p->kind == REF_FACE) ++next.face;
         else if (p->kind == REF_LIMBS) ++next.limbs;
         else if (p->kind == REF_BODY) ++next.body;
         else ++next.demolition;
-        if (!cyborg_systems_valid(&next)) return 1;
+        if (!cyborg_systems_valid(&next)) {
+            stc("Invalid next system state; no cost charged. Contact an administrator.\n\r",ch); return 1;
+        }
         if (p->kind == REF_DEMOLITION) ch->primal -= cost;
         else next.bionic -= cost;
         *s = next; cyborg_sync(ch); WAIT_STATE(ch, 12);
-        stc("Your reference system training advances.\n\r", ch); return 1;
+        snprintf(buf,sizeof(buf),"Your reference system training advances.\n\r"
+            "%s: %ld/%d; spent %ld %s.\n\r",p->key,*track,cap,cost,
+            p->kind==REF_DEMOLITION ? "primal" : "bionics");
+        stc(buf, ch); return 1;
     }
     if ((kind == 4 ? cyborg_system_rank(ch, p->system) : parent_rank(ch)) < p->rank
         && !reference_granted(ch, p->key)) {

@@ -263,8 +263,18 @@ void do_phoenix(CHAR_DATA *ch, char *argument)
         return;
     }
     if (!strcmp(arg, "train")) {
+        if (IS_BUI(ch)) {
+            stc("Staff characters cannot train Phoenix mastery; use a mortal tester.\n\r",ch);
+            return;
+        }
         if (ch->fighting != NULL || ch->fight_timer > 0) {
             stc("You cannot train Phoenix mastery during combat.\n\r", ch);
+            return;
+        }
+        if (ch->position<POS_STANDING || IS_MORE(ch,MORE_HEAD)
+            || IS_EXTRA(ch,EXTRA_OSWITCH) || is_affected(ch,gsn_lycaon)) {
+            stc("Phoenix training requires standing in your living, unpossessed body;\n\r"
+                "Lycaon's curse must be lifted first.\n\r",ch);
             return;
         }
         if (rank >= 8) {

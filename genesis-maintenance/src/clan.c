@@ -3174,6 +3174,7 @@ class_training_header(ch,"VAMPIRE DISCIPLINES");
 	for ( sn = 0; sn <= DISC_MAX; sn++ )
 	{
 	    if ( ch->pcdata->powers[sn] == 0 ) continue;
+    if (!str_cmp(disc_name(sn),"None")) continue; /* Reserved legacy slots have no training command. */
 	    switch (sn)
 	    {
 		default: 
@@ -5220,22 +5221,24 @@ void do_autoclass( CHAR_DATA *ch, char *argument )
 stc("CLASS ENROLLMENT | 19 standalone parents\n\r"
     "Class         Class          Class\n\r"
     "------------  -------------  ------------\n\r"
-    "Angel         Cyborg         Deathknight\n\r"
-    "Demon         Dragon         Drow\n\r"
-    "Elemental     Gargoyle       Highlander\n\r"
-    "Kuei-jin      Mage           Monk\n\r"
-    "Moogle        Ninja          Phoenix\n\r"
-    "Sorcerer      Vampire        Werewolf\n\r"
-    "Wraith\n\r"
-    "HELP CLASSES lists each kit; HELP KITSTATUS explains verification limits.\n\r"
+    "#7Angel#n         #CCyborg#n         #pDeathknight#n\n\r"
+    "#rDemon#n         #oDragon#n         #pDrow#n\n\r"
+    "#CElemental#n     #7Gargoyle#n       #yHighlander#n\n\r"
+    "#gKuei-jin#n      #pMage#n           #oMonk#n\n\r"
+    "#CMoogle#n        #LNinja#n          #RPhoenix#n\n\r"
+    "#cSorcerer#n      #rVampire#n        #oWerewolf#n\n\r"
+    "#LWraith#n\n\r"
+    "HELP CLASS links each kit; HELP KITSTATUS explains verification limits.\n\r"
     "Book Mage: autoclass sorcerer | autoclass sorcerer chaos (chaosmage).\n\r",ch);
-stc("Clans:\n\r", ch);
-	stc("Dragon:  #oBronze#n, #RRed#n, #LBlue#n, #7Silver#n, #yGold#n, #0Black#n.\n\r", ch);
-	stc("#rVampire#n:\n\r", ch);
-	stc("   Camarilla:   Ventrue, Nosferatu, Brujah, Malkavian\n\r", ch);
-	stc("   Sabbat:      Serpentsofthelight, Lasombra, Tzimisce \n\r", ch);
-	stc("   Independent: Assamite, Gangrel Ravnos\n\r", ch);
-	stc("#pMage#n: Akashic, Celestial, Ecstasy, Dreamspeakers, Euthanatos, Hermes, Ether, Verbena, Virtual, Hollow\n\r", ch);
+stc("\n\rClan / faction       Available choices\n\r"
+    "-------------------  ----------------------------------------------------\n\r"
+    "#oDragon#n               Bronze, Red, Blue, Silver, Gold, Black\n\r"
+    "#rVampire#n/Camarilla    Ventrue, Nosferatu, Brujah\n\r"
+    "#rVampire#n/Sabbat       Serpentsofthelight, Lasombra, Tzimisce\n\r"
+    "#rVampire#n/Independent  Assamite, Gangrel, Ravnos\n\r"
+    "#pMage#n                 Akashic, Celestial, Ecstasy, Dreamspeakers, Euthanatos\n\r"
+    "                     Hermes, Ether, Verbena, Virtual, Hollow\n\r"
+    "Only the listed classes require a clan. Other classes use their name.\n\r",ch);
 
 	return;
     }

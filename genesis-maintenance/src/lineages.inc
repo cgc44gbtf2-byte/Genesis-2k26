@@ -282,12 +282,21 @@ static void lineage_command(CHAR_DATA *ch,char *argument,int parent)
     s=&ch->pcdata->lineage; group=lineage_group(parent);
     if(!cmd[0] || !strcmp(cmd,"status") || !strcmp(cmd,"wraithpowers")) {
         if(!arg[0]) lineage_menu(ch);
+        else stc("The class status menu takes no target.\n\r",ch);
         return;
     }
     if(!strcmp(cmd,"focus")) {
         amount=craft_number(arg);
-        if(!amount || !lineage_peace(ch) || amount>ch->mana || amount>LINEAGE_ENERGY_CAP-s->energy
-            || is_affected(ch,craft_sn("lineage recovery")) || is_affected(ch,gsn_parent_recovery)) return;
+        if(!amount) { stc("Syntax: focus <positive mana amount>, at most 10000.\n\r",ch); return; }
+        if(!lineage_peace(ch)) {
+            stc("Focus requires peace and standing in your living, natural body.\n\r",ch); return;
+        }
+        if(is_affected(ch,craft_sn("lineage recovery")) || is_affected(ch,gsn_parent_recovery)) {
+            stc("Your class power is still recovering; wait before focusing.\n\r",ch); return;
+        }
+        if(amount>ch->mana || amount>LINEAGE_ENERGY_CAP-s->energy) {
+            stc("You lack that much mana or enough free class-energy capacity.\n\r",ch); return;
+        }
         ch->mana-=amount; s->energy+=amount; WAIT_STATE(ch,12);
         craft_affect(ch,"lineage recovery",APPLY_NONE,0,1,0);
         stc("You convert mana into class energy at one to one.\n\r",ch); return;
@@ -300,9 +309,21 @@ static void lineage_command(CHAR_DATA *ch,char *argument,int parent)
             return;
         }
         cost=100000*(s->dharma+1)*(s->dharma+1);
-        if(strcmp(arg,"train") || s->dharma>=5 || !lineage_peace(ch) || ch->exp<cost
-            || is_affected(ch,craft_sn("lineage recovery")) || is_affected(ch,gsn_parent_recovery)) return;
-        ch->exp-=cost; ++s->dharma; WAIT_STATE(ch,12); stc("Your Dharma improves.\n\r",ch); return;
+        if(strcmp(arg,"train")) { stc("Syntax: dharma train.\n\r",ch); return; }
+        if(s->dharma>=5) { stc("Your Dharma is already complete (5/5).\n\r",ch); return; }
+        if(!lineage_peace(ch)) {
+            stc("Dharma training requires peace and standing in your natural body.\n\r",ch); return;
+        }
+        if(is_affected(ch,craft_sn("lineage recovery")) || is_affected(ch,gsn_parent_recovery)) {
+            stc("Your class power is still recovering; wait before training.\n\r",ch); return;
+        }
+        if(ch->exp<cost) {
+            snprintf(buf,sizeof(buf),"You need %ld XP for the next Dharma rank.\n\r",cost);
+            stc(buf,ch); return;
+        }
+        ch->exp-=cost; ++s->dharma; WAIT_STATE(ch,12);
+        snprintf(buf,sizeof(buf),"Your Dharma improves: %ld/5; spent %ld XP.\n\r",s->dharma,cost);
+        stc(buf,ch); return;
     }
     if(!strcmp(cmd,"train") || !strcmp(cmd,"path") || !strcmp(cmd,"kdiscipline")
         || !strcmp(cmd,"shintai") || !strcmp(cmd,"noble") || !strcmp(cmd,"arcanoi") || !strcmp(cmd,"visceratika")) {
@@ -315,13 +336,28 @@ static void lineage_command(CHAR_DATA *ch,char *argument,int parent)
             || (!strcmp(cmd,"kdiscipline") && (parent!=GEN_PARENT_KUEIJIN || index<9 || index>13))
             || (!strcmp(cmd,"noble") && (parent!=GEN_PARENT_KUEIJIN || index<14))
             || (!strcmp(cmd,"arcanoi") && parent!=GEN_PARENT_WRAITH)
-            || (!strcmp(cmd,"visceratika") && parent!=GEN_PARENT_GARGOYLE)) return;
+             || (!strcmp(cmd,"visceratika") && parent!=GEN_PARENT_GARGOYLE)) {
+            stc("That training command does not match this discipline group.\n\r",ch); return;
+        }
         cost=25000*(s->tracks[index]+1)*(s->tracks[index]+1);
-        if(!lineage_peace(ch) || s->tracks[index]>=5 || ch->exp<cost
-            || (parent==GEN_PARENT_KUEIJIN && s->tracks[index]>=s->dharma+2)
-            || is_affected(ch,craft_sn("lineage recovery")) || is_affected(ch,gsn_parent_recovery)) return;
+        if(!lineage_peace(ch)) {
+            stc("Discipline training requires peace and standing in your natural body.\n\r",ch); return;
+        }
+        if(s->tracks[index]>=5) { stc("That discipline is already mastered (5/5).\n\r",ch); return; }
+        if(parent==GEN_PARENT_KUEIJIN && s->tracks[index]>=s->dharma+2) {
+            stc("Raise your Dharma before improving that discipline again.\n\r",ch); return;
+        }
+        if(is_affected(ch,craft_sn("lineage recovery")) || is_affected(ch,gsn_parent_recovery)) {
+            stc("Your class power is still recovering; wait before training.\n\r",ch); return;
+        }
+        if(ch->exp<cost) {
+            snprintf(buf,sizeof(buf),"You need %ld XP to improve that discipline.\n\r",cost);
+            stc(buf,ch); return;
+        }
         ch->exp-=cost; ++s->tracks[index]; WAIT_STATE(ch,12); lineage_restore(ch);
-        stc("Your discipline improves.\n\r",ch); return;
+        snprintf(buf,sizeof(buf),"Your discipline improves: %s %ld/5; spent %ld XP.\n\r",
+            lineage_tracks[group][index],s->tracks[index],cost);
+        stc(buf,ch); return;
     }
     for(i=0;i<(int)(sizeof(lineage_powers)/sizeof(lineage_powers[0]));++i)
         if(lineage_powers[i].parent==parent && !strcmp(cmd,lineage_powers[i].key)) { p=&lineage_powers[i]; index=i; break; }

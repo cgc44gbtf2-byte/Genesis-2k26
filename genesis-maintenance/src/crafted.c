@@ -224,17 +224,32 @@ static void crafted_command(CHAR_DATA *ch, char *argument, int parent)
         return;
     }
     if (!strcmp(cmd,"train")) {
-        if (arg[0] || !craft_peace(ch) || s->rank >= 8
-            || is_affected(ch,craft_sn("crafted recovery"))) return;
+        if (arg[0]) { stc("Syntax: <class> train (no target).\n\r",ch); return; }
+        if (!craft_peace(ch)) {
+            stc("Training requires peace and standing in your living, natural body.\n\r",ch); return;
+        }
+        if (s->rank>=8) { stc("Your class mastery is already complete (8/8).\n\r",ch); return; }
+        if (is_affected(ch,craft_sn("crafted recovery"))) {
+            stc("Your class power is still recovering; wait before training.\n\r",ch); return;
+        }
         cost=50000*(s->rank+1)*(s->rank+1);
         if (ch->exp < cost) { stc("Not enough experience.\n\r",ch); return; }
         ch->exp-=cost; ++s->rank; WAIT_STATE(ch,12); crafted_restore(ch);
-        stc("Your class mastery improves.\n\r",ch); return;
+        snprintf(buf,sizeof(buf),"Your class mastery improves: %ld/8; spent %ld XP.\n\r",s->rank,cost);
+        stc(buf,ch); return;
     }
     if (!strcmp(cmd,"focus")) {
         amount=craft_number(arg);
-        if (!amount || !craft_peace(ch) || amount > ch->mana
-            || amount > CRAFTED_ENERGY_CAP-s->energy || is_affected(ch,craft_sn("crafted recovery"))) return;
+        if (!amount) { stc("Syntax: focus <positive mana amount>, at most 10000.\n\r",ch); return; }
+        if (!craft_peace(ch)) {
+            stc("Focus requires peace and standing in your living, natural body.\n\r",ch); return;
+        }
+        if (is_affected(ch,craft_sn("crafted recovery"))) {
+            stc("Your class power is still recovering; wait before focusing.\n\r",ch); return;
+        }
+        if (amount>ch->mana || amount>CRAFTED_ENERGY_CAP-s->energy) {
+            stc("You lack that much mana or enough free class-energy capacity.\n\r",ch); return;
+        }
         ch->mana-=amount; s->energy+=amount; WAIT_STATE(ch,12);
         craft_affect(ch,"crafted recovery",APPLY_NONE,0,1,0);
         stc("You convert mana into class energy at one to one.\n\r",ch); return;

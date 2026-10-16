@@ -40,11 +40,17 @@ elif [ "$#" -eq 1 ] && [ "${1-}" = currencies ]; then
     test_names="test_pset_currencies"
 elif [ "$#" -eq 1 ] && [ "${1-}" = network ]; then
     test_names="test_network"
+elif [ "$#" -eq 1 ] && [ "${1-}" = benefits ]; then
+    test_names="test_class_benefits"
+elif [ "$#" -eq 1 ] && [ "${1-}" = staffmenus ]; then
+    test_names="test_staff_menus"
+elif [ "$#" -eq 1 ] && [ "${1-}" = duel ]; then
+    test_names="duel_cyborg_wraith"
 elif [ "$#" -eq 1 ] && [ "${1-}" = all ]; then
     # Compile the large server once; each probe still runs in its own process.
-    test_names="test_combat_system test_legacy_spells test_parents test_phoenix test_newclasses test_crafted test_lineages test_reference_completion test_legacy_variants test_mage_variants test_sorcerer_starter test_cyborg_completion test_relevel test_attack_styles test_class_menus test_training_menus test_legacy_menus test_pset_currencies test_network"
+    test_names="test_combat_system test_legacy_spells test_parents test_phoenix test_newclasses test_crafted test_lineages test_reference_completion test_legacy_variants test_mage_variants test_sorcerer_starter test_cyborg_completion test_relevel test_attack_styles test_class_menus test_training_menus test_legacy_menus test_pset_currencies test_network test_class_benefits test_staff_menus"
 elif [ "$#" -ne 0 ]; then
-    echo "Usage: sh tests/test-combat-system.sh [legacy|parents|phoenix|newclasses|crafted|lineages|reference|variants|mage|books|cyborg|relevel|styles|menus|training|oldmenus|currencies|network|all]" >&2
+    echo "Usage: sh tests/test-combat-system.sh [legacy|parents|phoenix|newclasses|crafted|lineages|reference|variants|mage|books|cyborg|relevel|styles|menus|training|oldmenus|currencies|network|benefits|staffmenus|duel|all]" >&2
     exit 2
 fi
 tmp=$(mktemp -d)

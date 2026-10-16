@@ -359,11 +359,17 @@ static int legacy_command(CHAR_DATA *ch, const char *cmd, char *arg, char *extra
             stc(buf, ch); return 1;
         }
         amount = positive_number(arg);
-        if (!amount || !management_ready(ch) || amount > ch->exp || amount > REF_SOUL_CAP - s->souls) return 1;
-        ch->exp -= amount; s->souls += amount; WAIT_STATE(ch, 12); return 1;
+        if (!amount) { stc("Syntax: souls <positive XP amount> (whole digits only).\n\r",ch); return 1; }
+        if (!management_ready(ch)) return 1;
+        if (amount>ch->exp || amount>REF_SOUL_CAP-s->souls) {
+            stc("You lack that much XP or enough free soul-power capacity.\n\r",ch); return 1;
+        }
+        ch->exp -= amount; s->souls += amount; WAIT_STATE(ch, 12);
+        snprintf(buf,sizeof(buf),"You convert %ld XP into %ld soul power (1:1).\n\r",amount,amount);
+        stc(buf,ch); return 1;
     }
     if (!strcmp(cmd, "champions")) {
-        if (arg[0]) return 1;
+        if (arg[0]) { stc("The champions list takes no target.\n\r",ch); return 1; }
         snprintf(buf, sizeof(buf), "Your patron: %s.\n\r", s->patron[0] ? s->patron : "none"); stc(buf, ch);
         for (v = char_list; v; v = v->next)
             if (!IS_NPC(v) && v->pcdata && IS_DEMON(v) && can_see(ch, v)
@@ -386,7 +392,8 @@ static int legacy_command(CHAR_DATA *ch, const char *cmd, char *arg, char *extra
         memset(v->pcdata->powers, 0, sizeof(v->pcdata->powers));
         snprintf(v->pcdata->legacy.patron, sizeof(v->pcdata->legacy.patron), "%s", ch->name);
         ch->exp -= 666; WAIT_STATE(ch, 12);
-        stc("Your offered soul is accepted; you become a Demon champion with zero mastery.\n\r", v); return 1;
+        stc("Your offered soul is accepted; you become a Demon champion with zero mastery.\n\r", v);
+        act("You accept $N's pact for 666 XP.",ch,NULL,v,TO_CHAR); return 1;
     }
     if (!strcmp(cmd, "inpart")) {
         v = arg[0] ? get_char_room(ch, arg) : NULL;
@@ -402,7 +409,9 @@ static int legacy_command(CHAR_DATA *ch, const char *cmd, char *arg, char *extra
         }
         v->pcdata->legacy.grants[slot/64] |= UINT64_C(1) << (slot%64);
         ch->exp -= 50000; parent_traits_sync(v); legacy_sync(v); WAIT_STATE(ch, 12);
-        stc("Your ally imparts a permanent parent-scoped ability.\n\r", v); return 1;
+        stc("Your ally imparts a permanent parent-scoped ability.\n\r", v);
+        snprintf(buf,sizeof(buf),"You impart %.40s to %.12s for 50000 XP.\n\r",extra,v->name);
+        stc(buf,ch); return 1;
     }
     if (!strcmp(cmd, "warps")) {
         if (arg[0]) { stc("Use obtain, redeem <negative warp>, or clearwarps confirm.\n\r", ch); return 1; }
@@ -434,15 +443,26 @@ static int legacy_command(CHAR_DATA *ch, const char *cmd, char *arg, char *extra
             s->souls -= cost; s->warps = 0;
         } else if (!strcmp(cmd, "redeem")) {
             for (i = 14; i <= 21; ++i) if (!strcmp(arg, legacy_warps[i].key)) break;
-            if (i > 21 || !legacy_warp(ch, i) || s->souls < 10000) return 1;
+            if (i>21 || !legacy_warp(ch,i)) {
+                stc("Redeem an owned negative warp by name; see demon warps.\n\r",ch); return 1;
+            }
+            if (s->souls<10000) { stc("Redeeming a negative warp costs 10000 soul power.\n\r",ch); return 1; }
+            cost=10000;
             s->souls -= 10000; s->warps &= ~(UINT32_C(1) << i);
         } else {
-            if (arg[0] || count >= 10 || s->souls < 15000) return 1;
+            if (arg[0]) { stc("Syntax: demon obtain (no target).\n\r",ch); return 1; }
+            if (count>=10) { stc("You already own the maximum of 10 warps.\n\r",ch); return 1; }
+            if (s->souls<15000) { stc("Obtaining a warp costs 15000 soul power.\n\r",ch); return 1; }
             for (i = n = 0; i < 30; ++i) if (!legacy_warp(ch, i)) candidates[n++] = i;
-            if (!n) return 1;
-            s->souls -= 15000; s->warps |= UINT32_C(1) << candidates[number_range(0,n-1)];
+            if (!n) { stc("No unowned warp is available; no cost charged.\n\r",ch); return 1; }
+            cost=15000; i=candidates[number_range(0,n-1)];
+            s->souls -= cost; s->warps |= UINT32_C(1) << i;
         }
-        legacy_sync(ch); WAIT_STATE(ch, 12); return 1;
+        legacy_sync(ch); WAIT_STATE(ch, 12);
+        if (!strcmp(cmd,"clearwarps"))
+            snprintf(buf,sizeof(buf),"You clear all %d warps for %ld soul power; no refund.\n\r",count,cost);
+        else snprintf(buf,sizeof(buf),"You %.6s %.30s for %ld soul power.\n\r",cmd,legacy_warps[i].key,cost);
+        stc(buf,ch); return 1;
     }
     if (!strcmp(cmd, "gifts")) {
         static const char *names[] = {"strength","speed","stake","cone","form"};
@@ -456,8 +476,12 @@ static int legacy_command(CHAR_DATA *ch, const char *cmd, char *arg, char *extra
             stc("Buy: demon gifts <name>. Owned gifts cannot be bought again.\n\r",ch);
             return 1;
         }
-        if (!management_ready(ch) || (s->gifts & (1U<<i)) || ch->primal < 50) return 1;
-        ch->primal -= 50; s->gifts |= 1U<<i; legacy_sync(ch); WAIT_STATE(ch, 12); return 1;
+        if (!management_ready(ch)) return 1;
+        if (s->gifts & (1U<<i)) { stc("You already own that Demon gift.\n\r",ch); return 1; }
+        if (ch->primal<50) { stc("A Demon gift costs 50 primal.\n\r",ch); return 1; }
+        ch->primal -= 50; s->gifts |= 1U<<i; legacy_sync(ch); WAIT_STATE(ch, 12);
+        snprintf(buf,sizeof(buf),"You purchase the %s gift for 50 primal.\n\r",names[i]);
+        stc(buf,ch); return 1;
     }
     if (!strcmp(cmd, "infernal_portal") || !strcmp(cmd, "chaosportal") || !strcmp(cmd, "dgate")) {
         legacy_travel(ch, cmd, arg, p->mana); return 1;

@@ -136,10 +136,18 @@ replace an existing live data directory with a clean source checkout.
 
 The current gameplay source passed:
 
-- 19 linked AddressSanitizer/UndefinedBehaviorSanitizer regression suites,
+- 21 linked AddressSanitizer/UndefinedBehaviorSanitizer regression suites,
   including exact training quotes versus real deductions and 116 read-only
   older-class menu views. See
   [combat and menu maintenance](genesis-maintenance/COMBAT_STYLE_AND_MENUS.md).
+- A short `HELP CLASS` index, 19 detailed class tables, colored `AUTOCLASS`,
+  role-grouped staff menus and expanded rejection/payment feedback checks.
+  See [class/staff maintenance](genesis-maintenance/CLASS_AND_STAFF_MAINTENANCE.md)
+  for scope and the reproducible Cyborg/Wraith duel.
+- Observable class progression benefits and every combat stance/style's
+  derived benefit; fixes for Philodox's wrong skill-family lookup and
+  Theurge's unreachable spirit-order gate. See
+  [class benefit checks](genesis-maintenance/CLASS_BENEFITS.md) for precise scope.
 - Staff currency bounds/permissions and real save/relogin persistence across
   nine class resource families. `pset Player currencies` lists balances;
   `pset Player classpoints 50000` and `pset Player exp 5000000` set balances.

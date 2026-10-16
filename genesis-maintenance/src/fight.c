@@ -996,7 +996,7 @@ break;
 	    case CLASS_WEREWOLF:
 		if (get_tribe(ch, TRIBE_SHADOW_LORDS) >= 1) max_dam += 100;
 		if (get_tribe(ch, TRIBE_GET_OF_FENRIS) >= 1) max_dam += 100;
-		if (get_tribe(ch, AUSPICE_PHILODOX) >= 3) max_dam += 100;
+		if (get_auspice(ch, AUSPICE_PHILODOX) >= 3) max_dam += 100;
 		if (IS_SET(ch->act, PLR_WOLFMAN)) max_dam += ch->pcdata->wolf * 1.5;
 		if (ch->pcdata->rank >= 5) max_dam += 500;
 		else max_dam += (ch->pcdata->rank + 1) * 100;

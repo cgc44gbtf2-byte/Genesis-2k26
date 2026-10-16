@@ -1104,6 +1104,19 @@ void die_follower( CHAR_DATA *ch )
     return;
 }
 
+/* Theurge's spirit authority is NPC-only. Never commandeer another
+ * character's follower/familiar, or a player marked as a spirit.
+ * Rank four matches the historical execution gate; named/all must agree.
+ */
+static bool can_order_spirit(CHAR_DATA *ch, CHAR_DATA *spirit)
+{
+    return ch && spirit && !IS_NPC(ch) && ch->pcdata
+        && IS_WEREWOLF(ch) && get_auspice(ch,AUSPICE_THEURGE)>=4
+        && IS_NPC(spirit) && IS_SPIRIT(spirit)
+        && (!spirit->master || spirit->master==ch)
+        && (!spirit->wizard || spirit->wizard==ch);
+}
+
 void do_order( CHAR_DATA *ch, char *argument )
 {
     char arg[MAX_INPUT_LENGTH];
@@ -1184,7 +1197,7 @@ void do_order( CHAR_DATA *ch, char *argument )
 	    {
 		if (!is_animal || !IS_MORE(ch, MORE_ANIMAL_MASTER))
 		{
-		    if (!IS_SPIRIT(victim) || !IS_VAMPIRE(ch) || !IS_WEREWOLF(ch) || get_disc(ch,AUSPICE_THEURGE) < 3)
+		    if (!can_order_spirit(ch,victim))
 		    {
 			send_to_char( "Do it yourself!\n\r", ch );
 			return;
@@ -1215,7 +1228,7 @@ void do_order( CHAR_DATA *ch, char *argument )
 	 || (IS_VAMPIRE(ch) && IS_VAMPIRE(och) && ch->vampgen < och->vampgen && !str_cmp(ch->clan,och->clan))
 	 || (!IS_NPC(ch) && !IS_NPC(och) && strlen(och->pcdata->love) > 1 &&!str_cmp(och->pcdata->love,ch->name))
 	 || (is_animal && IS_MORE(ch, MORE_ANIMAL_MASTER))
-	 || (IS_SPIRIT(och) && IS_WEREWOLF(ch) && get_auspice(ch, AUSPICE_THEURGE) > 3)))
+	 || can_order_spirit(ch,och)))
 	{
 	    found = TRUE;
 	    act("$n orders you to '$t'.", ch, argument, och, TO_VICT);

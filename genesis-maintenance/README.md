@@ -37,9 +37,11 @@ identities and read-only previews; see `HYBRID_ROSTER.md`.
 See `PARENT_FRAMEWORK.md` for the foundation and remaining work.
 The finalized maintenance-only ZIP remains a separate, unchanged release.
 
-The current maintenance update passes 19 linked ASan/UBSan suites with strict
+The current maintenance update passes 21 linked ASan/UBSan suites with strict
 GNU89 and `-Werror`, including exact training-price/deduction checks and
 116 read-only older-menu views. See `COMBAT_STYLE_AND_MENUS.md`.
+See `CLASS_AND_STAFF_MAINTENANCE.md` for the current class index, staff roles,
+training feedback coverage and reproducible Cyborg/Wraith combat experiment.
 The maintenance baseline also passed seven isolated native gameplay groups
 and a fresh-extraction build; those older ZIP snapshots are not replaced.
 The help audit covers 398/398 registered legacy topics. The native help probe
@@ -102,7 +104,7 @@ python3 tests/smoke_runtime.py
 Clean again before switching back to a normal build. These are focused regression
 checks, not a complete gameplay or security audit.
 
-Run all 19 linked gameplay/network sanitizer probes in one isolated build, plus the
+Run all 20 linked gameplay/network sanitizer probes in one isolated build, plus the
 separate component-codec and resolve probes:
 
 ```sh

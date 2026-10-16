@@ -287,9 +287,13 @@ int newclasses_perception(CHAR_DATA *ch)
 
 static int management_ready(CHAR_DATA *ch)
 {
-    if (!ch || IS_NPC(ch) || !ch->pcdata || !ch->in_room || ch->hit<=0
-        || is_affected(ch,gsn_lycaon)
-        || IS_EXTRA(ch,EXTRA_OSWITCH) || IS_MORE(ch,MORE_HEAD)) return 0;
+    if (!ch || IS_NPC(ch) || !ch->pcdata) return 0;
+    if (!ch->in_room || ch->hit<=0 || is_affected(ch,gsn_lycaon)
+        || IS_EXTRA(ch,EXTRA_OSWITCH) || IS_MORE(ch,MORE_HEAD)) {
+        stc("Training and modifications require your living, unpossessed body;\n\r"
+            "Lycaon's curse must be lifted first.\n\r",ch);
+        return 0;
+    }
     if (IS_BUI(ch)) {
         stc("Staff characters cannot train or modify class systems.\n\r"
             "Use a mortal test character.\n\r", ch);
@@ -525,7 +529,8 @@ void do_cyborg(CHAR_DATA *ch, char *argument)
         stc("Cybernetic modification complete.\n\r", ch); return;
     }
     if (!str_cmp(cmd, "train")) {
-        if (arg[0] || !management_ready(ch)) return;
+        if (arg[0]) { stc("Syntax: cyborg train (no target).\n\r",ch); return; }
+        if (!management_ready(ch)) return;
         if (r->rifle >= 12) { stc("Your rifle training is complete.\n\r", ch); return; }
         cost = 10000 * (r->rifle + 1) * (r->rifle + 1);
         if (ch->exp < cost) { stc("Not enough experience for rifle training.\n\r", ch); return; }
@@ -759,7 +764,8 @@ static void parent_command(CHAR_DATA *ch, char *argument, int angel)
         return;
     }
     if (!str_cmp(cmd, "train")) {
-        if (arg[0] || !management_ready(ch)) return;
+        if (arg[0]) { stc("Class training takes no target. Use <class> train.\n\r",ch); return; }
+        if (!management_ready(ch)) return;
         if (parent_rank(ch) >= 8) { stc("Your class mastery is complete.\n\r", ch); return; }
         if (ch->pcdata->powers[0] < 0 || ch->pcdata->powers[0] > 8) {
             stc("Invalid mastery state; contact an administrator.\n\r", ch); return;
