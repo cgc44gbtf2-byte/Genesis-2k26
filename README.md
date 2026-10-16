@@ -1,9 +1,46 @@
-# Genesis Reforged — maintenance source
+# Genesis: 2k26
 
-Genesis Reforged is a legacy C/telnet, GodWars-derived MUD. This repository
+Genesis: 2k26 continues Genesis Reforged, a legacy C/telnet, GodWars-derived MUD.
+Maintained by **LaWaylon (aKa Yami)** · Contact: [lawaylon@icloud.com](mailto:lawaylon@icloud.com).
+This repository
 contains source, area data, tests and maintenance documentation for building
 and operating it on your own Linux host. It is not a web application, and
 this update does not deploy or modify a running server.
+
+## Copyright and credits
+
+Copyright © 2026 LaWaylon (aKa Yami), for original Genesis: 2k26 contributions.
+
+This notice applies only to original contributions, not to the inherited
+DikuMUD, Merc, God Wars, Genesis or other third-party code and content.
+Upstream authors retain their respective copyrights. Reference-derived
+adaptations remain subject to their original notices and applicable permissions;
+they are not claimed as wholly original Genesis: 2k26 code.
+No new blanket license or permission to use or redistribute upstream work
+is granted by this notice. Preserve all existing copyright notices, credits
+and licensing requirements.
+
+## Genesis: 2k26 code additions and maintenance
+
+This edition includes the following additions, reconstructions and
+Genesis-system adaptations developed for this project:
+
+- Expanded standalone parent-class framework and class kits, including
+  Angel, unified Demon, Cyborg, Phoenix, Gargoyle, Kuei-jin, Deathknight,
+  Moogle and Wraith, with progression and persistent-state handling.
+- Reconstructed missing ability effects and repaired legacy spells, skills,
+  fighting stances, resource costs, travel and save-state behavior.
+- Sorcerer starter grimoires with instructions and Spark, Mend and Ward,
+  plus Chaos book page-color variation.
+- Expanded class and ability help, kit-status documentation, native regression
+  tests, sanitizer suites and source-package verification.
+- Admin-only highest-rank `relevel` bootstrap and operator setup documentation.
+- A registry of 171 named hybrid combinations, currently preview-only;
+  playable inheritance, conversion, ascension and respec remain future work.
+
+This is a development summary, not a claim of exclusive authorship over
+reference-derived mechanics or code. The linked implementation documents
+record reference sources and current limitations.
 
 ## Connect
 
@@ -62,14 +99,11 @@ sudo apt install build-essential libcrypt-dev python3 unzip git
 Clone and build:
 
 ```sh
-git clone https://github.com/cgc44gbtf2-byte/Genesis-MUD-maintenance.git
-cd Genesis-MUD-maintenance
-# Before this maintenance PR is merged, switch to its source branch:
-# git switch maintenance/class-kits-help-2026-10-15
+git clone https://github.com/cgc44gbtf2-byte/Genesis-2k26.git
+cd Genesis-2k26
 cd genesis-maintenance
 sha256sum --check MANIFEST.sha256
 make -C src
-PORT=4000 ./run.sh
 ```
 
 The compiler uses GNU89 compatibility. The launcher runs in the foreground,
@@ -80,6 +114,14 @@ Use an unprivileged account and a process supervisor on your own host.
 Before public registration, secure the exact case-insensitive **Admin**
 account and follow [ADMIN_BOOTSTRAP.md](genesis-maintenance/ADMIN_BOOTSTRAP.md).
 Only that identity may use the highest-rank `relevel` bootstrap.
+Keep public access blocked during first launch and account creation.
+After reviewing the bootstrap instructions, start from `genesis-maintenance/`:
+
+```sh
+umask 077
+PORT=4000 ./run.sh
+```
+
 Back up live player records and mutable area files before upgrading; never
 replace an existing live data directory with a clean source checkout.
 
@@ -125,10 +167,13 @@ attributed object-based speech. Existing level-99 spell restrictions remain.
 
 ## Source downloads
 
-The current documentation-synced source package is
+The preserved maintenance source package is
 [Genesis-MUD-GitHub-maintenance-source.zip](Genesis-MUD-GitHub-maintenance-source.zip).
 It contains 229 files, including a manifest covering 228 payloads. Build
 outputs, runtime logs, player records and private notes are excluded.
+This immutable package predates the Genesis: 2k26 README branding and
+copyright update. Clone this repository for the current README; the packaged
+gameplay source is unchanged by this documentation-only update.
 
 SHA256: `40fde68c26f3188d09a2203c0048633cd94c7a450190245ba52d290f0f439c09`
 
