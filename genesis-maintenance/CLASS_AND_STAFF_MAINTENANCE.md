@@ -74,3 +74,38 @@ commands, native combat messages and HP checkpoints. Commands respect waits
 and recovery. A legal configured rotation does not cast every utility,
 crafting, travel, minion and mutually exclusive power in one duel.
 The fixed-seed/initiative result is not sufficient evidence to rebalance a kit.
+
+### Paired-seed follow-up
+
+```sh
+GENESIS_DUEL_RESULTS=/tmp/genesis-duel-results \
+  CRYPT_LIBRARY=/path/to/libcrypt.so sh tests/test-combat-system.sh duelbatch
+```
+
+The batch driver runs 50 deterministic seeds, each twice in a fresh engine
+process. It reverses the opening attacker, combat-command priority and
+character-list ordering, retaining the same gear, mastery, preparation and
+rotation. Every fight passed under ASan/UBSan.
+
+| Opening attacker | Fights | Cyborg wins | Wraith wins | Mean Cyborg HP left | Mean seconds |
+|---|---:|---:|---:|---:|---:|
+| Cyborg | 50 | 50 | 0 | 88,128.06 | 48.54 |
+| Wraith | 50 | 50 | 0 | 86,227.48 | 52.50 |
+| Overall | 100 | 100 | 0 | 87,177.77 | 50.52 |
+
+No unresolved fights. Cyborg's remaining HP ranged from 78,731 to 94,419;
+fight durations ranged from 38.75 to 66.25 simulated seconds.
+All starting builds were checked identical across seeds. Initial derived
+values were Cyborg/Wraith: damage cap 4100/1600, hitroll 105/0, AC 500/315,
+soak 600/500 and attack delay 11/15 (lower delay acts more often).
+In `get_damcap`, Cyborg limb mastery alone adds up to 2300; Wraith has no
+corresponding case in that switch. These are observed/code-level differences,
+not an isolated causal test of each bonus.
+
+This establishes a large Cyborg advantage for this controlled build/rotation,
+not every obtainable loadout or optimal player strategy. Benchmark gear has
+no additional quest/enchantment hitroll/damroll bonuses. Cooldowns and utility
+power exclusions remain as described above. The next balance review should
+compare progression/cap parity and class-optimized strategies, rather than
+changing individual spell damage based solely on these trials.
+No production gameplay code, class stats, costs, caps or balance rules changed.

@@ -3,8 +3,10 @@
  * No live server, player file or production world is used.
  */
 #include <assert.h>
+#include <errno.h>
 #include <limits.h>
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include "../src/merc.h"
 #include "../src/parents.h"
@@ -90,11 +92,24 @@ static void stats(int id)
     printf("; derived HR %ld DR %ld AC %ld cap %ld soak %ld speed %ld\n",
         char_hitroll(ch),char_damroll(ch),char_ac(ch),get_damcap(ch),get_soak(ch),get_speed(ch));
 }
-int main(void)
+int main(int argc,char **argv)
 {
-    int i,pulse;
+    int i,pulse,opener=0,order,elapsed;
+    long seed=1792094400;
+    char *end;
     long before[2],spent[2]={0,0};
-    current_time=1792094400; init_mm();
+    if(argc>3) { fprintf(stderr,"Usage: duel [positive-seed] [cyborg|wraith]\n"); return 2; }
+    if(argc>=2) {
+        errno=0; seed=strtol(argv[1],&end,10);
+        if(errno || end==argv[1] || *end || seed<=0 || seed>INT_MAX) {
+            fprintf(stderr,"Invalid positive seed.\n"); return 2;
+        }
+    }
+    if(argc==3) {
+        if(!strcmp(argv[2],"wraith")) opener=1;
+        else if(strcmp(argv[2],"cyborg")) { fprintf(stderr,"Invalid opener.\n"); return 2; }
+    }
+    current_time=seed; init_mm();
     for(i=0;i<MAX_SKILL && skill_table[i].name;++i)
         if(skill_table[i].pgsn) *skill_table[i].pgsn=i;
     memset(&arena,0,sizeof(arena)); memset(&area,0,sizeof(area));
@@ -102,7 +117,7 @@ int main(void)
     area.name=area.filename="benchmark"; arena.vnum=777; area.nplayer=2;
     weather_info.sunlight=SUN_LIGHT; prototype.vnum=12345;
     setup(0,CLASS_CYBORG,"Cyborg"); setup(1,CLASS_WRAITH,"Wraith");
-    fighter[0].next=&fighter[1]; char_list=&fighter[0];
+    fighter[opener].next=&fighter[1-opener]; char_list=&fighter[opener];
     assert(cyborg_core_init(&player[0].cyborg,CY_COMPONENT_MASK,100)==CY_OK);
     for(i=0;i<CY_COMPONENT_COUNT;++i) {
         if(i==CY_LEFT_LEG || i==CY_RIGHT_LEG || i==CY_EARS || i==CY_BOOSTMASTER
@@ -119,7 +134,7 @@ int main(void)
     assert(lineage_state_valid(&player[1].lineage)); newclasses_restore_passives(&fighter[0]);
     lineage_restore(&fighter[1]);
     puts("GENESIS: 2k26 | CYBORG vs WRAITH | ENGINE-LINKED FIGHT SNAPSHOT");
-    puts("Seed/current_time: 1792094400. Isolated in-memory PCs; no live-host changes.");
+    printf("Seed/current_time: %ld. Isolated in-memory PCs; no live-host changes.\n",seed);
     puts("Both: PK enabled, no staff flags; base HP/mana caps 100000; class-specific stat caps; all weapon/stance/style mastery 200.");
     puts("Active configuration: Tiger stance, dual blades (180..220), matched armor (15 per eligible slot).");
     puts("Benchmark gear is controlled/equal, NOT a claim of the strongest obtainable world equipment.");
@@ -128,16 +143,18 @@ int main(void)
     puts("Wraith: all 11 Arcanoi rank5, full starting pathos. Utility/travel/minion powers are not forced into a duel.");
     puts("Preparation: Terminator and Bodyshape, then two real minute ticks to clear their recovery; no free resource refill.");
     puts("Combat rotation: Cyborg snipe or repair below 75% HP; Wraith requiem or charitable below 75% HP.");
-    puts("Commands only attempted when wait/recovery allow them. Real violence/character updates; fixed initiative ordering.");
+    printf("Commands only attempted when wait/recovery allow them. Real violence/character updates; opener/command priority: %s.\n",
+        fighter[opener].name);
     command(0,"cyborg terminator"); command(1,"wraith bodyshape"); tick(); tick();
     discard(0); discard(1); stats(0); stats(1);
     assert(!is_safe(&fighter[0],&fighter[1]));
-    command(0,"kill Wraith");
+    command(opener,opener ? "kill Cyborg" : "kill Wraith");
     assert(fighter[0].fighting==&fighter[1]);
     for(pulse=1;pulse<=2400 && fighter[0].hit>0 && fighter[1].hit>0;++pulse) {
         if(pulse%PULSE_TICK==0) tick();
-        for(i=0;i<2;++i) {
-            CHAR_DATA *ch=&fighter[i];
+        for(order=0;order<2;++order) {
+            CHAR_DATA *ch;
+            i=(opener+order)%2; ch=&fighter[i];
             if(ch->wait>0) --ch->wait;
             if(ch->hit<=0 || fighter[1-i].hit<=0 || ch->wait>0
                 || is_affected(ch,gsn_parent_recovery)
@@ -156,13 +173,16 @@ int main(void)
         if(!fighter[0].fighting && !fighter[1].fighting) break;
     }
     puts("\n--- RESULT ---"); stats(0); stats(1);
+    elapsed=UMIN(pulse,2400);
     printf("Simulated time %.2f seconds; successful resource-spending combat actions: Cyborg %ld, Wraith %ld.\n",
-        (double)pulse/PULSE_PER_SECOND,spent[0],spent[1]);
+        (double)elapsed/PULSE_PER_SECOND,spent[0],spent[1]);
     printf("Outcome: %s\n",fighter[0].hit<=0 ? "Cyborg incapacitated; Wraith remains standing."
         : fighter[1].hit<=0 ? "Wraith incapacitated; Cyborg remains standing."
         : "No incapacitation within this bounded run (or native combat stopped).");
     puts("One controlled rotation/seed is not class balance proof; no ability was invented for this transcript.");
     assert(fighter[0].hit<100000 && fighter[1].hit<100000);
     assert(spent[0]>0 && spent[1]>0);
+    printf("DUEL_RESULT seed=%ld opener=%s cyborg_hp=%ld wraith_hp=%ld pulses=%d cyborg_actions=%ld wraith_actions=%ld\n",
+        seed,opener ? "wraith" : "cyborg",fighter[0].hit,fighter[1].hit,elapsed,spent[0],spent[1]);
     stop_fighting(&fighter[0],TRUE); return 0;
 }
