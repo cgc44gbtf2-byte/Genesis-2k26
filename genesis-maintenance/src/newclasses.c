@@ -288,8 +288,13 @@ int newclasses_perception(CHAR_DATA *ch)
 static int management_ready(CHAR_DATA *ch)
 {
     if (!ch || IS_NPC(ch) || !ch->pcdata || !ch->in_room || ch->hit<=0
-        || is_affected(ch,gsn_lycaon) || IS_BUI(ch)
+        || is_affected(ch,gsn_lycaon)
         || IS_EXTRA(ch,EXTRA_OSWITCH) || IS_MORE(ch,MORE_HEAD)) return 0;
+    if (IS_BUI(ch)) {
+        stc("Staff characters cannot train or modify class systems.\n\r"
+            "Use a mortal test character.\n\r", ch);
+        return 0;
+    }
     if (ch->fighting != NULL || ch->fight_timer > 0
         || ch->position < POS_STANDING) {
         stc("Class training and modifications require peace and standing.\n\r", ch);
@@ -373,6 +378,83 @@ static long positive_number(const char *text)
     return errno == ERANGE || *end != 0 || value <= 0 ? 0 : value;
 }
 
+static void cyborg_menu(CHAR_DATA *ch, const char *section)
+{
+    CYBORG_CORE *core = &ch->pcdata->cyborg;
+    CYBORG_RUNTIME *r = &ch->pcdata->cyber;
+    CYBORG_SYSTEMS *s = &ch->pcdata->cybernetics;
+    const CYBORG_COMPONENT *c;
+    const char *state;
+    char buf[256];
+    size_t i;
+    int all = !str_cmp(section, "all");
+    int implants = all || !str_cmp(section, "implants");
+    int powers = all || !str_cmp(section, "powers");
+    if (all || (!implants && !powers)) {
+        stc("CYBORG | Overview\n\r", ch);
+        stc("Resource      Current / Limit     Resource      Current / Limit\n\r"
+            "------------  ------------------  ------------  ------------------\n\r", ch);
+        snprintf(buf, sizeof(buf), "Humanity      %7ld / %-8ld  Nanites       %7ld / 10000\n\r",
+            core->humanity, core->humanity_limit, r->nanites); stc(buf, ch);
+        snprintf(buf, sizeof(buf), "Bionics       %7ld / 10000000  Bombs         %7ld / 20 (%s)\n\r",
+            s->bionic, s->bombs, s->armed ? "armed" : "safe"); stc(buf, ch);
+        snprintf(buf, sizeof(buf), "Primal        %7ld             Factory       %s\n\r",
+            ch->primal, r->factory ? "on" : "off"); stc(buf, ch);
+        stc("\n\rTraining command                 Rank / Cap   Next cost\n\r"
+            "-------------------------------  ----------   -----------------\n\r", ch);
+        snprintf(buf, sizeof(buf), "train                            %4ld / 12    %ld XP\n\r",
+            r->rifle, r->rifle < 12 ? 10000 * (r->rifle + 1) * (r->rifle + 1) : 0); stc(buf, ch);
+        snprintf(buf, sizeof(buf), "face_implants improve            %4ld / 5     %ld bionics\n\r",
+            s->face, s->face < 5 ? 12500L << s->face : 0); stc(buf, ch);
+        snprintf(buf, sizeof(buf), "limb_implants improve             %4ld / 5     %ld bionics\n\r",
+            s->limbs, s->limbs < 5 ? 12500L << s->limbs : 0); stc(buf, ch);
+        snprintf(buf, sizeof(buf), "body_implants improve             %4ld / 6     %ld bionics\n\r",
+            s->body, s->body < 6 ? 12500L << s->body : 0); stc(buf, ch);
+        snprintf(buf, sizeof(buf), "demolitions improve               %4ld / 12    %ld primal\n\r",
+            s->demolition, s->demolition < 12 ? 15 * (s->demolition + 1) : 0); stc(buf, ch);
+        stc("Costs shown at cap are 0; capped tracks cannot be trained further.\n\r"
+            "bionics <XP>: convert XP to bionics. Training requires peace/standing.\n\r"
+            "\n\rBrowse with: cyborg implants | cyborg powers | cyborg all\n\r"
+            "Use: cyborg install <component> | cyborg uninstall <component>\n\r"
+            "All commands in these tables need the cyborg prefix. HELP CYBORG.\n\r", ch);
+        if (IS_BUI(ch))
+            stc("Staff rank blocks training/installation; use a mortal test character.\n\r", ch);
+    }
+    if (implants) {
+        stc("\n\rCYBORG | Implants\n\r"
+            "Component           Primal  Humanity  Installation\n\r"
+            "------------------  ------  --------  ------------\n\r", ch);
+        for (i = 0; i < CY_COMPONENT_COUNT; ++i) {
+            c = cyborg_component_at(i);
+            if (cyborg_has_component(ch, c->id)) state = "Installed";
+            else if (!(core->permitted & cyborg_component_bit(c->id))) state = "Restricted";
+            else if ((core->installed & c->requires) != c->requires) state = "Needs parts";
+            else if (ch->primal < c->primal) state = "No primal";
+            else if (core->humanity < c->humanity) state = "No humanity";
+            else state = "Eligible";
+            snprintf(buf, sizeof(buf), "%-18s  %6ld  %8ld  %s\n\r",
+                c->key, c->primal, c->humanity, state); stc(buf, ch);
+        }
+        stc("Eligible = parts/resources met, not a bypass of rank/state restrictions.\n\r"
+            "Install: cyborg install battery. Humanity refunds on removal; not primal.\n\r", ch);
+    }
+    if (powers) {
+        stc("\n\rCYBORG | Component powers\n\r"
+            "Command          Nanites  Requirement / operation\n\r"
+            "---------------  -------  ---------------------------------------\n\r"
+            "factory on/off      tick  Nanite factory; generates using mana\n\r"
+            "convert <mana>         -  Factory; 1 mana -> 1 nanite\n\r"
+            "repair               400  Nanite factory; restores missing HP\n\r"
+            "taser <enemy>        200  Installed taser\n\r"
+            "snipe <enemy>        300  Railgun and rifle rank 1; same room\n\r"
+            "cloak               250  Chameleon; activation requires peace\n\r"
+            "radio <message>        0  Installed radiosplice\n\r", ch);
+        reference_menu(ch);
+        stc("Rank/passive eligibility is not cast readiness; targets/costs still apply.\n\r"
+            "Equipment: cyborgeq <piece> costs 100 primal. HELP CYBORG.\n\r", ch);
+    }
+}
+
 void do_cyborg(CHAR_DATA *ch, char *argument)
 {
     char cmd[MAX_INPUT_LENGTH], arg[MAX_INPUT_LENGTH], extra[MAX_INPUT_LENGTH];
@@ -381,7 +463,6 @@ void do_cyborg(CHAR_DATA *ch, char *argument)
     const CYBORG_COMPONENT *c;
     CHAR_DATA *v, *receiver;
     long cost, amount, heal;
-    size_t i;
     int result;
     if (!parent_actor(ch) || !IS_CYBORG(ch)) {
         if (ch != NULL && !IS_NPC(ch)) stc("Only Cyborgs may use cybernetics.\n\r", ch);
@@ -412,26 +493,16 @@ void do_cyborg(CHAR_DATA *ch, char *argument)
     one_argument(argument, extra);
     if (extra[0] != 0) { stc("Too many Cyborg arguments.\n\r", ch); return; }
     r = &ch->pcdata->cyber;
-    if (!cyborg_core_valid(&ch->pcdata->cyborg) || !cyborg_runtime_valid(r)) {
+    if (!cyborg_core_valid(&ch->pcdata->cyborg) || !cyborg_runtime_valid(r)
+        || !cyborg_systems_valid(&ch->pcdata->cybernetics)) {
         stc("Invalid cybernetic state; contact an administrator.\n\r", ch); return;
     }
-    if (cmd[0] == 0 || !str_cmp(cmd, "status") || !str_cmp(cmd, "sys_status")) {
+    if (cmd[0] == 0 || !str_cmp(cmd, "status") || !str_cmp(cmd, "sys_status")
+        || !str_cmp(cmd, "help") || !str_cmp(cmd, "systems")
+        || !str_cmp(cmd, "implants") || !str_cmp(cmd, "powers")
+        || !str_cmp(cmd, "all")) {
         if (arg[0]) { stc("Status takes no arguments.\n\r", ch); return; }
-        snprintf(buf, sizeof(buf), "Cyborg rifle: %ld/12; nanites: %ld/10000; humanity: %ld/%ld; factory: %s.\n\r",
-                 r->rifle, r->nanites, ch->pcdata->cyborg.humanity,
-                 ch->pcdata->cyborg.humanity_limit, r->factory ? "on" : "off");
-        stc(buf, ch);
-        stc("cyborg install/uninstall <component>, train, convert <mana>, factory on/off,\n\r"
-            "repair, taser/snipe <target>, cloak, radio <message>.\n\r"
-            "Use the reference-system commands below for additional powers.\n\r", ch);
-        reference_menu(ch);
-        for (i = 0; i < CY_COMPONENT_COUNT; ++i) {
-            c = cyborg_component_at(i);
-            snprintf(buf, sizeof(buf), "%-18s %3ld primal, %2ld humanity [%s]\n\r",
-                c->key, c->primal, c->humanity,
-                cyborg_has_component(ch, c->id) ? "installed" : "not installed");
-            stc(buf, ch);
-        }
+        cyborg_menu(ch, cmd);
         return;
     }
     if (!str_cmp(cmd, "install") || !str_cmp(cmd, "implant")
@@ -665,11 +736,16 @@ static void parent_command(CHAR_DATA *ch, char *argument, int angel)
         snprintf(buf, sizeof(buf), "%s mastery: %ld/8. Use %s train.\n\r",
                  angel ? "Angel" : "Demon", parent_rank(ch), angel ? "angel" : "demon");
         stc(buf, ch);
+        stc("Core power             Rank     Mana  Mastery\n\r"
+            "--------------------  ----  -------  -------\n\r", ch);
         for (p = table; p->key != NULL; ++p) {
-            snprintf(buf, sizeof(buf), "%-20s rank %d, mana %ld\n\r", p->key, p->rank, p->cost);
+            snprintf(buf, sizeof(buf), "%-20s  %4d  %7ld  %s\n\r",
+                p->key, p->rank, p->cost,
+                parent_rank(ch) >= p->rank || reference_granted(ch, p->key) ? "Known" : "Locked");
             stc(buf, ch);
         }
-        stc("Might (+1 STR), Toughness (+1 CON) and Speed (+1 DEX) are automatic mastery passives.\n\r", ch);
+        stc("Automatic mastery passives: Might +1 STR, Toughness +1 CON, Speed +1 DEX.\n\r"
+            "Known = rank requirement met; targets, resources and state still apply.\n\r", ch);
         stc("Reference powers use Genesis rules. Full hybrids remain disabled.\n\r", ch);
         reference_menu(ch);
         return;

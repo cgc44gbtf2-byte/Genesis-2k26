@@ -229,8 +229,12 @@ static void legacy_menu(CHAR_DATA *ch)
     char buf[160];
     if (IS_ANGEL(ch)) { stc("inpart <party member> <ability>: share a learned Angel power.\n\r", ch); return; }
     if (!IS_DEMON(ch)) return;
+    stc("\n\rSoul / legacy power    Rank     Mana  Mastery\n\r"
+        "--------------------  ----  -------  -------\n\r", ch);
     for (p = legacy_powers; p->key; ++p) {
-        snprintf(buf, sizeof(buf), "%-20s rank %d, mana %ld\n\r", p->key, p->rank, p->mana);
+        snprintf(buf, sizeof(buf), "%-20s  %4d  %7ld  %s\n\r",
+            p->key, p->rank, p->mana,
+            parent_rank(ch) >= p->rank || reference_granted(ch, p->key) ? "Known" : "Locked");
         stc(buf, ch);
     }
     stc("Use souls <XP> for soul power; warps/gifts/champions show their own state.\n\r", ch);

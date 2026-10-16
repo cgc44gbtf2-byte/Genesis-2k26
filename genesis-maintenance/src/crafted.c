@@ -207,13 +207,17 @@ static void crafted_command(CHAR_DATA *ch, char *argument, int parent)
         snprintf(buf,sizeof(buf),"Mastery %ld/8; %s %ld/%ld. train; focus <mana>.\n\r",
             s->rank,parent == GEN_PARENT_MOOGLE ? "pom energy" : "soul energy",s->energy,CRAFTED_ENERGY_CAP);
         stc(buf,ch);
+        stc("Power                 Rank    Mana  Energy  Mastery\n\r"
+            "--------------------  ----  ------  ------  -------\n\r",ch);
         for (i=0;i<sizeof(crafted_powers)/sizeof(crafted_powers[0]);++i)
             if (crafted_powers[i].parent == parent) {
                 p=&crafted_powers[i];
-                snprintf(buf,sizeof(buf),"%-16s mastery %d; mana %ld; energy %ld\n\r",p->key,p->rank,p->mana,p->energy);
+                snprintf(buf,sizeof(buf),"%-20s  %4d  %6ld  %6ld  %s\n\r",
+                    p->key,p->rank,p->mana,p->energy,s->rank>=p->rank ? "Known" : "Locked");
                 stc(buf,ch);
             }
-        stc("Original Genesis reconstruction; not a recovered ADG kit. Hybrids/ascension remain disabled.\n\r",ch);
+        stc("Known = mastery met; resources, targets and cooldowns still apply.\n\r"
+            "Genesis reconstruction, not recovered ADG code. Hybrids remain disabled.\n\r",ch);
         return;
     }
     if (!strcmp(cmd,"train")) {

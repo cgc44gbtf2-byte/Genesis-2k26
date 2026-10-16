@@ -16,6 +16,14 @@ Standalone Cyborg is playable. Hybrid conversion remains disabled.
 Use `autoclass cyborg`, then `cyborg status`.
 All commands below use the `cyborg` prefix.
 
+The default menu is now a compact resource/training overview. Browse
+`cyborg implants` for a 24-row component table, `cyborg powers` for
+component/system powers and passives, or `cyborg all` for the full display.
+`cyborg systems` and `cyborg sys_status` retain overview access.
+Tables show rank thresholds, costs and component eligibility. Known/Eligible
+does not bypass target, cooldown, body-state, staff-rank or resource rules.
+`help cyborg` and `help classmenus` explain the sections and status columns.
+
 - `install <component>` installs an implant/replacement; `implant` and `replace`
   are aliases. `uninstall <component>` refuses removals with installed
   dependents, restores humanity once and never refunds primal.
@@ -33,6 +41,9 @@ All commands below use the `cyborg` prefix.
 
 Modifications/training require peace, standing, sufficient resources and a
 living usable body. Dependency, currency and humanity failures are atomic.
+Builder/admin-ranked characters cannot modify or train class systems; a
+mortal test character is required. This restriction now reports a message
+instead of silently returning.
 The ordinary humanity budget is 100: all components are available, but they
 are not intended to be installed simultaneously within that budget.
 

@@ -240,8 +240,17 @@ void do_phoenix(CHAR_DATA *ch, char *argument)
     if (arg[0] == '\0') {
         sprintf(buf, "Phoenix mastery: %li/8. Use phoenix train to advance.\n\r", rank);
         stc(buf, ch);
-        stc("1 ember [enemy]  2 ward  3 wings  4 ashwalk\n\r", ch);
-        stc("5 tears [group ally]  6 flare [enemy]  7 renew  8 ascend\n\r", ch);
+        stc("Command                Rank  Target / effect\n\r"
+            "---------------------  ----  -------------------------------\n\r"
+            "ember [enemy]             1  Fire attack\n\r"
+            "ward                      2  Defensive ward\n\r"
+            "wings                     3  Flight\n\r"
+            "ashwalk                   4  Bounded travel home\n\r"
+            "tears [group ally]        5  Healing\n\r"
+            "flare [enemy]             6  Solar attack\n\r"
+            "renew                     7  Self restoration\n\r"
+            "ascend                    8  Phoenix aspect (not ascension)\n\r"
+            "Prefix every command with phoenix. HELP PHOENIX.\n\r", ch);
         return;
     }
     if (strcmp(arg, "ember") && strcmp(arg, "tears") && strcmp(arg, "flare")

@@ -1,15 +1,34 @@
 #HELPS
 
 0 CLASSES KITS CLASSKITS~
-Genesis has 19 standalone classes:
-Vampire, Werewolf, Sorcerer, Drow, Highlander, Mage, Dragon, Ninja, Monk,
-Elemental, Angel, Cyborg, Demon, Phoenix, Gargoyle, Kuei-jin, Deathknight,
-Moogle and Wraith.
+GENESIS: 2k26 | CLASS GUIDE
+
+Class         Progression / identity                  Help topic
+------------  --------------------------------------  ------------
+Angel         Angel mastery and support               ANGEL
+Cyborg        Components, systems and nanites          CYBORG
+Deathknight   Deathbound mastery and soul energy      DEATHKNIGHT
+Demon         Unified mastery, souls and pacts         DEMON
+Dragon        Dragon skills and transformation        DRAGON
+Drow          Prayer, disciplines and favor           DROW
+Elemental     Independent elemental tracks            ELEMENTAL
+Gargoyle      Visceratika and stone energy            GARGOYLE
+Highlander    Blademastery and weapon progression     HIGHLANDER
+Kuei-jin      Chi, Dharma and discipline tracks       KUEIJIN
+Mage          Arete, spheres and quintessence          MAGE
+Monk          Martial and spiritual training          MONK
+Moogle        Pom mastery and supportive magic        MOOGLE
+Ninja         Principles, michi and Ki                NINJA
+Phoenix       Phoenix mastery                         PHOENIX
+Sorcerer      Written spells and book colors          BOOKMAGIC
+Vampire       Generation, blood and disciplines       VAMPIRE
+Werewolf      Breed, auspice and tribe gifts          WEREWOLF
+Wraith        Arcanoi and pathos                      WRAITH
 
 Use AUTOCLASS to inspect entry requirements and AUTOCLASS <class> to join.
 Sorcerer is the book mage; Mage is the separate sphere/Arete class.
 Chaos Book Mage is a Sorcerer playstyle, not a twentieth hybrid parent.
-Use HELP <class>, HELP BOOKMAGIC, HELP CYBORG or HELP KITSTATUS.
+Use HELP <topic> for details. HELP CLASSMENUS explains the table displays.
 Hybrid conversion, ascension and respec are not currently enabled.
 ~
 
@@ -155,27 +174,41 @@ Use the live menu for rank/cost requirements. Hybrids remain disabled.
 ~
 
 0 CYBORG CYBORGS CYBORGKIT~
-Cyborg's complete Genesis kit has 60 inventory entries, including components,
-training and management systems; that is not 60 different attacks.
-Use CYBORG STATUS. Every command below uses the CYBORG prefix.
-  install/uninstall <component>   implant/replace <component>
-  train                         convert <mana amount>
-  factory on/off                repair
-  taser/snipe <target>           cloak
-  radio <message>               bionics <XP amount>
-  face_implants improve/show    limb_implants improve/show
-  body_implants improve/show    demolitions improve/show
-  make_bomb                     arm / arm off
-  detonate <target>             mine
-  launch <target>               stuntubes/oilspit <target>
-  cubeform/terminator           mechsight
-  scry <target>                 read_aura <NPC>
-  lloth                        darkness
-  web <target>                  transmit <grouped player>
-  shadowwalk/upload             cyborgeq <piece>
+CYBORG | MENU AND COMMAND GUIDE
+
+Display command   Contents
+----------------  -----------------------------------------------------
+cyborg            Compact resources, training ranks/costs and navigation
+cyborg status     Same overview; sys_status and systems are aliases
+cyborg implants   All 24 components, costs and installation eligibility
+cyborg powers     Component powers, system powers and passive thresholds
+cyborg all        All sections together
+
+Every command below requires the CYBORG prefix.
+
+Category      Command / syntax
+------------  ---------------------------------------------------------
+Installation  install/uninstall <component>; implant/replace <component>
+Training      train; bionics <XP>; face_implants improve/show
+Training      limb_implants improve/show; body_implants improve/show
+Training      demolitions improve/show
+Nanites       convert <mana>; factory on/off; repair
+Weapons       taser <target>; snipe <target>; launch <target>
+Explosives    make_bomb; arm; arm off; detonate <target>; mine
+Control       stuntubes <target>; oilspit <target>; web <target>
+Forms        cubeform; terminator; cloak; shadowwalk; upload
+Senses        mechsight; scry <target>; read_aura <NPC>
+Utility       radio <message>; transmit <grouped player>; lloth; darkness
+Equipment     cyborgeq <piece>
+
+The kit has 60 inventory entries, NOT 60 different attacks.
 24 installed components have dependency, primal and humanity requirements.
-The normal 100-humanity budget requires a loadout, not simultaneous installation
-of every component. Safe uninstall refunds humanity once, never primal.
+Example first install: CYBORG INSTALL BATTERY (30 primal, 5 humanity).
+Installation and training require peace, standing and a mortal character.
+Staff characters are deliberately blocked; use a mortal test character.
+Eligible means component/resource checks pass; it does not bypass those rules.
+The normal 100-humanity budget requires a loadout, not installation of every
+component simultaneously. Safe uninstall refunds humanity once, never primal.
 Rifle and demolitions cap at 12; face/limbs/body at 5/5/6.
 Stored nanites cap at 10000, bombs at 20, bionics at 10000000.
 Mine is room-bound and defensive; missiles require both legs and targeting.
@@ -187,6 +220,33 @@ Cyborgeq pieces: whip/ring/collar/armor/helmet/leggings/boots/gloves/sleeves/
 cloak/belt/bracer/mask; each costs 100 primal and duplicate carried pieces
 are refused. Systems persist across save/relogin; deployed mines do not.
 The class is a standalone and planned hybrid parent. Conversion remains off.
+~
+
+0 CLASSMENUS CLASSMENU POWERMENU~
+CLASS MENUS | READING THE TABLES
+
+Column        Meaning
+------------  ---------------------------------------------------------
+Rank          Required mastery or named track rank
+Mana/Energy   Listed resource cost; other action prerequisites still apply
+Known         Rank requirement met, not a guarantee the action can run now
+Locked        Rank requirement not met
+Passive       Automatic system threshold, not a separate attack to cast
+Installed     Component already present
+Eligible      Component permissions, dependencies and resources met
+Needs parts   Install prerequisite components first
+No primal     More primal is required
+No humanity   Free humanity is insufficient for this installation
+
+Angel, Demon, Cyborg, Phoenix, Gargoyle, Kuei-jin, Deathknight, Moogle
+and Wraith have structured native kit tables. Other legacy classes retain
+their existing progression commands; HELP CLASSES points to each guide.
+Cyborg is split into overview, implants and powers to avoid one long dump.
+
+Menus are read-only. Looking at a table never trains, spends resources,
+installs equipment, changes class or enables a hybrid.
+Aliases and existing HELP topics are preserved. HELP KITSTATUS describes
+the verification limits; documentation is not full gameplay certification.
 ~
 
 0 DEMON DEMONS DEMONKIT~

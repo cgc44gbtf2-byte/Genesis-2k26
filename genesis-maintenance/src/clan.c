@@ -5230,12 +5230,18 @@ void do_autoclass( CHAR_DATA *ch, char *argument )
     if (arg1[0] == '\0')
     {
 	stc("Syntax: autoclass <class> <clan(if applicable)> \n\r", ch);
-stc("Classes (Angel, Cyborg and Demon currently have initial kits):\n\r", ch);
-stc("Angel, Cyborg, Demon\n\r", ch);
-stc("Deathknight, Moogle (original Genesis reconstructions)\n\r", ch);
-stc("Gargoyle, Kuei-jin, Wraith (Genesis reference conversions)\n\r", ch);
-	stc("Dragon, #PDrow#n, #cElementalist#n, #CHighlander#n, #pMage#n, #7Monk#n, #0Ninja#n, #RPhoenix#n, #LSorcerer#n, #rVampire#n, #oWerewolf#n.\n\r", ch);
-stc("Book Mage options: autoclass sorcerer, or autoclass sorcerer chaos (chaosmage).\n\r",ch);
+stc("CLASS ENROLLMENT | 19 standalone parents\n\r"
+    "Class         Class          Class\n\r"
+    "------------  -------------  ------------\n\r"
+    "Angel         Cyborg         Deathknight\n\r"
+    "Demon         Dragon         Drow\n\r"
+    "Elemental     Gargoyle       Highlander\n\r"
+    "Kuei-jin      Mage           Monk\n\r"
+    "Moogle        Ninja          Phoenix\n\r"
+    "Sorcerer      Vampire        Werewolf\n\r"
+    "Wraith\n\r"
+    "HELP CLASSES lists each kit; HELP KITSTATUS explains verification limits.\n\r"
+    "Book Mage: autoclass sorcerer | autoclass sorcerer chaos (chaosmage).\n\r",ch);
 stc("Clans:\n\r", ch);
 	stc("Dragon:  #oBronze#n, #RRed#n, #LBlue#n, #7Silver#n, #yGold#n, #0Black#n.\n\r", ch);
 	stc("#rVampire#n:\n\r", ch);
@@ -5584,7 +5590,7 @@ stc("Clans:\n\r", ch);
         if (IS_CYBORG(ch))
             cyborg_core_init(&ch->pcdata->cyborg, CY_COMPONENT_MASK, 100);
         stc("Your new class is active. Use its name for powers and training.\n\r"
-            "This initial kit does not yet include every reference ability.\n\r", ch);
+            "Use HELP KITSTATUS for the defined kit and verification limits.\n\r", ch);
     }
     else if (!str_cmp(arg1, "phoenix"))
     {

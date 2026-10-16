@@ -203,17 +203,24 @@ static void lineage_menu(CHAR_DATA *ch)
     int i,group=lineage_group(s->parent),n=lineage_track_count(s->parent);
     snprintf(buf,sizeof(buf),"Class energy %ld/%ld; Dharma %ld/5. train <track>; focus <mana>.\n\r",
         s->energy,LINEAGE_ENERGY_CAP,s->dharma); stc(buf,ch);
+    stc("\n\rTraining track    Rank / Cap   Next XP\n\r"
+        "----------------  ----------  --------\n\r",ch);
     for(i=0;i<n;++i) {
-        snprintf(buf,sizeof(buf),"%-16s %ld/5  next XP %ld\n\r",lineage_tracks[group][i],s->tracks[i],
+        snprintf(buf,sizeof(buf),"%-16s  %4ld / 5    %8ld\n\r",lineage_tracks[group][i],s->tracks[i],
             s->tracks[i]<5 ? 25000*(s->tracks[i]+1)*(s->tracks[i]+1) : 0); stc(buf,ch);
     }
+    stc("\n\rPower                 Track          Rank   Mana Energy  Mastery\n\r"
+        "--------------------  -------------  ----  ----- ------  -------\n\r",ch);
     for(i=0;i<(int)(sizeof(lineage_powers)/sizeof(lineage_powers[0]));++i) {
         p=&lineage_powers[i]; if(p->parent!=s->parent) continue;
-        snprintf(buf,sizeof(buf),"%-17s %s %d; mana %ld; energy %ld%s\n\r",p->key,
+        snprintf(buf,sizeof(buf),"%-20s  %-13s  %4d  %5ld %6ld  %s\n\r",p->key,
             lineage_tracks[group][p->track],p->level,p->mana,p->energy,
-            !strcmp(p->source,"G") ? " [Genesis design]" : " [converted]"); stc(buf,ch);
+            s->tracks[p->track]>=p->level ? "Known" : "Locked"); stc(buf,ch);
     }
-    stc("Aspects use exclusive slots; most self-effects end on logout. Hybrids/ascension remain disabled.\n\r",ch);
+    stc("Known = track rank met; Dharma, resources, targets and state still apply.\n\r"
+        "Genesis adaptations/designs; see HELP KITSTATUS for scope and credits.\n\r"
+        "Aspects use exclusive slots; most self-effects end on logout.\n\r"
+        "Hybrids/ascension remain disabled.\n\r",ch);
 }
 static void lineage_craft(CHAR_DATA *ch,const LINEAGE_POWER *p,char *arg)
 {
