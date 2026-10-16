@@ -102,9 +102,7 @@ void do_wwpowers( CHAR_DATA *ch, char *argument )
     for (sn = 0; sn <= TRIBE_MAX; sn++)
 	if (get_tribe(ch, sn) > 0) any_powers = TRUE;
 
-    stc("--------------------------------------------------------------------------------\n\r", ch);
-    stc("                               -= Gift Commands =-\n\r", ch);
-    stc("--------------------------------------------------------------------------------\n\r", ch);
+    class_menu_header(ch,"WEREWOLF POWERS","Gift track","Known commands");
     if (get_breed(ch, BREED_HOMID) >= 1)
     {
 	strcpy(buf, "Homid: Persuasion");
@@ -113,7 +111,7 @@ void do_wwpowers( CHAR_DATA *ch, char *argument )
 if (get_breed(ch, BREED_HOMID) >= 4) strcat(buf, " Disquiet");
 	if (get_breed(ch, BREED_HOMID) >= 5) strcat(buf, " Ward");
 	strcat(buf, ".\n\r");
-	stc(buf, ch);
+class_menu_commands(ch,buf);
     }
     if (get_breed(ch, BREED_METIS) >= 1)
     {
@@ -123,7 +121,7 @@ if (get_breed(ch, BREED_HOMID) >= 4) strcat(buf, " Disquiet");
 	if (get_breed(ch, BREED_METIS) >= 4) strcat(buf, " Porcupine");
 if (get_breed(ch, BREED_METIS) >= 5) strcat(buf, " Totemgift");
 	strcat(buf, ".\n\r");
-	stc(buf, ch);
+class_menu_commands(ch,buf);
     }
     if (get_breed(ch, BREED_LUPUS) >= 1)
     {
@@ -132,7 +130,7 @@ if (get_breed(ch, BREED_METIS) >= 5) strcat(buf, " Totemgift");
 	if (get_breed(ch, BREED_LUPUS) >= 4) strcat(buf, " Beastlife");
 	if (get_breed(ch, BREED_LUPUS) >= 5) strcat(buf, " Elemental");
 	strcat(buf, ".\n\r");
-	stc(buf, ch);
+class_menu_commands(ch,buf);
     }
     if (get_auspice(ch, AUSPICE_RAGABASH) >= 1)
     {
@@ -140,7 +138,7 @@ if (get_breed(ch, BREED_METIS) >= 5) strcat(buf, " Totemgift");
 	if (get_auspice(ch, AUSPICE_RAGABASH) >= 2) strcat(buf, " Blissful");
 	if (get_auspice(ch, AUSPICE_RAGABASH) >= 4) strcat(buf, " Whelp");
 	strcat(buf, ".\n\r");
-	stc(buf, ch);
+class_menu_commands(ch,buf);
     }
     if (get_auspice(ch, AUSPICE_THEURGE) >= 1)
     {
@@ -149,7 +147,7 @@ if (get_breed(ch, BREED_METIS) >= 5) strcat(buf, " Totemgift");
 	if (get_auspice(ch, AUSPICE_THEURGE) >= 4) strcat(buf, " Grasp");
 	if (get_auspice(ch, AUSPICE_THEURGE) >= 5) strcat(buf, " Lobotomy");
 	strcat(buf, ".\n\r");
-	stc(buf, ch);
+class_menu_commands(ch,buf);
     }
     if (get_auspice(ch, AUSPICE_PHILODOX) >= 1)
     {
@@ -158,7 +156,7 @@ if (get_auspice(ch, AUSPICE_PHILODOX) >= 2) strcat(buf, " Strengthofpurpose[pass
 	if (get_auspice(ch, AUSPICE_PHILODOX) >= 4) strcat(buf, " Wallgranite");
 	if (get_auspice(ch, AUSPICE_PHILODOX) >= 5) strcat(buf, " Geas");
 	strcat(buf, ".\n\r");
-	stc(buf, ch);
+class_menu_commands(ch,buf);
     }
     if (get_auspice(ch, AUSPICE_GALLIARD) >= 1)
     {
@@ -167,14 +165,14 @@ if (get_auspice(ch, AUSPICE_PHILODOX) >= 2) strcat(buf, " Strengthofpurpose[pass
 	if (get_auspice(ch, AUSPICE_GALLIARD) >= 4) strcat(buf, " Songofrage");
 	if (get_auspice(ch, AUSPICE_GALLIARD) >= 5) strcat(buf, " Bridgewalk");
 	strcat(buf, ".\n\r");
-	stc(buf, ch);
+class_menu_commands(ch,buf);
     }
     if (get_auspice(ch, AUSPICE_AHROUN) >= 1)
     {
 	strcpy(buf, "Ahroun:");
 	if (get_auspice(ch, AUSPICE_AHROUN) >= 5) strcat(buf, " Helios");
 	strcat(buf, ".\n\r");
-	stc(buf, ch);
+class_menu_commands(ch,buf);
     }
     if (get_tribe(ch, TRIBE_BLACK_FURIES) >= 1)
     {
@@ -182,7 +180,7 @@ if (get_auspice(ch, AUSPICE_PHILODOX) >= 2) strcat(buf, " Strengthofpurpose[pass
 if (get_tribe(ch, TRIBE_BLACK_FURIES) >= 2) strcat(buf, " Aeolus");
 if (get_tribe(ch, TRIBE_BLACK_FURIES) >= 5) strcat(buf, " Bodywrack");
 	strcat(buf, ".\n\r");
-	stc(buf, ch);
+class_menu_commands(ch,buf);
     }
     if (get_tribe(ch, TRIBE_BONE_GNAWERS) >= 1)
     {
@@ -190,7 +188,7 @@ if (get_tribe(ch, TRIBE_BLACK_FURIES) >= 5) strcat(buf, " Bodywrack");
 if (get_tribe(ch, TRIBE_BONE_GNAWERS) >= 3) strcat(buf, " Friend");
 if (get_tribe(ch, TRIBE_BONE_GNAWERS) >= 4) strcat(buf, " Infest");
 	strcat(buf, ".\n\r");
-	stc(buf, ch);
+class_menu_commands(ch,buf);
     }
     if (get_tribe(ch, TRIBE_CHILDREN_OF_GAIA) >= 1)
     {
@@ -199,7 +197,7 @@ if (get_tribe(ch, TRIBE_BONE_GNAWERS) >= 4) strcat(buf, " Infest");
 	if (get_tribe(ch, TRIBE_CHILDREN_OF_GAIA) >= 4) strcat(buf, " Spiritfriend");
 	if (get_tribe(ch, TRIBE_CHILDREN_OF_GAIA) >= 5) strcat(buf, " Halo");
 	strcat(buf, ".\n\r");
-	stc(buf, ch);
+class_menu_commands(ch,buf);
     }
     if (get_tribe(ch, TRIBE_FIANNA) >= 1)
     {
@@ -209,14 +207,14 @@ if (get_tribe(ch, TRIBE_BONE_GNAWERS) >= 4) strcat(buf, " Infest");
 	if (get_tribe(ch, TRIBE_FIANNA) >= 4) strcat(buf, " Cloneobject");
 	if (get_tribe(ch, TRIBE_FIANNA) >= 5) strcat(buf, " Balorsgaze");
 	strcat(buf, ".\n\r");
-	stc(buf, ch);
+class_menu_commands(ch,buf);
     }
     if (get_tribe(ch, TRIBE_GET_OF_FENRIS) >= 1)
     {
 	strcpy(buf, "Get of Fenris:");
 if (get_tribe(ch, TRIBE_GET_OF_FENRIS) >= 4) strcat(buf, " Scream");
 	strcat(buf, ".\n\r");
-	stc(buf, ch);
+class_menu_commands(ch,buf);
     }
     if (get_tribe(ch, TRIBE_GLASS_WALKERS) >= 1)
     {
@@ -226,7 +224,7 @@ if (get_tribe(ch, TRIBE_GET_OF_FENRIS) >= 4) strcat(buf, " Scream");
 	if (get_tribe(ch, TRIBE_GLASS_WALKERS) >= 4) strcat(buf, " Doppleganger");
 	if (get_tribe(ch, TRIBE_GLASS_WALKERS) >= 5) strcat(buf, " Summonnetspider");
 	strcat(buf, ".\n\r");
-	stc(buf, ch);
+class_menu_commands(ch,buf);
     }
     if (get_tribe(ch, TRIBE_RED_TALONS) >= 1)
     {
@@ -234,7 +232,7 @@ if (get_tribe(ch, TRIBE_GET_OF_FENRIS) >= 4) strcat(buf, " Scream");
 if (get_tribe(ch, TRIBE_RED_TALONS) >= 4) strcat(buf, " Quicksand");
 if (get_tribe(ch, TRIBE_RED_TALONS) >= 5) strcat(buf, " Lycaon");
 	strcat(buf, ".\n\r");
-	stc(buf, ch);
+class_menu_commands(ch,buf);
     }
     if (get_tribe(ch, TRIBE_SHADOW_LORDS) >= 1)
     {
@@ -244,14 +242,14 @@ if (get_tribe(ch, TRIBE_RED_TALONS) >= 5) strcat(buf, " Lycaon");
 	if (get_tribe(ch, TRIBE_SHADOW_LORDS) >= 4) strcat(buf, " Dominator");
 	if (get_tribe(ch, TRIBE_SHADOW_LORDS) >= 5) strcat(buf, " Obedience");
 	strcat(buf, ".\n\r");
-	stc(buf, ch);
+class_menu_commands(ch,buf);
     }
     if (get_tribe(ch, TRIBE_SILENT_STRIDERS) >= 1)
     {
 	strcpy(buf, "Silent Striders:");
 	if (get_tribe(ch, TRIBE_SILENT_STRIDERS) >= 5) strcat(buf, " Reach");
 	strcat(buf, ".\n\r");
-	stc(buf, ch);
+class_menu_commands(ch,buf);
     }
     if (get_tribe(ch, TRIBE_SILVER_FANGS) >= 1)
     {
@@ -260,13 +258,13 @@ if (get_tribe(ch, TRIBE_RED_TALONS) >= 5) strcat(buf, " Lycaon");
 	if (get_tribe(ch, TRIBE_SILVER_FANGS) >= 4) strcat(buf, " Shield");
 	if (get_tribe(ch, TRIBE_SILVER_FANGS) >= 5) strcat(buf, " Mastery");
 	strcat(buf, ".\n\r");
-	stc(buf, ch);
+class_menu_commands(ch,buf);
     }
     if (get_tribe(ch, TRIBE_STARGAZERS) >= 1)
     {
 	strcpy(buf, "Stargazers: Falling");
 	strcat(buf, ".\n\r");
-	stc(buf, ch);
+class_menu_commands(ch,buf);
     }
     if (get_tribe(ch, TRIBE_UKTENA) >= 1)
     {
@@ -274,7 +272,7 @@ if (get_tribe(ch, TRIBE_RED_TALONS) >= 5) strcat(buf, " Lycaon");
 	if (get_tribe(ch, TRIBE_UKTENA) >= 4) strcat(buf, " Invisibility");
 	if (get_tribe(ch, TRIBE_UKTENA) >= 5) strcat(buf, " Fetishdoll");
 	strcat(buf, ".\n\r");
-	stc(buf, ch);
+class_menu_commands(ch,buf);
     }
     if (get_tribe(ch, TRIBE_WENDIGOS) >= 1)
     {
@@ -283,11 +281,21 @@ if (get_tribe(ch, TRIBE_RED_TALONS) >= 5) strcat(buf, " Lycaon");
 	if (get_tribe(ch, TRIBE_WENDIGOS) >= 3) strcat(buf, " Bloodyfeast");
 	if (get_tribe(ch, TRIBE_WENDIGOS) >= 5) strcat(buf, " Invoke");
 	strcat(buf, ".\n\r");
-	stc(buf, ch);
+class_menu_commands(ch,buf);
     }
     if (!any_powers) stc("You have no gifts.\n\r", ch);
-    stc("--------------------------------------------------------------------------------\n\r", ch);
+    stc("Commands shown are rank-unlocked; other casting conditions still apply.\n\r",ch);
     return;
+}
+
+static void werewolf_training_row(CHAR_DATA *ch, const char *name, int type, int id)
+{
+    long rank=type==0 ? ch->pcdata->breed[id]
+        : type==1 ? ch->pcdata->auspice[id] : ch->pcdata->tribes[id];
+    long cap=ch->pcdata->tgift[type]==id ? 5 : 4;
+    long unit=ch->pcdata->tgift[type]==id ? 10 : 15;
+    class_training_row(ch,name,rank,cap,class_training_cost(rank,cap,unit,FALSE),
+        "primal",ch->primal,NULL);
 }
 
 void do_gifts( CHAR_DATA *ch, char *argument )
@@ -295,7 +303,7 @@ void do_gifts( CHAR_DATA *ch, char *argument )
     char arg[MIL];
     char buf[MIL];
     char disc[25];
-    int improve, imp_cost, sn, col, gt, gift, ww_max;
+    int improve, imp_cost, sn, gt, gift, ww_max;
 
     one_argument(argument, arg);
 
@@ -307,10 +315,7 @@ void do_gifts( CHAR_DATA *ch, char *argument )
 
     if (arg[0] == '\0')
     {
-	stc("--------------------------------------------------------------------------------\n\r", ch);
-	stc("                                  -= Gifts =-\n\r", ch);
-	stc("--------------------------------------------------------------------------------\n\r", ch);
-	col = 0;
+class_training_header(ch,"WEREWOLF GIFTS");
 	for (sn = BREED_HOMID; sn <= BREED_METIS; sn++)
 	{
 	    switch (sn)
@@ -322,9 +327,7 @@ void do_gifts( CHAR_DATA *ch, char *argument )
 	    }
 	    if (ch->pcdata->tgift[0] == sn) strcpy(disc, upper_cap(disc));
 
-	    sprintf(buf, "%-16s: %-2li      ", disc, get_breed(ch, sn));
-	    stc(buf, ch);
-	    if (++col % 3 == 0) stc("\n\r", ch);
+    werewolf_training_row(ch,disc,0,sn);
 	}
 
 	for (sn = AUSPICE_RAGABASH; sn <= AUSPICE_AHROUN; sn++)
@@ -340,9 +343,7 @@ void do_gifts( CHAR_DATA *ch, char *argument )
 	    }
 	    if (ch->pcdata->tgift[1] == sn) strcpy(disc, upper_cap(disc));
 
-	    sprintf(buf, "%-16s: %-2li      ", disc, get_auspice(ch, sn));
-	    stc(buf, ch);
-	    if (++col % 3 == 0) stc("\n\r", ch);
+    werewolf_training_row(ch,disc,1,sn);
 	}
 
 	for (sn = TRIBE_BLACK_FURIES; sn <= TRIBE_WENDIGOS; sn++)
@@ -366,15 +367,10 @@ void do_gifts( CHAR_DATA *ch, char *argument )
 	    }
 	    if (ch->pcdata->tgift[2] == sn) strcpy(disc, upper_cap(disc));
 
-	    sprintf(buf, "%-16s: %-2li      ", disc, get_tribe(ch, sn));
-	    stc(buf, ch);
-	    if (++col % 3 == 0) stc("\n\r", ch);
+    werewolf_training_row(ch,disc,2,sn);
 	}
 
-	if (col % 3 != 0) stc("\n\r", ch);
-	stc("--------------------------------------------------------------------------------\n\r", ch);
 	stc("To improve a gift rating, type: gifts <name>\n\r", ch);
-	stc("--------------------------------------------------------------------------------\n\r", ch);
 	return;
     }
 
@@ -449,8 +445,7 @@ void do_gifts( CHAR_DATA *ch, char *argument )
 void do_tribegifts( CHAR_DATA *ch, char *argument )
 {
     char arg[MIL];
-    char buf[MIL];
-    int improve, sn, col, gtype;
+    int improve, sn, gtype;
 
     strcpy(arg, argument);
 
@@ -462,59 +457,35 @@ void do_tribegifts( CHAR_DATA *ch, char *argument )
 
     if (arg[0] == '\0')
     {
-	stc("--------------------------------------------------------------------------------\n\r", ch);
-	stc("                                  -= Gifts =-\n\r", ch);
-	stc("--------------------------------------------------------------------------------\n\r", ch);
-	sprintf(buf, "Breed Gift: %s.\n\r", gift_breed_name(ch->pcdata->tgift[0]));
-	stc(buf, ch);
-	sprintf(buf, "Auspice Gift: %s.\n\r", gift_auspice_name(ch->pcdata->tgift[1]));
-	stc(buf, ch);
-	sprintf(buf, "Tribe Gift: %s.\n\r", gift_tribe_name(ch->pcdata->tgift[2]));
-	stc(buf, ch);
-
-	stc("--------------------------------------------------------------------------------\n\r", ch);
+	class_menu_header(ch,"WEREWOLF GIFT SELECTION","Category","Selected gift");
+	class_menu_row(ch,"Breed Gift",gift_breed_name(ch->pcdata->tgift[0]));
+	class_menu_row(ch,"Auspice Gift",gift_auspice_name(ch->pcdata->tgift[1]));
+	class_menu_row(ch,"Tribe Gift",gift_tribe_name(ch->pcdata->tgift[2]));
+	stc("Initial selection is free and permanent. Use gifts for training costs.\n\r",ch);
 
 	if (ch->pcdata->tgift[0] == -1)
 	{
 	    stc("Please select a breed gift from the list below.\n\r", ch);
-	    stc("--------------------------------------------------------------------------------\n\r", ch);
-	    col = 0;
 	    for (sn = 0; sn <= BREED_MAX; sn++)
 	    {
-		sprintf(buf, "%-15s           ", gift_breed_name(sn));
-		stc(buf, ch);
-		if (++col % 3 == 0) stc("\n\r", ch);
+		class_menu_row(ch,"Available breed",gift_breed_name(sn));
 	    }
-	    if (col % 3 != 0) stc("\n\r", ch);
-	    stc("--------------------------------------------------------------------------------\n\r", ch);
 	}
 	else if (ch->pcdata->tgift[1] == -1)
 	{
 	    stc("Please select an auspice gift from the list below.\n\r",ch);
-	    stc("--------------------------------------------------------------------------------\n\r", ch);
-	    col = 0;
 	    for ( sn = 0; sn <= AUSPICE_MAX; sn++ )
 	    {
-		sprintf(buf, "%-15s           ", gift_auspice_name(sn));
-		stc(buf, ch);
-		if (++col % 3 == 0) stc("\n\r", ch);
+		class_menu_row(ch,"Available auspice",gift_auspice_name(sn));
 	    }
-	    if (col % 3 != 0) stc("\n\r", ch);
-	    stc("--------------------------------------------------------------------------------\n\r", ch);
 	}
 	else if (ch->pcdata->tgift[2] == -1)
 	{
 	    stc("Please select a tribe gift from the list below.\n\r", ch);
-	    stc("--------------------------------------------------------------------------------\n\r", ch);
-	    col = 0;
 	    for (sn = 0; sn <= TRIBE_MAX; sn++)
 	    {
-		sprintf(buf, "%-15s           ", gift_tribe_name(sn));
-		stc(buf, ch);
-		if (++col % 3 == 0) stc("\n\r", ch);
+		class_menu_row(ch,"Available tribe",gift_tribe_name(sn));
 	    }
-	    if (col % 3 != 0) stc("\n\r", ch);
-	    stc("--------------------------------------------------------------------------------\n\r", ch);
 	}
 	return;
     }

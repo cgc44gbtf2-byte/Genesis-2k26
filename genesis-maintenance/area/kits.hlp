@@ -231,6 +231,15 @@ Rank          Required mastery or named track rank
 Mana/Energy   Listed resource cost; other action prerequisites still apply
 Known         Rank requirement met, not a guarantee the action can run now
 Locked        Rank requirement not met
+Next cost     Exact price of one next training step, not all remaining ranks
+Currency      XP, primal or bionics; Dragon DP/QP and Drow favor are separate
+Affordable    Currency check passes; action/state prerequisites still apply
+Needs funds   Current balance is below the displayed training price
+MAXED         At training cap; -- is not a free upgrade
+Need Dharma   Raise Dharma before buying this Kuei-jin track rank
+Need body 4   Face level five requires body level four
+Need limbs 1  Body training requires at least one limb level
+Focus active  Elemental focus prevents further basic training
 Passive       Automatic system threshold, not a separate attack to cast
 Installed     Component already present
 Eligible      Component permissions, dependencies and resources met
@@ -238,10 +247,31 @@ Needs parts   Install prerequisite components first
 No primal     More primal is required
 No humanity   Free humanity is insufficient for this installation
 
-Angel, Demon, Cyborg, Phoenix, Gargoyle, Kuei-jin, Deathknight, Moogle
-and Wraith have structured native kit tables. Other legacy classes retain
-their existing progression commands; HELP CLASSES points to each guide.
-Cyborg is split into overview, implants and powers to avoid one long dump.
+All 19 parent classes have organized tables. Older class commands:
+Class         View training          View powers
+------------  ---------------------  -------------------------
+Vampire       discipline             powers
+Werewolf      gifts / tribegifts     powers
+Mage          sphere                 magepowers
+Dragon        dragonskill            dragonskill
+Drow          prayer                 drowupkeep
+Elemental     elemskill              elemskill <element>
+Highlander    increase               increase
+Monk          monklearn              monklearn <track>
+Ninja         principle              principle <name>
+Sorcerer      colors                 help bookmagic
+
+Newer classes use their class-name command. Cyborg is split into overview,
+implants and powers to avoid one long dump. Add improve after a Cyborg system
+name to train it; cyborg train improves rifle mastery.
+
+Vampire clan/Caitiff discounts, Werewolf selected-gift discounts and Mage
+favored sphere caps are included in the quotes. DP means Dragon class points;
+QP means quest points. Dragon age training may require both at once.
+Drow favor is the Drow class-point balance, not primal.
+Demon gifts quote primal; warps quote soul power, converted from XP 1:1.
+SPHERE shows Arete's next XP price safely; ARETE purchases that upgrade.
+Gift selection is free and permanent; later gift ranks still cost primal.
 
 Menus are read-only. Looking at a table never trains, spends resources,
 installs equipment, changes class or enables a hybrid.

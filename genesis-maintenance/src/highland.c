@@ -14,6 +14,9 @@ void do_increase( CHAR_DATA *ch, char *argument )
     char arg[MIL];
     char buf[MIL];
     long cost, power;
+    int menu_track;
+    static const char *names[]={"Attack","Defense","Weaponry","Powers"};
+    static const int tracks[]={HIGH_ATTACK,HIGH_DEFENSE,HIGH_WEAPON,HIGH_ABILITY};
 
     argument = one_argument(argument, arg);
 
@@ -25,10 +28,12 @@ void do_increase( CHAR_DATA *ch, char *argument )
 
     if (arg[0] == '\0')
     {
-	sprintf(buf, "Increases: Attack (%li), Defense (%li), Weaponry (%li), Powers (%li).\n\r",
-	 get_highland(ch, HIGH_ATTACK), get_highland(ch, HIGH_DEFENSE), get_highland(ch, HIGH_WEAPON), get_highland(ch, HIGH_ABILITY));
-	stc(buf, ch);
-	stc("Syntax: increase <attack/defense/weaponry/powers>",ch);
+class_training_header(ch,"HIGHLANDER TRAINING");
+for(menu_track=0;menu_track<4;++menu_track)
+    class_training_row(ch,names[menu_track],get_highland(ch,tracks[menu_track]),6,
+        class_training_cost(get_highland(ch,tracks[menu_track]),6,15,FALSE),
+        "primal",ch->primal,NULL);
+stc("Syntax: increase <attack/defense/weaponry/powers>\n\r",ch);
 	return;
     }
 

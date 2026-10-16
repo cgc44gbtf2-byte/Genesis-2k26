@@ -240,6 +240,10 @@ void do_phoenix(CHAR_DATA *ch, char *argument)
     if (arg[0] == '\0') {
         sprintf(buf, "Phoenix mastery: %li/8. Use phoenix train to advance.\n\r", rank);
         stc(buf, ch);
+        class_training_header(ch,"PHOENIX TRAINING");
+        class_training_row(ch,"phoenix train",rank,8,
+            class_training_cost(rank,8,50000,TRUE),"XP",ch->exp,
+            ch->fighting || ch->fight_timer>0 ? "In combat" : NULL);
         stc("Command                Rank  Target / effect\n\r"
             "---------------------  ----  -------------------------------\n\r"
             "ember [enemy]             1  Fire attack\n\r"

@@ -37,6 +37,9 @@ void do_principles( CHAR_DATA *ch, char *argument )
     char arg1[MIL];
     char arg2[MIL];
     char buf[MSL];
+    int menu_track;
+    static const char *names[]={"Sora","Chikyu","Ningenno"};
+    static const int tracks[]={NINJA_SORA,NINJA_CHIKYU,NINJA_NINGENNO};
 
     argument = one_argument(argument, arg1);
     argument = one_argument(argument, arg2);
@@ -49,29 +52,33 @@ void do_principles( CHAR_DATA *ch, char *argument )
 
     if (arg1[0] == '\0')
     {
-	sprintf(buf, "Principles: Sora (%li), Chikyu (%li), Ningenno (%li).\n\r",
-	 get_ninja(ch, NINJA_SORA), get_ninja(ch, NINJA_CHIKYU), get_ninja(ch, NINJA_NINGENNO));
-	stc(buf, ch);
+class_training_header(ch,"NINJA PRINCIPLES");
+for(menu_track=0;menu_track<3;++menu_track)
+    class_training_row(ch,names[menu_track],get_ninja(ch,tracks[menu_track]),10,
+        class_training_cost(get_ninja(ch,tracks[menu_track]),10,10,FALSE),
+        "primal",ch->primal,NULL);
+stc("View: principle <name> | Train: principle <name> improve\n\r",ch);
 	return;
     }
 
     if (arg2[0] == '\0')
     {
+class_menu_header(ch,"NINJA ABILITIES","Rank / power","Effect / command");
 	if (!str_cmp(arg1, "sora"))
 	{
 	    stc("Sora - *Heaven*.  Each level adds 25 to max Michi.\n\r\n\r", ch);
 	    if (get_ninja(ch, NINJA_SORA) < 1) 
 		stc("You have none of the Sora principles.\n\r", ch);
 	    if (get_ninja(ch, NINJA_SORA) >= 1)
-		stc("1 : Michi       - Improves combat abilities. (michi) <100 ki>\n\r", ch);
+class_menu_skill_line(ch,"1 : Michi       - Improves combat abilities. (michi) <100 ki>\n\r");
 	    if (get_ninja(ch, NINJA_SORA) >= 4)
-                stc("4 : Kanzuite    - Raises your awareness. (heighten/readaura/scry)\n\r", ch);
+                class_menu_skill_line(ch,"4 : Kanzuite    - Raises your awareness. (heighten/readaura/scry)\n\r");
 	    if (get_ninja(ch, NINJA_SORA) >= 6)
-		stc("6 : Kakusu      - Cloaks you in shadow. (kakusu) <20 ki, movement drains>\n\r", ch);
+class_menu_skill_line(ch,"6 : Kakusu      - Cloaks you in shadow. (kakusu) <20 ki, movement drains>\n\r");
 	    if (get_ninja(ch, NINJA_SORA) >= 8)
-		stc("8 : Bomuzite    - Renders opponents unconcious. (bomuzite) <20 ki>\n\r", ch);
+class_menu_skill_line(ch,"8 : Bomuzite    - Renders opponents unconcious. (bomuzite) <20 ki>\n\r");
             if (get_ninja(ch, NINJA_SORA) >= 10)
-		stc("10: Mizotamouyo - Allows quick transportation to distant places. (mizotamouyo)\r\n", ch);
+class_menu_skill_line(ch,"10: Mizotamouyo - Allows quick transportation to distant places. (mizotamouyo)\r\n");
 	}
 	else if (!str_cmp(arg1, "chikyu"))
 	{
@@ -79,15 +86,15 @@ void do_principles( CHAR_DATA *ch, char *argument )
 	    if (get_ninja(ch, NINJA_CHIKYU) < 1) 
 		stc("You have none of the Chikyu principles.\n\r", ch);
 	    if (get_ninja(ch, NINJA_CHIKYU) >= 1) 
-		stc("1 : Mienaku     - \"Ninja VANISH!\" - TMNT. (mienaku) <20 ki>\n\r", ch);
+class_menu_skill_line(ch,"1 : Mienaku     - \"Ninja VANISH!\" - TMNT. (mienaku) <20 ki>\n\r");
 	    if (get_ninja(ch, NINJA_CHIKYU) >= 4)
-		stc("4 : Orimasu     - Increased focus improves healing rates. (orimasu) <50 ki>\n\r", ch);
+class_menu_skill_line(ch,"4 : Orimasu     - Increased focus improves healing rates. (orimasu) <50 ki>\n\r");
 	    if (get_ninja(ch, NINJA_CHIKYU) >= 8)
-		stc("8 : Gunaya      - Entangles foes in sticky strands of webbing. (web) <10 ki>\n\r", ch);
+class_menu_skill_line(ch,"8 : Gunaya      - Entangles foes in sticky strands of webbing. (web) <10 ki>\n\r");
             if (get_ninja(ch, NINJA_CHIKYU) >= 8)
-		stc("8 : Tsumazuku   - Leaves opponents unable to respond to your attack. (tsumazuku)\n\r", ch);
+class_menu_skill_line(ch,"8 : Tsumazuku   - Leaves opponents unable to respond to your attack. (tsumazuku)\n\r");
 	    if (get_ninja(ch, NINJA_CHIKYU) >= 10)
-		stc("10: HaraKiri    - Increases power through pain. (harakiri)\n\r", ch);
+class_menu_skill_line(ch,"10: HaraKiri    - Increases power through pain. (harakiri)\n\r");
 	}
 	else if (!str_cmp(arg1, "ningenno"))
 	{
@@ -95,15 +102,15 @@ void do_principles( CHAR_DATA *ch, char *argument )
 	    if (get_ninja(ch, NINJA_NINGENNO) < 1)
 		stc("You have none of the Ningenno principles.\n\r", ch);
 	    if (get_ninja(ch, NINJA_NINGENNO) >= 1)
-		stc("1 : Tsume       - Ninja claw. (tsume)\n\r", ch);
+class_menu_skill_line(ch,"1 : Tsume       - Ninja claw. (tsume)\n\r");
 	    if (get_ninja(ch, NINJA_NINGENNO) >= 4)
-		stc("4 : Shuurai     - Lightning quick piercing attacks. (shuurai)\n\r", ch);
+class_menu_skill_line(ch,"4 : Shuurai     - Lightning quick piercing attacks. (shuurai)\n\r");
 	    if (get_ninja(ch, NINJA_NINGENNO) >= 6)
-		stc("6 : Shuriken    - Throws small blades during combat. (automatic)\n\r", ch);
+class_menu_skill_line(ch,"6 : Shuriken    - Throws small blades during combat. (automatic)\n\r");
 	    if (get_ninja(ch, NINJA_NINGENNO) >= 8)
-		stc("8 : Tsuin Ittou - Allows the use of two weapons. (automatic)\n\r", ch);
+class_menu_skill_line(ch,"8 : Tsuin Ittou - Allows the use of two weapons. (automatic)\n\r");
 	    if (get_ninja(ch, NINJA_NINGENNO) >= 10)
-		stc("10: Hakunetsu   - Delivers a powerful piercing attack to an opponents vitals. (hakunetsu)\n\r", ch);
+class_menu_skill_line(ch,"10: Hakunetsu   - Delivers a powerful piercing attack to an opponents vitals. (hakunetsu)\n\r");
 	}
 	else do_principles(ch, "");
 	return;

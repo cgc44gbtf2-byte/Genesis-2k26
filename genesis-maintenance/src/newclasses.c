@@ -400,19 +400,23 @@ static void cyborg_menu(CHAR_DATA *ch, const char *section)
             s->bionic, s->bombs, s->armed ? "armed" : "safe"); stc(buf, ch);
         snprintf(buf, sizeof(buf), "Primal        %7ld             Factory       %s\n\r",
             ch->primal, r->factory ? "on" : "off"); stc(buf, ch);
-        stc("\n\rTraining command                 Rank / Cap   Next cost\n\r"
-            "-------------------------------  ----------   -----------------\n\r", ch);
-        snprintf(buf, sizeof(buf), "train                            %4ld / 12    %ld XP\n\r",
-            r->rifle, r->rifle < 12 ? 10000 * (r->rifle + 1) * (r->rifle + 1) : 0); stc(buf, ch);
-        snprintf(buf, sizeof(buf), "face_implants improve            %4ld / 5     %ld bionics\n\r",
-            s->face, s->face < 5 ? 12500L << s->face : 0); stc(buf, ch);
-        snprintf(buf, sizeof(buf), "limb_implants improve             %4ld / 5     %ld bionics\n\r",
-            s->limbs, s->limbs < 5 ? 12500L << s->limbs : 0); stc(buf, ch);
-        snprintf(buf, sizeof(buf), "body_implants improve             %4ld / 6     %ld bionics\n\r",
-            s->body, s->body < 6 ? 12500L << s->body : 0); stc(buf, ch);
-        snprintf(buf, sizeof(buf), "demolitions improve               %4ld / 12    %ld primal\n\r",
-            s->demolition, s->demolition < 12 ? 15 * (s->demolition + 1) : 0); stc(buf, ch);
-        stc("Costs shown at cap are 0; capped tracks cannot be trained further.\n\r"
+        class_training_header(ch,"CYBORG TRAINING");
+        class_training_row(ch,"train (rifle)",r->rifle,12,
+            class_training_cost(r->rifle,12,10000,TRUE),"XP",ch->exp,
+            IS_BUI(ch) ? "Staff blocked" : NULL);
+        class_training_row(ch,"face_implants",s->face,5,
+            s->face<5 ? 12500L<<s->face : 0,"bionics",s->bionic,
+            IS_BUI(ch) ? "Staff blocked" : s->face==4 && s->body<4 ? "Need body 4" : NULL);
+        class_training_row(ch,"limb_implants",s->limbs,5,
+            s->limbs<5 ? 12500L<<s->limbs : 0,"bionics",s->bionic,
+            IS_BUI(ch) ? "Staff blocked" : NULL);
+        class_training_row(ch,"body_implants",s->body,6,
+            s->body<6 ? 12500L<<s->body : 0,"bionics",s->bionic,
+            IS_BUI(ch) ? "Staff blocked" : s->limbs<1 ? "Need limbs 1" : NULL);
+        class_training_row(ch,"demolitions",s->demolition,12,
+            class_training_cost(s->demolition,12,15,FALSE),"primal",ch->primal,
+            IS_BUI(ch) ? "Staff blocked" : NULL);
+        stc("Use cyborg <system> improve; cyborg train advances rifle mastery.\n\r"
             "bionics <XP>: convert XP to bionics. Training requires peace/standing.\n\r"
             "\n\rBrowse with: cyborg implants | cyborg powers | cyborg all\n\r"
             "Use: cyborg install <component> | cyborg uninstall <component>\n\r"
@@ -736,6 +740,10 @@ static void parent_command(CHAR_DATA *ch, char *argument, int angel)
         snprintf(buf, sizeof(buf), "%s mastery: %ld/8. Use %s train.\n\r",
                  angel ? "Angel" : "Demon", parent_rank(ch), angel ? "angel" : "demon");
         stc(buf, ch);
+        class_training_header(ch,"MASTERY TRAINING");
+        class_training_row(ch,angel ? "angel train" : "demon train",parent_rank(ch),8,
+            class_training_cost(parent_rank(ch),8,50000,TRUE),"XP",ch->exp,
+            IS_BUI(ch) ? "Staff blocked" : NULL);
         stc("Core power             Rank     Mana  Mastery\n\r"
             "--------------------  ----  -------  -------\n\r", ch);
         for (p = table; p->key != NULL; ++p) {

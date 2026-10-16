@@ -23,6 +23,11 @@ component/system powers and passives, or `cyborg all` for the full display.
 Tables show rank thresholds, costs and component eligibility. Known/Eligible
 does not bypass target, cooldown, body-state, staff-rank or resource rules.
 `help cyborg` and `help classmenus` explain the sections and status columns.
+Training rows now quote the exact next XP, bionics or primal price.
+`MAXED`/`--` means no further upgrade, not zero-cost training. `Affordable`
+checks funds only. Face level five requires body four; body training needs
+limbs one. Those dependencies and staff restrictions are shown explicitly.
+Add `improve` after a system name; `cyborg train` advances rifle mastery.
 
 - `install <component>` installs an implant/replacement; `implant` and `replace`
   are aliases. `uninstall <component>` refuses removals with installed

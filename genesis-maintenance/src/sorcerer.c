@@ -72,6 +72,9 @@ void do_colors( CHAR_DATA *ch, char *argument )
 {
     char buf[MSL];
     int color, cost;
+    int menu_color;
+    static const char *names[]={"Purple","Red","Blue","Green","Yellow","Black"};
+    static const int colors[]={PURPLE_MAGIC,RED_MAGIC,BLUE_MAGIC,GREEN_MAGIC,YELLOW_MAGIC,BLACK_MAGIC};
     if (!IS_SORCERER(ch))
     {
 	stc("Huh?\n\r", ch);
@@ -80,10 +83,11 @@ void do_colors( CHAR_DATA *ch, char *argument )
 
     if (argument[0] == '\0')
     {
-	sprintf(buf, "Purple: %li, Red: %li, Blue: %li, Green: %li, Yellow: %li, Black: %li.\n\r",
-	 get_color(ch, PURPLE_MAGIC), get_color(ch, RED_MAGIC), get_color(ch, BLUE_MAGIC),
-	 get_color(ch, GREEN_MAGIC), get_color(ch, YELLOW_MAGIC), get_color(ch, BLACK_MAGIC));
-	stc(buf, ch);
+class_training_header(ch,"BOOK MAGE COLORS");
+for(menu_color=0;menu_color<6;++menu_color)
+    class_training_row(ch,names[menu_color],get_color(ch,colors[menu_color]),5,
+        class_training_cost(get_color(ch,colors[menu_color]),5,10,FALSE),
+        "primal",ch->primal,NULL);
 	stc("To improve type \"colors <color>\".\n\r", ch);
 	return;
     }

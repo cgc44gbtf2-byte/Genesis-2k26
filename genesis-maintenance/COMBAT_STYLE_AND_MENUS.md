@@ -41,9 +41,33 @@ mastery/eligibility columns are separate. Displaying a menu does not train,
 spend resources or modify class state.
 
 Angel, Demon, Phoenix, Deathknight, Moogle, Gargoyle, Kuei-jin and Wraith
-also have aligned kit tables. This pass does not rewrite the ten other
-legacy classes' discipline/sphere/gift displays. Their existing commands
-remain available, and all 19 classes are organized in `help classes`.
+also have aligned kit tables. The ten older classes now have organized
+discipline, sphere, gift, skill and power tables too; their progression
+commands and balance rules remain intact. All 19 classes are organized
+in `help classes`. Werewolf `powers` no longer appends the fallback `Huh?`
+after successfully displaying its gifts.
+
+## Exact next-upgrade prices
+
+Training menus quote one next upgrade in its actual currency: XP, primal,
+bionics, Drow favor/class points, or Dragon DP plus QP. Quotes preserve
+Vampire clan/Caitiff/Panders discounts, selected Werewolf gift discounts,
+Mage favored-sphere caps, Elemental focus restrictions, Cyborg dependencies
+and Kuei-jin Dharma gates. Capped tracks show `MAXED` and `--`, never a
+misleading free upgrade. Already-learned Dragon powers are labeled.
+
+`Affordable` means the currency balance passes, not that combat, body,
+target, cooldown or other action rules are bypassed. The update does not
+change training prices, allow staff-only bypasses or enable hybrids.
+Drow prayer quotes grant fees; the intended target's eligibility is still
+checked by the grant command. Free initial Werewolf gift selection is
+separate from paid gift training.
+Demon gift purchases quote primal, while the warp table quotes soul power
+for acquisition, negative-warp redemption and the total destructive reset
+fee. Soul power is converted from XP at one to one.
+
+Mage training syntax is `sphere <name> learn`. The read-only sphere menu
+also quotes Arete: `arete` itself buys the next rank, even without arguments.
 
 `help classmenus` defines the columns. `help cyborg` groups installation,
 training, weapons, explosives, forms, senses, utility and equipment commands.
@@ -63,6 +87,8 @@ From `genesis-maintenance/`:
 ```sh
 sh tests/test-combat-system.sh styles
 sh tests/test-combat-system.sh menus
+sh tests/test-combat-system.sh training
+sh tests/test-combat-system.sh oldmenus
 sh tests/test-combat-system.sh all
 python3 tests/audit_ability_help.py --strict
 sha256sum --check MANIFEST.sha256
@@ -73,9 +99,14 @@ If the validation environment lacks the `-lcrypt` development link, set
 Ubuntu operators should install `libcrypt-dev` for the normal build.
 
 `styles` failed on the unfixed code at the selected-style assertion and passed
-after the synchronization fix. The new menu suite checks all nine changed
-class displays, visible line widths, read-only behavior, Cyborg navigation,
-component states, actual installation and staff rejection feedback.
+after the synchronization fix. Seventeen linked suites run under ASan/UBSan
+with strict GNU89 and `-Werror`. The newer-menu suite covers nine class
+displays, visible widths, read-only behavior, Cyborg navigation, component
+states, actual installation and staff rejection feedback. The older-menu
+suite checks 116 read-only views across ten classes at <=79 visible columns.
+The training suite compares displayed prices with real purchases at each
+tested rank, including clan/gift discounts, caps, exact balances,
+one-short rejection, dual-currency Dragon ages, and Cyborg/Dharma gates.
 
 These tests do not certify every legacy gameplay variant or production
 balance/security. Hybrids remain read-only previews.

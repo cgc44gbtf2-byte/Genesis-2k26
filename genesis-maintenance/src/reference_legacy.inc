@@ -406,13 +406,22 @@ static int legacy_command(CHAR_DATA *ch, const char *cmd, char *arg, char *extra
     }
     if (!strcmp(cmd, "warps")) {
         if (arg[0]) { stc("Use obtain, redeem <negative warp>, or clearwarps confirm.\n\r", ch); return 1; }
+        class_menu_header(ch,"DEMON WARPS","Owned warp","Type");
         for (i = 0; i < 30; ++i) if (legacy_warp(ch, i)) {
-            snprintf(buf, sizeof(buf), "%s%s\n\r", legacy_warps[i].key,
-                legacy_warps[i].location == APPLY_NONE ? " (special or cosmetic)" : "");
-            stc(buf, ch); ++count;
+            class_menu_row(ch,legacy_warps[i].key,
+                legacy_warps[i].location == APPLY_NONE ? "Special or cosmetic" : "Stat modifier");
+            ++count;
         }
-        snprintf(buf, sizeof(buf), "Warps: %d/10. Obtain costs 15000 soul power; clearing costs 20000 per warp.\n\r", count);
-        stc(buf, ch); return 1;
+        class_training_header(ch,"WARP ACQUISITION");
+        class_training_row(ch,"obtain",count,10,15000,"souls",s->souls,
+            IS_BUI(ch) ? "Staff blocked" : NULL);
+        class_menu_row(ch,"redeem <negative warp>","10000 souls; requires an owned negative warp");
+        if(count) {
+            snprintf(buf,sizeof(buf),"%ld souls total; removes ALL warps; no refund",20000L*count);
+            class_menu_row(ch,"clearwarps confirm",buf);
+        } else class_menu_row(ch,"clearwarps confirm","-- | No warps to clear");
+        stc("Use demon <command>. demon souls <XP> converts XP 1:1 to soul power.\n\r",ch);
+        return 1;
     }
     if (!strcmp(cmd, "obtain") || !strcmp(cmd, "redeem") || !strcmp(cmd, "clearwarps")) {
         if (!management_ready(ch)) return 1;
@@ -439,10 +448,12 @@ static int legacy_command(CHAR_DATA *ch, const char *cmd, char *arg, char *extra
         static const char *names[] = {"strength","speed","stake","cone","form"};
         for (i = 0; i < 5; ++i) if (!strcmp(arg, names[i])) break;
         if (i == 5) {
+            class_training_header(ch,"DEMON GIFT PURCHASES");
             for (i = 0; i < 5; ++i) {
-                snprintf(buf, sizeof(buf), "%s: %s (50 primal)\n\r", names[i], (s->gifts & (1U<<i)) ? "owned" : "available");
-                stc(buf, ch);
+                class_training_row(ch,names[i],(s->gifts & (1U<<i)) ? 1 : 0,
+                    1,50,"primal",ch->primal,IS_BUI(ch) ? "Staff blocked" : NULL);
             }
+            stc("Buy: demon gifts <name>. Owned gifts cannot be bought again.\n\r",ch);
             return 1;
         }
         if (!management_ready(ch) || (s->gifts & (1U<<i)) || ch->primal < 50) return 1;

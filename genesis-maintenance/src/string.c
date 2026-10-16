@@ -53,6 +53,116 @@ int format_buffer( char *dest, size_t capacity, const char *format, ... )
     return result;
 }
 
+/* Plain ASCII class tables: 24 + 2 + 51 = 77 visible columns.
+ * Input is static menu text, not player names or colour-coded prose. */
+void class_menu_header(CHAR_DATA *ch, const char *title,
+                       const char *left, const char *right)
+{
+    char buf[320];
+    format_buffer(buf,sizeof(buf),"\n\r%s\n\r%-24.24s  %s\n\r"
+        "------------------------  ---------------------------------------------------\n\r",
+        title,left,right);
+    stc(buf,ch);
+}
+
+void class_menu_row(CHAR_DATA *ch, const char *label, const char *detail)
+{
+    char buf[96], part[52];
+    size_t length, cut;
+    bool first = TRUE;
+    if (!ch || !label || !detail) return;
+    do {
+        while (*detail && isspace((unsigned char)*detail)) ++detail;
+        if (!*detail && !first) break;
+        length = 0;
+        while (detail[length] && detail[length]!='\r'
+               && detail[length]!='\n' && length<51) ++length;
+        cut = length;
+        if (length==51 && detail[length]
+            && !isspace((unsigned char)detail[length])) {
+            while (cut && !isspace((unsigned char)detail[cut])) --cut;
+            if (!cut) cut=length;
+        }
+        memcpy(part,detail,cut); part[cut]='\0';
+        while(cut && isspace((unsigned char)part[cut-1])) part[--cut]='\0';
+        format_buffer(buf,sizeof(buf),"%-24.24s  %s\n\r",first ? label : "",part);
+        stc(buf,ch);
+        /* Advance over the original slice, including trailing spaces. */
+        detail += length==51 && detail[length]
+                  && !isspace((unsigned char)detail[length]) && cut ? cut : length;
+        first=FALSE;
+    } while (*detail);
+}
+
+void class_menu_rank(CHAR_DATA *ch, const char *name, long rank)
+{
+    char value[32];
+    format_buffer(value,sizeof(value),"%li",rank);
+    class_menu_row(ch,name,value);
+}
+
+/* Preserve legacy rank gating and command strings; only wrap the display. */
+void class_menu_commands(CHAR_DATA *ch, const char *text)
+{
+    const char *colon = strchr(text,':');
+    char label[25];
+    size_t length;
+    if (!colon) { class_menu_row(ch,"",text); return; }
+    length=(size_t)(colon-text);
+    if (length>24) length=24;
+    memcpy(label,text,length); label[length]='\0';
+    class_menu_row(ch,label,colon+1);
+}
+
+void class_menu_skill_line(CHAR_DATA *ch, const char *text)
+{
+    const char *divider = strstr(text," - ");
+    char label[25];
+    size_t length;
+    if (!divider) { class_menu_row(ch,"",text); return; }
+    length=(size_t)(divider-text);
+    while(length && isspace((unsigned char)text[length-1])) --length;
+    if(length>24) length=24;
+    memcpy(label,text,length); label[length]='\0';
+    class_menu_row(ch,label,divider+3);
+}
+
+long class_training_cost(long rank, long cap, long base, bool squared)
+{
+    long next;
+    if (rank<0 || rank>=cap || base<=0) return 0;
+    next=rank+1;
+    return squared ? base*next*next : base*next;
+}
+
+void class_training_header(CHAR_DATA *ch, const char *title)
+{
+    char buf[320];
+    format_buffer(buf,sizeof(buf),"\n\r%s\n\r"
+        "%-20s %8s %12s %-8s %s\n\r"
+        "-------------------- -------- ------------ -------- ----------------\n\r",
+        title,"Training","Rank/Cap","Next cost","Currency","Status");
+    stc(buf,ch);
+}
+
+void class_training_row(CHAR_DATA *ch, const char *name, long rank, long cap,
+                        long cost, const char *currency, long funds,
+                        const char *blocked)
+{
+    char buf[128], ranks[48], price[32];
+    const char *status;
+    format_buffer(ranks,sizeof(ranks),"%li/%li",rank,cap);
+    if (rank>=cap) {
+        strcpy(price,"--"); status="MAXED";
+    } else {
+        format_buffer(price,sizeof(price),"%li",cost);
+        status=blocked ? blocked : cost>funds ? "Needs funds" : "Affordable";
+    }
+    format_buffer(buf,sizeof(buf),"%-20.20s %8.8s %12.12s %-8.8s %-16.16s\n\r",
+        name,ranks,price,currency,status);
+    stc(buf,ch);
+}
+
 
 
 void string_edit( CHAR_DATA *ch, char **pString )

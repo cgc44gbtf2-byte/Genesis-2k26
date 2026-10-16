@@ -207,6 +207,9 @@ static void crafted_command(CHAR_DATA *ch, char *argument, int parent)
         snprintf(buf,sizeof(buf),"Mastery %ld/8; %s %ld/%ld. train; focus <mana>.\n\r",
             s->rank,parent == GEN_PARENT_MOOGLE ? "pom energy" : "soul energy",s->energy,CRAFTED_ENERGY_CAP);
         stc(buf,ch);
+        class_training_header(ch,"MASTERY TRAINING");
+        class_training_row(ch,"train",s->rank,8,
+            class_training_cost(s->rank,8,50000,TRUE),"XP",ch->exp,NULL);
         stc("Power                 Rank    Mana  Energy  Mastery\n\r"
             "--------------------  ----  ------  ------  -------\n\r",ch);
         for (i=0;i<sizeof(crafted_powers)/sizeof(crafted_powers[0]);++i)

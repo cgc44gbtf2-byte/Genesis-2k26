@@ -2786,7 +2786,7 @@ void do_powers( CHAR_DATA *ch, char *argument )
     {
 	if (IS_WEREWOLF(ch))
 	    do_wwpowers(ch, argument);
-	if (IS_MAGE(ch))
+	else if (IS_MAGE(ch))
 	    do_magepowers(ch, argument);
 	else
 	    send_to_char("Huh?\n\r",ch);
@@ -2820,9 +2820,7 @@ void do_powers( CHAR_DATA *ch, char *argument )
 	    }
 	}
     }
-    send_to_char( "--------------------------------------------------------------------------------\n\r", ch );
-    send_to_char("                            -= Discipline Commands =-\n\r",ch);
-    send_to_char( "--------------------------------------------------------------------------------\n\r", ch );
+    class_menu_header(ch,"VAMPIRE POWERS","Discipline","Known commands");
     if (get_disc(ch,DISC_ANIMALISM) > 0)
     {
 	strcpy(buf,"Animalism: Pigeon");
@@ -2833,7 +2831,7 @@ void do_powers( CHAR_DATA *ch, char *argument )
 	if (get_disc(ch,DISC_ANIMALISM) >= 6) strcat(buf," Frenzy");
 	if (get_disc(ch,DISC_ANIMALISM) == 7) strcat(buf," Fleshbond");
 	strcat(buf,".\n\r");
-	send_to_char(buf,ch);
+	class_menu_commands(ch,buf);
     }
     if (get_disc(ch,DISC_AUSPEX) > 0)
     {
@@ -2844,10 +2842,10 @@ void do_powers( CHAR_DATA *ch, char *argument )
 	if (get_disc(ch,DISC_AUSPEX) >= 6) strcat(buf," Omnipotence");
 	if (get_disc(ch,DISC_AUSPEX) >= 7) strcat(buf," Mindblast");
 	strcat(buf,".\n\r");
-	send_to_char(buf,ch);
+	class_menu_commands(ch,buf);
     }
     if (get_disc(ch,DISC_CELERITY) > 0)
-	send_to_char("Celerity: Celerity.\n\r", ch);
+	class_menu_commands(ch,"Celerity: Celerity.\n\r");
     if (get_disc(ch,DISC_CHIMERSTRY) > 0)
     {
 	strcpy(buf,"Chimerstry: Mirror");
@@ -2858,7 +2856,7 @@ void do_powers( CHAR_DATA *ch, char *argument )
 	if (get_disc(ch,DISC_CHIMERSTRY) >= 6) strcat(buf," Truedisguise");
 if (get_disc(ch,DISC_CHIMERSTRY) >= 7) strcat(buf," Horridreality");
 	strcat(buf,".\n\r");
-	send_to_char(buf,ch);
+	class_menu_commands(ch,buf);
     }
     if (get_disc(ch,DISC_DOMINATE) > 0)
     {
@@ -2866,7 +2864,7 @@ if (get_disc(ch,DISC_CHIMERSTRY) >= 7) strcat(buf," Horridreality");
 	if (get_disc(ch,DISC_DOMINATE) >= 3) strcat(buf," Condition");
 	if (get_disc(ch,DISC_DOMINATE) >= 4) strcat(buf," Possession");
 	strcat(buf,".\n\r");
-	send_to_char(buf,ch);
+	class_menu_commands(ch,buf);
     }
     if (get_disc(ch,DISC_NECROMANCY) > 0)
     {
@@ -2878,7 +2876,7 @@ if (get_disc(ch,DISC_CHIMERSTRY) >= 7) strcat(buf," Horridreality");
 	if (get_disc(ch,DISC_NECROMANCY) > 5) strcat(buf," Zombie");
 	if (get_disc(ch,DISC_NECROMANCY) > 6) strcat(buf," Torment");
 	strcat(buf,".\n\r");
-	send_to_char(buf,ch);
+	class_menu_commands(ch,buf);
     }
 
     if (get_disc(ch,DISC_OBFUSCATE) > 0)
@@ -2888,7 +2886,7 @@ if (get_disc(ch,DISC_CHIMERSTRY) >= 7) strcat(buf," Horridreality");
 	if (get_disc(ch,DISC_OBFUSCATE) > 4) strcat(buf," Soulmask");
         if (get_disc(ch,DISC_OBFUSCATE) > 6) strcat(buf," Shield");
 	strcat(buf,".\n\r");
-	send_to_char(buf,ch);
+	class_menu_commands(ch,buf);
     }
     if (get_disc(ch,DISC_OBTENEBRATION) > 0)
     {
@@ -2900,7 +2898,7 @@ strcpy(buf,"Obtenebration: Shroud Shadowplay");
         if (get_disc(ch,DISC_OBTENEBRATION) > 5) strcat(buf," Shadowforge");
 	if (get_disc(ch,DISC_OBTENEBRATION) > 6) strcat(buf," Tenebrous");
 	strcat(buf,".\n\r");
-	send_to_char(buf,ch);
+	class_menu_commands(ch,buf);
     }
     if (get_disc(ch,DISC_PRESENCE) > 0)
     {
@@ -2912,7 +2910,7 @@ strcpy(buf,"Obtenebration: Shroud Shadowplay");
 	if (get_disc(ch,DISC_PRESENCE) > 5) strcat(buf," Enrage");
 if (get_disc(ch,DISC_PRESENCE) > 6) strcat(buf," MaskEmpathy");
 	strcat(buf,".\n\r");
-	send_to_char(buf,ch);
+	class_menu_commands(ch,buf);
     }
     if (get_disc(ch,DISC_PROTEAN) > 0)
     {
@@ -2924,7 +2922,7 @@ if (get_disc(ch,DISC_PRESENCE) > 6) strcat(buf," MaskEmpathy");
         if (get_disc(ch,DISC_PROTEAN) > 5) strcat(buf," Earthshift");
         if (get_disc(ch,DISC_PROTEAN) > 6) strcat(buf," Beastform");
 	strcat(buf,".\n\r");
-	send_to_char(buf,ch);
+	class_menu_commands(ch,buf);
     }
     if (get_disc(ch,DISC_QUIETUS) > 0)
     {
@@ -2936,7 +2934,7 @@ if (get_disc(ch,DISC_PRESENCE) > 6) strcat(buf," MaskEmpathy");
 	if (get_disc(ch,DISC_QUIETUS) > 5) strcat(buf," Thinblood");
 if (get_disc(ch,DISC_QUIETUS) > 5) strcat(buf," Leech");
 	strcat(buf,".\n\r");
-	send_to_char(buf,ch);
+	class_menu_commands(ch,buf);
     }
     if (get_disc(ch,DISC_SERPENTIS) > 0)
     {
@@ -2946,14 +2944,14 @@ if (get_disc(ch,DISC_QUIETUS) > 5) strcat(buf," Leech");
 	if (get_disc(ch,DISC_SERPENTIS) > 3) strcat(buf," Serpent");
 	if (get_disc(ch,DISC_SERPENTIS) > 6) strcat(buf," Mark");
 	strcat(buf,".\n\r");
-	send_to_char(buf,ch);
+	class_menu_commands(ch,buf);
     }
 
     if (get_disc(ch,DISC_THAUMATURGY) > 0)
     {
 	strcpy(buf,"Thaumaturgy: Paths");
 	strcat(buf,".\n\r");
-	send_to_char(buf,ch);
+	class_menu_commands(ch,buf);
     }
     if (get_disc(ch,DISC_VICISSITUDE) > 0)
     {
@@ -2965,13 +2963,13 @@ if (get_disc(ch,DISC_QUIETUS) > 5) strcat(buf," Leech");
         if (get_disc(ch,DISC_VICISSITUDE) > 5) strcat(buf," Chiroptean");
 	if (get_disc(ch,DISC_VICISSITUDE) > 6) strcat(buf," Disintegrate");
 	strcat(buf,".\n\r");
-	send_to_char(buf,ch);
+	class_menu_commands(ch,buf);
     }
     if (!any_powers)
 	send_to_char("You have no disciplines.\n\r",ch);
     else if (!any_commands)
 	send_to_char("All your discipline powers are automatic.\n\r",ch);
-    send_to_char( "--------------------------------------------------------------------------------\n\r", ch );
+    stc("Commands shown are rank-unlocked; other casting conditions still apply.\n\r",ch);
     return;
 }
 
@@ -3129,6 +3127,25 @@ void do_vanish( CHAR_DATA *ch, char *argument )
     return;
 }
 
+static long vampire_training_cap(CHAR_DATA *ch, long disc)
+{
+    bool caitiff=!str_cmp(ch->clan,"Caitiff") || !str_cmp(ch->clan,"Panders");
+    bool favoured=ch->pcdata->cland[0]==disc || ch->pcdata->cland[1]==disc
+        || ch->pcdata->cland[2]==disc;
+    if (disc==DISC_THAUMATURGY) return 5;
+    return caitiff ? 6 : favoured ? 7 : 5;
+}
+
+static long vampire_training_cost(CHAR_DATA *ch, long disc)
+{
+    long rank=ch->pcdata->powers[disc];
+    long unit=ch->pcdata->cland[0]==disc || ch->pcdata->cland[1]==disc
+        || ch->pcdata->cland[2]==disc || !str_cmp(ch->clan,"Caitiff")
+        || !str_cmp(ch->clan,"Panders") ? 5 : 15;
+    if(rank>=vampire_training_cap(ch,disc)) return 0;
+    return rank==-1 ? unit : (rank+1)*unit;
+}
+
 void do_discipline( CHAR_DATA *ch, char *argument )
 {
     char arg  [MAX_INPUT_LENGTH];
@@ -3137,7 +3154,7 @@ void do_discipline( CHAR_DATA *ch, char *argument )
     long  improve;
     long  cost;
     long  max_d = 5;
-    long  sn, col;
+    long  sn;
     bool got_disc = FALSE;
 
     one_argument( argument, arg );
@@ -3153,10 +3170,7 @@ void do_discipline( CHAR_DATA *ch, char *argument )
 	max_d = 6;
     if ( arg[0] == '\0' )
     {
-	send_to_char( "--------------------------------------------------------------------------------\n\r", ch );
-	send_to_char("                               -= Disciplines =-\n\r",ch);
-	send_to_char( "--------------------------------------------------------------------------------\n\r", ch );
-	col    = 0;
+class_training_header(ch,"VAMPIRE DISCIPLINES");
 	for ( sn = 0; sn <= DISC_MAX; sn++ )
 	{
 	    if ( ch->pcdata->powers[sn] == 0 ) continue;
@@ -3217,17 +3231,12 @@ void do_discipline( CHAR_DATA *ch, char *argument )
 	    if (ch->class == CLASS_VAMPIRE && (ch->pcdata->cland[0] == sn || ch->pcdata->cland[1] == sn || ch->pcdata->cland[2] == sn))
 		capitalize( disc );
 
-	    sprintf( buf, "%-15s: %-2li       ",
-		disc, get_disc(ch, sn) );
-	    send_to_char( buf, ch );
-	    if ( ++col % 3 == 0 ) send_to_char( "\n\r", ch );
+    class_training_row(ch,disc,ch->pcdata->powers[sn],vampire_training_cap(ch,sn),
+        vampire_training_cost(ch,sn),"primal",ch->primal,NULL);
 	    got_disc = TRUE;
 	}
-	if ( col % 3 != 0 ) send_to_char( "\n\r", ch );
 	if (!got_disc) send_to_char("You currently have no disciplines.\n\r",ch);
-	send_to_char( "--------------------------------------------------------------------------------\n\r", ch );
 	send_to_char("To improve a discipline rating, type: discipline <name>\n\r",ch);
-	send_to_char( "--------------------------------------------------------------------------------\n\r", ch );
 	return;
     }
     if (!str_cmp(arg,"animalism")) improve = DISC_ANIMALISM;
@@ -3256,13 +3265,7 @@ void do_discipline( CHAR_DATA *ch, char *argument )
 	send_to_char("You know of no such discipline.\n\r",ch);
 	return;
     }
-    if (ch->pcdata->cland[0] == improve || ch->pcdata->cland[1] == improve || ch->pcdata->cland[2] == improve)
-	{	
-	max_d = 7;
-	if(!str_cmp(ch->clan, "Caitiff") || !str_cmp(ch->clan, "Panders"))
-	max_d = 6;
-	}
-    if (improve == DISC_THAUMATURGY) max_d = 5;
+    max_d=vampire_training_cap(ch,improve);
 
     if (ch->pcdata->powers[improve] >= max_d)
     {
@@ -3270,23 +3273,7 @@ void do_discipline( CHAR_DATA *ch, char *argument )
 	return;
     }
 
-    else if (ch->pcdata->cland[0] == improve || 
-	ch->pcdata->cland[1] == improve || 
-	ch->pcdata->cland[2] == improve || !str_cmp(ch->clan, "Caitiff") 
-|| !str_cmp(ch->clan, "Panders"))
-    {
-	if (ch->pcdata->powers[improve] == -1) 
-	    cost = 5;
-	else
-	    cost = ( ch->pcdata->powers[improve] + 1 ) * 5;
-    }
-    else
-    {
-	if (ch->pcdata->powers[improve] == -1) 
-	    cost = 15;
-	else
-	    cost = ((ch->pcdata->powers[improve] + 1) * 15);
-    }
+    cost=vampire_training_cost(ch,improve);
 
     if (ch->primal < cost)
     {

@@ -35,6 +35,8 @@ Genesis-system adaptations developed for this project:
 - Expanded class and ability help, kit-status documentation, native regression
   tests, sanitizer suites and source-package verification.
 - Admin-only highest-rank `relevel` bootstrap and operator setup documentation.
+- Repaired stale unclassed attack styles and organized all 19 class menus,
+  with exact next-upgrade currency quotes, caps and class-specific gates.
 - A registry of 171 named hybrid combinations, currently preview-only;
   playable inheritance, conversion, ascension and respec remain future work.
 
@@ -129,7 +131,10 @@ replace an existing live data directory with a clean source checkout.
 
 The current gameplay source passed:
 
-- 13 linked AddressSanitizer/UndefinedBehaviorSanitizer regression suites.
+- 17 linked AddressSanitizer/UndefinedBehaviorSanitizer regression suites,
+  including exact training quotes versus real deductions and 116 read-only
+  older-class menu views. See
+  [combat and menu maintenance](genesis-maintenance/COMBAT_STYLE_AND_MENUS.md).
 - Seven isolated native gameplay groups: runtime smoke, combat/system fixes,
   legacy spells, reconstructed abilities, maintenance fixes, crafted classes
   and class abilities.
@@ -171,9 +176,9 @@ The preserved maintenance source package is
 [Genesis-MUD-GitHub-maintenance-source.zip](Genesis-MUD-GitHub-maintenance-source.zip).
 It contains 229 files, including a manifest covering 228 payloads. Build
 outputs, runtime logs, player records and private notes are excluded.
-This immutable package predates the Genesis: 2k26 README branding and
-copyright update. Clone this repository for the current README; the packaged
-gameplay source is unchanged by this documentation-only update.
+This immutable package predates the Genesis: 2k26 branding and the later
+combat/menu/training-price changes. Clone the repository's current source
+after merging the maintenance PR; the older ZIP is not updated by that PR.
 
 SHA256: `40fde68c26f3188d09a2203c0048633cd94c7a450190245ba52d290f0f439c09`
 
