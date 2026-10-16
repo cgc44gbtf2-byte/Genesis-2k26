@@ -43,7 +43,7 @@ static void drow_variants(CHAR_DATA *ch,CHAR_DATA *v,PC_DATA *vpc,
     ch->pcdata->drow[DROW_POWERS]=0; ch->pcdata->classpoints[CP_CURRENT]=5000;
     ch->pcdata->drow[DROW_SPEED]=2;
     ch->desc->outtop=0; ch->desc->outbuf[0]=0; do_drowupkeep(ch,"");
-    assert(strstr(ch->desc->outbuf,"Speed 2")
+    assert(strstr(ch->desc->outbuf,"Speed") && strstr(ch->desc->outbuf,"2 / 4")
         && !strstr(ch->desc->outbuf,"no drow abilities"));
     ch->pcdata->drow[DROW_SPEED]=0;
     do_skipdisc(ch,""); assert(!IS_AFFECTED(ch,AFF_FLYING));

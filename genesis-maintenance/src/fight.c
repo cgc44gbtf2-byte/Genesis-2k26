@@ -129,7 +129,7 @@ void violence_update( void )
 void multi_hit( CHAR_DATA *ch, CHAR_DATA *victim )
 {
     OBJ_DATA *wield;
-    long sn, dt, style = ch->style[0];
+    long sn, dt, style;
 
     if (ch == NULL || victim == NULL) return;
     if (ch->position < POS_SLEEPING || is_safe(ch, victim)) return;
@@ -145,6 +145,13 @@ void multi_hit( CHAR_DATA *ch, CHAR_DATA *victim )
 	if (number_range(2501, 5000) <= ch->level) one_hit(ch, victim, dt, "attack");
 	return;
     }
+
+    /* The selected style is derived from current equipment, not permanent
+     * training. Reconcile stale/new-character state before choosing attacks.
+     * update_style preserves a valid two-handed grip and natural weapons.
+     */
+    update_style(ch);
+    style = ch->style[0];
 
     if ((wield = get_eq_char(ch, WEAR_WEAPON)) != NULL)
     {

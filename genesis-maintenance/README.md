@@ -37,8 +37,11 @@ identities and read-only previews; see `HYBRID_ROSTER.md`.
 See `PARENT_FRAMEWORK.md` for the foundation and remaining work.
 The finalized maintenance-only ZIP remains a separate, unchanged release.
 
-The current code passed 13 linked ASan/UBSan suites, seven isolated native
-gameplay regression groups, a strict GNU89 build and a fresh-extraction build.
+The current combat/menu update passes 17 linked ASan/UBSan suites with strict
+GNU89 and `-Werror`, including exact training-price/deduction checks and
+116 read-only older-menu views. See `COMBAT_STYLE_AND_MENUS.md`.
+The maintenance baseline also passed seven isolated native gameplay groups
+and a fresh-extraction build; those older ZIP snapshots are not replaced.
 The help audit covers 398/398 registered legacy topics. The native help probe
 checked 266 entries / 583 exact topics and aliases, plus semantic checks for
 the Elemental and Abilitystatus pages. These are scoped checks, not a promise
@@ -99,7 +102,7 @@ python3 tests/smoke_runtime.py
 Clean again before switching back to a normal build. These are focused regression
 checks, not a complete gameplay or security audit.
 
-Run all 13 linked gameplay sanitizer probes in one isolated build, plus the
+Run all 17 linked gameplay sanitizer probes in one isolated build, plus the
 separate component-codec and resolve probes:
 
 ```sh

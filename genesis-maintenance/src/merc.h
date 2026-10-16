@@ -3203,7 +3203,18 @@ long	flag_convert	args( ( char letter ) );
 void	free_mem	args( ( void *pMem, long sMem ) );
 	char *	str_dup		args( ( const char *str ) );
 	void	free_string	args( ( char *pstr ) );
-	int	format_buffer( char *dest, size_t capacity, const char *format, ... )
+void class_menu_header(CHAR_DATA *ch, const char *title,
+                       const char *left, const char *right);
+void class_menu_row(CHAR_DATA *ch, const char *label, const char *detail);
+void class_menu_rank(CHAR_DATA *ch, const char *name, long rank);
+void class_menu_commands(CHAR_DATA *ch, const char *text);
+void class_menu_skill_line(CHAR_DATA *ch, const char *text);
+long class_training_cost(long rank, long cap, long base, bool squared);
+void class_training_header(CHAR_DATA *ch, const char *title);
+void class_training_row(CHAR_DATA *ch, const char *name, long rank, long cap,
+                        long cost, const char *currency, long funds,
+                        const char *blocked);
+int	format_buffer( char *dest, size_t capacity, const char *format, ... )
 	    __attribute__((format(printf, 3, 4)));
 int	number_fuzzy	args( ( int number ) );
 int	number_range	args( ( int from, int to ) );

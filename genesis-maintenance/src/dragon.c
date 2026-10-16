@@ -295,11 +295,41 @@ void do_horns( CHAR_DATA *ch, char *argument )
     return;
 }
 
+static int dragon_age_price(long age, long *dp, long *qp)
+{
+    static const long points[]={2500,5000,7500,10000,15000,25000,35000,50000,70000,100000};
+    static const long quests[]={0,0,0,0,500,1000,1500,2000,2500,3000};
+    long index;
+    *dp=*qp=0;
+    if(age>AGE_HATCHLING || age<AGE_ANCIENT) return 0;
+    index=AGE_HATCHLING-age;
+    *dp=points[index]; *qp=quests[index]; return 1;
+}
+
 void do_dragonskill( CHAR_DATA *ch, char *argument )
 {
     char arg[MIL];
     char buf[MSL];
     long age, skill, cost, qpcost = 0;
+    size_t menu_skill;
+    static const struct {
+        const char *key, *age_name;
+        long age, bit;
+    } skills[]={
+        {"Fangs","Very young",AGE_VYOUNG,DRAG_FANGS},
+        {"Nightsight","Very young",AGE_VYOUNG,DRAG_NIGHT},
+        {"Claws","Young",AGE_YOUNG,DRAG_CLAWS},
+        {"Horns","Young",AGE_YOUNG,DRAG_HORNS},
+        {"Wings","Juvenile",AGE_JUVENILE,DRAG_WINGS},
+        {"Breath","Juvenile",AGE_JUVENILE,DRAG_BREATH},
+        {"Tail","Young adult",AGE_YADULT,DRAG_TAIL},
+        {"Truesight","Adult",AGE_ADULT,DRAG_TRUESIGHT},
+        {"Dust","Mature",AGE_MATURE,DRAG_DUST},
+        {"Magic","Old",AGE_OLD,DRAG_MAGIC},
+        {"Scry","Old",AGE_OLD,DRAG_SCRY},
+        {"Readaura","Very old",AGE_VOLD,DRAG_READAURA},
+        {"Shield","Ancient",AGE_ANCIENT,DRAG_SHIELD}
+    };
 
     one_argument(argument, arg);
 
@@ -311,18 +341,26 @@ void do_dragonskill( CHAR_DATA *ch, char *argument )
 
     if (arg[0] == '\0')
     {
-	stc("Learn which dragon skill:\n\r", ch);
-	stc(" Age", ch);
-	if (ch->vampgen <= AGE_VYOUNG)	stc(", Fangs, Nightsight", ch);
-	if (ch->vampgen <= AGE_YOUNG)	stc(", Claws, Horns", ch);
-	if (ch->vampgen <= AGE_JUVENILE)stc(", Wings, Breath", ch);
-	if (ch->vampgen <= AGE_YADULT)	stc(", Tail", ch);
-	if (ch->vampgen <= AGE_ADULT)	stc(", Truesight", ch);
-	if (ch->vampgen <= AGE_MATURE)	stc(", Dust", ch);
-	if (ch->vampgen <= AGE_OLD)	stc(", Magic, Scry", ch);
-	if (ch->vampgen <= AGE_VOLD)	stc(", Readaura", ch);
-	if (ch->vampgen <= AGE_ANCIENT)	stc(", Shield", ch);
-	stc(".\n\r", ch);
+	class_menu_header(ch,"DRAGON TRAINING","Skill","Next cost / status");
+	if(dragon_age_price(ch->vampgen,&cost,&qpcost)) {
+	    format_buffer(buf,sizeof(buf),"%li DP + %li QP | %s",cost,qpcost,
+	        ch->pcdata->classpoints[CP_CURRENT]<cost || ch->pcdata->quest<qpcost
+	            ? "Needs DP/QP" : "Affordable");
+	    class_menu_row(ch,"Age",buf);
+	} else class_menu_row(ch,"Age","-- | MAXED");
+	for(menu_skill=0;menu_skill<sizeof(skills)/sizeof(skills[0]);++menu_skill) {
+	    if(IS_DRAGAFF(ch,skills[menu_skill].bit)) {
+	        class_menu_row(ch,skills[menu_skill].key,"-- | Learned");
+	        continue;
+	    }
+	    cost=1000*(12-skills[menu_skill].age);
+	    format_buffer(buf,sizeof(buf),"%li DP | %s%s",cost,
+	        ch->vampgen>skills[menu_skill].age ? "Need age: " : "",
+	        ch->vampgen>skills[menu_skill].age ? skills[menu_skill].age_name
+	            : ch->pcdata->classpoints[CP_CURRENT]<cost ? "Needs DP" : "Affordable");
+	    class_menu_row(ch,skills[menu_skill].key,buf);
+	}
+	stc("Train: dragonskill <skill>. DP = class points; QP = quest points.\n\r",ch);
 	return;
     }
 
@@ -341,19 +379,8 @@ void do_dragonskill( CHAR_DATA *ch, char *argument )
     else if (!str_cmp(arg, "shield"))		{age = AGE_ANCIENT; skill = DRAG_SHIELD;}
     else if (!str_cmp(arg, "age"))
     {
-	switch(ch->vampgen)
-	{
-	    default: stc("You have attained the highest possible age.\n\r", ch); return;
-	    case AGE_HATCHLING:	cost = 2500; break;
-	    case AGE_VYOUNG:	cost = 5000; break;
-	    case AGE_YOUNG:	cost = 7500; break;
-	    case AGE_JUVENILE:	cost = 10000; break;
-	    case AGE_YADULT:	cost = 15000; qpcost = 500; break;
-	    case AGE_ADULT:	cost = 25000; qpcost = 1000; break;
-	    case AGE_MATURE:	cost = 35000; qpcost = 1500; break;
-	    case AGE_OLD:	cost = 50000; qpcost = 2000; break;
-	    case AGE_VOLD:	cost = 70000; qpcost = 2500; break;
-	    case AGE_ANCIENT:	cost = 100000; qpcost = 3000; break;
+	if(!dragon_age_price(ch->vampgen,&cost,&qpcost)) {
+	    stc("You have attained the highest possible age.\n\r",ch); return;
 	}
 
 	if (ch->pcdata->classpoints[CP_CURRENT] < cost || ch->pcdata->quest < qpcost)

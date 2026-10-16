@@ -2404,6 +2404,7 @@ void do_spheres( CHAR_DATA *ch, char *argument )
   char arg1[MAX_INPUT_LENGTH];
   char arg2[MAX_INPUT_LENGTH];
   long max,disc,cost;
+  int menu_sphere;
   cost = 0;
   max = 4;
   argument = one_argument( argument, arg1 );
@@ -2415,61 +2416,19 @@ void do_spheres( CHAR_DATA *ch, char *argument )
   }
   if ( arg1[0] == '\0' )
   {
-    	stc("-=[**]_[**]=-=[**]_[**]=-=[**]_[**] Spheres [**]_[**]=-=[**]_[**]=-=[**]_[**]=-\n\r",ch);
-	stc("[+]                                                                          [+]\n\r",ch);
-	sprintf(buf,"[+]    Correspondence (%s%s%s%s%s)  Life (%s%s%s%s%s)  Forces (%s%s%s%s%s)  [+]\n\r",
-          ch->spheres[MCOR] >= 1 ? "*" : " ",
-	  ch->spheres[MCOR] >= 2 ? "*" : " ",
-          ch->spheres[MCOR] >= 3 ? "*" : " ",
-          ch->spheres[MCOR] >= 4 ? "*" : " ",
-          ch->spheres[MCOR] >= 5 ? "*" : " ",
-          ch->spheres[MLIF] >= 1 ? "*" : " ",
-          ch->spheres[MLIF] >= 2 ? "*" : " ",
-          ch->spheres[MLIF] >= 3 ? "*" : " ",
-          ch->spheres[MLIF] >= 4 ? "*" : " ",
-          ch->spheres[MLIF] >= 5 ? "*" : " ",
-          ch->spheres[MFOR] >= 1 ? "*" : " ",
-          ch->spheres[MFOR] >= 2 ? "*" : " ",
-          ch->spheres[MFOR] >= 3 ? "*" : " ",
-          ch->spheres[MFOR] >= 4 ? "*" : " ",
-          ch->spheres[MFOR] >= 5 ? "*" : " " );
-	stc(buf,ch);
-	sprintf(buf,"[+]    Entropy        (%s%s%s%s%s)  Mind (%s%s%s%s%s)  Spirit (%s%s%s%s%s)  [+]\n\r",
-          ch->spheres[MENT] >= 1 ? "*" : " ",
-          ch->spheres[MENT] >= 2 ? "*" : " ",
-          ch->spheres[MENT] >= 3 ? "*" : " ",
-          ch->spheres[MENT] >= 4 ? "*" : " ",
-          ch->spheres[MENT] >= 5 ? "*" : " ",
-          ch->spheres[MMIN] >= 1 ? "*" : " ",
-          ch->spheres[MMIN] >= 2 ? "*" : " ",
-          ch->spheres[MMIN] >= 3 ? "*" : " ",
-          ch->spheres[MMIN] >= 4 ? "*" : " ",
-          ch->spheres[MMIN] >= 5 ? "*" : " ",
-          ch->spheres[MSPI] >= 1 ? "*" : " ",
-          ch->spheres[MSPI] >= 2 ? "*" : " ",
-          ch->spheres[MSPI] >= 3 ? "*" : " ",
-          ch->spheres[MSPI] >= 4 ? "*" : " ",
-          ch->spheres[MSPI] >= 5 ? "*" : " " );
-	stc(buf,ch);
-	sprintf(buf,"[+]    Prime          (%s%s%s%s%s)  Time (%s%s%s%s%s)  Matter (%s%s%s%s%s)  [+]\n\r",
-          ch->spheres[MPRI] >= 1 ? "*" : " ",
-          ch->spheres[MPRI] >= 2 ? "*" : " ",
-          ch->spheres[MPRI] >= 3 ? "*" : " ",
-          ch->spheres[MPRI] >= 4 ? "*" : " ",
-          ch->spheres[MPRI] >= 5 ? "*" : " ",
-          ch->spheres[MTIM] >= 1 ? "*" : " ",
-          ch->spheres[MTIM] >= 2 ? "*" : " ",
-          ch->spheres[MTIM] >= 3 ? "*" : " ",
-          ch->spheres[MTIM] >= 4 ? "*" : " ",
-          ch->spheres[MTIM] >= 5 ? "*" : " ",
-          ch->spheres[MMAT] >= 1 ? "*" : " ",
-          ch->spheres[MMAT] >= 2 ? "*" : " ",
-          ch->spheres[MMAT] >= 3 ? "*" : " ",
-          ch->spheres[MMAT] >= 4 ? "*" : " ",
-          ch->spheres[MMAT] >= 5 ? "*" : " " );
-	stc(buf,ch);
-	stc("[+]                                                                         [+]\n\r",ch);
-	stc("-=[**]_[**]=-=[**]_[**]=-=[**]_[**]---------[**]_[**]=-=[**]_[**]=-=[**]_[**]=-\n\r",ch);
+    class_training_header(ch,"MAGE SPHERES AND ARETE");
+    for(menu_sphere=0;menu_sphere<9;++menu_sphere) {
+        long menu_cap=ch->pcdata->cland[0]==menu_sphere
+            || ch->pcdata->cland[1]==menu_sphere
+            || ch->pcdata->cland[2]==menu_sphere ? 5 : 4;
+        class_training_row(ch,sphere_name[menu_sphere],ch->spheres[menu_sphere],menu_cap,
+            class_training_cost(ch->spheres[menu_sphere],menu_cap,10,FALSE),
+            "primal",ch->primal,NULL);
+    }
+    class_training_row(ch,"Arete",ch->arete,10,
+        class_training_cost(ch->arete,10,500000,FALSE),"XP",ch->exp,NULL);
+    stc("View: sphere <name> | Train: sphere <name> learn | Arete: arete\n\r"
+        "Use magepowers for rank-unlocked commands and targeting.\n\r",ch);
         return;
   }
   if ( arg2[0] == '\0' )
@@ -2587,98 +2546,99 @@ void do_clansphere(CHAR_DATA * ch, char * argument)
 
 void do_magepowers( CHAR_DATA *ch, char * argument)
 {
+char buf[MSL];
 if (!ch || IS_NPC(ch) || !ch->pcdata) return;
 if (!IS_MAGE(ch)) { stc("Huh?\n\r",ch); return; }
-stc("                  Mage Powers\n\r", ch);
-stc("----------------------------------------------\n\r", ch);    
+class_menu_header(ch,"Mage Powers","Sphere","Known commands / targeting");
 
     if (ch->spheres[MCOR] > 0)
     {
-	stc("Correspondence: ", ch);
-	if (ch->spheres[MCOR] >= 4) stc("Rift, ", ch);
-	if (ch->spheres[MCOR] == 1) stc("Self Targeting.\n\r", ch);
-	else if (ch->spheres[MCOR] == 2 || ch->spheres[MCOR] == 3 || ch->spheres[MCOR] == 4) stc("Local Targeting.\n\r", ch);
-	else if (ch->spheres[MCOR] == 5) stc("Same Area Targeting.\n\r", ch);
+strcpy(buf,"Correspondence: ");
+if (ch->spheres[MCOR] >= 4) strcat(buf,"Rift, ");
+if (ch->spheres[MCOR] == 1) strcat(buf,"Self Targeting.");
+else if (ch->spheres[MCOR] == 2 || ch->spheres[MCOR] == 3 || ch->spheres[MCOR] == 4) strcat(buf,"Local Targeting.");
+else if (ch->spheres[MCOR] == 5) strcat(buf,"Same Area Targeting.");
+class_menu_commands(ch,buf);
     }
 
     if (ch->spheres[MENT] > 0)
     {
-	stc("Entropy: ", ch);
-	if (ch->spheres[MENT] >= 2) stc("beginnersluck", ch);
-if (ch->spheres[MENT] >= 3) stc(", brittlebones", ch);
-	if (ch->spheres[MENT] >= 5) stc(", mutateephemera", ch);
-	stc(".\n\r", ch);
+strcpy(buf,"Entropy: ");
+if (ch->spheres[MENT] >= 2) strcat(buf,"beginnersluck");
+if (ch->spheres[MENT] >= 3) strcat(buf,", brittlebones");
+if (ch->spheres[MENT] >= 5) strcat(buf,", mutateephemera");
+strcat(buf,"."); class_menu_commands(ch,buf);
     }
 
     if (ch->spheres[MFOR] > 0)
     {
-        stc("Forces: ", ch);
-	if (ch->spheres[MFOR] >= 1) stc("nightsight", ch);
-        if (ch->spheres[MFOR] >= 2) stc(", electricalchaos", ch);
-        if (ch->spheres[MFOR] >= 3) stc(", friction", ch);
-        if (ch->spheres[MFOR] >= 5) stc(", inferno", ch);
-        stc(".\n\r", ch);
+        strcpy(buf,"Forces: ");
+if (ch->spheres[MFOR] >= 1) strcat(buf,"nightsight");
+        if (ch->spheres[MFOR] >= 2) strcat(buf,", electricalchaos");
+        if (ch->spheres[MFOR] >= 3) strcat(buf,", friction");
+        if (ch->spheres[MFOR] >= 5) strcat(buf,", inferno");
+        strcat(buf,"."); class_menu_commands(ch,buf);
     }
 
     if (ch->spheres[MLIF] > 0)
     {
-        stc("Life: ", ch);
-	if (ch->spheres[MLIF] >= 1) stc("readaura", ch);
-        if (ch->spheres[MLIF] >= 2) stc(", mageheal", ch);
-        if (ch->spheres[MLIF] >= 3) stc(", betterbody", ch);
-        if (ch->spheres[MLIF] >= 5) stc(", polymorphother", ch);
-        stc(".\n\r", ch);
+        strcpy(buf,"Life: ");
+if (ch->spheres[MLIF] >= 1) strcat(buf,"readaura");
+        if (ch->spheres[MLIF] >= 2) strcat(buf,", mageheal");
+        if (ch->spheres[MLIF] >= 3) strcat(buf,", betterbody");
+        if (ch->spheres[MLIF] >= 5) strcat(buf,", polymorphother");
+        strcat(buf,"."); class_menu_commands(ch,buf);
     }
 
     if (ch->spheres[MMAT] > 0)
     {
-        stc("Matter: ", ch);
-	if (ch->spheres[MMAT] >= 1) stc("analyze", ch);
-        if (ch->spheres[MMAT] >= 2) stc(", shatterwall", ch);
-        if (ch->spheres[MMAT] >= 3) stc(", sculpture", ch);
-        if (ch->spheres[MMAT] >= 5) stc(", alterweight", ch);
-        stc(".\n\r", ch);
+        strcpy(buf,"Matter: ");
+if (ch->spheres[MMAT] >= 1) strcat(buf,"analyze");
+        if (ch->spheres[MMAT] >= 2) strcat(buf,", shatterwall");
+        if (ch->spheres[MMAT] >= 3) strcat(buf,", sculpture");
+        if (ch->spheres[MMAT] >= 5) strcat(buf,", alterweight");
+        strcat(buf,"."); class_menu_commands(ch,buf);
     }
 
     if (ch->spheres[MMIN] > 0)
     {
-        stc("Mind: ", ch);
-        if (ch->spheres[MMIN] >= 1) stc("heighten", ch);
-        if (ch->spheres[MMIN] >= 2) stc(", scry", ch);
-        if (ch->spheres[MMIN] >= 3) stc(", shield", ch);
-        if (ch->spheres[MMIN] >= 5) stc(", mageinvis", ch);
-        stc(".\n\r", ch);
+        strcpy(buf,"Mind: ");
+        if (ch->spheres[MMIN] >= 1) strcat(buf,"heighten");
+        if (ch->spheres[MMIN] >= 2) strcat(buf,", scry");
+        if (ch->spheres[MMIN] >= 3) strcat(buf,", shield");
+        if (ch->spheres[MMIN] >= 5) strcat(buf,", mageinvis");
+        strcat(buf,"."); class_menu_commands(ch,buf);
     }
 
     if (ch->spheres[MPRI] > 0)
     {
-        stc("Prime: ", ch);
-	if (ch->spheres[MPRI] >= 1) stc("heartsblood", ch);
-        if (ch->spheres[MPRI] >= 2) stc(", holysmote", ch);
-        if (ch->spheres[MPRI] >= 3) stc(", mageenchant", ch);
-        if (ch->spheres[MPRI] >= 5) stc(", ward", ch);
-        stc(".\n\r", ch);
+        strcpy(buf,"Prime: ");
+if (ch->spheres[MPRI] >= 1) strcat(buf,"heartsblood");
+        if (ch->spheres[MPRI] >= 2) strcat(buf,", holysmote");
+        if (ch->spheres[MPRI] >= 3) strcat(buf,", mageenchant");
+        if (ch->spheres[MPRI] >= 5) strcat(buf,", ward");
+        strcat(buf,"."); class_menu_commands(ch,buf);
     }
 
     if (ch->spheres[MSPI] > 0)
     {
-        stc("Spirit: ", ch);
-	if (ch->spheres[MSPI] >= 1) stc("spiritsense", ch);
-        if (ch->spheres[MSPI] >= 2) stc(", spiritcaress", ch);
-        if (ch->spheres[MSPI] >= 3) stc(", stepsideways", ch);
-        if (ch->spheres[MSPI] >= 5) stc(", breakdreamshell", ch);
-        stc(".\n\r", ch);
+        strcpy(buf,"Spirit: ");
+if (ch->spheres[MSPI] >= 1) strcat(buf,"spiritsense");
+        if (ch->spheres[MSPI] >= 2) strcat(buf,", spiritcaress");
+        if (ch->spheres[MSPI] >= 3) strcat(buf,", stepsideways");
+        if (ch->spheres[MSPI] >= 5) strcat(buf,", breakdreamshell");
+        strcat(buf,"."); class_menu_commands(ch,buf);
     }
 
     if (ch->spheres[MTIM] > 0)
     {
-        stc("Time: ", ch);
-        if (ch->spheres[MTIM] >= 3) stc("contingency", ch);
-        if (ch->spheres[MTIM] >= 5) stc(", doublecast", ch);
-        stc(".\n\r", ch);
+        strcpy(buf,"Time: ");
+        if (ch->spheres[MTIM] >= 3) strcat(buf,"contingency");
+        if (ch->spheres[MTIM] >= 5) strcat(buf,", doublecast");
+        strcat(buf,"."); class_menu_commands(ch,buf);
     }
 
-stc("----------------------------------------------\n\r", ch);
+stc("Commands shown are rank-unlocked; other casting conditions still apply.\n\r",ch);
 
 }
 

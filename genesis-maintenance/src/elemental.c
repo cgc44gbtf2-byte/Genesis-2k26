@@ -31,6 +31,9 @@ void do_element( CHAR_DATA *ch, char *argument )
     char arg1[MIL];
     char arg2[MIL];
     char buf[MSL];
+    int menu_element;
+    static const char *names[]={"Fire","Water","Earth","Wind","Sun","Moon","Time","Infinity"};
+    static const int elements[]={ELEM_FIRE,ELEM_WATER,ELEM_EARTH,ELEM_WIND,ELEM_SUN,ELEM_MOON,ELEM_TIME,ELEM_INFIN};
 
     argument = one_argument(argument, arg1);
     argument = one_argument(argument, arg2);
@@ -43,15 +46,13 @@ void do_element( CHAR_DATA *ch, char *argument )
 
     if (arg1[0] == '\0')
     {
-	stc("                -=Elemental Skill Levels=-                     \n\r", ch);
-	sprintf(buf, "     Fire:          (%-2li)   |     Water:         (%-2li)\n\r", ch->pcdata->powers[ELEM_FIRE], ch->pcdata->powers[ELEM_WATER]);
-	stc(buf, ch);
-	sprintf(buf, "     Earth:         (%-2li)   |     Wind:          (%-2li)\n\r", ch->pcdata->powers[ELEM_EARTH], ch->pcdata->powers[ELEM_WIND]);
-	stc(buf, ch);
-	sprintf(buf, "     Sun:           (%-2li)   |     Moon:          (%-2li)\n\r", ch->pcdata->powers[ELEM_SUN], ch->pcdata->powers[ELEM_MOON]);
-	stc(buf, ch);
-	sprintf(buf, "     Time:          (%-2li)   |     Infinity:      (%-2li)\n\r\n\r", ch->pcdata->powers[ELEM_TIME], ch->pcdata->powers[ELEM_INFIN]);
-	stc(buf, ch);
+class_training_header(ch,"ELEMENTAL SKILL LEVELS");
+for(menu_element=0;menu_element<8;++menu_element) {
+    long menu_cap=ch->pcdata->powers[ELEM_CHOICE]==elements[menu_element] ? 10 : 8;
+    class_training_row(ch,names[menu_element],ch->pcdata->powers[elements[menu_element]],menu_cap,
+        class_training_cost(ch->pcdata->powers[elements[menu_element]],menu_cap,10,FALSE),
+        "primal",ch->primal,ch->pcdata->powers[ELEM_CHOICE] ? "Focus active" : NULL);
+}
 
 	stc("Syntax: 'elemskill <element>' to see what skills are available. \n\r", ch);
 	stc("      : 'elemskill <element> improve' to increase your skill in an element.\n\r", ch);
@@ -62,6 +63,8 @@ void do_element( CHAR_DATA *ch, char *argument )
 
     if (arg2[0] == '\0')
     {
+stc("Rank  Power               Effect\n\r"
+    "----  ------------------  ---------------------------------------------------\n\r",ch);
 	if (!str_cmp(arg1, "fire"))
 	{
 	    stc("Fire - Element of Strength and Ferocity.\n\r\n\r", ch);

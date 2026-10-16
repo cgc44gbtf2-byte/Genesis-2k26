@@ -486,12 +486,26 @@ void do_prayer( CHAR_DATA *ch, char *argument )
 
     if (arg1[0] == '\0' || arg2[0] == '\0')
     {
+	class_menu_header(ch,"DROW PRAYER GRANTS","Power keyword","Favor cost (class points)");
 	stc("Syntax: prayer <person> <power>\n\r", ch);
-	stc("AcidBolt (5000), LlothsWeb (8000), Darkness (9500), FaerieFire (5000),\n\r", ch);
-	stc("SpiderBite (7500), Dual Wield (10000), Blindfight (5000), SummonSpider (8000),\n\r", ch);
-	stc("SpiderEyes (7500), Readaura (6000), Darkvision (5000), Heighten (20000).\n\r", ch);
-	stc("PoisonImmunity (5000), SkipDisc (5000), Attunement (1000),\n\r", ch);
-	stc("Speed (10000 per increase), Toughness (8000), Might (8000),\n\r", ch);
+	class_menu_row(ch,"acidbolt","5000");
+	class_menu_row(ch,"llothsweb","8000");
+	class_menu_row(ch,"darkness","9500");
+	class_menu_row(ch,"faeriefire","5000");
+	class_menu_row(ch,"spiderbite","7500");
+	class_menu_row(ch,"dualwield","10000");
+	class_menu_row(ch,"blindfight","5000");
+	class_menu_row(ch,"summonspider","8000");
+	class_menu_row(ch,"spidereyes","7500");
+	class_menu_row(ch,"readaura","6000");
+	class_menu_row(ch,"darkvision","5000");
+	class_menu_row(ch,"heighten","20000");
+	class_menu_row(ch,"poisonimmunity","5000");
+	class_menu_row(ch,"skipdisc","5000");
+	class_menu_row(ch,"attunement","1000");
+	class_menu_row(ch,"speed","10000 per increase; maximum 4 increases");
+	class_menu_row(ch,"toughness","8000");
+	class_menu_row(ch,"might","8000");
 	return;
     }
 
@@ -607,7 +621,7 @@ void do_skipdisc( CHAR_DATA *ch, char *argument )
 void do_drowupkeep( CHAR_DATA *ch, char *argument )
 {
     char buf[15];
-    int loop, counter = 0;
+    int loop;
 
     if (!IS_DROW(ch))
     {
@@ -615,7 +629,7 @@ void do_drowupkeep( CHAR_DATA *ch, char *argument )
 	return;
     }
 
-    stc("Drow Upkeep\n\r", ch);
+    class_menu_header(ch,"DROW UPKEEP","Granted power","Status");
     if (ch->pcdata->drow[DROW_POWERS] == 0 && ch->pcdata->drow[DROW_SPEED] == 0)
     {
 	stc("You have no drow abilities.\n\r", ch);
@@ -626,33 +640,29 @@ void do_drowupkeep( CHAR_DATA *ch, char *argument )
     {
 	if (!get_drow(ch, loop)) continue;
 
-	if (loop == DROW_ACID) stc("Acid bolt         ", ch);
-	else if (loop == DROW_WEB) stc("Lloth's web       ", ch);
-	else if (loop == DROW_DARK) stc("Globe of darkness ", ch);
-	else if (loop == DROW_FIRE) stc("Faerie fire       ", ch);
-	else if (loop == DROW_BITE) stc("Spider bite       ", ch);
-	else if (loop == DROW_DUALWIELD) stc("Dual Wield        ", ch);
-	else if (loop == DROW_BFIGHT) stc("Blind fighting    ", ch);
-	else if (loop == DROW_SPIDER) stc("Summon spider     ", ch);
-	else if (loop == DROW_EYES) stc("Spider eyes       ", ch);
-	else if (loop == DROW_READ) stc("Readaura          ", ch);
-	else if (loop == DROW_NIGHT) stc("Darkvision        ", ch);
-	else if (loop == DROW_SIGHT) stc("Heighten          ", ch);
-	else if (loop == DROW_PIMM) stc("Poison immunity   ", ch);
-	else if (loop == DROW_SKIP) stc("Skip disc         ", ch);
-	else if (loop == DROW_ATTUNE) stc("Attunement        ", ch);
-	else if (loop == DROW_MIGHT) stc("Might             ", ch);
-	else if (loop == DROW_TOUGH) stc("Toughness         ", ch);
-
-	counter++;
-	counter %= 4;
-	if (counter == 0) stc("\n\r", ch);
+	if (loop == DROW_ACID) class_menu_row(ch,"Acid bolt","Granted");
+	else if (loop == DROW_WEB) class_menu_row(ch,"Lloth's web","Granted");
+	else if (loop == DROW_DARK) class_menu_row(ch,"Globe of darkness","Granted");
+	else if (loop == DROW_FIRE) class_menu_row(ch,"Faerie fire","Granted");
+	else if (loop == DROW_BITE) class_menu_row(ch,"Spider bite","Granted");
+	else if (loop == DROW_DUALWIELD) class_menu_row(ch,"Dual Wield","Granted");
+	else if (loop == DROW_BFIGHT) class_menu_row(ch,"Blind fighting","Granted");
+	else if (loop == DROW_SPIDER) class_menu_row(ch,"Summon spider","Granted");
+	else if (loop == DROW_EYES) class_menu_row(ch,"Spider eyes","Granted");
+	else if (loop == DROW_READ) class_menu_row(ch,"Readaura","Granted");
+	else if (loop == DROW_NIGHT) class_menu_row(ch,"Darkvision","Granted");
+	else if (loop == DROW_SIGHT) class_menu_row(ch,"Heighten","Granted");
+	else if (loop == DROW_PIMM) class_menu_row(ch,"Poison immunity","Granted");
+	else if (loop == DROW_SKIP) class_menu_row(ch,"Skip disc","Granted");
+	else if (loop == DROW_ATTUNE) class_menu_row(ch,"Attunement","Granted");
+	else if (loop == DROW_MIGHT) class_menu_row(ch,"Might","Granted");
+	else if (loop == DROW_TOUGH) class_menu_row(ch,"Toughness","Granted");
     }
 
     if (ch->pcdata->drow[DROW_SPEED] > 0)
     {
-    format_buffer(buf, sizeof(buf), "Speed %li%s", ch->pcdata->drow[DROW_SPEED], counter == 3 ? "" : "\n\r");
-	stc(buf, ch);
+    format_buffer(buf, sizeof(buf), "%li / 4", ch->pcdata->drow[DROW_SPEED]);
+	class_menu_row(ch,"Speed",buf);
     }
 
     return;

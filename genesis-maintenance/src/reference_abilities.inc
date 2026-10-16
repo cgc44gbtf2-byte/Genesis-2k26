@@ -212,20 +212,27 @@ static void reference_menu(CHAR_DATA *ch)
 {
     const REFERENCE_POWER *p;
     char buf[256];
+    const char *systems[] = {"Face", "Limbs", "Body", "Demolition"};
     int kind = reference_class(ch);
     if (kind == 4) {
-        CYBORG_SYSTEMS *s = &ch->pcdata->cybernetics;
-        snprintf(buf, sizeof(buf), "Reference systems: face %ld/5, limbs %ld/5, body %ld/6; demolitions %ld/12; bionics %ld; bombs %ld/20 (%s).\n\r",
-            s->face, s->limbs, s->body, s->demolition, s->bionic, s->bombs,
-            s->armed ? "armed" : "safe");
-        stc(buf, ch);
-        stc("bionics <XP amount>; face_implants/limb_implants/body_implants improve;\n\r"
-            "demolitions improve/show. Reference abilities:\n\r", ch);
-    }
+        stc("\n\rCYBORG | System powers and passives\n\r"
+            "Power                 System      Rank   Mana Nanites  Mastery\n\r"
+            "--------------------  ----------  ----  ----- -------  -------\n\r", ch);
+    } else
+        stc("\n\rReference power        Rank     Mana  Mastery\n\r"
+            "--------------------  ----  -------  -------\n\r", ch);
     for (p = reference_powers; p->key != NULL; ++p)
         if (p->classes & kind) {
-            snprintf(buf, sizeof(buf), "%-20s tier %d; mana %ld, nanites %ld\n\r",
-                p->key, p->rank, p->mana, p->nano);
+            if (kind == 4) {
+                if (p->kind <= REF_BIONICS) continue;
+                snprintf(buf, sizeof(buf), "%-20s  %-10s  %4d  %5ld %7ld  %s\n\r",
+                    p->key, systems[p->system], p->rank, p->mana, p->nano,
+                    cyborg_system_rank(ch, p->system) < p->rank ? "Locked"
+                        : p->kind == REF_PASSIVE ? "Passive" : "Known");
+            } else
+                snprintf(buf, sizeof(buf), "%-20s  %4d  %7ld  %s\n\r",
+                    p->key, p->rank, p->mana,
+                    parent_rank(ch) >= p->rank || reference_granted(ch, p->key) ? "Known" : "Locked");
             stc(buf, ch);
         }
     legacy_menu(ch);

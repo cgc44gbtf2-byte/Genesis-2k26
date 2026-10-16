@@ -33,6 +33,9 @@ void do_monklearn( CHAR_DATA *ch, char *argument )
     char arg2[MIL];
     char buf[MIL];
     long improve, cost;
+    int menu_track;
+    static const char *names[]={"Mantras","Arts","Techs"};
+    static const int tracks[]={MONK_MANTRA,MONK_ART,MONK_TECH};
 
     argument = one_argument(argument, arg1);
     argument = one_argument(argument, arg2);
@@ -45,9 +48,11 @@ void do_monklearn( CHAR_DATA *ch, char *argument )
 
     if (arg1[0] == '\0')
     {
-	sprintf(buf, "Monk Skills: Mantras(%li), Arts(%li), Techs(%li).\n\r",
-	 get_monk(ch, MONK_MANTRA), get_monk(ch, MONK_ART), get_monk(ch, MONK_TECH));
-	stc(buf, ch);
+class_training_header(ch,"MONK SKILLS");
+for(menu_track=0;menu_track<3;++menu_track)
+    class_training_row(ch,names[menu_track],get_monk(ch,tracks[menu_track]),8,
+        class_training_cost(get_monk(ch,tracks[menu_track]),8,10,FALSE),
+        "primal",ch->primal,NULL);
 	stc("Syntax: Display: Monklearn <mantra/art/tech>.\n\r", ch);
 	stc("        Improve: Monklearn <mantra/art/tech> gain.\n\r", ch);
 	return;
@@ -57,6 +62,8 @@ void do_monklearn( CHAR_DATA *ch, char *argument )
     {
 	if (arg2[0] == '\0')
 	{
+    stc("Rank  Power               Effect / command\n\r"
+        "----  ------------------  ---------------------------------------------------\n\r",ch);
 	    stc("Mantras - A myriad of non-combat abilities.\n\r",ch);
 	    if (get_monk(ch, MONK_MANTRA) < 1) stc("You have no Mantras.\n\r", ch);
 	    if (get_monk(ch, MONK_MANTRA) >= 1) stc("1: Eyes of God      - Increases awareness. (heighten)\n\r", ch);
@@ -81,6 +88,8 @@ void do_monklearn( CHAR_DATA *ch, char *argument )
     {
 	if (arg2[0] == '\0')
 	{
+    stc("Rank  Power               Effect / command\n\r"
+        "----  ------------------  ---------------------------------------------------\n\r",ch);
 	    stc("Techs - Fighting techniques and powers.\n\r", ch);
 	    if (get_monk(ch, MONK_TECH) < 1) stc("You have no Techs.\n\r", ch);
 	    if (get_monk(ch, MONK_TECH) >= 1) stc("1: Repeating Fist - Multihit technique. (repeat)\n\r", ch);
@@ -105,6 +114,8 @@ void do_monklearn( CHAR_DATA *ch, char *argument )
     {
 	if (arg2[0] == '\0')
 	{
+    stc("Rank  Power               Effect / command\n\r"
+        "----  ------------------  ---------------------------------------------------\n\r",ch);
 	    stc("Arts - Combat abilities and styles.\n\r", ch);
 	    if (get_monk(ch, MONK_ART) < 1) stc("You have no Arts.\n\r", ch);
 	    if (get_monk(ch, MONK_ART) >= 1) stc("1: Focus of Mind    - Boosts damage. (auto)\n\r", ch);
