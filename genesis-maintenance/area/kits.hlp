@@ -435,6 +435,47 @@ not stack; expiry/removal restores the old values.
 The spell name is darkblessing; normal spell or item requirements apply.
 ~
 
+5 PSET PSETCURRENCIES STAFFCURRENCIES~
+STAFF PSET | absolute player balances
+
+Syntax: pset <player> currencies
+        pset <player> <currency> <whole nonnegative amount>
+Examples: pset Player classpoints 50000
+          pset Player exp 5000000
+          pset Player bionics 100000
+
+Field             Meaning / common aliases
+----------------  -------------------------------------------------------
+exp               Experience; xp, experience
+primal            Primal; primalpoints
+gold              Gold; coins, money
+classpoints       Spendable class points; cps, cp, dp, favor, favour
+classpointstotal   Lifetime class-point field; cptotal, cp_total
+questpoints       Quest points; quest, qp
+mana / hit        Current mana or positive HP; hp, health
+blood / willpower Current pool; will aliases willpower
+ki / quintessence Ninja ki / Mage BODY quintessence; quint
+nanites / bionics Cyborg resources; bionic
+souls             Demon soul power; soulpower
+energy            Moogle/Deathknight/Gargoyle/Kuei-jin/Wraith pool
+humanity          Free Cyborg implant budget; freehumanity
+humanitycap       Total Cyborg implant budget; humanitycapacity
+bombs             Cyborg inventory; disarm before setting armed bombs to 0
+
+Use currencies (or wallet) for exact current limits. Energy aliases are
+pomenergy/pom, soulenergy, stoneenergy, chi and pathos, for their own class.
+Positive nanites need an installed battery to survive login.
+Humanity edits preserve installed spending; total budget may not exceed 1000.
+Current and lifetime class points are independent. No mastery is granted.
+Whole amounts only: no signs, fractions, overflow or trailing arguments.
+Wrong-class or invalid-state edits fail without changes. This sets a balance,
+not an addition. Training costs and existing stat/stance fields are unchanged.
+
+Immortals only. NPCs and switched sessions are rejected. Another player of
+equal/higher trust cannot be edited. Changes are logged and use normal
+save/autosave rules; pset does not immediately force a disk save.
+~
+
 0 $~
 
 #$

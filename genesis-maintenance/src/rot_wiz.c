@@ -44,6 +44,14 @@ void do_pset( CHAR_DATA *ch, char *argument )
     char arg4[MIL];
     long value, value2;
 
+    if(!ch || IS_NPC(ch) || !ch->pcdata || !IS_IMM(ch)
+        || (ch->desc && ch->desc->original)) {
+        if(ch) stc("Only unswitched immortals may use pset.\n\r",ch);
+        return;
+    }
+    if(!argument || strlen(argument)>=MIL) {
+        stc("Pset input is missing or too long.\n\r",ch); return;
+    }
     smash_tilde( argument );
     argument = one_argument( argument, arg1 );
     argument = one_argument( argument, arg2 );
@@ -55,6 +63,10 @@ void do_pset( CHAR_DATA *ch, char *argument )
 	stc("Syntax: pset <victim> <area> <value1> <value2>\n\r", ch);
 	stc("Area being one of:\n\r", ch);
 	stc("  quest stat beast cps status rank gen stance class honor\n\r", ch);
+        stc("  currencies | exp/xp primal gold classpoints questpoints\n\r"
+            "  mana hit blood willpower ki quintessence nanites bionics souls\n\r"
+            "  energy humanity humanitycap bombs classpointstotal\n\r"
+            "Example: pset Player exp 5000000 | pset Player currencies\n\r",ch);
 	return;
     }
 
@@ -64,17 +76,22 @@ void do_pset( CHAR_DATA *ch, char *argument )
 	return;
     }
 
-    if (IS_NPC(victim))
+    if (IS_NPC(victim) || !victim->pcdata)
     {
 	stc("You may not set NPCs.\n\r",ch);
 	return;
     }
+    if(victim!=ch && get_trust(victim)>=get_trust(ch)) {
+        stc("You cannot pset another player of equal or higher trust.\n\r",ch);
+        return;
+    }
+    if(pset_currency_command(ch,victim,arg2,arg3,arg4[0] || argument[0])) return;
 
     /*
      * Snarf the value (which need not be numeric).
      */
-    value = is_number( arg3 ) ? atoi( arg3 ) : -1;
-    value2 = is_number( arg4 ) ? atoi( arg4 ) : -1;
+    if(!pset_parse_amount(arg3,&value)) value=-1;
+    if(!pset_parse_amount(arg4,&value2)) value2=-1;
 
     /*
      * Set something.
@@ -234,16 +251,6 @@ void do_pset( CHAR_DATA *ch, char *argument )
 
 	victim->beast = value;
     }
-    else if ( !str_cmp( arg2, "cps" ) )
-    {
-        if ( value < 0 || value > 10000000 ) 
-        {
-            send_to_char( "CP range is 0 to 10000000.\n\r", ch );
-            return;
-        }
-            
-	victim->pcdata->classpoints[CP_CURRENT] = value;  
-    }
     else if ( !str_cmp( arg2, "rank" ) )
     {
 	if ( value < 1 || value > 6 )
@@ -270,15 +277,6 @@ void do_pset( CHAR_DATA *ch, char *argument )
             return;
         }
 	victim->status = value;
-    }
-    else if ( !str_cmp( arg2, "quest" ) )
-    {
-	if ( value < 0 || value > 1000000 )
-	{
-	    send_to_char( "Quest range is 0 to 1000000.\n\r", ch );
-	    return;
-	}
-	victim->pcdata->quest = value;
     }
     else if ( !str_cmp( arg2, "stance"))
     {

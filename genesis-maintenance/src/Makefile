@@ -5,7 +5,7 @@ CFLAGS   += -std=gnu89 -Wall -Wno-builtin-declaration-mismatch
 LDLIBS   ?= -lcrypt
 
 OBJECTS = act_comm.o act_info.o act_move.o act_obj.o act_wiz.o bit.o board.o \
-	clan.o clearclass.o comm.o const.o core.o db.o disc.o dragon.o \
+clan.o clearclass.o comm.o network.o pset_currency.o const.o core.o db.o disc.o dragon.o \
 	drow.o elemental.o fight.o flag.o handler.o highland.o interp.o \
 	kav_info.o kav_wiz.o mage.o magic.o memwatch.o monk.o more.o ninja.o \
 	olc.o random.o rename.o rot_wiz.o save.o signals.o sorcerer.o \
@@ -27,6 +27,7 @@ parents.o: parents.h parent_powers.def hybrid_roster.def lineage_registry.def li
 crafted.o: crafted_powers.def lineages.inc lineage_powers.def
 hybrid.o: parents.h
 newclasses.o: reference_abilities.inc reference_legacy.inc parents.h
+comm.o network.o: network.h
 sorcerer.o: sorcerer_starter.inc
 cyborg_core.o: cyborg_core.h cyborg_components.def
 

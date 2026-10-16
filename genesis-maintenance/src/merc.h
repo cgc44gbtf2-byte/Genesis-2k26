@@ -3211,6 +3211,9 @@ void class_menu_commands(CHAR_DATA *ch, const char *text);
 void class_menu_skill_line(CHAR_DATA *ch, const char *text);
 long class_training_cost(long rank, long cap, long base, bool squared);
 void class_training_header(CHAR_DATA *ch, const char *title);
+bool pset_parse_amount(const char *text, long *value);
+bool pset_currency_command(CHAR_DATA *ch, CHAR_DATA *victim, const char *field,
+                           const char *amount, bool extra);
 void class_training_row(CHAR_DATA *ch, const char *name, long rank, long cap,
                         long cost, const char *currency, long funds,
                         const char *blocked);

@@ -57,6 +57,7 @@
 #include <malloc.h>
 
 #include "merc.h"
+#include "network.h"
 
 
 /*
@@ -519,60 +520,17 @@ int main( int argc, char **argv )
 #if defined(unix)
 int init_socket( int port )
 {
-    static struct sockaddr_in sa_zero;
-    struct sockaddr_in sa;
-    long x;
-    long fd;
-
-    if ( ( fd = socket( AF_INET, SOCK_STREAM, 0 ) ) < 0 )
-    {
-	perror( "Init_socket: socket" );
-	exit( 1 );
+    struct sockaddr_storage address;
+    socklen_t length=sizeof(address);
+    int fd=genesis_listen_socket(port);
+    if(fd<0) {
+        perror("Init_socket: IPv6/IPv4 listener");
+        exit(1);
     }
-
-    if ( setsockopt( fd, SOL_SOCKET, SO_REUSEADDR,
-    (char *) &x, sizeof(x) ) < 0 )
-    {
-	perror( "Init_socket: SO_REUSEADDR" );
-	close( fd );
-	exit( 1 );
-    }
-
-#if defined(SO_DONTLINGER) && !defined(SYSV)
-    {
-	struct	linger	ld;
-
-	ld.l_onoff  = 1;
-	ld.l_linger = 1000;
-
-	if ( setsockopt( fd, SOL_SOCKET, SO_DONTLINGER,
-	(char *) &ld, sizeof(ld) ) < 0 )
-	{
-	    perror( "Init_socket: SO_DONTLINGER" );
-	    close( fd );
-	    exit( 1 );
-	}
-    }
-#endif
-
-    sa		    = sa_zero;
-    sa.sin_family   = AF_INET;
-    sa.sin_port	    = htons( port );
-
-    if ( bind( fd, (struct sockaddr *) &sa, sizeof(sa) ) < 0 )
-    {
-	perror( "Init_socket: bind" );
-	close( fd );
-	exit( 1 );
-    }
-
-    if ( listen( fd, 3 ) < 0 )
-    {
-	perror( "Init_socket: listen" );
-	close( fd );
-	exit( 1 );
-    }
-
+    if(getsockname(fd,(struct sockaddr *)&address,&length)==0)
+        log_string(address.ss_family==AF_INET6
+            ? "Listening on IPv6 and IPv4."
+            : "IPv6 unavailable; listening on IPv4 only.");
     return fd;
 }
 #endif
@@ -1003,16 +961,12 @@ void new_descriptor( int control )
 {
     static DESCRIPTOR_DATA d_zero;
     char buf[MAX_STRING_LENGTH];
+    char hostname[MAX_STRING_LENGTH];
     DESCRIPTOR_DATA *dnew;
     BAN_DATA *pban;
-    struct sockaddr_in sock;
-    struct hostent *from;
     long desc;
-    long size;
 
-    size = sizeof(sock);
-    getsockname( control, (struct sockaddr *) &sock, (socklen_t *) &size );
-    if ( ( desc = accept( control, (struct sockaddr *) &sock, (socklen_t *) &size) ) < 0 )
+    if ( ( desc = accept( control, NULL, NULL ) ) < 0 )
     {
 	perror( "New_descriptor: accept" );
 	return;
@@ -1025,7 +979,13 @@ void new_descriptor( int control )
     if ( fcntl( desc, F_SETFL, FNDELAY ) == -1 )
     {
 	perror( "New_descriptor: fcntl: FNDELAY" );
+        close(desc);
 	return;
+    }
+    if(genesis_peer_names(desc,buf,sizeof(buf),hostname,sizeof(hostname))<0) {
+        perror("New_descriptor: peer address");
+        close(desc);
+        return;
     }
 
     /*
@@ -1050,29 +1010,7 @@ void new_descriptor( int control )
     dnew->pString	= NULL;	/* OLC */
     dnew->outbuf	= alloc_mem( dnew->outsize );
 
-    size = sizeof(sock);
-    if ( getpeername( desc, (struct sockaddr *) &sock, (socklen_t *)&size ) < 0 )
-    {
-	perror( "New_descriptor: getpeername" );
-	dnew->host = str_dup( "(unknown)" );
-    }
-    else
-    {
-	/*
-	 * Would be nice to use inet_ntoa here but it takes a struct arg,
-	 * which ain't very compatible between gcc and system libraries.
-	 */
-	long addr;
-
-	addr = ntohl( sock.sin_addr.s_addr );	
-       sprintf( buf, "%li.%li.%li.%li",
-	    ( addr >> 24 ) & 0xFF, ( addr >> 16 ) & 0xFF,
-	    ( addr >>  8 ) & 0xFF, ( addr       ) & 0xFF
-	    );
-	from = gethostbyaddr( (char *) &sock.sin_addr,
-	    sizeof(sock.sin_addr), AF_INET );
-	dnew->host = str_dup( from ? from->h_name : buf );
-    }
+    dnew->host=str_dup(hostname);
 
     sprintf( log_buf, "Sock.sinaddr:  %s", buf );
     log_string( log_buf );
@@ -1087,7 +1025,8 @@ void new_descriptor( int control )
      */
     for ( pban = ban_list; pban != NULL; pban = pban->next )
     {
-	if ( !str_suffix( pban->name, dnew->host ) || !str_prefix(pban->name, dnew->host) )
+if ( !str_suffix( pban->name, dnew->host ) || !str_prefix(pban->name, dnew->host)
+    || !str_suffix(pban->name,buf) || !str_prefix(pban->name,buf) )
 	{
 	    write_to_descriptor( desc,
 		"Your site has been banned from this Mud.\n\r", 0 );
