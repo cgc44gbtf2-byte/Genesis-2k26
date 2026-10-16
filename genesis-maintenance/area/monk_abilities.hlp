@@ -1,0 +1,96 @@
+#HELPS
+
+0 REPEAT AURASHOT CRIPPLE STUNFIST MONKATTACKS~
+Syntax: repeat|aurashot|cripple|stunfist <target>
+Monk Techs required: Repeat 1, Aura Shot 2, Cripple 5, Stun Fist 7.
+REPEAT checks for at least 1200 mana, then spends 600 per repeated hit
+while sufficient mana remains. It is not an unlimited free attack.
+AURASHOT costs 2000 mana and performs its native life-stealing strike.
+CRIPPLE costs 2000 mana and burns the target's mana, bounded at zero.
+STUNFIST costs 5000 mana for the native damaging interruption.
+These retain native target, safety and resistance checks.
+Use the full command AURASHOT or STUNFIST, not ambiguous old labels.
+~
+
+0 BLITZ DARKBLAZE MONKAREAATTACKS~
+Monk Techs: BLITZ requires 3 and 5000 mana.
+It performs the native room-area attack against eligible targets.
+DARKBLAZE <target> requires 6 and 2000 mana and attempts native
+blindness/disruption on the selected target.
+Native combat, safety and resistance rules still apply.
+~
+
+0 INVITE MONKPOSSESSION~
+Syntax: invite <creature>
+Requires Monk Techs 4. Attempts the native weak-creature possession.
+The eligible creature's level is limited by your combined Tech, Art
+and Mantra ratings; this is not unrestricted player or staff control.
+Use the normal RETURN command to leave a successfully borrowed body.
+~
+
+0 CHIMERA MONKFORM~
+Syntax: chimera
+Requires Monk Techs 8. Toggles the native Chimera combat form.
+It uses the existing polymorph/form system and is not an additional
+standalone parent class or a permanent base-stat increase.
+Related: MONKLEARN, WWUPKEEP, UPKEEP.
+~
+
+0 TOUCH MONKHEALING~
+Syntax: touch [target]
+Requires Monk Mantra 4 and a reserve of at least 5000 mana.
+With no target, heals the caster; otherwise targets a creature here.
+Healing scales with Mantra and is capped at maximum health. The
+actual mana cost uses the native healing-cost calculation, checked
+before payment; the 5000-mana reserve is not a guaranteed flat fee.
+~
+
+0 ALMIGHTY MONKBLESSING~
+Syntax: almighty <target>
+        almighty group
+Requires Monk Mantra 5. The single-target blessing costs 5000 mana;
+the group variant costs 20000 mana.
+It applies the native blessing to eligible targets, with the existing
+duplicate/protection checks. It does not permanently change base stats.
+~
+
+0 CELESTIAL MONKTRAVEL~
+Syntax: celestial <target>
+Requires Monk Mantra 7. The native successful journey costs 1500 mana.
+The target must be elsewhere and eligible for Celestial Path; players
+must permit summoning. Private/solitary/no-teleport locations cannot be
+used to bypass room protection. Both rooms must permit travel; combat,
+restraint, roots/curses/webs and incompatible planes block the journey.
+Insufficient mana fails without moving you or creating negative mana.
+This command relocates the caster, not the selected target.
+~
+
+0 LIFECLOAK MONKDEATHWARD~
+Syntax: lifecloak
+Requires Monk Mantra 8 and completely full health and mana.
+Activating the native life-cloak ward reduces current health to 80%
+and spends all current mana. It uses the engine's MORE_CLOAK death
+protection; it is not general immunity to administrative commands.
+The ward cannot be freely stacked or activated while already injured.
+~
+
+0 MCLAN DECIDE EXPEL MONKCLANS~
+MCLAN lists online members of your Monk clan with current resources.
+DECIDE <target> inducts an unclanned Monk here; the caster must meet
+the legacy generation gate of 3 or lower. The new member receives
+generation 4 and the caster's clan, and both records are saved.
+EXPEL <target> removes a Monk of the caster's clan; generation 2 or
+lower is required. This is not the future ClassLeader permission model.
+These commands do not enroll a character into a hybrid.
+~
+
+0 MONKARMOR MONKEQUIPMENT~
+Syntax: monkarmor <necklace|habit|belt|tiger|dragon>
+Creates eligible native Monk class equipment for 400 quest points
+and 100 primal per item. The native object template must exist.
+An equipment purchase is not pure-class ascension or hybrid conversion.
+Related: MONK, MONKLEARN.
+~
+
+0 $~
+#$

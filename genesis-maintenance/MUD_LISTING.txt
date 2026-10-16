@@ -1,0 +1,60 @@
+GENESIS REFORGED
+Choose your class. Master its powers.
+
+LISTING DETAILS
+
+Mud Address: 159.223.164.151 4000
+Web Address: [OFFICIAL WEBSITE, if available]
+Codebase: Genesis / GodWars-derived, modified
+Genre: Fantasy / Supernatural
+Primary Language: English
+ANSI Color: Yes
+Player Killing: [CONFIRM SERVER POLICY]
+Roleplaying: [CONFIRM SERVER POLICY]
+Server Status: [CONFIRM LIVE OR TESTING]
+
+DESCRIPTION
+
+Genesis Reforged is a class-driven, GodWars-derived MUD for players who
+enjoy supernatural powers, distinct combat styles and character development.
+Vampire disciplines, Werewolf gifts, martial arts, arcane magic and cybernetic
+components offer different approaches to building a character.
+
+The current build includes 19 standalone classes:
+
+Angel, Cyborg, Deathknight, Demon, Dragon, Drow, Elemental, Gargoyle,
+Highlander, Kuei-jin, Mage, Monk, Moogle, Ninja, Phoenix, Sorcerer,
+Vampire, Werewolf and Wraith.
+
+Magic has more than one path. Mages develop their spheres, while Sorcerer
+book mages write, bind and chant spells. Sorcerers have starter-grimoire
+support with introductory spells and instructions for making more.
+The Chaos book-mage variant adds changing page colors while preserving
+the page's spell role.
+
+Werewolves develop breed, auspice and tribe gifts. Vampires explore
+disciplines and supernatural forms. Monks use arts, techniques and mantras;
+Ninjas develop their principles. Cyborgs bring a component-based kit to
+a roster that also includes Angels, Demons, Dragons and Phoenixes.
+
+Class-specific powers, armor and weapons, fighting stances, and expanded
+in-game class and ability help support those different play styles.
+Maintenance work includes targeted repairs to legacy spell effects,
+ability costs, travel restrictions and character-state handling.
+
+DEVELOPMENT NOTE
+
+The current build focuses on standalone class play. A roster of 171 named
+two-class hybrids exists as a read-only preview. Hybrid conversion,
+combined ability inheritance and pure-class ascension are not active
+features and should not be listed as available gameplay yet.
+
+Connect: 159.223.164.151 4000
+
+POSTING CHECKLIST — REMOVE THIS SECTION BEFORE PUBLISHING
+
+- Verify the supplied address and port are accepting player connections.
+- Add the official website, or remove that field.
+- Confirm the PK, roleplaying and live/testing status fields.
+- Do not copy another MUD's population, founding date, uptime, policies,
+  pricing, client protocols or features into this listing without checking.

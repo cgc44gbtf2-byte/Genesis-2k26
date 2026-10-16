@@ -1,0 +1,299 @@
+#HELPS
+
+0 FANGS CLAWS NATURALWEAPONS~
+Syntax: fangs
+        claws
+Toggles the eligible character's native natural-weapon flags.
+Vampire claws require Protean 2; Werewolf claws follow native form
+and gift rules. These are not free permanent weapon-skill increases.
+Use UPKEEP to inspect the resulting state and your class help for
+special claw passives or attacks.
+~
+
+0 NIGHTSIGHT DARKVISION HEIGHTEN UMBRALVISION SHAREDSIGHT~
+Shared sight commands keep their class-specific prerequisites:
+  NIGHTSIGHT or DARKVISION: toggles native darkvision.
+  HEIGHTEN: toggles enhanced sight/detection.
+  UMBRALVISION: toggles shadow sight; it does not move you into Umbra.
+Vampire examples are Protean 1 for Nightsight and Auspex 1 for Heighten.
+Werewolf examples are Metis 3 for Nightsight and Lupus 1 for Heighten.
+Drow and other supported classes retain their own learned-power gates.
+Sight powers are not staff HOLYLIGHT permissions or class conversion.
+~
+
+0 SCRY READAURA LIFESCAN REMOTEKNOWLEDGE~
+Syntax: scry <target>
+        readaura <target>
+LIFESCAN is an alias for READAURA, not a separate alignment spell.
+SCRY examines an eligible distant location; READAURA examines a
+creature's native aura/stat information, subject to wards and concealment.
+Vampires need Auspex 3 for Scry and 2 for Read Aura. Werewolves use
+Lupus 2 for Scry or Glass Walkers 2 for Read Aura; Monks use Mantra 2.
+Drow and other supported classes retain their own learned-power gates.
+Soul Mask can falsify aura presentation; this does not alter real stats.
+~
+
+0 AWE MAJESTY VAMPIREPRESENCE~
+Vampire Presence toggles:
+  1 AWE: native awe/charisma state.
+  5 MAJESTY: native peace/majesty state with its normal combat checks.
+Werewolf Homid persuasion uses PERSUASION, not a free Presence grant.
+These powers do not train Presence or permanently modify base stats.
+Related: DREADGAZE, ENTRANCEMENT, SUMMONING, ENRAGE, UPKEEP.
+~
+
+0 DREADGAZE ENTRANCEMENT SUMMONING PRESENCEACTIONS~
+Vampire Presence actions:
+  2 DREADGAZE <target>: attempts the native fear/disruption effect.
+  3 ENTRANCEMENT <target>: attempts native fascination/charm.
+  4 SUMMONING <target>: calls an eligible creature to the caster.
+These retain their distinct target, consent, resistance and protection
+checks. SUMMONING moves the target; it is not the caster's own travel.
+Other parents' similarly named powers retain their own class interfaces.
+~
+
+0 MASK TRUEDISGUISE VAMPIREDISGUISES~
+Syntax: mask <target>
+        truedisguise <target>
+Vampire MASK requires Obfuscate 2; TRUEDISGUISE requires Chimerstry 6.
+They use the native disguise/form mechanisms and their own eligible
+targets. Reusing an active disguise follows the native removal path.
+Disguises do not rename your account or grant the target's staff role.
+Do not confuse them with cloning objects or enrolling in another class.
+~
+
+0 CHANGE SERPENT VAMPIRESHAPES~
+Syntax: change <bat|wolf|mist|human>
+        serpent
+CHANGE requires Vampire Protean 4; SERPENT requires Serpentis 4.
+These use the native polymorph system. Mist requires its additional
+native Protean gate and uses the ethereal/mist state; HUMAN removes
+the CHANGE forms through their native cleanup.
+SERPENT toggles its own form. Conflicting forms retain their checks.
+These shapes do not grant another standalone parent's complete kit.
+~
+
+0 SOULMASK FALSEAURA~
+Syntax: soulmask
+        soulmask <on|off>
+        soulmask <skill|stance|hit|dam|ac|hp|max_hp> <value>
+Requires Vampire Obfuscate 5. With no argument, displays the current
+mask values and configurable fields.
+The mask changes the native aura/stat presentation seen by others.
+It does not change real maximum health, armor, damage or learned ranks.
+Values must satisfy the native field validation.
+~
+
+0 VANISH OBFUSCATECONCEALMENT~
+Syntax: vanish
+        vanish all
+Requires Vampire Obfuscate 1 for the caster's concealment.
+The ALL variant requires Obfuscate 3 and uses native group concealment.
+This applies the native obfuscation flag, not staff invisibility.
+Combat/detection rules can expose you; it is not invulnerability.
+~
+
+0 EARTHMELD VAMPIREMELD~
+Syntax: earthmeld
+Requires Vampire Protean 3. Toggles the native earthmeld state,
+including its normal environmental/form restrictions.
+Protean 6 EARTHSHIFT requires this state before underground travel.
+Earthmelding is not automatic permission to bypass protected rooms.
+~
+
+0 UMBRA SHADOWPLANE~
+Syntax: umbra
+Attempts the character's native shadow-plane transition, subject to
+its existing entry restrictions.
+This changes plane state, unlike UMBRALVISION which changes sight only.
+Mage STEP SIDEWAYS and BREAK DREAMSHELL are separate sphere abilities.
+Related: UMBRALVISION, GRASP, REACH, STEP SIDEWAYS.
+~
+
+0 DEFENCES DEFENSECONSENT~
+Syntax: defences
+Toggles the native raised/lowered-defences consent state.
+Lowering defences permits certain feeding, teaching, embrace or clan
+interactions when their other requirements are met.
+This flag is not an armor trainer, an invulnerability toggle or a
+permanent increase to combat stats. Raise it again when finished.
+~
+
+0 REGENERATE FEED VAMPIRERECOVERY~
+Syntax: regenerate
+        feed <target>
+REGENERATE invokes the native recovery/regrowth routine with its
+existing injury and resource checks.
+The legacy Vampire FEED action draws blood from an eligible target.
+Player targets retain native consent/defence requirements.
+Neither command creates a new permanent parent class or automatically
+maximizes your stats. Other parents' recovery powers use their own menus.
+~
+
+0 FLEX ESCAPEBONDS~
+Syntax: flex
+Attempts to break native physical bindings, webs or shadow tendrils
+when their individual checks permit it, and applies an action delay.
+It is not a universal dispel of every magical root or scripted prison.
+Travel still checks any restraints or effects that remain afterward.
+~
+
+0 RAGE CALM WOLFRAGE~
+Syntax: rage
+        calm
+Werewolf RAGE increases current rage and can trigger the native wolf
+transformation; it does not train permanent Rage.
+Werewolf CALM requires Children of Gaia 1 and reduces native rage.
+Ninja CALM ends active Michi through its own native path.
+Other classes do not gain those states merely by knowing the command.
+~
+
+0 UPKEEP POWERS~
+Syntax: upkeep
+        powers
+UPKEEP displays the native active powers and resource/upkeep state.
+POWERS displays unlocked command powers for its supported class route;
+it is not a trainer or an automatic grant of every ability.
+Werewolves use WWPOWERS/WWUPKEEP, Drow use DROWPOWERS/DROWUPKEEP,
+and Monks use MONKLEARN. New parents also supply their own class menus.
+Related: DISCIPLINE, ELEMSKILL, PRINCIPLE, MONKLEARN.
+~
+
+0 DISCIPLINE TEACHDISC VAMPIRETRAINING~
+Syntax: discipline
+        discipline <discipline name>
+        teachdisc <person> <discipline name>
+DISCIPLINE displays or trains the Vampire's learned discipline tracks.
+The native clan/non-clan caps, knowledge requirements and primal costs
+still apply. Knowing a command name does not train its discipline.
+TEACHDISC attempts to teach an eligible recipient using the existing
+teacher, recipient, consent and learning-cost checks.
+It is not a hybrid selector or a way to bypass staff permissions.
+~
+
+0 PIGEON BECKONING ANIMALCOMMANDS~
+Syntax: pigeon <player> <message>
+        beckoning <animal>
+Vampire PIGEON requires Animalism 1 and uses the native messenger.
+BECKONING requires Vampire Animalism 2 or Werewolf Lupus 4.
+Native choices include horse/stallion/mount, frog, raven, dog, cat,
+molerat and yak. Summoned creatures use native follower ownership.
+This is not unrestricted mobile creation or a player teleport command.
+~
+
+0 BEASTWITHIN SERENITY SONGSERENITY ANIMALINFLUENCE~
+Syntax: beastwithin <target>
+        serenity <target>
+SONGSERENITY is an alias for SERENITY.
+Vampire BEASTWITHIN requires Animalism 4 and attempts to provoke the
+target's native beast/rage response.
+Vampire SERENITY requires Animalism 3; Werewolf Children of Gaia 4
+also has its native Serenity route.
+These retain target eligibility, resistance and protective checks.
+~
+
+0 UNVEIL EMBRACE POSSESSION VAMPIREINTERACTIONS~
+Syntax: unveil <target>
+        embrace <target>
+        possession <target>
+Vampire UNVEIL requires Auspex 4 and attempts the native revealing
+interaction. EMBRACE uses native grapple/embrace conditions, including
+the applicable class, generation, defence and blood restrictions.
+POSSESSION uses Dominate and its own target/level/connection gates.
+These are distinct interactions, not permission to select any class
+or act as an administrator. Use RETURN after a successful body switch.
+~
+
+0 MIRRORIMAGE FORMILLUSION ILLUSIONARYFORM CLONEOBJECT ILLUSIONCREATION~
+Vampire Chimerstry commands:
+  1 MIRRORIMAGE: creates the native mirror-image illusion.
+  2 FORMILLUSION <target>: creates the native creature-form illusion.
+  3 CLONEOBJECT <object>: creates the native temporary object clone.
+ILLUSIONARYFORM is an alias for FORMILLUSION.
+Werewolf Fianna uses 3 for Form Illusion and 4 for Clone Object.
+Illusory objects use native vanishing/timer rules; they are not
+permanent duplicates of another player's artifact collection.
+~
+
+0 FALSEAPPEARANCE CONTROLILLUSION ILLUSIONEDITING~
+Syntax: falseappearance <object> rename <short description>
+        falseappearance <object> keyword <extra keywords>
+        controlillusion <illusion> <command>
+Vampire FALSEAPPEARANCE requires Chimerstry 4 and edits an eligible
+object's native presentation, not its underlying account permissions.
+CONTROLILLUSION requires Chimerstry 5 and directs an eligible illusion
+through its existing ownership and command checks.
+These do not enroll a new character or create arbitrary staff actors.
+~
+
+0 OMNIPOTENCE REMOTEEYE~
+Syntax: omnipotence <target>
+        omnipotence
+The legacy Vampire route requires Auspex 6 and uses the native remote
+eye/projection system. Other supported routes keep their own gates.
+This is a perception/control ability, not administrator access or
+unrestricted invulnerability. With an active eye, the no-argument
+variant dismisses it. Associated familiar commands retain
+their ownership and occupied-body checks.
+~
+
+0 THINBLOOD QUIETUSDEBUFF~
+Syntax: thinblood <target>
+Requires Vampire Quietus 6 and an eligible nearby target.
+Applies the native thin-blood debuff with its resource, resistance
+and duplicate checks. It does not permanently change account class.
+Related: LEECH, DISCIPLINE, UPKEEP.
+~
+
+0 OUTCAST FAVOUR CLANMEMBERSHIP~
+Syntax: outcast <target>
+        favour <target> <elder|induct|outcast>
+OUTCAST routes Ninja clan outcasting through its existing rank rules.
+Vampires and Werewolves use the appropriate FAVOUR membership route
+and its legacy class/clan/generation checks instead.
+These are not the future universal ClassLeader or hybrid permissions.
+Monks use DECIDE/EXPEL for their own legacy clan operations.
+~
+
+0 CLANNAME STAFFCLANNAME~
+Syntax: clanname <player> [new clan name]
+Staff-only clan-name editor, registered at LEV_IMM.
+Changes the selected player's clan string to at most 25 characters.
+Leaving the new name blank clears it. This is not a player clan
+creation command and does not grant class or staff permissions.
+~
+
+0 FAMILIAR STAFFFAMILIARBINDING~
+Syntax: familiar <creature>
+        familiar clear
+Staff-only helper, registered at LEV_IMP and checked again by the handler.
+Binds only the caller's own charmed, unclaimed NPC follower here.
+Players and occupied/switched NPC bodies cannot be bound.
+CLEAR releases the familiar link, not the underlying follower itself.
+This does not spawn an NPC or add a new power to ordinary player kits.
+~
+
+0 [ FAMILIARCONTROL~
+Syntax: [ <command>
+Directs the character's associated, owned, unoccupied NPC familiar.
+The native forbidden-action and silence checks remain in force.
+An NPC currently occupied/switched by a live connection cannot be
+commanded through this interface. It does not borrow that user's trust.
+Normal NPC command permissions apply; this is not staff FORCE.
+~
+
+0 AUTOCLASS CLASSENROLLMENT~
+Syntax: autoclass
+        autoclass <class> [clan/tradition/color]
+Displays choices or enrolls a qualified unclassed character through
+the native class-selection rules. Vampire clan, Mage tradition and
+Dragon color have their existing additional selection rules.
+The legacy Elemental selector is named ELEMENTALIST.
+SORCERER CHAOS, CHAOSMAGE and CHAOSBOOKMAGE select the Chaos book variant.
+New parents use their own documented names. This command is not
+remort/respec, hybrid activation or pure-class ascension.
+Related: CLASS, BOOKMAGIC, HYBRIDROSTER.
+~
+
+0 $~
+#$

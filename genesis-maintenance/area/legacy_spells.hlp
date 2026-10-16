@@ -1,0 +1,402 @@
+#HELPS
+
+0 LEGACYSPELLS SPELLHELP~
+Native spell reference, separate from sphere Mage commands and book chanting.
+Syntax for an available spell: cast 'spell name' [target or arguments].
+Spell eligibility, learned skill, position, mana and target checks still apply.
+Many historical item/NPC spell rows require level 99 and are not directly
+castable by normal players. This help does not unlock or lower those rows.
+Potions, scrolls, wands and native NPC callbacks use their existing routes.
+Use HELP SPELL <name> for an unambiguous spell topic when a command shares
+its name. HELP INTERNALAFFECTS explains non-castable spell_null identities.
+Effects described here are source behavior, not certification of every
+possible target, item, saved-player or combat variant.
+~
+
+0 'ACID BLAST' 'SPELL ACID BLAST' 'BURNING HANDS' 'SPELL BURNING HANDS' 'CHILL TOUCH' 'SPELL CHILL TOUCH' 'COLOUR SPRAY' 'SPELL COLOUR SPRAY' FIREBALL 'SPELL FIREBALL' FLAMESTRIKE 'SPELL FLAMESTRIKE' HARM 'SPELL HARM' 'LIGHTNING BOLT' 'SPELL LIGHTNING BOLT' 'MAGIC MISSILE' 'SPELL MAGIC MISSILE' 'SHOCKING GRASP' 'SPELL SHOCKING GRASP' 'CHAOS BLAST' 'SPELL CHAOS BLAST'~
+Direct-damage spells: cast 'spell name' <target>.
+Acid Blast: acid damage. Burning Hands: fire damage, increased on vampires.
+Chill Touch: cold damage and a possible temporary Strength penalty.
+Colour Spray: colour-themed damage. Fireball: fire damage.
+Flamestrike: fire damage. Harm: harmful damage based on its native formula.
+Lightning Bolt and Shocking Grasp: electrical damage.
+Magic Missile: magical missile damage. Chaos Blast: chaotic damage.
+These use the native damage engine, not sphere-Mage quintessence payments.
+Damage formulas, saving throws, anti-magic and elemental immunities differ
+by spell; a successful invocation is not a guaranteed hit or fixed damage.
+See HELP LEGACYSPELLS for access restrictions.
+~
+
+0 'CAUSE LIGHT' 'SPELL CAUSE LIGHT' 'CAUSE SERIOUS' 'SPELL CAUSE SERIOUS' 'CAUSE CRITICAL' 'SPELL CAUSE CRITICAL'~
+Cause Light, Cause Serious and Cause Critical inflict native spell damage.
+Syntax: cast 'cause light|cause serious|cause critical' <target>
+Choose one complete spell name, not the literal list separated by bars.
+Each has its own damage formula; these are attacks, not healing spells.
+See HELP LEGACYSPELLS for access and target restrictions.
+~
+
+0 'CALL LIGHTNING' 'SPELL CALL LIGHTNING' EARTHQUAKE 'SPELL EARTHQUAKE' 'GAS BREATH' 'SPELL GAS BREATH'~
+Native room attacks: Call Lightning, Earthquake and Gas Breath.
+Call Lightning requires outdoors and bad weather. Earthquake spares flying
+targets; the caster's own flight does not disable it. Gas Breath is a room attack.
+Their legacy room iteration selects the opposing NPC/player side, rather
+than accepting an arbitrary named remote target. Damage and saves remain
+spell-specific. These are not sphere-Mage Inferno or parent power attacks.
+See HELP LEGACYSPELLS for access restrictions.
+~
+
+0 'ACID BREATH' 'SPELL ACID BREATH' 'FIRE BREATH' 'SPELL FIRE BREATH' 'FROST BREATH' 'SPELL FROST BREATH' 'LIGHTNING BREATH' 'SPELL LIGHTNING BREATH'~
+Native targeted breath spells: acid, fire, frost and lightning breath.
+They inflict their respective native damage and use spell-specific saves,
+anti-magic and immunity checks. These callback spells are separate from
+the Dragon DBREATH command and its dragon-form/learned-power requirements.
+See HELP LEGACYSPELLS for access restrictions.
+~
+
+0 'GENERAL PURPOSE' 'SPELL GENERAL PURPOSE' 'HIGH EXPLOSIVE' 'SPELL HIGH EXPLOSIVE'~
+General Purpose and High Explosive are ammunition damage callbacks.
+They invoke the damage engine and have their own saving-throw reductions.
+They are not Cyborg demolition components or newly granted player skills.
+See HELP LEGACYSPELLS for their restricted native spell-table access.
+~
+
+0 BLESS 'SPELL BLESS'~
+Bless temporarily adds 2 hitroll and improves saving-spell modifier by 2.
+It uses the native affect system and does not stack repeated copies.
+Syntax, where available: cast bless [target].
+~
+
+0 BLINDNESS 'SPELL BLINDNESS'~
+Blindness attempts AFF_BLIND with a temporary -4 hitroll modifier.
+Existing blindness, a saving throw or applicable anti-magic can prevent it.
+Cure Blindness removes the native blindness spell and its modifier.
+~
+
+0 'CHANGE SEX' 'SPELL CHANGE SEX'~
+Change Sex temporarily changes the target's derived sex via an affect.
+Removal/expiry restores the underlying value; it does not rewrite a
+player's permanent class, race or advancement.
+~
+
+0 'CHARM PERSON' 'SPELL CHARM PERSON'~
+Charm Person attempts to make an eligible NPC follow the caster and
+applies native charm. It rejects player targets, an already charmed target
+and a charmed caster; target level and saving throws also matter.
+It is not player mind control and does not grant a permanent familiar.
+~
+
+0 'CONTINUAL LIGHT' 'SPELL CONTINUAL LIGHT' 'CREATE FOOD' 'SPELL CREATE FOOD' 'CREATE SPRING' 'SPELL CREATE SPRING' 'CREATE WATER' 'SPELL CREATE WATER'~
+Creation spells retain their separate native object effects.
+Continual Light creates a light-ball object. Create Food creates food.
+Create Spring creates a spring in the room.
+Create Water fills an eligible drink container with available capacity;
+it does not silently overwrite another liquid.
+These require their native object templates and spell access.
+~
+
+0 'CONTROL WEATHER' 'SPELL CONTROL WEATHER'~
+Syntax: cast 'control weather' better
+    or: cast 'control weather' worse
+Changes the native weather trend toward clearer skies or rain.
+It does not promise an immediate exact weather state.
+~
+
+0 'CURE BLINDNESS' 'SPELL CURE BLINDNESS' 'CURE POISON' 'SPELL CURE POISON'~
+Cure Blindness strips native blindness; Cure Poison strips native poison.
+Associated temporary modifiers are removed through the affect system.
+These are specific cures, not a blanket removal of every class debuff.
+~
+
+0 'CURE LIGHT' 'SPELL CURE LIGHT' 'CURE SERIOUS' 'SPELL CURE SERIOUS' 'CURE CRITICAL' 'SPELL CURE CRITICAL' 'SPELL HEAL' SPELLHEAL~
+Cure Light, Cure Serious, Cure Critical and Heal restore hit points,
+bounded by the target's maximum health and their native healing formulas.
+Syntax, where available: cast 'cure light' [target], or another full name.
+Heal here means CAST HEAL, not the legacy HEAL class command or MAGEHEAL.
+~
+
+0 CURSE 'SPELL CURSE'~
+Curse applies native AFF_CURSE, lowers hitroll and worsens spell saves.
+Existing curse, a save or applicable anti-magic can prevent the effect.
+Its modifier size and duration depend on the spell level.
+~
+
+0 'DETECT EVIL' 'SPELL DETECT EVIL' 'DETECT HIDDEN' 'SPELL DETECT HIDDEN' 'DETECT INVIS' 'SPELL DETECT INVIS' 'DETECT MAGIC' 'SPELL DETECT MAGIC' INFRAVISION 'SPELL INFRAVISION'~
+Temporary native perception spells:
+Detect Evil reveals evil auras; Detect Hidden enables hidden detection.
+Detect Invis enables invisible detection. Detect Magic reveals magic.
+Infravision grants infrared vision.
+These use their own native affects; none grants unrestricted access to
+private rooms, remote inventories or every class-specific concealment.
+~
+
+0 'DETECT POISON' 'SPELL DETECT POISON'~
+Detect Poison checks supported food, drink and consumable spell items.
+It reports poison using the item's native poison/spell data.
+It can also report the caster's own native poisoned condition.
+It neither cures poison nor treats every arbitrary object as consumable.
+~
+
+0 'DISPEL EVIL' 'SPELL DISPEL EVIL'~
+Dispel Evil damages an evil NPC in the same room through native safety
+and saving-throw checks. Evil means NPC prototype alignment <= -350.
+This does not restore player alignment or make evil players eligible.
+~
+
+0 'DISPEL MAGIC' 'SPELL DISPEL MAGIC'~
+Dispel Magic attempts to remove the target's native spell affects and
+its supported thin-blood/flaming conditions. Saves, anti-magic and the
+native non-self Dragon immunity can block it.
+It does not erase permanent class training or guarantee removal of
+every separate legacy XTRA flag, class timer or independent power state.
+~
+
+0 'ENCHANT WEAPON' 'SPELL ENCHANT WEAPON' 'ENCHANT ARMOR' 'SPELL ENCHANT ARMOR'~
+Enchant Weapon and Enchant Armor improve eligible equipment through
+native object affects and mark it enchanted.
+They reject the wrong item type, already enchanted items, artifacts,
+relics and objects containing a transformed character.
+These are not Mage Enchant, Sorcerer ENCHANT or Highlander FORGE.
+~
+
+0 'ENERGY DRAIN' 'SPELL ENERGY DRAIN'~
+Energy Drain is a same-room hostile spell with native safety and saves.
+It drains target mana, restores only the caster's available mana capacity,
+and deals damage. It does not overfill the caster's maximum mana.
+~
+
+0 'FAERIE FIRE' 'SPELL FAERIE FIRE'~
+Faerie Fire outlines a target and applies an armor penalty of twice
+spell level. Lower armor is worse for players in Genesis.
+This native spell is separate from the Drow FAERIEFIRE command.
+~
+
+0 'FAERIE FOG' 'SPELL FAERIE FOG'~
+Faerie Fog reveals eligible concealed/invisible occupants in the room
+using its native exclusions. It is not remote or universal true sight.
+~
+
+0 FLY 'SPELL FLY'~
+Fly temporarily grants the target native AFF_FLYING.
+It is separate from class wings, Dragon form and sphere-Mage Levitate.
+~
+
+0 GATE 'SPELL GATE'~
+The historical Gate callback summons the configured mobile prototype
+3404 into the caster's room. It is not Mage Rift, Summon or Teleport.
+It does not implement a new class or grant a player-owned permanent pet.
+This callback requires that native mobile template and spell access.
+~
+
+0 'GIANT STRENGTH' 'SPELL GIANT STRENGTH'~
+Giant Strength temporarily adds 1 derived Strength through native affects.
+It does not increase raw saved stats and repeated copies do not stack.
+~
+
+0 IDENTIFY 'SPELL IDENTIFY'~
+Identify reports a selected object's native properties, spell data,
+affects and supported special flags. It does not enchant or improve it.
+Mage ANALYZE uses Identify on an object carried by the Mage.
+~
+
+0 'SPELL INVIS' 'MASS INVIS' 'SPELL MASS INVIS'~
+Invis temporarily grants native invisibility to its target.
+Mass Invis applies native invisibility to eligible same-room group members.
+These are separate from Mage Mind invisibility, Obfuscate and shadow form.
+Native detection and reveal rules still apply.
+~
+
+0 'KNOW ALIGNMENT' 'SPELL KNOW ALIGNMENT'~
+Know Alignment reveals the alignment of an NPC from its prototype data.
+It does not reveal or invent a saved player alignment.
+See also HELP KNOWALIGNMENT for the restored callback's scope.
+~
+
+0 'LOCATE OBJECT' 'SPELL LOCATE OBJECT'~
+Locate Object searches native world object names and reports locations
+through its existing visibility and location rules.
+It reports information; it does not move or transfer an object.
+~
+
+0 'PASS DOOR' 'SPELL PASS DOOR'~
+Pass Door grants temporary native passage through ordinary closed doors.
+Its spell-specific affect expires cleanly; it does not grant permanent
+AFF_PASS_DOOR ownership or override a door's EX_PASSPROOF protection.
+~
+
+0 POISON 'SPELL POISON'~
+Poison attempts native AFF_POISON and a temporary Strength penalty.
+Vampires, qualifying Bone Gnawers and Drow poison immunity can resist
+before normal saves/anti-magic checks. Cure Poison removes native poison.
+~
+
+0 PROTECTION 'SPELL PROTECTION'~
+Protection temporarily reduces incoming damage from evil NPC attackers
+by one fifth, using NPC prototype alignment <= -350.
+It does not depend on invented player alignment or protect from all damage.
+~
+
+0 REFRESH 'SPELL REFRESH'~
+Refresh restores a small bounded amount of mana, capped at maximum mana.
+Genesis removed movement points; this spell does not invent a stamina
+resource or permanently raise the target's maximum energy.
+~
+
+0 'REMOVE CURSE' 'SPELL REMOVE CURSE'~
+Remove Curse can lift native character curse, including the reconstructed
+Lycaon wolf curse, or supported no-remove/no-drop flags on carried objects.
+It rejects protected artifact/relic item manipulation.
+Syntax: cast 'remove curse' <character or carried object>
+It is not a general reversal of every class transformation or binding.
+~
+
+0 SANCTUARY 'SPELL SANCTUARY'~
+Sanctuary surrounds the caster with native AFF_SANCTUARY.
+It is a temporary spell affect and does not stack another copy on itself.
+Its defensive effect follows Genesis combat rules, not a new class buff.
+~
+
+0 'SPELL SLEEP' SPELLSLEEP~
+The Sleep spell attempts native AFF_SLEEP and a sleeping position.
+Existing sleep, ethereal NPCs, vampires, saves and applicable anti-magic
+can prevent it. This is not the ordinary SLEEP resting command.
+~
+
+0 'SPELL SUMMON'~
+Summon attempts to bring a world target to the caster's room.
+Player targets must enable their native summon consent.
+The spell has native protected-room, level, NPC ethereal and save gates.
+It is separate from Drow Summon Spider, guardians and class transport.
+~
+
+0 TELEPORT 'SPELL TELEPORT'~
+Teleport attempts random native room travel for its target.
+Native summon consent, combat and destination protection checks apply.
+It is not precise travel to a named target or a bypass of room policy.
+~
+
+0 WEAKEN 'SPELL WEAKEN'~
+Weaken attempts a temporary -1 Strength, or -2 at spell level 50+.
+It requires a same-room eligible hostile target and native safety,
+saving-throw and applicable anti-magic checks.
+~
+
+0 'WORD OF RECALL' 'SPELL WORD OF RECALL'~
+Word of Recall returns a player to that player's haven.
+Combat, restraint, web/curse, relevant room travel protections and invalid
+home data block it. It does not move NPCs or create a haven.
+~
+
+0 GUARDIAN 'SPELL GUARDIAN' 'FIND FAMILIAR' 'SPELL FIND FAMILIAR' MOUNT 'SPELL MOUNT'~
+These native callbacks create their own existing companion mobiles.
+Guardian creates its native charmed demon follower.
+Find Familiar accepts frog, raven, cat or dog and rejects another familiar.
+Mount creates the native flying mount for a player.
+Required mobile templates and native existing-companion checks still apply.
+They are not the independent Angel/Demon/Cyborg companion power adapters.
+~
+
+0 SOULBLADE 'SPELL SOULBLADE'~
+Syntax: cast soulblade slash|pierce|blunt
+Choose one damage style. Creates the native soulblade object for a player,
+using its required object template. This is not Highlander FORGE or the
+Deathknight frost-weapon power.
+~
+
+0 'SPELL MANA' MANASPELL~
+The Mana spell restores mana up to the target's maximum, using spell level.
+It does not raise maximum mana, create primal or refill class progression.
+This is separate from Refresh and the ordinary resource display.
+~
+
+0 'SPELL QUEST'~
+The Quest callback consumes native primal to create a quest-card object.
+It requires at least one primal point and its quest-card object template.
+This is not the ordinary QUEST command.
+~
+
+0 'INSERT PAGE' 'SPELL INSERT PAGE' 'REMOVE PAGE' 'SPELL REMOVE PAGE'~
+Syntax: cast 'insert page' <carried page> <carried open book>
+    or: cast 'remove page' <carried open book>
+Insert Page moves the carried page into the book and updates page numbering.
+Remove Page removes the currently selected non-index page.
+Closed books, wrong object types and missing pages are rejected.
+These edit physical book contents; they do not generate a new spell effect.
+See HELP SORCERER and HELP CHAOSMAGE for starter books and writing.
+~
+
+0 IMPROVE 'SPELL IMPROVE'~
+Improve enhances eligible valuable objects and marks them improved.
+It rejects artifacts, already improved items and unsupported/insufficiently
+valuable objects. Native quest-value thresholds depend on the item.
+It is not an unlimited repeated enchantment or class-training command.
+~
+
+0 FEAR 'SPELL FEAR'~
+Fear attempts a temporary fear affect and fleeing behavior on an NPC.
+It rejects player targets, self, existing fear and native protected targets;
+saves can prevent it. It is not unrestricted player displacement.
+~
+
+0 'SPELL WEB' TENDRILS 'SPELL TENDRILS'~
+Web restrains an eligible target with AFF_WEBBED and a -100 armor penalty;
+an alert player can dodge it through its native Dexterity check.
+Tendrils deals damage and can entrap with AFF_SHADOW and -100 armor.
+Both use native safety checks. Negative armor is intentionally a penalty.
+These callback spells are not Cyborg web or other parent root adapters.
+~
+
+0 'SPELL FRENZY' 'SPELL DARKBLESSING'~
+Frenzy grants rage with a slight temporary offensive buff.
+Darkblessing grants its temporary bonuses only to evil NPCs.
+See HELP FRENZY and HELP DARKBLESSING for the restored native effects.
+Neither creates player alignment or changes class progression.
+~
+
+0 'SPELL VENTRILOQUATE'~
+Syntax: cast ventriloquate <visible object here> <message>
+Projects an explicitly illusory voice with bounded, control-safe text.
+It does not impersonate a player/staff speaker, move the object or issue commands.
+See HELP VENTRILOQUATE for the Sorcerer-accessible restored spell.
+~
+
+0 'SPELL TRANSPORT'~
+Syntax: cast transport <carried object> <player>
+Transfers an eligible carried object to a player who has TRANSPORT ON.
+The native item, consent and object-transformed-character exclusions apply.
+It does not transport the caster or permit deliveries to NPCs.
+~
+
+0 SUMMON TRANSPORT~
+These unprefixed commands configure your consent, not an active spell.
+SUMMON ON/OFF permits or refuses being targeted by summon/portal travel.
+TRANSPORT ON/OFF permits or refuses incoming transported objects.
+To invoke a learned spell, use CAST and see HELP SPELL SUMMON or
+HELP SPELL TRANSPORT. Class summoning powers have separate commands.
+~
+
+0 HEAL~
+The unprefixed HEAL command is for unclassed players at the temple.
+It restores that eligible player's hit points and mana to their maxima.
+It does not grant free healing to an already classed character.
+CAST HEAL and sphere MAGEHEAL are separate powers; HELP SPELL HEAL and
+HELP MAGEHEAL describe them.
+~
+
+0 WEB~
+Syntax: web [room target]
+Drow must possess Lloth's Web. Ninja require Chikyu 8 and 10 Ki.
+Uses the found room target or current opponent, invokes native Web at
+level 50 and applies its command wait. Ninja pay 10 Ki per valid attempt.
+Native safety, existing web and the target's dodge checks still apply.
+This is separate from a Cyborg web component; HELP SPELL WEB describes
+the shared spell affect rather than granting the class command.
+~
+
+0 INVIS~
+The unprefixed INVIS command controls privileged staff invisibility.
+It does not grant the Invis spell, Mage Mind invisibility or Obfuscate.
+For native spell behavior use HELP SPELL INVIS.
+~
+
+0 $~
+#$

@@ -1,0 +1,133 @@
+#HELPS
+
+0 PRINCIPLE NINJATRAINING~
+Syntax: principle
+        principle <sora|chikyu|ningenno>
+        principle <sora|chikyu|ningenno> improve
+Displays Ninja tracks/available powers or buys the next rank.
+Each track caps at 10. Training costs 10 times the next rank in primal.
+Sora supplies awareness/shadow techniques; Chikyu preparation and control;
+Ningenno weapon techniques and native combat passives.
+WEB requires Chikyu 8 and 10 Ki, despite older rank-6 descriptions.
+~
+
+0 HUMBLE~
+Syntax: humble <room target>
+Ninja clan induction for a Ninja of native rank 3 or better.
+The target must be another clanless Ninja with the native eligibility flag.
+Copies your clan to the target, assigns Genin rank 4 and autosaves it.
+It is not a hostile debuff or a way to turn another class into a Ninja.
+~
+
+0 PROMOTE~
+Syntax: promote <room target>
+Ninja clan command for native rank 2 or better.
+Requires another player Ninja of the same clan; sets Chunin rank 3
+and saves the target. Drow house promotion uses PROMOTION instead.
+~
+
+0 DEMOTE~
+Syntax: demote <room target>
+Ninja clan command for native rank 2 or better.
+Requires another player Ninja of the same clan; sets Genin rank 4
+and saves the target. Drow house demotion uses FAILURE instead.
+~
+
+0 MICHI~
+Syntax: michi
+Sora 1, 100 Ki. Sets native Michi energy to 25 times Sora rank.
+The Ninja combat hooks use that energy; CALM ends the state.
+There is additional native wait when invoked during combat.
+This does not grant Werewolf breed/tribe powers despite the shared counter.
+~
+
+0 KAKUSU~
+Syntax: kakusu
+Sora 6. Activating shadow concealment costs 20 Ki and command wait.
+Using it again removes that concealment without the activation charge.
+Native movement/shadow-travel upkeep can consume Ki or reveal you.
+This is separate from Mage invisibility and Vampire Obfuscate.
+~
+
+0 BOMUZITE~
+Syntax: bomuzite <room target>
+Sora 8, 20 Ki. Puts an eligible target to sleep and ends its combat.
+Rejects self, group members, already sleeping/incapacitated targets,
+protected staff, safe targets and non-PK player combat before charging.
+It does not create a stored bomb item or damage every room occupant.
+~
+
+0 MIZOTAMOUYO~
+Syntax: mizotamouyo <world target>
+Sora 10. Shadow travel to an eligible target in a different room.
+Players must permit SUMMON; native level, illusion and destination
+safe/private/solitary exclusions apply. Both rooms' no-travel protections,
+combat/timers, root/restraint, body/plane restrictions block the attempt.
+If concealed with Kakusu, successful travel spends 20 Ki to maintain it;
+insufficient Ki reveals you. Unconcealed travel has no such upkeep cost.
+Invalid/protected attempts do not pay that concealment cost.
+~
+
+0 MIENAKU~
+Syntax: mienaku
+Chikyu 1, 20 Ki. Combat escape through an ordinary open adjacent exit.
+Root, bindings and native restraint rules can stop it; an opposing
+Get of Fenris Werewolf has its native chance to halt your escape.
+A committed attempt costs 20 Ki even if no usable exit succeeds.
+Success ends combat and can set the opponent's native blindfold state;
+BLINDFOLD SELF removes that state when able to act.
+This is physical exit movement, not world-target teleportation.
+~
+
+0 ORIMASU~
+Syntax: orimasu
+Chikyu 4, 50 Ki. Sets the native regeneration counter to 10.
+Refuses without payment while that counter is already above 4.
+The normal regeneration update uses the counter; this is not an
+instant full heal or permanent maximum-health increase.
+~
+
+0 TSUMAZUKU~
+Syntax: tsumazuku
+Chikyu 8. Attempts to trip the current combat opponent.
+The native roll can backfire and impose a longer wait on you.
+Success imposes waits on both combatants; it does not permanently
+change the target's raw stats or guarantee an automatic damage hit.
+~
+
+0 HARAKIRI~
+Syntax: harakiri
+Chikyu 10. Activates the native blood-ritual combat counter.
+Requires at least one-fifth maximum health and no active prior ritual.
+WARNING: health and mana are set to only one-twentieth of their maxima.
+The counter is derived from pre-ritual health/mana and normal updates
+govern it. This is a costly preparation, not a free heal or permanent buff.
+~
+
+0 TSUME~
+Syntax: tsume
+Ningenno 1. Toggles the native claws flag for Ninja wrist blades.
+It does not create a new carried weapon or grant Vampire disciplines.
+Native natural-weapon/combat hooks use the active flag.
+~
+
+0 SHUURAI~
+Syntax: shuurai [room target]
+Ningenno 4. Requires a piercing weapon in the weapon or held slot.
+Uses a valid named room target, otherwise the current opponent.
+Rejects self/native safe targets, performs the piercing circle attack
+and applies its wait. A different weapon damage type does not qualify.
+~
+
+0 HAKUNETSU~
+Syntax: hakunetsu <room target>
+Ningenno 10. Requires a piercing weapon in the weapon or held slot.
+Rejects self and an injured target already using a fighting stance.
+After native safety checks it may activate eligible Kakusu concealment,
+then performs the native backstab attack and applies its wait.
+Automatic concealment can cost its normal 20 Ki; this is not a free
+mastery bypass or guaranteed success against every opponent.
+~
+
+0 $~
+#$

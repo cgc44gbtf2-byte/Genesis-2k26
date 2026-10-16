@@ -1,0 +1,124 @@
+#HELPS
+
+0 MORPH DRAGONFORM~
+Syntax: morph
+Dragon-form toggle for Dragons; MORPH is the registered command name.
+Entering uses your Dragon color/age, clears native combat modifiers and
+enables learned claws, horns, wings, fangs and nightsight.
+Leaving retracts those active Dragon features, removes its form flags
+and restores native style. An unrelated polymorph can prevent changing.
+It does not change your permanent parent class.
+~
+
+0 BREATH DBREATH~
+Syntax: breath [room target]
+Dragon must learn Breath through DRAGONSKILL and be in Dragon form.
+Uses the current opponent first, otherwise the named room target.
+After native safety checks it performs the Dragon breath combat attack
+and applies its wait. This is not CAST 'fire breath' or another callback.
+~
+
+0 DUST~
+Syntax: dust [room target]
+Dragon must learn Dust, be in Dragon form and have its wings extended.
+Uses the current opponent first, otherwise the named room target.
+After safety checks it can remove a player's holy-light flag and applies
+native blindness with -50 hitroll if not already blind; command wait applies.
+~
+
+0 STAIL~
+Syntax: stail [room target]
+Dragon must learn Tail and be in Dragon form.
+Uses the current opponent first, otherwise the named room target.
+After native safety checks it performs the spiked-tail combat attack
+and applies its wait. It does not grant a permanent extra parent class.
+~
+
+0 HORNS DRAGONHORNS~
+Syntax: horns
+Dragon learned-horns toggle. Extension requires Dragon form; retraction
+is allowed for already extended horns. The native combat loop uses
+extended horns for its chance of an additional piercing attack.
+Demon class-prefixed horn powers are separate adapters.
+~
+
+0 WINGS DRAGONWINGS~
+Syntax: wings
+Dragon must learn Wings and be in Dragon form.
+Toggles extended Dragon wings. Extended wings permit native air-sector
+travel, enable Dust and give the native combat loop its wing-buffet chance.
+This is separate from Angel wings, Cyborg propulsion and the Fly spell.
+~
+
+0 DRAGONSKILL~
+Syntax: dragonskill
+        dragonskill <skill>
+        dragonskill age
+Lists skills unlocked by your current Dragon age, or purchases one using
+Dragon Points. The skill's unlock tier determines its DP price.
+AGE purchases the next native age using DP and, at later tiers, quest
+points; the command reports the required resources if you cannot pay.
+Purchases take effect immediately when eligible and affordable.
+Existing-skill and maximum-age gates prevent duplicate advancement.
+~
+
+0 INCREASE HIGHLANDERTRAINING~
+Syntax: increase
+        increase <attack|defense|weaponry|powers>
+Highlander progression. Each track caps at 6.
+Training costs 15 times the next rank in primal and advances only that
+track. The POWERS track unlocks the commands described below.
+~
+
+0 BFLASH BLADEFLASH~
+Syntax: bflash <room target>
+Highlander Powers 2. Attempts the native Blade Flash after safety checks.
+It can remove a player's holy-light flag and applies blindness with
+-50 hitroll if the victim is not already blind. Command wait applies.
+The registered command is BFLASH, not BLADEFLASH.
+~
+
+0 BASH~
+Syntax: bash [room target]
+Highlander Powers 3. Uses the current opponent first, then a named target.
+Through native hostile-combat checks it attempts 851-950 damage and
+additional victim wait on a hit. It has a native miss chance; qualifying
+Lupus Werewolves have an additional avoidance chance. Caster wait applies.
+~
+
+0 HTWIST~
+Syntax: htwist
+Highlander Powers 4. Adds five times Powers rank to native celerity.
+It refuses when already using increased speed (celerity greater than 1).
+This is the native speed counter, not permanent stats or a new resource.
+~
+
+0 JUDGE JUDGEMENT~
+Syntax: judge <room target>
+Highlander Powers 5. Reports native NPC/player status, approximate health
+and mana rounded down to 2000-point units, and derived armor.
+It is informational, not damage or player-alignment reading.
+The registered command is JUDGE.
+~
+
+0 LUNGE~
+Syntax: lunge <room target>
+Highlander Powers 6. Rejects self and native protected targets, starts
+combat if necessary and drops the victim's active fighting stance.
+It applies caster wait; this command does not itself make a damage roll.
+~
+
+0 FORGE~
+Syntax: forge
+        forge <owned carried weapon>
+Highlander crafting costs 50 primal and 100 quest points.
+With no argument it creates the native aggravated katana.
+With a weapon it REPLACES that owned, non-artifact/non-relic weapon with
+the katana template and copies its four native weapon values.
+The original is consumed: other names, flags and custom object affects
+are NOT copied. Claim/ownership and the native template must be valid.
+This is not Sorcerer enchantment or a lossless equipment upgrade.
+~
+
+0 $~
+#$

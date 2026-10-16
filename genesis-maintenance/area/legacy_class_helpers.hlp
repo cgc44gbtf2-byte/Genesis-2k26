@@ -1,0 +1,262 @@
+#HELPS
+
+0 CLASSHELPERS~
+Additional legacy class commands are implemented in more.c.
+Use HELP followed by the command for its syntax and native requirements.
+These include Vampire discipline forms, blood/illusion controls,
+Necromancy corpse powers, Spirit Guardian and Celerity.
+Help access does not grant a class, discipline or execution permission.
+Presence of a help entry is not exhaustive effect/variant certification.
+~
+
+0 MINDBLAST~
+Syntax: mindblast <target>
+Vampire, Auspex 7. Makes the native mind-blast attack against a visible
+room target, subject to combat safety; it cannot target the caster.
+This is an attack, not a guaranteed stun or staff slay.
+~
+
+0 MALLEABLE CHANGELING~
+Syntax: malleable <NPC>
+        malleable self
+Vampire, Vicissitude 1. Copies a local NPC's appearance using the native
+malleable/disguise form. SELF restores an active malleable appearance.
+Other polymorphs and Zulo Form can prevent the change.
+~
+
+0 FLESHCRAFT~
+Syntax: fleshcraft
+Vampire, Vicissitude 2. Toggles the native protective flesh-soak craft.
+It is a body-craft setting, not a permanent increase to trained statistics.
+~
+
+0 BONECRAFT~
+Syntax: bonecraft talons
+        bonecraft quills
+        bonecraft <target>
+Vampire, Vicissitude 3. TALONS and QUILLS toggle their body crafts.
+Warning: each toggle hurts the caster for 5% of maximum health for talons,
+or 50% for quills, including when removing the craft. Do not toggle at low HP.
+The targeted bone-crafting attack currently requires an existing fight
+and a local target; it uses native combat safety.
+~
+
+0 ZULOFORM~
+Syntax: zuloform
+Vampire, Vicissitude 5. Toggles the native huge-monster polymorph.
+Incompatible existing forms can block it. Repeat the command to revert.
+~
+
+0 PLASMAFORM~
+Syntax: plasmaform
+Vampire, Vicissitude 4. Uses the native spilt-blood object-body form.
+A fight timer and incompatible polymorph prevent activation. The form
+handles its native restraints/web/tendril release and return path.
+This is not the same power as Shadow Body or Spirit Form.
+~
+
+0 CONDITIONING~
+Syntax: conditioning <player>
+Vampire, Dominate 2. Attempts native player conditioning/loyalty.
+Both participants must meet the native PK requirements. It cannot be
+used on the caster or NPCs. Eye contact and willpower/resistance apply;
+Dominate 6 changes the native failed-eye-contact gate.
+It does not change a character's clan or staff rank.
+~
+
+0 TONGUE~
+Syntax: tongue <target>
+        tongue <carried weapon>
+Vampire, Serpentis 2. Uses Tongue of the Serpent against a room target,
+or poisons an eligible carried weapon. In combat, omitting the target
+uses the current opponent. Not every weapon can receive the poison.
+~
+
+0 MUMMIFY~
+Syntax: mummify
+Vampire, Serpentis 3. Enters or leaves the native mummified corpse-body
+mode. Incompatible polymorphs prevent activation. The corpse representation
+does not mean the caster has permanently died.
+~
+
+0 CONTROLBEAST~
+Syntax: controlbeast
+        controlbeast buy
+Vampire beast-control training. The first form displays the current offer;
+BUY spends (100 - truebeast) primal and reduces truebeast by one.
+Active frenzy, complete loss of control, existing Golconda and prior
+diablerie can prevent the purchase. It is not a free frenzy toggle.
+~
+
+0 SHROUDNIGHT~
+Syntax: shroudnight
+Vampire Obtenebration 1, or Werewolf Uktena 1.
+Calls room darkness and records ownership of that darkness on the caster.
+Repeat to dismiss your active shroud. An already-dark room cannot simply
+be claimed by a second caster.
+~
+
+0 SILENCEDEATH SILENCEOFDEATH~
+Syntax: silencedeath
+Vampire, Quietus 1. Calls the native room-silence effect and records its
+owner. Repeat to dismiss your active silence. Existing room silence
+cannot simply be claimed by another caster.
+~
+
+0 WEAKNESS~
+Syntax: weakness <target>
+Vampire, Quietus 2. Applies the native strength-reducing curse to a local
+eligible target. This is not permanent stat training removal.
+~
+
+0 INFIRMITY~
+Syntax: infirmity <target>
+Vampire, Quietus 3. Applies native infirmity ability penalties to a local
+eligible target. Its affects use the existing spell/affect system.
+~
+
+0 BLOODAGONY~
+Syntax: bloodagony <carried weapon>
+Vampire, Quietus 4. Spends 10 current blood to mark an eligible weapon
+for native aggravated damage. Already-marked weapons, artifacts, relics
+and switched-body objects cannot receive the treatment.
+~
+
+0 SPIT TASTEDEATH~
+Syntax: spit <target>
+Vampire, Quietus 5. Uses the native Taste of Death attack.
+Omitting the target during combat uses the current opponent.
+~
+
+0 SHADOWBODY~
+Syntax: shadowbody
+Vampire, Obtenebration 3. Toggles the native shadow/ethereal body.
+A fight timer or incompatible polymorph can block it; native restraint
+release applies on activation. This is not Tenebrous Form.
+~
+
+0 ARMSABYSS~
+Syntax: armsabyss <target>
+Vampire, Obtenebration 2. Uses native shadow tendrils on a local target,
+or the current opponent when omitted in combat. It can remove existing
+native tendrils as well as apply them; ethereal targets cannot be bound.
+~
+
+0 LAMPREY~
+Syntax: lamprey <target>
+Vampire, Obtenebration 4. Calls the native damaging, blood-draining
+lamprey/tendrils effect on a room target. Omitting the target in combat
+uses the current opponent. The caster's blood pool still caps the gain.
+~
+
+0 THANATOPSIS~
+Syntax: thanatopsis <corpse>
+Vampire, Necromancy 1. Examines the corpse's recorded killer information.
+The corpse must be accessible, and missing records can prevent discovery.
+It does not reveal arbitrary account details or a living player's inventory.
+~
+
+0 SPIRITGATE~
+Syntax: spiritgate <NPC corpse>
+Vampire, Necromancy 3. Uses the corpse's recorded destination to create
+temporary paired spirit portals. Player corpses and invalid/same-room
+destinations cannot be used. The corpse and native portal mechanics apply;
+this is not the Mage RIFT command or a player-unlocked GATE spell.
+~
+
+0 PRESERVE PRESERVATION~
+Syntax: preserve <corpse>
+Vampire, Necromancy 2. Preserves an eligible corpse through the native
+corpse handler. Already-preserved, incompatible or unsupported objects
+are rejected. It does not animate the corpse.
+~
+
+0 ZOMBIE~
+Syntax: zombie <NPC corpse>
+Vampire, Necromancy 5. Animates an eligible NPC corpse lying in the room.
+Drop carried corpses first. The native Necromancy reuse timer, original
+mobile data and available templates constrain animation.
+~
+
+0 SPIRITFORM~
+Syntax: spiritform
+Vampire, Protean 5. Toggles the native flying, ethereal spirit polymorph.
+Incompatible forms can prevent changing; native restraint release applies.
+Spirit Form does not automatically grant unrestricted teleportation.
+~
+
+0 SPIRITGUARDIAN SPIRITFRIEND~
+Syntax: spiritguardian
+Native requirements: Vampire Necromancy 4, Werewolf Children of Gaia 4,
+or Monk Mantra 6. Calls or dismisses the MORE_GUARDIAN protection.
+It is a protective spirit state with native guardian messages, not a
+spawned fighting follower. It does not grant staff immunity.
+~
+
+0 SUCCULENCE~
+Syntax: succulence <NPC>
+Vampire, Animalism 5. Improves an NPC's blood by doubling its native
+current blood and blood-pool values once. Already-improved creatures,
+players and the caster cannot be treated.
+~
+
+0 FRENZYTRIGGER~
+Syntax: frenzytrigger
+Vampire, Animalism 6. Toggles the native inner-beast frenzy and associated
+fangs, and available Protean claws/nightsight. Repeating it forces the
+beast back. This differs from the restored FRENZY spell's modest buff.
+~
+
+0 SHADOWPLAY~
+Syntax: shadowplay
+Vampire, Obtenebration 1. Hides the caster using the native shadow effect.
+Outdoor sunlight and already being hidden prevent activation.
+~
+
+0 SHADOWSTEP STEP~
+Syntax: shadowstep <target>
+Vampire, Obtenebration 5. Travels to a valid, standing world target.
+Player targets require native summoning consent. Safe/private/solitary
+destinations, own familiars, illusions and unsuitable targets are rejected.
+Both-room no-recall/no-teleport/private/solitary protection, combat timers,
+restraints/root/curse/web, switched bodies and incompatible planes block it.
+It retains its native no-mana fee; it is not Werewolf Bridge Walk or RIFT.
+~
+
+0 SPIRITEYES~
+Syntax: spiriteyes
+Vampire, Necromancy 1. Toggles native Spirit Eyes and shadowsight.
+This is perception into the shadowlands, not movement into them.
+~
+
+0 SBREATH~
+Syntax: sbreath
+Vampire, Serpentis 5. Makes native Basilisk breath attacks against eligible
+other room occupants, using the existing combat-safety checks.
+It is an area attack, not a single target command or guaranteed poison.
+~
+
+0 CELERITY~
+Syntax: celerity
+        celerity renew
+Vampire, Celerity 1 or higher. Activation spends 10 current blood and
+adds 50 to the native Celerity duration; the existing duration cap applies.
+RENEW toggles automatic combat renewal. This is not ordinary stance
+training or the Werewolf's differently implemented speed gifts.
+~
+
+0 CHIROPTEAN~
+Syntax: chiroptean
+Vampire, Vicissitude 6. Toggles the native Chiroptean Marauder bat form.
+Incompatible polymorphs can prevent the change; repeat to return.
+~
+
+0 EMPATHY~
+Syntax: empathy <target>
+Vampire, Presence 7. Removes the target's native Conditioning loyalty
+flag if present. It does not train an empathy statistic.
+This is distinct from the reconstructed Werewolf MASKEMPATHY gift.
+~
+
+0 $~
+#$

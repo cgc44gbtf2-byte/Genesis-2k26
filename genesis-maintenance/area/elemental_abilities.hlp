@@ -1,0 +1,110 @@
+#HELPS
+
+0 ELEMSKILL ELEMENTALTRAINING~
+Syntax: elemskill [element]
+        elemskill <element> improve
+        elemskill <element> focus
+        elemskill remove focus
+The eight tracks are fire, water, wind, earth, sun, moon, time, infinity.
+Training costs 10 times the next rank in primal and normally caps at 8.
+After all eight reach 8, a focus raises its element to 10 and lowers
+the opposite to 6. Remove focus before changing it or training further.
+Removing focus restores the native 10/6 track values to 8.
+This is not the Phoenix parent's or Werewolf ELEMENTAL command.
+~
+
+0 FLAREARROW FIREBLADE PHOENIXFORM ELEMENTALFIRE~
+Elemental Fire commands:
+  1 FLAREARROW <target>: flaming attack, costing 100 + 50 times Fire
+    in mana.
+  8 FIREBLADE: native weapon-flame toggle, costing 2000 mana.
+ 10 PHOENIXFORM: native Phoenix-shaped combat form, costing 5000
+    mana to activate.
+Phoenix Form does not enroll you into the standalone Phoenix parent
+or grant that parent's complete ability kit.
+~
+
+0 ICICLESTORM WATERTRAVEL AQUABARRIER WATERCONTROL ELEMENTALWATER~
+Elemental Water commands:
+  1 ICICLESTORM <target>: native ice attack, requiring 150 times
+    Water in mana.
+  5 WATERTRAVEL <target>: relocates the caster for 1500 mana.
+  8 AQUABARRIER: native water-barrier toggle, requiring 2500 mana.
+ 10 WATERCONTROL <target>: attempts native interruption for 4000 mana.
+Water Travel requires an eligible target elsewhere. Players must allow
+summoning. Both rooms must permit travel; combat, restraint, roots,
+curses/webs and incompatible planes block the journey.
+Water Travel and Aqua Barrier were reversed in older overview help.
+~
+
+0 WINDWINGS WINDBLADES ATONINGWINDS ELEMENTALWIND~
+Elemental Wind commands:
+  1 WINDWINGS: native flight toggle.
+  8 WINDBLADES <target>: wind attack, costing 100 times Wind in mana.
+ 10 ATONINGWINDS <target>: attempts the native slowing effect,
+    requiring 600 times Wind in mana.
+Flight is a real movement/combat flag, not permanent membership in a
+winged class. Native safety and resistance checks still apply.
+~
+
+0 LOCALQUAKE STONEBLAST LIQUIFYEARTH ELEMENTALEARTH~
+Elemental Earth commands:
+  1 LOCALQUAKE: native room earthquake attack.
+  8 STONEBLAST: room stone attack, costing 350 times Earth in mana.
+ 10 LIQUIFYEARTH <target>: attempts the native earth-control debuff,
+    requiring 800 times Earth in mana.
+Local Quake costs Earth times (20 minus Earth) times 30 mana.
+Area effects retain their own native eligible-target checks.
+~
+
+0 SUNBATH HOLYAURA SOLARFLASH SOLARLIGHT ELEMENTALSUN~
+Elemental Sun commands:
+  3 SUNBATH <target>: native healing light for 800 mana.
+  5 HOLYAURA: native holy-aura toggle, costing 500 times Sun in mana.
+  8 SOLARFLASH <target>: attempts blindness for 250 times Sun in mana.
+ 10 SOLARLIGHT: native sunshield toggle, requiring 600 times Sun in mana.
+Sun Bath requires 3, not the rank 1 in older overview help.
+These item-affect toggles are not permanent changes to base attributes.
+~
+
+0 MIRAGESLICE NIGHTBLADE SPIRALMOON ELEMENTALMOON~
+Elemental Moon commands:
+  3 MIRAGESLICE <target>: native illusion attack, costing 100 times
+    Moon in mana.
+  8 NIGHTBLADE <target>: native double/life-stealing attack, costing
+    450 times Moon in mana.
+ 10 SPIRALMOON <target>: attempts the native dark weakening effect,
+    requiring 5500 mana.
+Mirage Slice requires 3, not the rank 1 in older overview help.
+These attacks retain their native combat and resistance checks.
+~
+
+0 FARSIGHT CLOAKOFSIGHT INFINITESIGHT ULTIMAWAVE ELEMENTALINFINITY~
+Elemental Infinity commands:
+  2 FARSIGHT <target>: looks at an eligible distant location without
+    granting arbitrary permanent teleportation.
+  3 CLOAKOFSIGHT: toggles the native remote-sight concealment.
+  5 INFINITESIGHT: toggles native enhanced sight.
+ 10 ULTIMAWAVE: native room destruction wave. Requires at least 10000
+    mana and spends all current mana, not merely a flat 10000.
+Far Sight requires 2, not the rank 1 in older overview help.
+~
+
+0 SLOW ELEMENTALTIME~
+Syntax: slow <target>
+Requires Elemental Time 10 and 800 times Time in mana.
+Attempts the native slowing debuff with its existing target, resistance
+and duplicate checks. It is not a permanent reduction of base stats.
+Related: ELEMSKILL, ATONINGWINDS, ALTERWEIGHT.
+~
+
+0 ELEMARMOR ELEMENTALEQUIPMENT~
+Syntax: elemarmor <bracer|sword>
+Creates the selected native Elemental class item for 400 quest points
+and 100 primal. The object template must exist.
+It is ordinary class equipment, not an ascension artifact reward.
+Related: ELEMENTAL, ELEMSKILL.
+~
+
+0 $~
+#$

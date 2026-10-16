@@ -1,0 +1,93 @@
+#HELPS
+
+0 COLORS COLOURS~
+Syntax: colors
+        colors <purple|red|blue|green|yellow|black>
+Sorcerer/Chaos Book Mage color training. Displays the six current tracks,
+or trains one for 10 times its next rank in primal. Each track caps at 5.
+The sphere Mage SPHERE command is a different progression system.
+~
+
+0 SORCCREATE~
+Syntax: sorccreate starter
+        sorccreate <book|page|pen>
+Sorcerers can claim one free starter kit with instructions, tools and the
+ready-to-chant Spark, Mend and Minor Ward spells. Existing color mastery
+is preserved; repeated claims are refused and the claim is saved.
+Separate crafted books and pens cost 10 primal each; pages have no primal
+fee. Crafting requires the native protoplasm object template.
+Chaos Book Mages create Chaos books; they remain one Sorcerer parent variant.
+~
+
+0 VISION~
+Syntax: vision
+Sorcerer enhanced-vision toggle. Uses native holy-light, shadowsight and
+night-sight flags, and removes those flags when toggled off.
+It is not Mage Nightsight, another class's discipline or a movement power.
+~
+
+0 ENCHANT~
+Syntax: enchant <carried weapon or armor>
+Sorcerer enchantment adds permanent object affects of +5 hitroll and
++5 damroll, then marks QUEST_SORCENCHANT to prevent repeated copies.
+The native command rejects other item types, artifacts and already
+Sorcerer-enchanted items. It has no separate mana/primal payment.
+This is not MAGEENCHANT or the restricted Enchant Weapon/Armor callbacks.
+~
+
+0 WRITE~
+Syntax: write <carried page/book> title <text>
+        write <carried page> line <text>
+Hold a pen first. Books accept titles; pages accept titles and appended
+lines. Existing line-length limits still apply. Mundane writing is not
+restricted to Sorcerers, but ordinary non-Sorcerer writing does not grant
+working spell craftsmanship.
+Spell pages must follow the native ordered grammar and finish correctly.
+Read the starter primer, HELP BOOKWRITING and HELP BOOKRECIPE;
+arbitrary prose is not a spell.
+~
+
+0 CHANT BOOKCHANT~
+Syntax: chant <target required by the selected spell>
+Hold an open spellbook, TURN to a finished spell page and then CHANT.
+For starter spells use CHANT <opponent> for Spark, CHANT SELF for Mend
+and Minor Ward. Reading/lesson/index pages are not executable spells.
+Silence, an incomplete/failed page, missing targets, insufficient mana,
+native immunity/protection and existing same-color effects can block a cast.
+Costs, targets and effects depend on the page's compiled spell type/color.
+Native page chains stop at their ten-page recursion limit.
+~
+
+0 BOOKRECIPE SPELLWRITING~
+Native spell-writing outline:
+Hold a pen; create/carry a page; use WRITE <page> LINE <one directive>.
+Begin with exactly one of:
+  start.damage.spell
+  start.affect.spell
+  start.action.spell
+Affect pages can add APPLY: hp/mana/armor/hitroll/damroll/save,
+AFFECT: blind/umbra/sanct/faerie.fire/curse/flaming/poison/sleep/web,
+DURATION: <0..50>, and REVERSED to reverse stat bonuses.
+Optional MESSAGE.1:, MESSAGE.2: and MESSAGE.3: set native cast messages.
+Finish with END.PURPLE/RED/BLUE/GREEN/YELLOW/BLACK, or END.RANDOM.
+Type one complete directive per line; do not type the slash-separated lists.
+Invalid/out-of-order/duplicate directives can mark the page failed.
+Insert the page into an open book with CAST 'INSERT PAGE' <page> <book>,
+hold the book, TURN to that page and CHANT the appropriate target.
+Use the starter primer for a complete worked example and role differences.
+Armor bonuses are positive in Genesis; REVERSED makes a positive stat
+bonus negative. Existing historical saved pages are not rewritten.
+~
+
+0 CHAOSBOOKS CHAOSPAGES~
+Chaos Book Mage is a Sorcerer variant, not an extra standalone parent.
+Join using AUTOCLASS SORCERER CHAOS (or the CHAOSMAGE alias).
+Its book chooses a fresh color when a page is chanted, rather than fixing
+that page permanently to its prior color. Repeated rolls may repeat colors.
+The implemented Chaos handling preserves the page's attack/healing/affect
+role; a blessing does not become an attack just because its color changed.
+Color mastery, mana, target checks and normal book restrictions still apply.
+~
+
+0 $~
+#$

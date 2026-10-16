@@ -1,0 +1,356 @@
+#HELPS
+
+0 MAGESPELLS MAGECOMMANDS~
+Sphere Mage command reference. This is not Sorcerer book magic.
+Use MAGEPOWERS for unlocked powers, SPHERE for tracks and HELP <command>.
+Each optional quintessence argument defaults to zero unless noted.
+Targeted casts require Correspondence 1 for self, 2 for the same room,
+5 for the same area and 6 for another area. Ordinary trained tracks cap
+at 5, so a cross-area target is normally unavailable.
+Targeted attacks, Mage Heal and Better Body cost their base mana plus 100 times the
+square of Correspondence distance, plus 300 per quintessence.
+Missing/protected targets, invalid numbers and rejected prerequisites
+do not spend their resources. A valid paid attempt may fail or be resisted.
+Heart's Blood supplies at most five missing quintessence per cast, causes
+200-500 damage per missing point, never overdraws BODY and refuses lethal
+lifeforce payments. Mana failure does not consume lifeforce.
+Healing and Better Body require yourself or a group member on your plane;
+they are not hostile PK actions. Hostile casts respect PK, groups and safety.
+Remote magic cannot cross private, solitary or no-teleport room protection.
+The caster remains in the original room after a remote safety probe.
+~
+
+0 ANALYZE~
+Syntax: analyze <carried object>
+Mage, Matter 1. Uses Identify on an object you carry.
+It does not identify arbitrary remote objects.
+~
+
+0 RIFT~
+Syntax: rift <target> [quintessence]
+Mage, Correspondence 4. Costs 500 mana and the selected quintessence.
+Zero quintessence attempts direct travel to the target. A positive amount
+creates temporary linked portals instead. Portal duration depends on the
+successful spell roll and quintessence. Player targets must enable summon;
+native high-level-NPC and familiar exclusions still apply.
+Combat, fight timers, restraint, spectral roots, protected rooms and
+shadow/deep-Umbra/ethereal states block it before payment.
+~
+
+0 BEGINNERSLUCK~
+Syntax: beginnersluck [quintessence]
+Mage, Entropy 2. Costs 3500 mana plus the selected quintessence, not
+300 additional mana per point. A successful roll grants a limited number
+of automatically successful initial attacks. An active luck reserve
+cannot be stacked or refreshed by recasting.
+~
+
+0 BRITTLEBONES~
+Syntax: brittlebones [target] [quintessence]
+Mage, Entropy 3. Base mana 2000; see HELP MAGESPELLS for distance costs.
+Reduces the victim's actual soak for a limited number of attacks.
+Without a target it uses the current opponent. An explicit target takes
+priority over an existing fight. Duplicate affects do not stack.
+The named affect is removed safely when its charges are exhausted.
+~
+
+0 MUTATEEPHEMERA~
+Syntax: mutateephemera [target] [quintessence]
+Mage, Entropy 5. Base mana 8000, plus distance and quintessence costs.
+Twists fate against an eligible enemy, setting Mutate Ephemera and its
+timer; it also imposes a short wait on the target. Recasting while active
+is rejected without payment. Native player magic resistance can stop a
+valid paid attempt. Missing targets use your current opponent.
+~
+
+0 SHATTERWALL~
+Syntax: shatterwall <north|east|south|west|up|down>
+Mage, Matter 2. Attempts to remove a magically sculpted wall on an exit.
+One-letter direction aliases are accepted. This is not permission to
+remove ordinary area geometry or arbitrary permanent doors.
+~
+
+0 SCULPTURE~
+Syntax: sculpture <north|east|south|west|up|down>
+Mage, Matter 3. Uses Matter to create a wall on an eligible existing exit.
+One-letter direction aliases are accepted. Existing wall, exit and
+native placement restrictions still apply.
+~
+
+0 ALTERWEIGHT SORCALTERWEIGHT~
+Syntax: alterweight [target] [quintessence]
+Mage, Matter 5. Base mana 6000, plus distance and quintessence costs.
+Crushes an eligible target with gravity damage and records a timed affect.
+The marker adds 3 to native attack delay before the minimum-delay clamp.
+Further valid casts can damage again but do not stack the marker.
+It rejects same-area remote player targets and NPCs above level 800.
+An omitted target means the current opponent, not the caster.
+~
+
+0 MAGEINVIS SORCINVIS~
+Syntax: mageinvis [quintessence]
+Mage, Mind 5. Costs 5000 mana plus 300 per quintessence.
+Creates the named temporary Mage Invisibility affect, blocking the
+caster's image through mind magic. Active Mage Invisibility does not stack.
+The historical SORCINVIS alias still invokes sphere Mage code, not book magic.
+~
+
+0 SPIRITSENSE SPIRITSENCE~
+Syntax: spiritsense
+Mage, Spirit 1. Toggles the ability to see between planes.
+SPIRITSENCE is retained as a historical spelling alias.
+This does not itself transport you or grant unrestricted cross-plane attacks.
+~
+
+0 SPIRITCARESS~
+Syntax: spiritcaress
+Mage, Spirit 2. Toggles the Mage Caress state used by native combat safety
+to permit reaching a shadow-plane target. It does not transport either body
+and does not remove other combat protections.
+~
+
+0 STEPSIDEWAYS~
+Syntax: stepsideways [quintessence]
+Mage, Spirit 3. A successful roll toggles the near Umbra/shadow plane.
+You must leave the deep Umbra before stepping back to the material world.
+A no-teleport room blocks planar travel. A valid attempt consumes selected
+quintessence but no base mana; quintessence reduces gauntlet battering.
+Crossing can hurt you. Failed rolls can still consume the paid quintessence.
+~
+
+0 BREAKDREAMSHELL~
+Syntax: breakdreamshell [quintessence]
+Mage, Spirit 5. Requires the shadow-plane state before attempting to enter
+or leave the deep Umbra. A no-teleport room prevents the transition.
+Like Step Sideways, a valid attempt spends selected quintessence, has no
+base mana cost and can cause self-damage while crossing the dreamshell.
+~
+
+0 HEARTSBLOOD~
+Syntax: heartsblood
+Mage, Prime 1. Toggles use of lifeforce for missing quintessence.
+The toggle itself does not create a quintessence balance.
+The shared cast accounting spends actual BODY first, then supplies no more
+than five missing points with 200-500 damage each if the caster can survive.
+See HELP MAGESPELLS for atomic payment and failure rules.
+~
+
+0 HOLYSMOTE~
+Syntax: holysmote
+Mage, Prime 2. Creating the floating holy sword costs 4000 mana and
+two quintessence. A valid roll may fail after payment.
+Typing HOLYSMOTE while the sword exists dismisses it without payment.
+The sword state is used by the existing native combat attack hook.
+~
+
+0 MAGEENCHANT SORCENCHANT~
+Syntax: mageenchant <carried weapon>
+Mage, Prime 3. Costs 5000 mana and five quintessence per valid attempt.
+A successful roll gives the weapon the aggravated-damage quest flag.
+Already-enchanted weapons, artifacts, relics and non-weapons are rejected.
+Payment failure does not consume Heart's Blood lifeforce.
+The historical SORCENCHANT alias still requires the sphere Mage class.
+~
+
+0 PARADOXWARD MAGEWARD~
+Syntax: ward <quintessence>
+Mage, Prime 5. Requires at least one quintessence and costs 5000 mana
+plus 300 per point. A successful roll creates a reserve that is consumed
+by the existing paradox-backlash calculation.
+WARD dispatches to other ward implementations for other classes;
+this entry documents only the sphere Mage variant.
+~
+
+0 WARD~
+The unprefixed WARD command dispatches by class.
+Werewolf: invokes the Spirit Ward gift; see HELP RESTOREDGIFTS.
+Mage: ward <quintessence> invokes Prime 5 Paradox Ward; HELP MAGEWARD.
+It does not grant either power to other classes.
+Class-prefixed ward abilities and Sorcerer book wards are separate systems.
+~
+
+0 ARETE~
+Syntax: arete
+Mage progression command. Raises Arete by one after the experience check,
+up to the existing cap of 10. Arete supplies the dice used by sphere magic.
+The command reports its current experience requirement before rejection.
+~
+
+0 MAGEHEAL SORCHEAL~
+Syntax: mageheal [target] [quintessence]
+Mage, Life 2. Base mana 2500, plus distance and quintessence costs.
+No target means yourself. Other targets must be group members on your plane.
+Restores hit points from successful spell power, capped at the target's
+maximum hit points. A full-health target is rejected without payment.
+This is distinct from the legacy class HEAL command and the Heal item spell.
+The SORCHEAL alias does not make this a Sorcerer book power.
+~
+
+0 BETTERBODY SORCBETTERBODY~
+Syntax: betterbody <target> <str|dex|con|int|wis> [quintessence]
+Mage, Life 3. Base mana 4900, plus distance and quintessence costs.
+Raises exactly one derived stat by one for a limited time; it never edits
+stored base stats. Only yourself or a group member on your plane qualifies.
+Only one Better Body attribute may be active at once.
+Invalid attributes and duplicate applications are rejected before payment.
+All five attribute choices are implemented; the modifier ends with its timer.
+~
+
+0 POLYMORPHOTHER~
+Syntax: polymorphother [target] [quintessence]
+Mage, Life 5. Base mana 13000, plus distance and quintessence costs.
+Transforms an eligible hostile player into a timed pig form after removing
+the supported conflicting forms and held weapons. NPCs do not qualify.
+Lycaon's curse and an already-active pig form block another application.
+Native PK, safety and correspondence rules still apply.
+~
+
+0 FRICTION FRICTIONCURSE~
+Syntax: friction [target] [quintessence]
+Mage, Forces 3. Base mana 3500, plus distance and quintessence costs.
+The named curse slows the target and causes recoil damage during attacks.
+With no explicit target it uses the current opponent.
+It does not stack with an existing Friction Curse.
+~
+
+0 ELECTRICALCHAOS~
+Syntax: electricalchaos [target] [quintessence]
+Mage, Forces 2. Base mana 3500, plus distance and quintessence costs.
+Single-target electrical damage; NPC damage retains the native multiplier.
+Insufficient resulting spell power fizzles instead of producing negative
+damage. Same-area remote players and NPCs above level 800 are restricted.
+With no explicit target it uses the current opponent.
+~
+
+0 INFERNO~
+Syntax: inferno [quintessence]
+Mage, Forces 5. Costs 5000 mana plus 300 per quintessence.
+Area fire damage against legal non-group targets; affected enemies burn.
+Protected, grouped and ineligible non-PK players are not included.
+With no legal targets the cast is free. A valid attempt can botch or be
+resisted. A failed/low-power attempt never becomes negative damage.
+~
+
+0 CONTINGENCY~
+Syntax: contingency <spell>
+        contingency
+        contingency clear
+Mage, Time 3. The selected spell must also be mastered.
+Selections: brittlebones, mutateephemera, electricalchaos, frictioncurse,
+inferno, polymorphother and alterweight.
+Preparation costs 2000 mana; repeating the same preparation is free.
+Out of combat, the bare command reports the prepared spell for free.
+CLEAR removes it for free. The combat-start hook attempts the prepared
+spell against the current opponent, or the room for Inferno, using zero
+extra quintessence. Firing costs another 2000 mana plus the child spell's
+normal cost. Invalid/protected targets or insufficient mana prevent firing.
+The preparation is cleared before dispatch, preventing recursive activation
+if the child starts another combat relationship. It is not a guarantee
+that the paid child spell succeeds or overcomes native resistance.
+~
+
+0 DOUBLECAST~
+Syntax: doublecast <spell> <that spell's normal arguments>
+Mage, Time 5. Supported selections: inferno, mutateephemera, electricalchaos,
+mageheal and alterweight. Examples:
+  doublecast electricalchaos enemy 2
+  doublecast mageheal self 2
+Costs 3000 overhead mana plus each valid child spell attempt's normal
+cost. The first attempt must be affordable; the second is independent and
+can fail if resources or eligibility change after the first.
+Nonstacking affects remain nonstacking; this does not bypass duplicates.
+Invalid selections, numeric arguments, targets or missing mastery are
+rejected before overhead or paradox. Recovery is 100-600 native ticks.
+~
+
+0 SPHERE~
+Syntax: sphere
+        sphere <sphere> learn
+Mage progression for Correspondence, Life, Prime, Entropy, Mind, Spirit,
+Forces, Matter and Time. Lists the current tracks and learns a permitted
+next rank using the command's reported primal cost and existing maxima.
+Track assignments and the existing class/clan choices are not bypassed.
+~
+
+0 CLANSPHERE~
+Syntax: clansphere
+Mage status display for the clan's assigned sphere.
+This does not select a new clan or grant a free sphere rank.
+~
+
+0 MAGEPOWERS~
+Syntax: magepowers
+Lists powers unlocked by current sphere mastery.
+This is a display, not a training command. For individual syntax use
+HELP <command>; HELP MAGESPELLS explains shared payment and targeting.
+~
+
+0 SELECTSPHERES~
+Syntax: selectspheres <avatar|personal|clan> <sphere>
+Mage progression selection for an unassigned sphere slot.
+CLAN selection is restricted by the existing Hollow Ones rule.
+The command validates the sphere and existing choices before assignment;
+it does not freely replace an established track.
+~
+
+0 MAGEARMOR~
+Syntax: magearmor <robes|hood|talisman>
+Creates one of the Mage's existing class-equipment prototypes after the
+native payment and class checks. This is separate from temporary Armor,
+Shield or Stone Skin spell affects. It does not grant an artifact ascension.
+~
+
+0 MINDBLOCK SHIELD~
+Syntax: shield
+        mindblock
+Toggles aura shielding rather than an armor spell.
+Existing prerequisites: Mage Mind 3; Vampire Obfuscate 6; Werewolf Silver
+Fangs 4; Monk Mantra 2; or the learned Dragon Shield ability.
+For the item/NPC armor spell, use HELP SHIELDSPELL instead.
+~
+
+0 ARMOR 'SPELL ARMOR'~
+The Armor item/NPC spell gives a timed armor +20 affect.
+Positive armor improves player avoidance in Genesis. NPC avoidance is
+level-based; this does not claim an NPC avoidance increase.
+The same named affect does not stack or refresh; removal reverses the
+modifier. Existing saved negative armor affects are not silently rewritten.
+Level-99 direct-player-casting restrictions remain unchanged.
+~
+
+0 SHIELDSPELL 'SPELL SHIELD'~
+The Shield item/NPC spell gives timed armor +20, not aura shielding.
+It is distinct from the class SHIELD/MINDBLOCK command.
+Positive armor improves player avoidance; NPC avoidance ignores armor.
+The named affect does not stack or refresh and removal reverses it.
+This spell's existing direct-cast level restriction is unchanged.
+~
+
+0 'STONE SKIN' STONESKIN 'SPELL STONE SKIN'~
+The Stone Skin item/NPC spell gives timed armor +30.
+Positive armor improves player avoidance; NPC avoidance ignores armor.
+It does not stack or refresh itself. Named-effect removal reverses the
+modifier without changing equipment or permanent base stats.
+Existing direct-player-casting restrictions remain unchanged.
+~
+
+0 VENTRILOQUATE~
+Syntax: cast ventriloquate <visible object here> <message>
+Sorcerer utility spell. Creates visibly attributed illusory speech from
+a visible object here (carried, worn or in the room). It cannot impersonate
+a player/staff speaker.
+Message text is literal, not a formatting directive; control characters
+are rejected. It is implemented, not an empty historical spell slot.
+~
+
+0 INTERNALAFFECTS~
+Some skill-table names are internal affect identities rather than spells
+that players can cast. Examples include Friction Curse, Brittle Bones,
+Mage Invis, parent traits and lineage recovery.
+Their spell_null registration is intentional: the owning ability applies
+or consumes the effect. It is not a missing active spell implementation.
+Do not add direct casts or class unlocks merely to fill these marker slots.
+~
+
+0 $~
+#$

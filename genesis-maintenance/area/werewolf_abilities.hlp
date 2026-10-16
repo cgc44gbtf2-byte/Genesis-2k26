@@ -1,0 +1,248 @@
+#HELPS
+
+0 ADVANCE WOLFPROGRESSION~
+Syntax: advance
+Werewolves start at rank 1 and can advance themselves through rank 4.
+The current rank requires 20 times that rank in completed quests and
+1000 times that rank in lifetime mob kills. These counters are checked,
+not spent. The old Gnosis/Rage and 500-kill requirements are obsolete.
+ADVANCE cannot award rank 5; it is not a self-service mastery shortcut.
+Related: RANKS, TRIBEGIFTS, WWGIFTS, WWPOWERS.
+~
+
+0 TRIBEGIFTS WOLFGIFTCHOICE~
+Syntax: tribegifts
+        tribegifts <breed, auspice or tribe name>
+Displays or selects your preferred breed, auspice and tribe.
+Each of the three choices can be made once; this command cannot replace
+an already selected preference. Use the full name without quotation
+marks, for example TRIBEGIFTS BLACK FURIES.
+A preferred track can reach 5; other tracks in its category cap at 4.
+Selecting a preference does not itself buy every gift rank.
+Related: WWGIFTS, BREEDS, AUSPICES, TRIBES.
+~
+
+0 GIFTS WWGIFTS WOLFGIFTTRAINING~
+Syntax for Werewolves: gifts
+                       gifts <full track name>
+WWGIFTS is an alias for the Werewolf gift trainer.
+With no argument it displays breed, auspice and tribe ratings.
+With a full track name it buys the next rank using primal: 10 times
+the next rank for a preferred track, or 15 times for other tracks.
+Preferred tracks cap at 5; other tracks cap at 4, not 3.
+Example: GIFTS CHILDREN OF GAIA. Do not quote the multiword name.
+Other parent classes may have their own class-specific gift menus.
+Related: TRIBEGIFTS, WWPOWERS.
+~
+
+0 WWPOWERS WOLFCOMMANDS~
+Syntax: wwpowers
+Lists the Werewolf command powers unlocked by current gift ratings.
+This is an information menu, not a trainer or a grant-all command.
+Use WWGIFTS to train and WWUPKEEP to inspect active powers.
+The individual command help pages give the actual handler requirements;
+older tribe lore and menu labels are not extra, separate abilities.
+~
+
+0 PERSUASION JAMTECH RESHAPEOBJECT HOMIDCOMMANDS~
+Homid command gifts:
+  1 PERSUASION: toggles the native awe/persuasion flag.
+  2 JAMTECH <target>: attempts to disrupt an opponent's weapon.
+  3 RESHAPEOBJECT <carried object> RENAME <short description>
+    RESHAPEOBJECT <carried object> KEYWORD <extra keywords>
+    RESHAPEOBJECT <carried object> FLAGS <glow|hum>
+Reshaping requires eligible, quest-owned equipment and does not create
+an artifact or copy combat enchantments.
+Homid 4 DISQUIET and Homid 5 WARD have separate help entries.
+~
+
+0 PRIMALANGER BURROW PORCUPINE METISCOMMANDS~
+Metis command gifts:
+  1 PRIMALANGER: trades pain for rage; not a healing spell.
+  2 BURROW: toggles native earthmelding, with its normal restrictions.
+  4 PORCUPINE: toggles the bristles flag that obstructs embraces.
+Metis 3 uses NIGHTSIGHT; Metis 5 TOTEMGIFT has its own help entry.
+These are individual toggles, not permanent grants of every Metis gift.
+~
+
+0 BEASTLIFE LUPUSCOMMANDS WOLFELEMENTAL~
+Syntax: beastlife
+Requires Lupus 4 and toggles the native animal-master flag.
+Lupus also supplies HEIGHTEN at 1, SCRY at 2 and automatic balance
+benefits. Lupus 5 uses ELEMENTAL <fire|water|earth|air> <target>.
+The Werewolf ELEMENTAL command is not the Elemental parent's trainer.
+Related: LUPUS, HEIGHTEN, SCRY, ELEMENTAL.
+~
+
+0 BLUR BLISSFUL WHELP RAGABASHCOMMANDS~
+Ragabash command gifts:
+  1 BLUR: toggles native Blur concealment.
+  2 BLISSFUL: toggles Blissful Ignorance concealment.
+  4 WHELP <target>: applies a temporary hit, damage and armor penalty
+    when the native attack checks succeed.
+Using one concealment command does not train the other gift ranks.
+Related: RAGABASH, WWGIFTS, WWUPKEEP.
+~
+
+0 MOTHER PULSE GRASP LOBOTOMY THEURGECOMMANDS~
+Theurge command gifts:
+  1 MOTHER <target>: heals an eligible target; self-healing requires 2.
+  3 PULSE: toggles spirit/shadow sight.
+  4 GRASP <target>: draws the caster and eligible target into the Umbra.
+  5 LOBOTOMY <target>: drains mana, bounded at zero.
+Mother's healing is capped at the target's maximum health.
+These commands retain their native target, ward and combat checks.
+~
+
+0 WALLGRANITE GEAS PHILODOXCOMMANDS~
+Philodox command gifts:
+  4 WALLGRANITE <direction>: creates native granite-wall/portal
+    obstruction for a valid exit; do not expect to overwrite any exit.
+  5 GEAS <target>: attempts the native charm/follower effect on an
+    eligible creature, subject to its existing resistance checks.
+Philodox 2 STRENGTHOFPURPOSE has a separate restored-power help entry.
+Related: PHILODOX, WWGIFTS, STRENGTHOFPURPOSE.
+~
+
+0 WYLD WYRMCALL SONGOFRAGE GALLIARDCOMMANDS~
+Galliard command gifts:
+  1 WYLD: broadcasts a Werewolf assistance call while fighting or
+    critically wounded; it does not summon an automatic army.
+  3 WYRMCALL: attempts to reveal concealed creatures in the room.
+  4 SONGofRAGE <target>: provokes or increases eligible targets' rage.
+  5 BRIDGEWALK <target>: see BRIDGEWALK for travel and misfires.
+The command name is SONGofRAGE, entered as one word.
+~
+
+0 BRIDGEWALK MOONBRIDGE~
+Syntax: bridgewalk <target>
+Requires Galliard 5, not Ragabash 5. The target must be an eligible
+visible creature elsewhere; players must permit summoning.
+Both rooms must permit travel. Combat/timers, restraint, curses/webs,
+roots, private/solitary rooms and incompatible planes prevent travel.
+An otherwise valid attempt has a one-in-three moon fluctuation:
+it tries a limited number of random destinations in the legacy room
+range 100..16000. If none is found, it fails without moving you.
+Random landings exclude safe/private/solitary/no-recall/no-teleport
+rooms. A permitted landing is not a promise of freedom from enemies.
+Invalid requests do not send you elsewhere or dismiss Blissful Ignorance.
+~
+
+0 HELIOS AHROUNCOMMANDS~
+Syntax: helios
+Requires Ahroun 5 and toggles the native Helios/solar-protection flag.
+It is separate from HALOSUN and does not change your tribe selection.
+Ahroun 1 RAZORCLAWS has its own restored-power help entry.
+Related: AHROUN, RAZORCLAWS, WWUPKEEP.
+~
+
+0 BREATHWYLD AEOLUS FOG BODYWRACK BLACKFURYCOMMANDS~
+Black Furies command gifts:
+  1 BREATHWYLD: restores the caster's health, capped at maximum.
+  2 AEOLUS or FOG: outdoors-only world-fog toggle, with the native
+    60-second weather cooldown.
+  5 BODYWRACK <target>: attempts the native damaging attack.
+BODYWRACK requires 5, not the rank 4 in older lore.
+The restored WYLDWARP power has a separate help entry.
+~
+
+0 FRIEND INFEST BONEGNAWERCOMMANDS~
+Bone Gnawer command gifts:
+  3 FRIEND <target>: transfers some of your rage to an eligible target.
+  4 INFEST: summons the native charmed infestation helper.
+Friend consumes rage you actually have; it is not a free rage refill.
+The helper uses the game's normal follower and charm mechanisms.
+Related: WWGIFTS, WWUPKEEP.
+~
+
+0 DAZZLE HALOSUN CHILDRENOFGAIACOMMANDS~
+Children of Gaia command gifts:
+  3 DAZZLE <target>: attempts to disrupt the eligible target's actions.
+  5 HALOSUN: toggles the native sunshield item-affect flag.
+DAZZLE requires 3, not the rank 2 in older lore.
+Other shared powers include CALM, SPIRITGUARDIAN and STRIKETHEAIR;
+use their own help and actual command gates rather than old menu names.
+~
+
+0 FAERIELIGHT HOWLBANSHEE BALORSGAZE FIANNACOMMANDS~
+Fianna command gifts:
+  1 FAERIELIGHT: creates a native light-ball object.
+  2 HOWLBANSHEE: attempts a room-wide fear/disruption howl.
+  5 BALORSGAZE <target>: applies the native Balor's Gaze attack.
+BALORSGAZE requires 5, not the rank 4 in older lore.
+Fianna's illusion commands share the native illusion system; they are
+not permission to impersonate staff or bypass target protections.
+Related: ILLUSIONARYFORM, CLONEOBJECT.
+~
+
+0 DIAGNOSTICS SURGE DOPPLEGANGER SUMMONNETSPIDER GLASSWALKERCOMMANDS~
+Glass Walker command gifts:
+  1 DIAGNOSTICS <carried object>: inspects the selected item.
+  3 SURGE: attacks eligible non-group opponents in the room.
+  4 DOPPLEGANGER <target>: adopts the native appearance disguise.
+  5 SUMMONNETSPIDER: summons the native charmed net-spider helper.
+Surge retains native safety/PK checks and does not attack your group.
+Disguise is not a change of account name, class or staff permissions.
+~
+
+0 CLAPTHUNDER PARALYZINGSTARE DOMINATOR OBEDIENCE SHADOWLORDCOMMANDS~
+Shadow Lord command gifts:
+  2 CLAPTHUNDER: native room thunder attack, not an automatic passive.
+  3 PARALYZINGSTARE <target>: attempts to interrupt the target.
+  4 DOMINATOR <target>: steals eligible targets' rage/blood energy.
+  5 OBEDIENCE <target|all> <command>: attempts native domination.
+Obedience uses the restricted domination-action checks; it is not a
+general FORCE command and cannot grant administrative permissions.
+The former rank-4 Open Wounds placeholder is not a separate command.
+~
+
+0 REACH SILENTSTRIDERCOMMANDS~
+Syntax: reach <target>
+Requires Silent Striders 5. Attempts to pull an eligible nearby target
+out of the native shadow plane, subject to its normal ward checks.
+It does not teleport you to an arbitrary room or change your account
+class. Other Silent Strider advantages are native passive benefits.
+~
+
+0 WRATH MASTERY SILVERFANGCOMMANDS~
+Silver Fang command gifts:
+  3 WRATH: applies the native fear/hit/damage penalty attack.
+  5 MASTERY <Garou> <command>: attempts to command an eligible Garou.
+MASTERY requires 5, not the rank 4 in older lore.
+Mastery uses restricted command checks, not unrestricted staff FORCE.
+Related: SHIELD, SILVER FANGS, WWGIFTS.
+~
+
+0 FALLING STARGAZERCOMMANDS~
+Syntax: falling <target>
+Requires Stargazers 1. Performs the native Falling Touch attack,
+including damage and action delay when its checks succeed.
+Higher gift ranks scale the existing attack; this is not a separate
+ability to train at each rank.
+~
+
+0 INVISIBILITY FETISHDOLL UKTENACOMMANDS~
+Uktena command gifts:
+  4 INVISIBILITY: invokes the native invisibility effect.
+  5 FETISHDOLL <player>: consumes a matching body part held in your
+    hand and creates that online player's native voodoo doll.
+The body part's type and recorded name must match the player.
+NPCs are not valid doll targets. A missing doll template does not
+consume the component. Use FETISHDOLL, not the old shortened FETISH label.
+Related: SHROUD, UKTENA, WWGIFTS.
+~
+
+0 CAMOUFLAGE CUTTING BLOODYFEAST INVOKE WENDIGOCOMMANDS~
+Wendigo command gifts:
+  1 CAMOUFLAGE: invokes the native hiding effect.
+  2 CUTTING <target>: native Cutting Wind attack.
+  3 BLOODYFEAST <corpse>: consumes eligible remains for a temporary
+    damage-roll affect; it does not permanently raise base stats.
+  5 INVOKE FOG or INVOKE RAIN: outdoor weather toggles.
+    INVOKE LIGHTNING <target>: native lightning attack.
+Invoke retains its weather cooldown and outdoor requirements.
+Related: WENDIGOS, WWGIFTS, WWUPKEEP.
+~
+
+0 $~
+#$

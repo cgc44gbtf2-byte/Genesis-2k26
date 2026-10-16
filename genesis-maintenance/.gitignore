@@ -1,0 +1,18 @@
+# C build outputs
+*.o
+/src/merc
+/core
+/core.*
+
+# Runtime player records, backups, and logs
+/player/*
+!/player/.gitkeep
+/backup/*
+!/backup/.gitkeep
+/log/*
+!/log/.gitkeep
+
+# Local runtime files
+/area/memwatch.log
+/area/shutdown.txt
+/area/copyover.data

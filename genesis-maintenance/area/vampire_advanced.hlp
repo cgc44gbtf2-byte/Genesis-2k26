@@ -1,0 +1,110 @@
+#HELPS
+
+0 ESHIFT EARTHSHIFT EARTHCONTROL~
+Syntax: earthshift <target>
+ESHIFT is the same command. Requires Vampire Protean 6 and existing
+earthmeld. Travels underground to an eligible standing target elsewhere.
+Both rooms must allow travel; combat/timers, restraints, roots,
+curses/webs and incompatible planes block it. Players must permit
+summoning. Safe/private/solitary destinations and your own familiar
+are not shortcuts around the native travel restrictions.
+~
+
+0 DISINTEGRATE VAMPIREDISINTEGRATION~
+Syntax: disintegrate <target>
+Requires Vampire Vicissitude 7. Uses the current opponent when the
+native combat variant applies, otherwise the named target here.
+Costs one-thirtieth of the caster's blood-pool capacity.
+Sets the native disintegration state on an eligible target; this is
+not an unconditional administrative SLAY command.
+~
+
+0 BEASTFORM VAMPIREBEASTFORM~
+Syntax: beastform
+Requires Vampire Protean 7. Toggles the native advanced beast form,
+including its claw, sight, disguise and flight state.
+This is distinct from CHANGE BAT/WOLF/MIST and does not change your
+account class or grant the Werewolf parent's complete kit.
+~
+
+0 SHADOWFORGE SHADOWWEAPON~
+Syntax: shadowforge <slash|pierce|blunt>
+Requires Vampire Obtenebration 6 and the native shadow-weapon template.
+Creates the corresponding weapon through the game's item system.
+It is not permission to copy arbitrary artifacts or other players'
+custom equipment. Other combat enchantments keep their own rules.
+~
+
+0 FLESHBOND ANIMALFUSION~
+Syntax: fleshbond <animal>
+        fleshbond
+Requires Vampire Animalism 7. Bonds an eligible native animal to the
+caster and records its contribution to current and maximum health.
+Using the command while bonded attempts to separate it again.
+Removal is refused if losing those contributions would be fatal.
+Players are not valid bond creatures; not every NPC prototype qualifies.
+~
+
+0 LEECH VAMPIRELEECH~
+Syntax: leech <target>
+Requires Vampire Quietus 6 in the actual handler.
+Attempts the native blood-leeching attack on an eligible target here.
+Blood, target wards and combat checks apply; it is not free blood
+creation or a permanent increase to blood-pool capacity.
+~
+
+0 FIST FISTOFCAINE~
+Syntax: fist <target>
+Requires Vampire Potence 7. Performs the native Fist of Caine unarmed
+attack with its action delay and existing combat protections.
+It does not train weapon skills or permanently raise base strength.
+~
+
+0 EYESOFTHESERPENT SERPENTEYES~
+Syntax: eyesoftheserpent <target>
+Requires Vampire Serpentis 1. Attempts the native Serpent's Eyes
+control/disruption against an eligible target in the room.
+The full command is EYESOFTHESERPENT; resistance and protective effects
+still apply. It does not grant account or staff permissions.
+~
+
+0 MARK MARKOFTHESERPENT~
+Syntax: mark <target>
+Requires Vampire Serpentis 7. Applies the native Mark of the Serpent
+attack/effect to an eligible nearby target.
+This is a discipline ability, not the builder's or quest item's
+ownership-marking interface.
+~
+
+0 ENRAGE VAMPIREPROVOKE~
+Syntax: enrage <target>
+Requires Vampire Presence 6. Attempts to provoke the target's native
+rage response. Existing class, resistance and combat checks apply;
+it does not select a new permanent class for the victim.
+~
+
+0 TENEBROUS SHADOWFORM~
+Syntax: tenebrous
+Requires Vampire Obtenebration 7. Toggles the native tenebrous shadow
+form and its appearance state. Conflicting polymorphs are rejected.
+This is separate from ordinary VANISH concealment and UMBRA travel.
+~
+
+0 HORRID ADVANCEDILLUSIONATTACK~
+Syntax: horrid <target>
+Requires Vampire Chimerstry 7 and an eligible nearby target.
+Invokes the native advanced illusion attack with its normal checks.
+This command is distinct from the separately restored HORRIDREALITY
+ability; matching names do not bypass either power's prerequisites.
+~
+
+0 TORMENT VAMPIRESPIRITATTACK~
+Syntax: torment <target>
+Requires Vampire Necromancy 7. Invokes the native spiritual attack,
+including spirit-form interaction and substantial health damage.
+It is an attack, not a safe way to remove a friend's spirit form.
+Existing target and native combat restrictions remain in force.
+~
+
+0 $~
+#$

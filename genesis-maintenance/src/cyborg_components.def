@@ -1,0 +1,31 @@
+/*
+ * Cyborg implant/replacement data adapted from Kale/Jalerit's cyborg.c,
+ * The Vortex snapshot 6db439378f566f59d7ce89f7b01264d76896d1e7.
+ * Original notice permits use with proper credit to Kale/Jalerit.
+ * Preserve underlying Diku/Merc/GodWars license notices as well.
+ * New IDs; original executable prerequisite branches and costs, NOT flags.
+ */
+C(HEART, heart, "Replacement heart", PASSIVE, 0, 30, 4)
+C(LIVER, liver, "Replacement liver", PASSIVE, 0, 30, 4)
+C(STOMACH, stomach, "Replacement stomach", PASSIVE, 0, 30, 4)
+C(NEUROPROCESSOR, neuroprocessor, "Neuroprocessor", PASSIVE, 0, 50, 8)
+C(BATTERY, battery, "Battery", PASSIVE, 0, 30, 5)
+C(NANITE_FACTORY, nanite_factory, "Nanite factory", PASSIVE, B(BATTERY)|B(STOMACH)|B(LIVER), 25, 4)
+C(LEFT_ARM, left_arm, "Replacement left arm", PASSIVE, B(NEUROPROCESSOR)|B(NANITE_FACTORY), 40, 8)
+C(RIGHT_ARM, right_arm, "Replacement right arm", PASSIVE, B(NEUROPROCESSOR)|B(NANITE_FACTORY), 40, 8)
+C(LEFT_LEG, left_leg, "Replacement left leg", PASSIVE, B(NEUROPROCESSOR)|B(NANITE_FACTORY), 40, 8)
+C(RIGHT_LEG, right_leg, "Replacement right leg", PASSIVE, B(NEUROPROCESSOR)|B(NANITE_FACTORY), 40, 8)
+C(EYES, eyes, "Replacement eyes", PASSIVE, B(NEUROPROCESSOR)|B(NANITE_FACTORY), 30, 8)
+C(EARS, ears, "Replacement ears", PASSIVE, B(NEUROPROCESSOR)|B(NANITE_FACTORY), 30, 8)
+C(ADRENAL_BOOST, adrenal_boost, "Adrenal boost", PASSIVE, B(HEART), 25, 5)
+C(BOOSTERWARE, boosterware, "Boosterware", PASSIVE, B(NEUROPROCESSOR), 30, 7)
+C(BOOSTMASTER, boostmaster, "BoostMaster", PASSIVE, B(BOOSTERWARE), 30, 6)
+C(WOLVERS, wolvers, "Wolver wrist blades", ACTIVE, B(LEFT_ARM)|B(RIGHT_ARM), 35, 8)
+C(CHAMELEON, chameleon, "Chameleon field", ACTIVE, B(EYES)|B(NANITE_FACTORY)|B(NEUROPROCESSOR)|B(BATTERY), 50, 10)
+C(MUSCLE, muscle, "Muscle enhancement", PASSIVE, B(NANITE_FACTORY), 30, 8)
+C(BONELACE, bonelace, "Bone lace", PASSIVE, B(NANITE_FACTORY), 25, 6)
+C(RADIOSPLICE, radiosplice, "Radio splice", ACTIVE, B(EARS)|B(NEUROPROCESSOR), 25, 7)
+C(TARGETCOMP, targetcomp, "Targeting computer", PASSIVE, B(EYES)|B(BATTERY)|B(NEUROPROCESSOR), 35, 8)
+C(TELEOPTICS, teleoptics, "Telescopic optics", PASSIVE, B(EYES), 25, 3)
+C(RAILGUN, railgun, "Railgun", ACTIVE, B(LEFT_ARM)|B(RIGHT_ARM)|B(TELEOPTICS), 30, 6)
+C(TASER, taser, "Taser", ACTIVE, B(LEFT_ARM)|B(RIGHT_ARM)|B(BATTERY), 20, 4)

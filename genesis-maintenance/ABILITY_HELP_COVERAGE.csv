@@ -1,0 +1,399 @@
+source,handler,topic,exact_public_help,first_exact_file,effect_verification
+src/disc.c,do_earthshift,eshift,yes,vampire_advanced.hlp,separate positive/negative variant assertions required
+src/disc.c,do_earthshift,earthshift,yes,vampire_advanced.hlp,separate positive/negative variant assertions required
+src/disc.c,do_disint,disintegrate,yes,vampire_advanced.hlp,separate positive/negative variant assertions required
+src/disc.c,do_beastform,beastform,yes,vampire_advanced.hlp,separate positive/negative variant assertions required
+src/disc.c,do_shadowforge,shadowforge,yes,vampire_advanced.hlp,separate positive/negative variant assertions required
+src/disc.c,do_fleshbond,fleshbond,yes,vampire_advanced.hlp,separate positive/negative variant assertions required
+src/disc.c,do_leechblood,leech,yes,vampire_advanced.hlp,separate positive/negative variant assertions required
+src/disc.c,do_fistofcaine,fist,yes,vampire_advanced.hlp,separate positive/negative variant assertions required
+src/disc.c,do_eyes,eyesoftheserpent,yes,vampire_advanced.hlp,separate positive/negative variant assertions required
+src/disc.c,do_mark,mark,yes,vampire_advanced.hlp,separate positive/negative variant assertions required
+src/disc.c,do_enrage,enrage,yes,vampire_advanced.hlp,separate positive/negative variant assertions required
+src/disc.c,do_tenebrous,tenebrous,yes,vampire_advanced.hlp,separate positive/negative variant assertions required
+src/disc.c,do_horrid,horrid,yes,vampire_advanced.hlp,separate positive/negative variant assertions required
+src/disc.c,do_torment,torment,yes,vampire_advanced.hlp,separate positive/negative variant assertions required
+src/clan.c,do_smother,smother,yes,main.hlp,separate positive/negative variant assertions required
+src/clan.c,do_fangs,fangs,yes,shared_abilities.hlp,separate positive/negative variant assertions required
+src/clan.c,do_claws,claws,yes,shared_abilities.hlp,separate positive/negative variant assertions required
+src/clan.c,do_nightsight,nightsight,yes,shared_abilities.hlp,separate positive/negative variant assertions required
+src/clan.c,do_nightsight,darkvision,yes,shared_abilities.hlp,separate positive/negative variant assertions required
+src/clan.c,do_majesty,majesty,yes,shared_abilities.hlp,separate positive/negative variant assertions required
+src/clan.c,do_awe,awe,yes,shared_abilities.hlp,separate positive/negative variant assertions required
+src/clan.c,do_shadowsight,umbralvision,yes,shared_abilities.hlp,separate positive/negative variant assertions required
+src/clan.c,do_outcast,outcast,yes,shared_abilities.hlp,separate positive/negative variant assertions required
+src/clan.c,do_clanname,clanname,yes,shared_abilities.hlp,separate positive/negative variant assertions required
+src/clan.c,do_clandisc,clandisc,yes,class.hlp,separate positive/negative variant assertions required
+src/clan.c,do_mask,mask,yes,shared_abilities.hlp,separate positive/negative variant assertions required
+src/clan.c,do_change,change,yes,shared_abilities.hlp,separate positive/negative variant assertions required
+src/clan.c,do_vampire,defences,yes,shared_abilities.hlp,separate positive/negative variant assertions required
+src/clan.c,do_vampire,vampire,yes,kits.hlp,separate positive/negative variant assertions required
+src/clan.c,do_shadowplane,umbra,yes,shared_abilities.hlp,separate positive/negative variant assertions required
+src/clan.c,do_truesight,heighten,yes,shared_abilities.hlp,separate positive/negative variant assertions required
+src/clan.c,do_soulmask,soulmask,yes,shared_abilities.hlp,separate positive/negative variant assertions required
+src/clan.c,do_scry,scry,yes,shared_abilities.hlp,separate positive/negative variant assertions required
+src/clan.c,do_readaura,lifescan,yes,shared_abilities.hlp,separate positive/negative variant assertions required
+src/clan.c,do_readaura,readaura,yes,shared_abilities.hlp,separate positive/negative variant assertions required
+src/clan.c,do_shield,mindblock,yes,mage_abilities.hlp,separate positive/negative variant assertions required
+src/clan.c,do_shield,shield,yes,mage_abilities.hlp,separate positive/negative variant assertions required
+src/clan.c,do_serpent,serpent,yes,shared_abilities.hlp,separate positive/negative variant assertions required
+src/clan.c,do_regenerate,regenerate,yes,shared_abilities.hlp,separate positive/negative variant assertions required
+src/clan.c,do_feed,feed,yes,shared_abilities.hlp,separate positive/negative variant assertions required
+src/clan.c,do_upkeep,upkeep,yes,shared_abilities.hlp,separate positive/negative variant assertions required
+src/clan.c,do_favour,favour,yes,shared_abilities.hlp,separate positive/negative variant assertions required
+src/clan.c,do_familiar,familiar,yes,shared_abilities.hlp,separate positive/negative variant assertions required
+src/clan.c,do_fcommand,[,yes,shared_abilities.hlp,separate positive/negative variant assertions required
+src/clan.c,do_flex,flex,yes,shared_abilities.hlp,separate positive/negative variant assertions required
+src/clan.c,do_rage,rage,yes,shared_abilities.hlp,separate positive/negative variant assertions required
+src/clan.c,do_calm,calm,yes,shared_abilities.hlp,separate positive/negative variant assertions required
+src/clan.c,do_web,web,yes,legacy_spells.hlp,separate positive/negative variant assertions required
+src/clan.c,do_entrancement,entrancement,yes,shared_abilities.hlp,separate positive/negative variant assertions required
+src/clan.c,do_summoning,summoning,yes,shared_abilities.hlp,separate positive/negative variant assertions required
+src/clan.c,do_earthmeld,earthmeld,yes,shared_abilities.hlp,separate positive/negative variant assertions required
+src/clan.c,do_powers,powers,yes,shared_abilities.hlp,separate positive/negative variant assertions required
+src/clan.c,do_dreadgaze,dreadgaze,yes,shared_abilities.hlp,separate positive/negative variant assertions required
+src/clan.c,do_vanish,vanish,yes,shared_abilities.hlp,separate positive/negative variant assertions required
+src/clan.c,do_discipline,discipline,yes,shared_abilities.hlp,separate positive/negative variant assertions required
+src/clan.c,do_teachdisc,teachdisc,yes,shared_abilities.hlp,separate positive/negative variant assertions required
+src/clan.c,do_pigeon,pigeon,yes,shared_abilities.hlp,separate positive/negative variant assertions required
+src/clan.c,do_beckon,beckoning,yes,shared_abilities.hlp,separate positive/negative variant assertions required
+src/clan.c,do_beastwithin,beastwithin,yes,shared_abilities.hlp,separate positive/negative variant assertions required
+src/clan.c,do_serenity,serenity,yes,shared_abilities.hlp,separate positive/negative variant assertions required
+src/clan.c,do_serenity,songserenity,yes,shared_abilities.hlp,separate positive/negative variant assertions required
+src/clan.c,do_unveil,unveil,yes,shared_abilities.hlp,separate positive/negative variant assertions required
+src/clan.c,do_embrace,embrace,yes,shared_abilities.hlp,separate positive/negative variant assertions required
+src/clan.c,do_possession,possession,yes,shared_abilities.hlp,separate positive/negative variant assertions required
+src/clan.c,do_mirrorimage,mirrorimage,yes,shared_abilities.hlp,separate positive/negative variant assertions required
+src/clan.c,do_formillusion,formillusion,yes,shared_abilities.hlp,separate positive/negative variant assertions required
+src/clan.c,do_formillusion,illusionaryform,yes,shared_abilities.hlp,separate positive/negative variant assertions required
+src/clan.c,do_cloneobject,cloneobject,yes,shared_abilities.hlp,separate positive/negative variant assertions required
+src/clan.c,do_rename,falseappearance,yes,shared_abilities.hlp,separate positive/negative variant assertions required
+src/clan.c,do_control,controlillusion,yes,shared_abilities.hlp,separate positive/negative variant assertions required
+src/clan.c,do_truedisguise,truedisguise,yes,shared_abilities.hlp,separate positive/negative variant assertions required
+src/clan.c,do_omnipotence,omnipotence,yes,shared_abilities.hlp,separate positive/negative variant assertions required
+src/clan.c,do_heal,heal,yes,legacy_spells.hlp,separate positive/negative variant assertions required
+src/clan.c,do_autoclass,autoclass,yes,shared_abilities.hlp,separate positive/negative variant assertions required
+src/clan.c,do_thinblood,thinblood,yes,shared_abilities.hlp,separate positive/negative variant assertions required
+src/werewolf.c,do_advance,advance,yes,werewolf_abilities.hlp,separate positive/negative variant assertions required
+src/werewolf.c,do_wwpowers,wwpowers,yes,werewolf_abilities.hlp,separate positive/negative variant assertions required
+src/werewolf.c,do_gifts,gifts,yes,werewolf_abilities.hlp,separate positive/negative variant assertions required
+src/werewolf.c,do_gifts,wwgifts,yes,werewolf_abilities.hlp,separate positive/negative variant assertions required
+src/werewolf.c,do_tribegifts,tribegifts,yes,werewolf_abilities.hlp,separate positive/negative variant assertions required
+src/wwbreed.c,do_persuasion,persuasion,yes,werewolf_abilities.hlp,separate positive/negative variant assertions required
+src/wwbreed.c,do_jamtech,jamtech,yes,werewolf_abilities.hlp,separate positive/negative variant assertions required
+src/wwbreed.c,do_reshape,reshapeobject,yes,werewolf_abilities.hlp,separate positive/negative variant assertions required
+src/wwbreed.c,do_primalanger,primalanger,yes,werewolf_abilities.hlp,separate positive/negative variant assertions required
+src/wwbreed.c,do_burrow,burrow,yes,werewolf_abilities.hlp,separate positive/negative variant assertions required
+src/wwbreed.c,do_porcupine,porcupine,yes,werewolf_abilities.hlp,separate positive/negative variant assertions required
+src/wwbreed.c,do_animal,beastlife,yes,werewolf_abilities.hlp,separate positive/negative variant assertions required
+src/wwbreed.c,do_elemental,elemental,yes,kits.hlp,separate positive/negative variant assertions required
+src/wwauspice.c,do_blur,blur,yes,werewolf_abilities.hlp,separate positive/negative variant assertions required
+src/wwauspice.c,do_blissful,blissful,yes,werewolf_abilities.hlp,separate positive/negative variant assertions required
+src/wwauspice.c,do_whelp,whelp,yes,werewolf_abilities.hlp,separate positive/negative variant assertions required
+src/wwauspice.c,do_mother,mother,yes,werewolf_abilities.hlp,separate positive/negative variant assertions required
+src/wwauspice.c,do_pulse,pulse,yes,werewolf_abilities.hlp,separate positive/negative variant assertions required
+src/wwauspice.c,do_grasp,grasp,yes,werewolf_abilities.hlp,separate positive/negative variant assertions required
+src/wwauspice.c,do_lobotomy,lobotomy,yes,werewolf_abilities.hlp,separate positive/negative variant assertions required
+src/wwauspice.c,do_wallgranite,wallgranite,yes,werewolf_abilities.hlp,separate positive/negative variant assertions required
+src/wwauspice.c,do_geas,geas,yes,werewolf_abilities.hlp,separate positive/negative variant assertions required
+src/wwauspice.c,do_wyld,wyld,yes,werewolf_abilities.hlp,separate positive/negative variant assertions required
+src/wwauspice.c,do_wyrmcall,wyrmcall,yes,werewolf_abilities.hlp,separate positive/negative variant assertions required
+src/wwauspice.c,do_songrage,songofrage,yes,werewolf_abilities.hlp,separate positive/negative variant assertions required
+src/wwauspice.c,do_bridgewalk,bridgewalk,yes,werewolf_abilities.hlp,separate positive/negative variant assertions required
+src/wwauspice.c,do_helios,helios,yes,werewolf_abilities.hlp,separate positive/negative variant assertions required
+src/wwtribe.c,do_breathwyld,breathwyld,yes,werewolf_abilities.hlp,separate positive/negative variant assertions required
+src/wwtribe.c,do_aeolus,aeolus,yes,werewolf_abilities.hlp,separate positive/negative variant assertions required
+src/wwtribe.c,do_aeolus,fog,yes,werewolf_abilities.hlp,separate positive/negative variant assertions required
+src/wwtribe.c,do_bodywrack,bodywrack,yes,werewolf_abilities.hlp,separate positive/negative variant assertions required
+src/wwtribe.c,do_friend,friend,yes,werewolf_abilities.hlp,separate positive/negative variant assertions required
+src/wwtribe.c,do_infest,infest,yes,werewolf_abilities.hlp,separate positive/negative variant assertions required
+src/wwtribe.c,do_dazzle,dazzle,yes,werewolf_abilities.hlp,separate positive/negative variant assertions required
+src/wwtribe.c,do_halosun,halosun,yes,werewolf_abilities.hlp,separate positive/negative variant assertions required
+src/wwtribe.c,do_faerielight,faerielight,yes,werewolf_abilities.hlp,separate positive/negative variant assertions required
+src/wwtribe.c,do_banshee,howlbanshee,yes,werewolf_abilities.hlp,separate positive/negative variant assertions required
+src/wwtribe.c,do_balor,balorsgaze,yes,werewolf_abilities.hlp,separate positive/negative variant assertions required
+src/wwtribe.c,do_diagnostics,diagnostics,yes,werewolf_abilities.hlp,separate positive/negative variant assertions required
+src/wwtribe.c,do_surge,surge,yes,werewolf_abilities.hlp,separate positive/negative variant assertions required
+src/wwtribe.c,do_doppleganger,doppleganger,yes,werewolf_abilities.hlp,separate positive/negative variant assertions required
+src/wwtribe.c,do_summonnet,summonnetspider,yes,werewolf_abilities.hlp,separate positive/negative variant assertions required
+src/wwtribe.c,do_clap,clapthunder,yes,werewolf_abilities.hlp,separate positive/negative variant assertions required
+src/wwtribe.c,do_paralyzing,paralyzingstare,yes,werewolf_abilities.hlp,separate positive/negative variant assertions required
+src/wwtribe.c,do_dominator,dominator,yes,werewolf_abilities.hlp,separate positive/negative variant assertions required
+src/wwtribe.c,do_obedience,obedience,yes,werewolf_abilities.hlp,separate positive/negative variant assertions required
+src/wwtribe.c,do_reach,reach,yes,werewolf_abilities.hlp,separate positive/negative variant assertions required
+src/wwtribe.c,do_wrath,wrath,yes,werewolf_abilities.hlp,separate positive/negative variant assertions required
+src/wwtribe.c,do_mastery,mastery,yes,werewolf_abilities.hlp,separate positive/negative variant assertions required
+src/wwtribe.c,do_falling,falling,yes,werewolf_abilities.hlp,separate positive/negative variant assertions required
+src/wwtribe.c,do_invisibility,invisibility,yes,werewolf_abilities.hlp,separate positive/negative variant assertions required
+src/wwtribe.c,do_fetishdoll,fetishdoll,yes,werewolf_abilities.hlp,separate positive/negative variant assertions required
+src/wwtribe.c,do_camouflage,camouflage,yes,werewolf_abilities.hlp,separate positive/negative variant assertions required
+src/wwtribe.c,do_cutting,cutting,yes,werewolf_abilities.hlp,separate positive/negative variant assertions required
+src/wwtribe.c,do_bloodyfeast,bloodyfeast,yes,werewolf_abilities.hlp,separate positive/negative variant assertions required
+src/wwtribe.c,do_invoke,invoke,yes,werewolf_abilities.hlp,separate positive/negative variant assertions required
+src/dragon.c,do_dragonform,morph,yes,combat_parents.hlp,separate positive/negative variant assertions required
+src/dragon.c,do_dbreath,breath,yes,combat_parents.hlp,separate positive/negative variant assertions required
+src/dragon.c,do_dust,dust,yes,combat_parents.hlp,separate positive/negative variant assertions required
+src/dragon.c,do_stail,stail,yes,combat_parents.hlp,separate positive/negative variant assertions required
+src/dragon.c,do_horns,horns,yes,combat_parents.hlp,separate positive/negative variant assertions required
+src/dragon.c,do_dragonskill,dragonskill,yes,combat_parents.hlp,separate positive/negative variant assertions required
+src/dragon.c,do_wings,wings,yes,combat_parents.hlp,separate positive/negative variant assertions required
+src/drow.c,do_dinduct,dinduct,yes,drow_abilities.hlp,separate positive/negative variant assertions required
+src/drow.c,do_promotion,promotion,yes,drow_abilities.hlp,separate positive/negative variant assertions required
+src/drow.c,do_failure,failure,yes,drow_abilities.hlp,separate positive/negative variant assertions required
+src/drow.c,do_attune,attunement,yes,drow_abilities.hlp,separate positive/negative variant assertions required
+src/drow.c,do_acidbolt,acidbolt,yes,drow_abilities.hlp,separate positive/negative variant assertions required
+src/drow.c,do_faeriefire,faeriefire,yes,drow_abilities.hlp,separate positive/negative variant assertions required
+src/drow.c,do_summonspider,summonspider,yes,drow_abilities.hlp,separate positive/negative variant assertions required
+src/drow.c,do_drowarmor,drowarmor,yes,drow_abilities.hlp,separate positive/negative variant assertions required
+src/drow.c,do_door,dimensiondoor,yes,drow_abilities.hlp,separate positive/negative variant assertions required
+src/drow.c,do_prayer,prayer,yes,class.hlp,separate positive/negative variant assertions required
+src/drow.c,do_skipdisc,skipdisc,yes,drow_abilities.hlp,separate positive/negative variant assertions required
+src/drow.c,do_drowupkeep,drowupkeep,yes,drow_abilities.hlp,separate positive/negative variant assertions required
+src/drow.c,do_globedark,globedarkness,yes,drow_abilities.hlp,separate positive/negative variant assertions required
+src/drow.c,do_shoot,shoot,yes,drow_abilities.hlp,separate positive/negative variant assertions required
+src/elemental.c,do_element,elemskill,yes,elemental_abilities.hlp,separate positive/negative variant assertions required
+src/elemental.c,do_flarearrow,flarearrow,yes,elemental_abilities.hlp,separate positive/negative variant assertions required
+src/elemental.c,do_fireblade,fireblade,yes,elemental_abilities.hlp,separate positive/negative variant assertions required
+src/elemental.c,do_phoenixform,phoenixform,yes,elemental_abilities.hlp,separate positive/negative variant assertions required
+src/elemental.c,do_iciclestorm,iciclestorm,yes,elemental_abilities.hlp,separate positive/negative variant assertions required
+src/elemental.c,do_watertravel,watertravel,yes,elemental_abilities.hlp,separate positive/negative variant assertions required
+src/elemental.c,do_aquabarrier,aquabarrier,yes,elemental_abilities.hlp,separate positive/negative variant assertions required
+src/elemental.c,do_watercontrol,watercontrol,yes,elemental_abilities.hlp,separate positive/negative variant assertions required
+src/elemental.c,do_windwings,windwings,yes,elemental_abilities.hlp,separate positive/negative variant assertions required
+src/elemental.c,do_windblades,windblades,yes,elemental_abilities.hlp,separate positive/negative variant assertions required
+src/elemental.c,do_stoneblast,stoneblast,yes,elemental_abilities.hlp,separate positive/negative variant assertions required
+src/elemental.c,do_localquake,localquake,yes,elemental_abilities.hlp,separate positive/negative variant assertions required
+src/elemental.c,do_holyaura,holyaura,yes,elemental_abilities.hlp,separate positive/negative variant assertions required
+src/elemental.c,do_solarflash,solarflash,yes,elemental_abilities.hlp,separate positive/negative variant assertions required
+src/elemental.c,do_sunbath,sunbath,yes,elemental_abilities.hlp,separate positive/negative variant assertions required
+src/elemental.c,do_solarlight,solarlight,yes,elemental_abilities.hlp,separate positive/negative variant assertions required
+src/elemental.c,do_infinitesight,infinitesight,yes,elemental_abilities.hlp,separate positive/negative variant assertions required
+src/elemental.c,do_mirageslice,mirageslice,yes,elemental_abilities.hlp,separate positive/negative variant assertions required
+src/elemental.c,do_ultimawave,ultimawave,yes,elemental_abilities.hlp,separate positive/negative variant assertions required
+src/elemental.c,do_elemarmor,elemarmor,yes,elemental_abilities.hlp,separate positive/negative variant assertions required
+src/elemental.c,do_cloak,cloakofsight,yes,elemental_abilities.hlp,separate positive/negative variant assertions required
+src/elemental.c,do_atoningwinds,atoningwinds,yes,elemental_abilities.hlp,separate positive/negative variant assertions required
+src/elemental.c,do_spiralmoon,spiralmoon,yes,elemental_abilities.hlp,separate positive/negative variant assertions required
+src/elemental.c,do_liquifyearth,liquifyearth,yes,elemental_abilities.hlp,separate positive/negative variant assertions required
+src/elemental.c,do_slow,slow,yes,elemental_abilities.hlp,separate positive/negative variant assertions required
+src/elemental.c,do_farsight,farsight,yes,elemental_abilities.hlp,separate positive/negative variant assertions required
+src/elemental.c,do_nightblade,nightblade,yes,elemental_abilities.hlp,separate positive/negative variant assertions required
+src/highland.c,do_increase,increase,yes,combat_parents.hlp,separate positive/negative variant assertions required
+src/highland.c,do_bladeflash,bflash,yes,combat_parents.hlp,separate positive/negative variant assertions required
+src/highland.c,do_bash,bash,yes,combat_parents.hlp,separate positive/negative variant assertions required
+src/highland.c,do_htwist,htwist,yes,combat_parents.hlp,separate positive/negative variant assertions required
+src/highland.c,do_judgement,judge,yes,combat_parents.hlp,separate positive/negative variant assertions required
+src/highland.c,do_lunge,lunge,yes,combat_parents.hlp,separate positive/negative variant assertions required
+src/highland.c,do_forge,forge,yes,combat_parents.hlp,separate positive/negative variant assertions required
+src/mage.c,do_analyze,analyze,yes,mage_abilities.hlp,separate positive/negative variant assertions required
+src/mage.c,do_rift,rift,yes,mage_abilities.hlp,separate positive/negative variant assertions required
+src/mage.c,do_beginners_luck,beginnersluck,yes,mage_abilities.hlp,separate positive/negative variant assertions required
+src/mage.c,do_brittle_bones,brittlebones,yes,mage_abilities.hlp,separate positive/negative variant assertions required
+src/mage.c,do_mutate_ephemera,mutateephemera,yes,mage_abilities.hlp,separate positive/negative variant assertions required
+src/mage.c,do_destroy_sculpture,shatterwall,yes,mage_abilities.hlp,separate positive/negative variant assertions required
+src/mage.c,do_sculpture,sculpture,yes,mage_abilities.hlp,separate positive/negative variant assertions required
+src/mage.c,do_alterweight,alterweight,yes,mage_abilities.hlp,separate positive/negative variant assertions required
+src/mage.c,do_alterweight,sorcalterweight,yes,mage_abilities.hlp,separate positive/negative variant assertions required
+src/mage.c,do_mage_invis,mageinvis,yes,mage_abilities.hlp,separate positive/negative variant assertions required
+src/mage.c,do_mage_invis,sorcinvis,yes,mage_abilities.hlp,separate positive/negative variant assertions required
+src/mage.c,do_spirit_sense,spiritsense,yes,mage_abilities.hlp,separate positive/negative variant assertions required
+src/mage.c,do_spirit_sense,spiritsence,yes,mage_abilities.hlp,separate positive/negative variant assertions required
+src/mage.c,do_spirit_caress,spiritcaress,yes,mage_abilities.hlp,separate positive/negative variant assertions required
+src/mage.c,do_step_sideways,stepsideways,yes,mage_abilities.hlp,separate positive/negative variant assertions required
+src/mage.c,do_break_dreamshell,breakdreamshell,yes,mage_abilities.hlp,separate positive/negative variant assertions required
+src/mage.c,do_hearts_blood,heartsblood,yes,mage_abilities.hlp,separate positive/negative variant assertions required
+src/mage.c,do_holy_smote,holysmote,yes,mage_abilities.hlp,separate positive/negative variant assertions required
+src/mage.c,do_mageenchant,mageenchant,yes,mage_abilities.hlp,separate positive/negative variant assertions required
+src/mage.c,do_mageenchant,sorcenchant,yes,mage_abilities.hlp,separate positive/negative variant assertions required
+src/mage.c,do_arete,arete,yes,mage_abilities.hlp,separate positive/negative variant assertions required
+src/mage.c,do_mage_heal,mageheal,yes,mage_abilities.hlp,separate positive/negative variant assertions required
+src/mage.c,do_mage_heal,sorcheal,yes,mage_abilities.hlp,separate positive/negative variant assertions required
+src/mage.c,do_better_body,betterbody,yes,mage_abilities.hlp,separate positive/negative variant assertions required
+src/mage.c,do_better_body,sorcbetterbody,yes,mage_abilities.hlp,separate positive/negative variant assertions required
+src/mage.c,do_polymorph_other,polymorphother,yes,mage_abilities.hlp,separate positive/negative variant assertions required
+src/mage.c,do_friction_curse,friction,yes,mage_abilities.hlp,separate positive/negative variant assertions required
+src/mage.c,do_friction_curse,frictioncurse,yes,mage_abilities.hlp,separate positive/negative variant assertions required
+src/mage.c,do_electrical_chaos,electricalchaos,yes,mage_abilities.hlp,separate positive/negative variant assertions required
+src/mage.c,do_inferno,inferno,yes,mage_abilities.hlp,separate positive/negative variant assertions required
+src/mage.c,do_contingency,contingency,yes,mage_abilities.hlp,separate positive/negative variant assertions required
+src/mage.c,do_double_cast,doublecast,yes,mage_abilities.hlp,separate positive/negative variant assertions required
+src/mage.c,do_spheres,sphere,yes,mage_abilities.hlp,separate positive/negative variant assertions required
+src/mage.c,do_clansphere,clansphere,yes,mage_abilities.hlp,separate positive/negative variant assertions required
+src/mage.c,do_magepowers,magepowers,yes,mage_abilities.hlp,separate positive/negative variant assertions required
+src/mage.c,do_select_spheres,selectspheres,yes,mage_abilities.hlp,separate positive/negative variant assertions required
+src/mage.c,do_magearmor,magearmor,yes,mage_abilities.hlp,separate positive/negative variant assertions required
+src/monk.c,do_monklearn,monklearn,yes,class.hlp,separate positive/negative variant assertions required
+src/monk.c,do_repeat,repeat,yes,monk_abilities.hlp,separate positive/negative variant assertions required
+src/monk.c,do_aurashot,aurashot,yes,monk_abilities.hlp,separate positive/negative variant assertions required
+src/monk.c,do_blitz,blitz,yes,monk_abilities.hlp,separate positive/negative variant assertions required
+src/monk.c,do_invite,invite,yes,monk_abilities.hlp,separate positive/negative variant assertions required
+src/monk.c,do_cripple,cripple,yes,monk_abilities.hlp,separate positive/negative variant assertions required
+src/monk.c,do_darkblaze,darkblaze,yes,monk_abilities.hlp,separate positive/negative variant assertions required
+src/monk.c,do_stunfist,stunfist,yes,monk_abilities.hlp,separate positive/negative variant assertions required
+src/monk.c,do_chimera,chimera,yes,monk_abilities.hlp,separate positive/negative variant assertions required
+src/monk.c,do_touch,touch,yes,monk_abilities.hlp,separate positive/negative variant assertions required
+src/monk.c,do_almighty,almighty,yes,monk_abilities.hlp,separate positive/negative variant assertions required
+src/monk.c,do_celestial,celestial,yes,monk_abilities.hlp,separate positive/negative variant assertions required
+src/monk.c,do_lifecloak,lifecloak,yes,monk_abilities.hlp,separate positive/negative variant assertions required
+src/monk.c,do_mclan,mclan,yes,monk_abilities.hlp,separate positive/negative variant assertions required
+src/monk.c,do_monkarmor,monkarmor,yes,monk_abilities.hlp,separate positive/negative variant assertions required
+src/monk.c,do_decide,decide,yes,monk_abilities.hlp,separate positive/negative variant assertions required
+src/monk.c,do_expel,expel,yes,monk_abilities.hlp,separate positive/negative variant assertions required
+src/ninja.c,do_principles,principle,yes,ninja_abilities.hlp,separate positive/negative variant assertions required
+src/ninja.c,do_humble,humble,yes,ninja_abilities.hlp,separate positive/negative variant assertions required
+src/ninja.c,do_promote,promote,yes,ninja_abilities.hlp,separate positive/negative variant assertions required
+src/ninja.c,do_demote,demote,yes,ninja_abilities.hlp,separate positive/negative variant assertions required
+src/ninja.c,do_michi,michi,yes,ninja_abilities.hlp,separate positive/negative variant assertions required
+src/ninja.c,do_kakusu,kakusu,yes,ninja_abilities.hlp,separate positive/negative variant assertions required
+src/ninja.c,do_bomuzite,bomuzite,yes,ninja_abilities.hlp,separate positive/negative variant assertions required
+src/ninja.c,do_mizotamouyo,mizotamouyo,yes,ninja_abilities.hlp,separate positive/negative variant assertions required
+src/ninja.c,do_mienaku,mienaku,yes,ninja_abilities.hlp,separate positive/negative variant assertions required
+src/ninja.c,do_orimasu,orimasu,yes,ninja_abilities.hlp,separate positive/negative variant assertions required
+src/ninja.c,do_tsumazuku,tsumazuku,yes,ninja_abilities.hlp,separate positive/negative variant assertions required
+src/ninja.c,do_harakiri,harakiri,yes,ninja_abilities.hlp,separate positive/negative variant assertions required
+src/ninja.c,do_tsume,tsume,yes,ninja_abilities.hlp,separate positive/negative variant assertions required
+src/ninja.c,do_shuurai,shuurai,yes,ninja_abilities.hlp,separate positive/negative variant assertions required
+src/ninja.c,do_hakunetsu,hakunetsu,yes,ninja_abilities.hlp,separate positive/negative variant assertions required
+src/sorcerer.c,do_colors,colors,yes,book_magic.hlp,separate positive/negative variant assertions required
+src/sorcerer.c,do_sorccreate,sorccreate,yes,book_magic.hlp,separate positive/negative variant assertions required
+src/sorcerer.c,do_vision,vision,yes,book_magic.hlp,separate positive/negative variant assertions required
+src/sorcerer.c,do_enchant,enchant,yes,book_magic.hlp,separate positive/negative variant assertions required
+src/sorcerer.c,do_write,write,yes,book_magic.hlp,separate positive/negative variant assertions required
+src/sorcerer.c,do_chant,chant,yes,book_magic.hlp,separate positive/negative variant assertions required
+src/magic.c,do_cast,cast,yes,main.hlp,separate positive/negative variant assertions required
+src/magic.c,spell_acid_blast,spell acid blast,yes,legacy_spells.hlp,separate positive/negative variant assertions required
+src/magic.c,spell_armor,spell armor,yes,mage_abilities.hlp,separate positive/negative variant assertions required
+src/magic.c,spell_bless,spell bless,yes,legacy_spells.hlp,separate positive/negative variant assertions required
+src/magic.c,spell_blindness,spell blindness,yes,legacy_spells.hlp,separate positive/negative variant assertions required
+src/magic.c,spell_burning_hands,spell burning hands,yes,legacy_spells.hlp,separate positive/negative variant assertions required
+src/magic.c,spell_call_lightning,spell call lightning,yes,legacy_spells.hlp,separate positive/negative variant assertions required
+src/magic.c,spell_cause_critical,spell cause critical,yes,legacy_spells.hlp,separate positive/negative variant assertions required
+src/magic.c,spell_cause_light,spell cause light,yes,legacy_spells.hlp,separate positive/negative variant assertions required
+src/magic.c,spell_cause_serious,spell cause serious,yes,legacy_spells.hlp,separate positive/negative variant assertions required
+src/magic.c,spell_change_sex,spell change sex,yes,legacy_spells.hlp,separate positive/negative variant assertions required
+src/magic.c,spell_charm_person,spell charm person,yes,legacy_spells.hlp,separate positive/negative variant assertions required
+src/magic.c,spell_chill_touch,spell chill touch,yes,legacy_spells.hlp,separate positive/negative variant assertions required
+src/magic.c,spell_colour_spray,spell colour spray,yes,legacy_spells.hlp,separate positive/negative variant assertions required
+src/magic.c,spell_continual_light,spell continual light,yes,legacy_spells.hlp,separate positive/negative variant assertions required
+src/magic.c,spell_control_weather,spell control weather,yes,legacy_spells.hlp,separate positive/negative variant assertions required
+src/magic.c,spell_create_food,spell create food,yes,legacy_spells.hlp,separate positive/negative variant assertions required
+src/magic.c,spell_create_spring,spell create spring,yes,legacy_spells.hlp,separate positive/negative variant assertions required
+src/magic.c,spell_create_water,spell create water,yes,legacy_spells.hlp,separate positive/negative variant assertions required
+src/magic.c,spell_cure_blindness,spell cure blindness,yes,legacy_spells.hlp,separate positive/negative variant assertions required
+src/magic.c,spell_cure_critical,spell cure critical,yes,legacy_spells.hlp,separate positive/negative variant assertions required
+src/magic.c,spell_cure_light,spell cure light,yes,legacy_spells.hlp,separate positive/negative variant assertions required
+src/magic.c,spell_cure_poison,spell cure poison,yes,legacy_spells.hlp,separate positive/negative variant assertions required
+src/magic.c,spell_cure_serious,spell cure serious,yes,legacy_spells.hlp,separate positive/negative variant assertions required
+src/magic.c,spell_curse,spell curse,yes,legacy_spells.hlp,separate positive/negative variant assertions required
+src/magic.c,spell_detect_evil,spell detect evil,yes,legacy_spells.hlp,separate positive/negative variant assertions required
+src/magic.c,spell_detect_hidden,spell detect hidden,yes,legacy_spells.hlp,separate positive/negative variant assertions required
+src/magic.c,spell_detect_invis,spell detect invis,yes,legacy_spells.hlp,separate positive/negative variant assertions required
+src/magic.c,spell_detect_magic,spell detect magic,yes,legacy_spells.hlp,separate positive/negative variant assertions required
+src/magic.c,spell_detect_poison,spell detect poison,yes,legacy_spells.hlp,separate positive/negative variant assertions required
+src/magic.c,spell_dispel_evil,spell dispel evil,yes,legacy_spells.hlp,separate positive/negative variant assertions required
+src/magic.c,spell_dispel_magic,spell dispel magic,yes,legacy_spells.hlp,separate positive/negative variant assertions required
+src/magic.c,spell_earthquake,spell earthquake,yes,legacy_spells.hlp,separate positive/negative variant assertions required
+src/magic.c,spell_enchant_weapon,spell enchant weapon,yes,legacy_spells.hlp,separate positive/negative variant assertions required
+src/magic.c,spell_enchant_armor,spell enchant armor,yes,legacy_spells.hlp,separate positive/negative variant assertions required
+src/magic.c,spell_energy_drain,spell energy drain,yes,legacy_spells.hlp,separate positive/negative variant assertions required
+src/magic.c,spell_fireball,spell fireball,yes,legacy_spells.hlp,separate positive/negative variant assertions required
+src/magic.c,spell_flamestrike,spell flamestrike,yes,legacy_spells.hlp,separate positive/negative variant assertions required
+src/magic.c,spell_faerie_fire,spell faerie fire,yes,legacy_spells.hlp,separate positive/negative variant assertions required
+src/magic.c,spell_faerie_fog,spell faerie fog,yes,legacy_spells.hlp,separate positive/negative variant assertions required
+src/magic.c,spell_fly,spell fly,yes,legacy_spells.hlp,separate positive/negative variant assertions required
+src/magic.c,spell_gate,spell gate,yes,legacy_spells.hlp,separate positive/negative variant assertions required
+src/magic.c,spell_general_purpose,spell general purpose,yes,legacy_spells.hlp,separate positive/negative variant assertions required
+src/magic.c,spell_giant_strength,spell giant strength,yes,legacy_spells.hlp,separate positive/negative variant assertions required
+src/magic.c,spell_harm,spell harm,yes,legacy_spells.hlp,separate positive/negative variant assertions required
+src/magic.c,spell_heal,spell heal,yes,legacy_spells.hlp,separate positive/negative variant assertions required
+src/magic.c,spell_high_explosive,spell high explosive,yes,legacy_spells.hlp,separate positive/negative variant assertions required
+src/magic.c,spell_identify,spell identify,yes,legacy_spells.hlp,separate positive/negative variant assertions required
+src/magic.c,spell_infravision,spell infravision,yes,legacy_spells.hlp,separate positive/negative variant assertions required
+src/magic.c,spell_invis,spell invis,yes,legacy_spells.hlp,separate positive/negative variant assertions required
+src/magic.c,spell_know_alignment,spell know alignment,yes,legacy_spells.hlp,separate positive/negative variant assertions required
+src/magic.c,spell_lightning_bolt,spell lightning bolt,yes,legacy_spells.hlp,separate positive/negative variant assertions required
+src/magic.c,spell_locate_object,spell locate object,yes,legacy_spells.hlp,separate positive/negative variant assertions required
+src/magic.c,spell_magic_missile,spell magic missile,yes,legacy_spells.hlp,separate positive/negative variant assertions required
+src/magic.c,spell_mass_invis,spell mass invis,yes,legacy_spells.hlp,separate positive/negative variant assertions required
+src/magic.c,spell_pass_door,spell pass door,yes,legacy_spells.hlp,separate positive/negative variant assertions required
+src/magic.c,spell_poison,spell poison,yes,legacy_spells.hlp,separate positive/negative variant assertions required
+src/magic.c,spell_protection,spell protection,yes,legacy_spells.hlp,separate positive/negative variant assertions required
+src/magic.c,spell_refresh,spell refresh,yes,legacy_spells.hlp,separate positive/negative variant assertions required
+src/magic.c,spell_remove_curse,spell remove curse,yes,legacy_spells.hlp,separate positive/negative variant assertions required
+src/magic.c,spell_sanctuary,spell sanctuary,yes,legacy_spells.hlp,separate positive/negative variant assertions required
+src/magic.c,spell_shield,spell shield,yes,mage_abilities.hlp,separate positive/negative variant assertions required
+src/magic.c,spell_shocking_grasp,spell shocking grasp,yes,legacy_spells.hlp,separate positive/negative variant assertions required
+src/magic.c,spell_sleep,spell sleep,yes,legacy_spells.hlp,separate positive/negative variant assertions required
+src/magic.c,spell_stone_skin,spell stone skin,yes,mage_abilities.hlp,separate positive/negative variant assertions required
+src/magic.c,spell_summon,spell summon,yes,legacy_spells.hlp,separate positive/negative variant assertions required
+src/magic.c,spell_teleport,spell teleport,yes,legacy_spells.hlp,separate positive/negative variant assertions required
+src/magic.c,spell_ventriloquate,spell ventriloquate,yes,legacy_spells.hlp,separate positive/negative variant assertions required
+src/magic.c,spell_weaken,spell weaken,yes,legacy_spells.hlp,separate positive/negative variant assertions required
+src/magic.c,spell_word_of_recall,spell word of recall,yes,legacy_spells.hlp,separate positive/negative variant assertions required
+src/magic.c,spell_acid_breath,spell acid breath,yes,legacy_spells.hlp,separate positive/negative variant assertions required
+src/magic.c,spell_fire_breath,spell fire breath,yes,legacy_spells.hlp,separate positive/negative variant assertions required
+src/magic.c,spell_frost_breath,spell frost breath,yes,legacy_spells.hlp,separate positive/negative variant assertions required
+src/magic.c,spell_gas_breath,spell gas breath,yes,legacy_spells.hlp,separate positive/negative variant assertions required
+src/magic.c,spell_lightning_breath,spell lightning breath,yes,legacy_spells.hlp,separate positive/negative variant assertions required
+src/magic.c,spell_guardian,spell guardian,yes,legacy_spells.hlp,separate positive/negative variant assertions required
+src/magic.c,spell_soulblade,spell soulblade,yes,legacy_spells.hlp,separate positive/negative variant assertions required
+src/magic.c,spell_mana,spell mana,yes,legacy_spells.hlp,separate positive/negative variant assertions required
+src/magic.c,spell_frenzy,spell frenzy,yes,legacy_spells.hlp,separate positive/negative variant assertions required
+src/magic.c,spell_darkblessing,spell darkblessing,yes,legacy_spells.hlp,separate positive/negative variant assertions required
+src/magic.c,spell_transport,spell transport,yes,legacy_spells.hlp,separate positive/negative variant assertions required
+src/magic.c,spell_quest,spell quest,yes,legacy_spells.hlp,separate positive/negative variant assertions required
+src/magic.c,spell_mount,spell mount,yes,legacy_spells.hlp,separate positive/negative variant assertions required
+src/magic.c,spell_insert_page,spell insert page,yes,legacy_spells.hlp,separate positive/negative variant assertions required
+src/magic.c,spell_remove_page,spell remove page,yes,legacy_spells.hlp,separate positive/negative variant assertions required
+src/magic.c,spell_chaos_blast,spell chaos blast,yes,legacy_spells.hlp,separate positive/negative variant assertions required
+src/magic.c,spell_web,spell web,yes,legacy_spells.hlp,separate positive/negative variant assertions required
+src/magic.c,spell_find_familiar,spell find familiar,yes,legacy_spells.hlp,separate positive/negative variant assertions required
+src/magic.c,spell_improve,spell improve,yes,legacy_spells.hlp,separate positive/negative variant assertions required
+src/magic.c,spell_fear,spell fear,yes,legacy_spells.hlp,separate positive/negative variant assertions required
+src/magic.c,spell_tendrils,spell tendrils,yes,legacy_spells.hlp,separate positive/negative variant assertions required
+src/reconstructed.c,do_disquiet,disquiet,yes,class.hlp,separate positive/negative variant assertions required
+src/reconstructed.c,do_quicksand,quicksand,yes,class.hlp,separate positive/negative variant assertions required
+src/reconstructed.c,do_scream,scream,yes,class.hlp,separate positive/negative variant assertions required
+src/reconstructed.c,do_lycaon,lycaon,yes,class.hlp,separate positive/negative variant assertions required
+src/reconstructed.c,do_totemgift,totemgift,yes,class.hlp,separate positive/negative variant assertions required
+src/reconstructed.c,do_horridreality,horridreality,yes,class.hlp,separate positive/negative variant assertions required
+src/reconstructed.c,do_maskempathy,maskempathy,yes,class.hlp,separate positive/negative variant assertions required
+src/more.c,do_mindblast,mindblast,yes,legacy_class_helpers.hlp,separate positive/negative variant assertions required
+src/more.c,do_malleable,malleable,yes,legacy_class_helpers.hlp,separate positive/negative variant assertions required
+src/more.c,do_malleable,changeling,yes,legacy_class_helpers.hlp,separate positive/negative variant assertions required
+src/more.c,do_fleshcraft,fleshcraft,yes,legacy_class_helpers.hlp,separate positive/negative variant assertions required
+src/more.c,do_bonecraft,bonecraft,yes,legacy_class_helpers.hlp,separate positive/negative variant assertions required
+src/more.c,do_zuloform,zuloform,yes,legacy_class_helpers.hlp,separate positive/negative variant assertions required
+src/more.c,do_plasmaform,plasmaform,yes,legacy_class_helpers.hlp,separate positive/negative variant assertions required
+src/more.c,do_conditioning,conditioning,yes,legacy_class_helpers.hlp,separate positive/negative variant assertions required
+src/more.c,do_tongue,tongue,yes,legacy_class_helpers.hlp,separate positive/negative variant assertions required
+src/more.c,do_mummify,mummify,yes,legacy_class_helpers.hlp,separate positive/negative variant assertions required
+src/more.c,do_controlbeast,controlbeast,yes,legacy_class_helpers.hlp,separate positive/negative variant assertions required
+src/more.c,do_shroudnight,shroudnight,yes,legacy_class_helpers.hlp,separate positive/negative variant assertions required
+src/more.c,do_silencedeath,silencedeath,yes,legacy_class_helpers.hlp,separate positive/negative variant assertions required
+src/more.c,do_silencedeath,silenceofdeath,yes,legacy_class_helpers.hlp,separate positive/negative variant assertions required
+src/more.c,do_weakness,weakness,yes,legacy_class_helpers.hlp,separate positive/negative variant assertions required
+src/more.c,do_infirmity,infirmity,yes,legacy_class_helpers.hlp,separate positive/negative variant assertions required
+src/more.c,do_bloodagony,bloodagony,yes,legacy_class_helpers.hlp,separate positive/negative variant assertions required
+src/more.c,do_spit,spit,yes,legacy_class_helpers.hlp,separate positive/negative variant assertions required
+src/more.c,do_spit,tastedeath,yes,legacy_class_helpers.hlp,separate positive/negative variant assertions required
+src/more.c,do_shadowbody,shadowbody,yes,legacy_class_helpers.hlp,separate positive/negative variant assertions required
+src/more.c,do_arms,armsabyss,yes,legacy_class_helpers.hlp,separate positive/negative variant assertions required
+src/more.c,do_lamprey,lamprey,yes,legacy_class_helpers.hlp,separate positive/negative variant assertions required
+src/more.c,do_thanatopsis,thanatopsis,yes,legacy_class_helpers.hlp,separate positive/negative variant assertions required
+src/more.c,do_spiritgate,spiritgate,yes,legacy_class_helpers.hlp,separate positive/negative variant assertions required
+src/more.c,do_preservation,preserve,yes,legacy_class_helpers.hlp,separate positive/negative variant assertions required
+src/more.c,do_zombie,zombie,yes,legacy_class_helpers.hlp,separate positive/negative variant assertions required
+src/more.c,do_spiritform,spiritform,yes,legacy_class_helpers.hlp,separate positive/negative variant assertions required
+src/more.c,do_spiritguardian,spiritguardian,yes,legacy_class_helpers.hlp,separate positive/negative variant assertions required
+src/more.c,do_spiritguardian,spiritfriend,yes,legacy_class_helpers.hlp,separate positive/negative variant assertions required
+src/more.c,do_succulence,succulence,yes,legacy_class_helpers.hlp,separate positive/negative variant assertions required
+src/more.c,do_frenzy,frenzytrigger,yes,legacy_class_helpers.hlp,separate positive/negative variant assertions required
+src/more.c,do_shadowplay,shadowplay,yes,legacy_class_helpers.hlp,separate positive/negative variant assertions required
+src/more.c,do_shadowstep,shadowstep,yes,legacy_class_helpers.hlp,separate positive/negative variant assertions required
+src/more.c,do_shadowstep,step,yes,legacy_class_helpers.hlp,separate positive/negative variant assertions required
+src/more.c,do_spiriteyes,spiriteyes,yes,legacy_class_helpers.hlp,separate positive/negative variant assertions required
+src/more.c,do_sbreath,sbreath,yes,legacy_class_helpers.hlp,separate positive/negative variant assertions required
+src/more.c,do_celerity,celerity,yes,legacy_class_helpers.hlp,separate positive/negative variant assertions required
+src/more.c,do_chiroptean,chiroptean,yes,legacy_class_helpers.hlp,separate positive/negative variant assertions required
+src/more.c,do_empathy,empathy,yes,legacy_class_helpers.hlp,separate positive/negative variant assertions required

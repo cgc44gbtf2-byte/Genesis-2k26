@@ -1,0 +1,31 @@
+/* Coverage flags are promoted only after native Genesis effects are tested.
+ * E/A denote independently adapted concepts, G denotes original gap filling.
+ */
+#define L(parent,key,title,track,level,mana,energy,kind,amount,source) I(parent,key,title,ACTIVE,source)
+#include "lineage_powers.def"
+#undef L
+I(GARGOYLE,visceratika,"Visceratika training",SYSTEM,"E")
+I(GARGOYLE,stone_resilience,"Stone resilience",PASSIVE,"E")
+I(GARGOYLE,ground_awareness,"Ground awareness",PASSIVE,"E")
+I(GARGOYLE,stone_body,"Stone-body resilience (Genesis adaptation)",PASSIVE,"G")
+I(KUEIJIN,path,"Yin/Yang/Hun/Po training",SYSTEM,"E")
+I(KUEIJIN,kdiscipline,"Kuei-jin discipline training",SYSTEM,"E")
+I(KUEIJIN,shintai,"Shintai training",SYSTEM,"E")
+I(KUEIJIN,noble,"Noble disciplines",SYSTEM,"E")
+I(KUEIJIN,dharma,"Dharma progression",SYSTEM,"G")
+I(KUEIJIN,chi_traits,"Chi mastery passives",PASSIVE,"G")
+I(WRAITH,wraithpowers,"Wraith status",SYSTEM,"A")
+I(WRAITH,arcanoi,"Arcanoi training",SYSTEM,"A")
+I(WRAITH,wraith_traits,"Wraith mastery passives",PASSIVE,"G")
+I(GARGOYLE,focus,"Stone energy conversion",SYSTEM,"G")
+I(KUEIJIN,focus,"Chi energy conversion",SYSTEM,"G")
+I(WRAITH,focus,"Pathos energy conversion",SYSTEM,"G")
+#define C(parent,key,name,rank,mana,energy,kind,amount,recovery) I(parent,key,name,ACTIVE,"G")
+#include "crafted_powers.def"
+#undef C
+I(MOOGLE,pomcraft,"Pomcraft mastery passives",PASSIVE,"G")
+I(DEATHKNIGHT,deathbound,"Deathbound mastery passives",PASSIVE,"G")
+I(MOOGLE,mastery,"Mastery training",SYSTEM,"G")
+I(DEATHKNIGHT,mastery,"Mastery training",SYSTEM,"G")
+I(MOOGLE,focus,"Pom energy conversion",SYSTEM,"G")
+I(DEATHKNIGHT,focus,"Soul energy conversion",SYSTEM,"G")

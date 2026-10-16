@@ -1,0 +1,386 @@
+source,handler,commands_or_spells,compiler_active,empty_body,test_mentions_not_proof,variant_effect_verification
+src/disc.c,do_earthshift,eshift; earthshift,yes,no,test_legacy_variants.c,requires explicit per-variant effect assertions
+src/disc.c,do_disint,disintegrate,yes,no,,requires explicit per-variant effect assertions
+src/disc.c,do_beastform,beastform,yes,no,reconstructed_abilities.py,requires explicit per-variant effect assertions
+src/disc.c,do_shadowforge,shadowforge,yes,no,,requires explicit per-variant effect assertions
+src/disc.c,do_fleshbond,fleshbond,yes,no,,requires explicit per-variant effect assertions
+src/disc.c,do_leechblood,leech,yes,no,class_abilities.py; test_parents.c; test_reference_completion.c,requires explicit per-variant effect assertions
+src/disc.c,do_fistofcaine,fist,yes,no,,requires explicit per-variant effect assertions
+src/disc.c,do_eyes,eyesoftheserpent,yes,no,,requires explicit per-variant effect assertions
+src/disc.c,do_mark,mark,yes,no,,requires explicit per-variant effect assertions
+src/disc.c,do_enrage,enrage,yes,no,,requires explicit per-variant effect assertions
+src/disc.c,do_tenebrous,tenebrous,yes,no,,requires explicit per-variant effect assertions
+src/disc.c,do_horrid,horrid,yes,no,,requires explicit per-variant effect assertions
+src/disc.c,do_torment,torment,yes,no,,requires explicit per-variant effect assertions
+src/clan.c,do_smother,smother,yes,no,,requires explicit per-variant effect assertions
+src/clan.c,do_fangs,fangs,yes,no,,requires explicit per-variant effect assertions
+src/clan.c,do_claws,claws,yes,no,,requires explicit per-variant effect assertions
+src/clan.c,do_nightsight,nightsight; darkvision,yes,no,class_abilities.py; test_newclasses.c; test_reference_completion.c,requires explicit per-variant effect assertions
+src/clan.c,do_majesty,majesty,yes,no,,requires explicit per-variant effect assertions
+src/clan.c,do_awe,awe,yes,no,,requires explicit per-variant effect assertions
+src/clan.c,do_shadowsight,umbralvision,yes,no,,requires explicit per-variant effect assertions
+src/clan.c,do_outcast,outcast,yes,no,,requires explicit per-variant effect assertions
+src/clan.c,do_clanname,clanname,yes,no,,requires explicit per-variant effect assertions
+src/clan.c,do_clandisc,clandisc,yes,no,,requires explicit per-variant effect assertions
+src/clan.c,do_mask,mask,yes,no,test_reference_completion.c,requires explicit per-variant effect assertions
+src/clan.c,do_change,change,yes,no,legacy_spells.py; test_legacy_spells.c,requires explicit per-variant effect assertions
+src/clan.c,do_vampire,defences; vampire,yes,no,class_abilities.py; test_parents.c,requires explicit per-variant effect assertions
+src/clan.c,do_shadowplane,umbra,yes,no,,requires explicit per-variant effect assertions
+src/clan.c,do_truesight,heighten,yes,no,,requires explicit per-variant effect assertions
+src/clan.c,do_soulmask,soulmask,yes,no,,requires explicit per-variant effect assertions
+src/clan.c,do_scry,scry,yes,no,test_cyborg_completion.c; test_newclasses.c; test_reference_completion.c,requires explicit per-variant effect assertions
+src/clan.c,do_readaura,lifescan; readaura,yes,no,reconstructed_abilities.py,requires explicit per-variant effect assertions
+src/clan.c,do_shield,mindblock; shield,yes,no,test_legacy_spells.c; test_newclasses.c,requires explicit per-variant effect assertions
+src/clan.c,do_serpent,serpent,yes,no,test_reference_completion.c,requires explicit per-variant effect assertions
+src/clan.c,do_regenerate,regenerate,yes,no,,requires explicit per-variant effect assertions
+src/clan.c,do_humanity,,yes,no,,requires explicit per-variant effect assertions
+src/clan.c,do_beastlike,,yes,no,,requires explicit per-variant effect assertions
+src/clan.c,do_feed,feed,yes,no,,requires explicit per-variant effect assertions
+src/clan.c,do_upkeep,upkeep,yes,no,,requires explicit per-variant effect assertions
+src/clan.c,do_werewolf,,yes,no,,requires explicit per-variant effect assertions
+src/clan.c,do_unwerewolf,,yes,no,,requires explicit per-variant effect assertions
+src/clan.c,do_favour,favour,yes,no,,requires explicit per-variant effect assertions
+src/clan.c,do_familiar,familiar,yes,no,test_legacy_variants.c,requires explicit per-variant effect assertions
+src/clan.c,do_fcommand,[,yes,no,audit_legacy_coverage.py; test_legacy_variants.c,requires explicit per-variant effect assertions
+src/clan.c,do_flex,flex,yes,no,,requires explicit per-variant effect assertions
+src/clan.c,do_rage,rage,yes,no,,requires explicit per-variant effect assertions
+src/clan.c,do_calm,calm,yes,no,,requires explicit per-variant effect assertions
+src/clan.c,do_web,web,yes,no,test_cyborg_completion.c; test_newclasses.c,requires explicit per-variant effect assertions
+src/clan.c,do_entrancement,entrancement,yes,no,,requires explicit per-variant effect assertions
+src/clan.c,do_summoning,summoning,yes,no,,requires explicit per-variant effect assertions
+src/clan.c,do_earthmeld,earthmeld,yes,no,,requires explicit per-variant effect assertions
+src/clan.c,do_powers,powers,yes,no,,requires explicit per-variant effect assertions
+src/clan.c,do_dreadgaze,dreadgaze,yes,no,test_crafted.c,requires explicit per-variant effect assertions
+src/clan.c,do_vanish,vanish,yes,no,,requires explicit per-variant effect assertions
+src/clan.c,do_discipline,discipline,yes,no,crafted_classes.py,requires explicit per-variant effect assertions
+src/clan.c,do_teachdisc,teachdisc,yes,no,,requires explicit per-variant effect assertions
+src/clan.c,do_pigeon,pigeon,yes,no,,requires explicit per-variant effect assertions
+src/clan.c,do_beckon,beckoning,yes,no,,requires explicit per-variant effect assertions
+src/clan.c,do_beastwithin,beastwithin,yes,no,,requires explicit per-variant effect assertions
+src/clan.c,do_serenity,serenity; songserenity,yes,no,,requires explicit per-variant effect assertions
+src/clan.c,do_unveil,unveil,yes,no,,requires explicit per-variant effect assertions
+src/clan.c,do_embrace,embrace,yes,no,,requires explicit per-variant effect assertions
+src/clan.c,do_possession,possession,yes,no,,requires explicit per-variant effect assertions
+src/clan.c,do_mirrorimage,mirrorimage,yes,no,,requires explicit per-variant effect assertions
+src/clan.c,do_formillusion,formillusion; illusionaryform,yes,no,class_abilities.py; reconstructed_abilities.py,requires explicit per-variant effect assertions
+src/clan.c,do_cloneobject,cloneobject,yes,no,,requires explicit per-variant effect assertions
+src/clan.c,do_rename,falseappearance,yes,no,,requires explicit per-variant effect assertions
+src/clan.c,do_control,controlillusion,yes,no,,requires explicit per-variant effect assertions
+src/clan.c,do_truedisguise,truedisguise,yes,no,,requires explicit per-variant effect assertions
+src/clan.c,do_omnipotence,omnipotence,yes,no,,requires explicit per-variant effect assertions
+src/clan.c,do_heal,heal,yes,no,maintenance_fixes.py,requires explicit per-variant effect assertions
+src/clan.c,do_autoclass,autoclass,yes,no,class_abilities.py; crafted_classes.py; test_crafted.c; test_lineages.c; test_newclasses.c; test_phoenix.c,requires explicit per-variant effect assertions
+src/clan.c,do_thinblood,thinblood,yes,no,,requires explicit per-variant effect assertions
+src/werewolf.c,do_advance,advance,yes,no,,requires explicit per-variant effect assertions
+src/werewolf.c,do_wwpowers,wwpowers,yes,no,class_abilities.py,requires explicit per-variant effect assertions
+src/werewolf.c,do_gifts,gifts; wwgifts,yes,no,test_reference_completion.c,requires explicit per-variant effect assertions
+src/werewolf.c,do_tribegifts,tribegifts,yes,no,,requires explicit per-variant effect assertions
+src/wwbreed.c,do_persuasion,persuasion,yes,no,,requires explicit per-variant effect assertions
+src/wwbreed.c,do_jamtech,jamtech,yes,no,maintenance_fixes.py,requires explicit per-variant effect assertions
+src/wwbreed.c,do_reshape,reshapeobject,yes,no,,requires explicit per-variant effect assertions
+src/wwbreed.c,do_spiritward,,yes,no,,requires explicit per-variant effect assertions
+src/wwbreed.c,do_primalanger,primalanger,yes,no,,requires explicit per-variant effect assertions
+src/wwbreed.c,do_burrow,burrow,yes,no,,requires explicit per-variant effect assertions
+src/wwbreed.c,do_porcupine,porcupine,yes,no,,requires explicit per-variant effect assertions
+src/wwbreed.c,do_animal,beastlife,yes,no,,requires explicit per-variant effect assertions
+src/wwbreed.c,do_elemental,elemental,yes,no,audit_legacy_coverage.py,requires explicit per-variant effect assertions
+src/wwauspice.c,do_blur,blur,yes,no,,requires explicit per-variant effect assertions
+src/wwauspice.c,do_blissful,blissful,yes,no,,requires explicit per-variant effect assertions
+src/wwauspice.c,do_whelp,whelp,yes,no,,requires explicit per-variant effect assertions
+src/wwauspice.c,do_mother,mother,yes,no,,requires explicit per-variant effect assertions
+src/wwauspice.c,do_pulse,pulse,yes,no,,requires explicit per-variant effect assertions
+src/wwauspice.c,do_grasp,grasp,yes,no,,requires explicit per-variant effect assertions
+src/wwauspice.c,do_lobotomy,lobotomy,yes,no,,requires explicit per-variant effect assertions
+src/wwauspice.c,do_wallgranite,wallgranite,yes,no,,requires explicit per-variant effect assertions
+src/wwauspice.c,do_geas,geas,yes,no,,requires explicit per-variant effect assertions
+src/wwauspice.c,do_wyld,wyld,yes,no,,requires explicit per-variant effect assertions
+src/wwauspice.c,do_wyrmcall,wyrmcall,yes,no,,requires explicit per-variant effect assertions
+src/wwauspice.c,do_songrage,songofrage,yes,no,,requires explicit per-variant effect assertions
+src/wwauspice.c,do_bridgewalk,bridgewalk,yes,no,test_legacy_variants.c,requires explicit per-variant effect assertions
+src/wwauspice.c,do_helios,helios,yes,no,,requires explicit per-variant effect assertions
+src/wwtribe.c,do_breathwyld,breathwyld,yes,no,,requires explicit per-variant effect assertions
+src/wwtribe.c,do_aeolus,aeolus; fog,yes,no,,requires explicit per-variant effect assertions
+src/wwtribe.c,do_bodywrack,bodywrack,yes,no,,requires explicit per-variant effect assertions
+src/wwtribe.c,do_friend,friend,yes,no,,requires explicit per-variant effect assertions
+src/wwtribe.c,do_infest,infest,yes,no,,requires explicit per-variant effect assertions
+src/wwtribe.c,do_dazzle,dazzle,yes,no,,requires explicit per-variant effect assertions
+src/wwtribe.c,do_halosun,halosun,yes,no,,requires explicit per-variant effect assertions
+src/wwtribe.c,do_faerielight,faerielight,yes,no,,requires explicit per-variant effect assertions
+src/wwtribe.c,do_banshee,howlbanshee,yes,no,,requires explicit per-variant effect assertions
+src/wwtribe.c,do_balor,balorsgaze,yes,no,,requires explicit per-variant effect assertions
+src/wwtribe.c,do_diagnostics,diagnostics,yes,no,,requires explicit per-variant effect assertions
+src/wwtribe.c,do_surge,surge,yes,no,,requires explicit per-variant effect assertions
+src/wwtribe.c,do_doppleganger,doppleganger,yes,no,,requires explicit per-variant effect assertions
+src/wwtribe.c,do_summonnet,summonnetspider,yes,no,,requires explicit per-variant effect assertions
+src/wwtribe.c,do_clap,clapthunder,yes,no,,requires explicit per-variant effect assertions
+src/wwtribe.c,do_paralyzing,paralyzingstare,yes,no,,requires explicit per-variant effect assertions
+src/wwtribe.c,do_dominator,dominator,yes,no,,requires explicit per-variant effect assertions
+src/wwtribe.c,do_obedience,obedience,yes,no,maintenance_fixes.py,requires explicit per-variant effect assertions
+src/wwtribe.c,do_reach,reach,yes,no,class_abilities.py,requires explicit per-variant effect assertions
+src/wwtribe.c,do_wrath,wrath,yes,no,class_abilities.py,requires explicit per-variant effect assertions
+src/wwtribe.c,do_mastery,mastery,yes,no,class_abilities.py; crafted_classes.py,requires explicit per-variant effect assertions
+src/wwtribe.c,do_falling,falling,yes,no,,requires explicit per-variant effect assertions
+src/wwtribe.c,do_invisibility,invisibility,yes,no,class_abilities.py,requires explicit per-variant effect assertions
+src/wwtribe.c,do_fetishdoll,fetishdoll,yes,no,test_legacy_variants.c,requires explicit per-variant effect assertions
+src/wwtribe.c,do_camouflage,camouflage,yes,no,,requires explicit per-variant effect assertions
+src/wwtribe.c,do_cutting,cutting,yes,no,,requires explicit per-variant effect assertions
+src/wwtribe.c,do_bloodyfeast,bloodyfeast,yes,no,,requires explicit per-variant effect assertions
+src/wwtribe.c,do_invoke,invoke,yes,no,,requires explicit per-variant effect assertions
+src/dragon.c,do_dragonform,morph,yes,no,reconstructed_abilities.py,requires explicit per-variant effect assertions
+src/dragon.c,do_dbreath,breath,yes,no,,requires explicit per-variant effect assertions
+src/dragon.c,do_dust,dust,yes,no,,requires explicit per-variant effect assertions
+src/dragon.c,do_stail,stail,yes,no,,requires explicit per-variant effect assertions
+src/dragon.c,do_horns,horns,yes,no,test_newclasses.c,requires explicit per-variant effect assertions
+src/dragon.c,do_dragonskill,dragonskill,yes,no,,requires explicit per-variant effect assertions
+src/dragon.c,do_wings,wings,yes,no,class_abilities.py; test_newclasses.c; test_phoenix.c; test_reference_completion.c,requires explicit per-variant effect assertions
+src/drow.c,do_dinduct,dinduct,yes,no,,requires explicit per-variant effect assertions
+src/drow.c,do_promotion,promotion,yes,no,,requires explicit per-variant effect assertions
+src/drow.c,do_failure,failure,yes,no,,requires explicit per-variant effect assertions
+src/drow.c,do_attune,attunement,yes,no,,requires explicit per-variant effect assertions
+src/drow.c,do_acidbolt,acidbolt,yes,no,test_legacy_variants.c,requires explicit per-variant effect assertions
+src/drow.c,do_faeriefire,faeriefire,yes,no,class_abilities.py; test_legacy_variants.c,requires explicit per-variant effect assertions
+src/drow.c,do_summonspider,summonspider,yes,no,test_legacy_variants.c,requires explicit per-variant effect assertions
+src/drow.c,do_drowarmor,drowarmor,yes,no,,requires explicit per-variant effect assertions
+src/drow.c,do_door,dimensiondoor,yes,no,test_legacy_variants.c,requires explicit per-variant effect assertions
+src/drow.c,do_prayer,prayer,yes,no,,requires explicit per-variant effect assertions
+src/drow.c,do_skipdisc,skipdisc,yes,no,test_legacy_variants.c,requires explicit per-variant effect assertions
+src/drow.c,do_drowupkeep,drowupkeep,yes,no,test_legacy_variants.c,requires explicit per-variant effect assertions
+src/drow.c,do_globedark,globedarkness,yes,no,,requires explicit per-variant effect assertions
+src/drow.c,do_shoot,shoot,yes,no,test_legacy_variants.c,requires explicit per-variant effect assertions
+src/elemental.c,do_element,elemskill,yes,no,,requires explicit per-variant effect assertions
+src/elemental.c,do_flarearrow,flarearrow,yes,no,,requires explicit per-variant effect assertions
+src/elemental.c,do_fireblade,fireblade,yes,no,,requires explicit per-variant effect assertions
+src/elemental.c,do_phoenixform,phoenixform,yes,no,,requires explicit per-variant effect assertions
+src/elemental.c,do_iciclestorm,iciclestorm,yes,no,,requires explicit per-variant effect assertions
+src/elemental.c,do_watertravel,watertravel,yes,no,test_legacy_variants.c,requires explicit per-variant effect assertions
+src/elemental.c,do_aquabarrier,aquabarrier,yes,no,,requires explicit per-variant effect assertions
+src/elemental.c,do_watercontrol,watercontrol,yes,no,,requires explicit per-variant effect assertions
+src/elemental.c,do_windwings,windwings,yes,no,,requires explicit per-variant effect assertions
+src/elemental.c,do_windblades,windblades,yes,no,,requires explicit per-variant effect assertions
+src/elemental.c,do_stoneblast,stoneblast,yes,no,,requires explicit per-variant effect assertions
+src/elemental.c,do_localquake,localquake,yes,no,,requires explicit per-variant effect assertions
+src/elemental.c,do_holyaura,holyaura,yes,no,,requires explicit per-variant effect assertions
+src/elemental.c,do_solarflash,solarflash,yes,no,,requires explicit per-variant effect assertions
+src/elemental.c,do_sunbath,sunbath,yes,no,,requires explicit per-variant effect assertions
+src/elemental.c,do_solarlight,solarlight,yes,no,,requires explicit per-variant effect assertions
+src/elemental.c,do_infinitesight,infinitesight,yes,no,,requires explicit per-variant effect assertions
+src/elemental.c,do_mirageslice,mirageslice,yes,no,,requires explicit per-variant effect assertions
+src/elemental.c,do_ultimawave,ultimawave,yes,no,,requires explicit per-variant effect assertions
+src/elemental.c,do_elemarmor,elemarmor,yes,no,,requires explicit per-variant effect assertions
+src/elemental.c,do_cloak,cloakofsight,yes,no,,requires explicit per-variant effect assertions
+src/elemental.c,do_atoningwinds,atoningwinds,yes,no,maintenance_fixes.py,requires explicit per-variant effect assertions
+src/elemental.c,do_spiralmoon,spiralmoon,yes,no,,requires explicit per-variant effect assertions
+src/elemental.c,do_liquifyearth,liquifyearth,yes,no,maintenance_fixes.py,requires explicit per-variant effect assertions
+src/elemental.c,do_slow,slow,yes,no,maintenance_fixes.py,requires explicit per-variant effect assertions
+src/elemental.c,do_farsight,farsight,yes,no,,requires explicit per-variant effect assertions
+src/elemental.c,do_nightblade,nightblade,yes,no,,requires explicit per-variant effect assertions
+src/highland.c,do_increase,increase,yes,no,,requires explicit per-variant effect assertions
+src/highland.c,do_bladeflash,bflash,yes,no,,requires explicit per-variant effect assertions
+src/highland.c,do_bash,bash,yes,no,,requires explicit per-variant effect assertions
+src/highland.c,do_htwist,htwist,yes,no,,requires explicit per-variant effect assertions
+src/highland.c,do_judgement,judge,yes,no,,requires explicit per-variant effect assertions
+src/highland.c,do_lunge,lunge,yes,no,,requires explicit per-variant effect assertions
+src/highland.c,do_forge,forge,yes,no,class_abilities.py,requires explicit per-variant effect assertions
+src/mage.c,do_analyze,analyze,yes,no,class_abilities.py,requires explicit per-variant effect assertions
+src/mage.c,do_rift,rift,yes,no,maintenance_fixes.py; test_mage_variants.c,requires explicit per-variant effect assertions
+src/mage.c,do_beginners_luck,beginnersluck,yes,no,maintenance_fixes.py,requires explicit per-variant effect assertions
+src/mage.c,do_brittle_bones,brittlebones,yes,no,class_abilities.py; test_legacy_variants.c; test_mage_variants.c,requires explicit per-variant effect assertions
+src/mage.c,do_mutate_ephemera,mutateephemera,yes,no,class_abilities.py; test_legacy_variants.c; test_mage_variants.c,requires explicit per-variant effect assertions
+src/mage.c,do_destroy_sculpture,shatterwall,yes,no,,requires explicit per-variant effect assertions
+src/mage.c,do_sculpture,sculpture,yes,no,test_legacy_variants.c,requires explicit per-variant effect assertions
+src/mage.c,do_alterweight,alterweight; sorcalterweight,yes,no,class_abilities.py; test_legacy_variants.c; test_mage_variants.c,requires explicit per-variant effect assertions
+src/mage.c,do_mage_invis,mageinvis; sorcinvis,yes,no,class_abilities.py; maintenance_fixes.py,requires explicit per-variant effect assertions
+src/mage.c,do_spirit_sense,spiritsense; spiritsence,yes,no,class_abilities.py,requires explicit per-variant effect assertions
+src/mage.c,do_spirit_caress,spiritcaress,yes,no,,requires explicit per-variant effect assertions
+src/mage.c,do_step_sideways,stepsideways,yes,no,class_abilities.py; test_legacy_variants.c; test_mage_variants.c,requires explicit per-variant effect assertions
+src/mage.c,do_break_dreamshell,breakdreamshell,yes,no,class_abilities.py; test_legacy_variants.c; test_mage_variants.c,requires explicit per-variant effect assertions
+src/mage.c,do_hearts_blood,heartsblood,yes,no,,requires explicit per-variant effect assertions
+src/mage.c,do_holy_smote,holysmote,yes,no,test_mage_variants.c,requires explicit per-variant effect assertions
+src/mage.c,do_mageenchant,mageenchant; sorcenchant,yes,no,class_abilities.py; test_legacy_variants.c; test_mage_variants.c,requires explicit per-variant effect assertions
+src/mage.c,do_paradox_ward,,yes,no,,requires explicit per-variant effect assertions
+src/mage.c,do_arete,arete,yes,no,class_abilities.py,requires explicit per-variant effect assertions
+src/mage.c,do_mage_heal,mageheal; sorcheal,yes,no,class_abilities.py; test_legacy_variants.c; test_mage_variants.c,requires explicit per-variant effect assertions
+src/mage.c,do_better_body,betterbody; sorcbetterbody,yes,no,class_abilities.py; test_legacy_variants.c; test_mage_variants.c,requires explicit per-variant effect assertions
+src/mage.c,do_polymorph_other,polymorphother,yes,no,class_abilities.py; test_legacy_variants.c; test_mage_variants.c,requires explicit per-variant effect assertions
+src/mage.c,do_friction_curse,friction; frictioncurse,yes,no,class_abilities.py; test_legacy_variants.c; test_mage_variants.c,requires explicit per-variant effect assertions
+src/mage.c,do_electrical_chaos,electricalchaos,yes,no,class_abilities.py; test_legacy_variants.c; test_mage_variants.c,requires explicit per-variant effect assertions
+src/mage.c,do_inferno,inferno,yes,no,class_abilities.py; test_legacy_variants.c; test_mage_variants.c; test_parents.c,requires explicit per-variant effect assertions
+src/mage.c,do_contingency,contingency,yes,no,test_legacy_variants.c; test_mage_variants.c,requires explicit per-variant effect assertions
+src/mage.c,do_double_cast,doublecast,yes,no,test_mage_variants.c,requires explicit per-variant effect assertions
+src/mage.c,do_spheres,sphere,yes,no,class_abilities.py; test_legacy_variants.c,requires explicit per-variant effect assertions
+src/mage.c,do_clansphere,clansphere,yes,no,,requires explicit per-variant effect assertions
+src/mage.c,do_magepowers,magepowers,yes,no,class_abilities.py; test_legacy_variants.c,requires explicit per-variant effect assertions
+src/mage.c,do_select_spheres,selectspheres,yes,no,,requires explicit per-variant effect assertions
+src/mage.c,do_magearmor,magearmor,yes,no,,requires explicit per-variant effect assertions
+src/monk.c,do_monklearn,monklearn,yes,no,,requires explicit per-variant effect assertions
+src/monk.c,do_repeat,repeat,yes,no,,requires explicit per-variant effect assertions
+src/monk.c,do_aurashot,aurashot,yes,no,,requires explicit per-variant effect assertions
+src/monk.c,do_blitz,blitz,yes,no,,requires explicit per-variant effect assertions
+src/monk.c,do_invite,invite,yes,no,,requires explicit per-variant effect assertions
+src/monk.c,do_cripple,cripple,yes,no,,requires explicit per-variant effect assertions
+src/monk.c,do_darkblaze,darkblaze,yes,no,,requires explicit per-variant effect assertions
+src/monk.c,do_stunfist,stunfist,yes,no,class_abilities.py,requires explicit per-variant effect assertions
+src/monk.c,do_chimera,chimera,yes,no,,requires explicit per-variant effect assertions
+src/monk.c,do_touch,touch,yes,no,maintenance_fixes.py,requires explicit per-variant effect assertions
+src/monk.c,do_almighty,almighty,yes,no,maintenance_fixes.py,requires explicit per-variant effect assertions
+src/monk.c,do_celestial,celestial,yes,no,test_legacy_variants.c,requires explicit per-variant effect assertions
+src/monk.c,do_lifecloak,lifecloak,yes,no,,requires explicit per-variant effect assertions
+src/monk.c,do_mclan,mclan,yes,no,,requires explicit per-variant effect assertions
+src/monk.c,do_monkarmor,monkarmor,yes,no,,requires explicit per-variant effect assertions
+src/monk.c,do_decide,decide,yes,no,,requires explicit per-variant effect assertions
+src/monk.c,do_expel,expel,yes,no,,requires explicit per-variant effect assertions
+src/ninja.c,do_principles,principle,yes,no,test_legacy_variants.c,requires explicit per-variant effect assertions
+src/ninja.c,do_noutcast,,yes,no,,requires explicit per-variant effect assertions
+src/ninja.c,do_humble,humble,yes,no,,requires explicit per-variant effect assertions
+src/ninja.c,do_promote,promote,yes,no,,requires explicit per-variant effect assertions
+src/ninja.c,do_demote,demote,yes,no,,requires explicit per-variant effect assertions
+src/ninja.c,do_michi,michi,yes,no,class_abilities.py; test_legacy_variants.c,requires explicit per-variant effect assertions
+src/ninja.c,do_kakusu,kakusu,yes,no,test_legacy_variants.c,requires explicit per-variant effect assertions
+src/ninja.c,do_bomuzite,bomuzite,yes,no,test_legacy_variants.c,requires explicit per-variant effect assertions
+src/ninja.c,do_mizotamouyo,mizotamouyo,yes,no,test_legacy_variants.c,requires explicit per-variant effect assertions
+src/ninja.c,do_mienaku,mienaku,yes,no,test_legacy_variants.c,requires explicit per-variant effect assertions
+src/ninja.c,do_orimasu,orimasu,yes,no,test_legacy_variants.c,requires explicit per-variant effect assertions
+src/ninja.c,do_tsumazuku,tsumazuku,yes,no,,requires explicit per-variant effect assertions
+src/ninja.c,do_harakiri,harakiri,yes,no,,requires explicit per-variant effect assertions
+src/ninja.c,do_tsume,tsume,yes,no,,requires explicit per-variant effect assertions
+src/ninja.c,do_shuurai,shuurai,yes,no,,requires explicit per-variant effect assertions
+src/ninja.c,do_hakunetsu,hakunetsu,yes,no,,requires explicit per-variant effect assertions
+src/sorcerer.c,do_colors,colors,yes,no,class_abilities.py,requires explicit per-variant effect assertions
+src/sorcerer.c,do_sorccreate,sorccreate,yes,no,class_abilities.py; test_sorcerer_starter.c,requires explicit per-variant effect assertions
+src/sorcerer.c,do_vision,vision,yes,no,,requires explicit per-variant effect assertions
+src/sorcerer.c,do_enchant,enchant,yes,no,,requires explicit per-variant effect assertions
+src/sorcerer.c,do_write,write,yes,no,test_sorcerer_starter.c,requires explicit per-variant effect assertions
+src/sorcerer.c,do_chant,chant,yes,no,class_abilities.py; test_sorcerer_starter.c,requires explicit per-variant effect assertions
+src/magic.c,do_cast,cast,yes,no,class_abilities.py; legacy_spells.py; reconstructed_abilities.py; system_fixes.py; test_combat_system.c,requires explicit per-variant effect assertions
+src/magic.c,spell_acid_blast,acid blast,yes,no,,requires explicit per-variant effect assertions
+src/magic.c,spell_armor,armor,yes,no,legacy_spells.py; test_legacy_spells.c; test_lineages.c; test_mage_variants.c; test_reference_completion.c,requires explicit per-variant effect assertions
+src/magic.c,spell_bless,bless,yes,no,legacy_spells.py; test_legacy_spells.c,requires explicit per-variant effect assertions
+src/magic.c,spell_blindness,blindness,yes,no,,requires explicit per-variant effect assertions
+src/magic.c,spell_burning_hands,burning hands,yes,no,,requires explicit per-variant effect assertions
+src/magic.c,spell_call_lightning,call lightning,yes,no,,requires explicit per-variant effect assertions
+src/magic.c,spell_cause_critical,cause critical,yes,no,,requires explicit per-variant effect assertions
+src/magic.c,spell_cause_light,cause light,yes,no,,requires explicit per-variant effect assertions
+src/magic.c,spell_cause_serious,cause serious,yes,no,,requires explicit per-variant effect assertions
+src/magic.c,spell_change_sex,change sex,yes,no,legacy_spells.py; test_legacy_spells.c,requires explicit per-variant effect assertions
+src/magic.c,spell_charm_person,charm person,yes,no,,requires explicit per-variant effect assertions
+src/magic.c,spell_chill_touch,chill touch,yes,no,,requires explicit per-variant effect assertions
+src/magic.c,spell_colour_spray,colour spray,yes,no,,requires explicit per-variant effect assertions
+src/magic.c,spell_continual_light,continual light,yes,no,,requires explicit per-variant effect assertions
+src/magic.c,spell_control_weather,control weather,yes,no,system_fixes.py; test_combat_system.c,requires explicit per-variant effect assertions
+src/magic.c,spell_create_food,create food,yes,no,,requires explicit per-variant effect assertions
+src/magic.c,spell_create_spring,create spring,yes,no,,requires explicit per-variant effect assertions
+src/magic.c,spell_create_water,create water,yes,no,test_legacy_spells.c,requires explicit per-variant effect assertions
+src/magic.c,spell_cure_blindness,cure blindness,yes,no,,requires explicit per-variant effect assertions
+src/magic.c,spell_cure_critical,cure critical,yes,no,,requires explicit per-variant effect assertions
+src/magic.c,spell_cure_light,cure light,yes,no,,requires explicit per-variant effect assertions
+src/magic.c,spell_cure_poison,cure poison,yes,no,,requires explicit per-variant effect assertions
+src/magic.c,spell_cure_serious,cure serious,yes,no,,requires explicit per-variant effect assertions
+src/magic.c,spell_curse,curse,yes,no,,requires explicit per-variant effect assertions
+src/magic.c,spell_detect_evil,detect evil,yes,no,test_legacy_spells.c,requires explicit per-variant effect assertions
+src/magic.c,spell_detect_hidden,detect hidden,yes,no,test_legacy_spells.c,requires explicit per-variant effect assertions
+src/magic.c,spell_detect_invis,detect invis,yes,no,test_combat_system.c,requires explicit per-variant effect assertions
+src/magic.c,spell_detect_magic,detect magic,yes,no,legacy_spells.py; test_legacy_spells.c,requires explicit per-variant effect assertions
+src/magic.c,spell_detect_poison,detect poison,yes,no,legacy_spells.py; test_legacy_spells.c,requires explicit per-variant effect assertions
+src/magic.c,spell_dispel_evil,dispel evil,yes,no,test_legacy_spells.c,requires explicit per-variant effect assertions
+src/magic.c,spell_dispel_magic,dispel magic,yes,no,legacy_spells.py; reconstructed_abilities.py; test_legacy_spells.c; test_newclasses.c,requires explicit per-variant effect assertions
+src/magic.c,spell_earthquake,earthquake,yes,no,test_legacy_spells.c,requires explicit per-variant effect assertions
+src/magic.c,spell_enchant_weapon,enchant weapon,yes,no,,requires explicit per-variant effect assertions
+src/magic.c,spell_enchant_armor,enchant armor,yes,no,,requires explicit per-variant effect assertions
+src/magic.c,spell_energy_drain,energy drain,yes,no,system_fixes.py; test_combat_system.c,requires explicit per-variant effect assertions
+src/magic.c,spell_fireball,fireball,yes,no,,requires explicit per-variant effect assertions
+src/magic.c,spell_flamestrike,flamestrike,yes,no,,requires explicit per-variant effect assertions
+src/magic.c,spell_faerie_fire,faerie fire,yes,no,,requires explicit per-variant effect assertions
+src/magic.c,spell_faerie_fog,faerie fog,yes,no,,requires explicit per-variant effect assertions
+src/magic.c,spell_fly,fly,yes,no,test_newclasses.c; test_phoenix.c,requires explicit per-variant effect assertions
+src/magic.c,spell_gate,gate,yes,no,,requires explicit per-variant effect assertions
+src/magic.c,spell_general_purpose,general purpose,yes,no,,requires explicit per-variant effect assertions
+src/magic.c,spell_giant_strength,giant strength,yes,no,legacy_spells.py; test_legacy_spells.c,requires explicit per-variant effect assertions
+src/magic.c,spell_harm,harm,yes,no,,requires explicit per-variant effect assertions
+src/magic.c,spell_heal,heal,yes,no,maintenance_fixes.py,requires explicit per-variant effect assertions
+src/magic.c,spell_high_explosive,high explosive,yes,no,,requires explicit per-variant effect assertions
+src/magic.c,spell_identify,identify,yes,no,,requires explicit per-variant effect assertions
+src/magic.c,spell_infravision,infravision,yes,no,,requires explicit per-variant effect assertions
+src/magic.c,spell_invis,invis,yes,no,,requires explicit per-variant effect assertions
+src/magic.c,spell_know_alignment,know alignment,yes,no,legacy_spells.py; test_legacy_spells.c,requires explicit per-variant effect assertions
+src/magic.c,spell_lightning_bolt,lightning bolt,yes,no,,requires explicit per-variant effect assertions
+src/magic.c,spell_locate_object,locate object,yes,no,,requires explicit per-variant effect assertions
+src/magic.c,spell_magic_missile,magic missile,yes,no,,requires explicit per-variant effect assertions
+src/magic.c,spell_mass_invis,mass invis,yes,no,,requires explicit per-variant effect assertions
+src/magic.c,spell_null,hide; sneak; purple sorcery; red sorcery; blue sorcery; green sorcery; yellow sorcery; black sorcery; weakness; slowness; infirmity; rotting flesh; whelpsbody; atoningwind; spiralmoon; slow; liquifyearth; friction curse; brittle bones; alter weight; mage invis; disquiet; quicksand; lycaon; totemgift; scream; horridreality; maskempathy; gift recovery; phoenix ember; phoenix flare; phoenix ward; phoenix wings; phoenix ascend; phoenix recovery; cybernetic traits; parent recovery; parent ward; parent aspect; parent wings; parent senses; parent cloak; parent hindrance; parent traits; parent feet; parent horns; parent tail; parent chill; cyber sight; cyber avatar; cyber blessing; cyber darkness; cyber mine; parent companion; parent legacy; parent baal; parent graft; parent blink; parent fear; parent evileye; parent bane; parent shape; parent deathvision; parent shadow; crafted recovery; crafted traits; crafted ward; crafted morale; crafted fortune; crafted dance; crafted wings; crafted weapon; crafted might; crafted fear; crafted frailty; crafted doom; lineage recovery; lineage traits; lineage shell; lineage body; lineage edge; lineage conceal; lineage wings; lineage sight; lineage pass; lineage phase; lineage root; lineage fear; lineage frailty; lineage mentor; lineage refuge,yes,no,audit_ability_help.py; class_abilities.py; maintenance_fixes.py; reconstructed_abilities.py; test_combat_system.c; test_crafted.c; test_cyborg_completion.c; test_lineages.c; test_newclasses.c; test_reference_completion.c; test_sorcerer_starter.c,requires explicit per-variant effect assertions
+src/magic.c,spell_pass_door,pass door,yes,no,test_legacy_spells.c,requires explicit per-variant effect assertions
+src/magic.c,spell_poison,poison,yes,no,,requires explicit per-variant effect assertions
+src/magic.c,spell_protection,protection,yes,no,test_legacy_spells.c,requires explicit per-variant effect assertions
+src/magic.c,spell_refresh,refresh,yes,no,test_legacy_spells.c,requires explicit per-variant effect assertions
+src/magic.c,spell_remove_curse,remove curse,yes,no,reconstructed_abilities.py,requires explicit per-variant effect assertions
+src/magic.c,spell_sanctuary,sanctuary,yes,no,,requires explicit per-variant effect assertions
+src/magic.c,spell_shield,shield,yes,no,test_legacy_spells.c; test_newclasses.c,requires explicit per-variant effect assertions
+src/magic.c,spell_shocking_grasp,shocking grasp,yes,no,,requires explicit per-variant effect assertions
+src/magic.c,spell_sleep,sleep,yes,no,,requires explicit per-variant effect assertions
+src/magic.c,spell_stone_skin,stone skin,yes,no,test_legacy_spells.c,requires explicit per-variant effect assertions
+src/magic.c,spell_summon,summon,yes,no,,requires explicit per-variant effect assertions
+src/magic.c,spell_teleport,teleport,yes,no,,requires explicit per-variant effect assertions
+src/magic.c,spell_ventriloquate,ventriloquate,yes,no,test_legacy_spells.c; test_legacy_variants.c,requires explicit per-variant effect assertions
+src/magic.c,spell_weaken,weaken,yes,no,test_legacy_spells.c,requires explicit per-variant effect assertions
+src/magic.c,spell_word_of_recall,word of recall,yes,no,legacy_spells.py; test_legacy_spells.c,requires explicit per-variant effect assertions
+src/magic.c,spell_acid_breath,acid breath,yes,no,,requires explicit per-variant effect assertions
+src/magic.c,spell_fire_breath,fire breath,yes,no,,requires explicit per-variant effect assertions
+src/magic.c,spell_frost_breath,frost breath,yes,no,,requires explicit per-variant effect assertions
+src/magic.c,spell_gas_breath,gas breath,yes,no,,requires explicit per-variant effect assertions
+src/magic.c,spell_lightning_breath,lightning breath,yes,no,,requires explicit per-variant effect assertions
+src/magic.c,spell_guardian,guardian,yes,no,test_newclasses.c,requires explicit per-variant effect assertions
+src/magic.c,spell_soulblade,soulblade,yes,no,,requires explicit per-variant effect assertions
+src/magic.c,spell_mana,mana,yes,no,,requires explicit per-variant effect assertions
+src/magic.c,spell_frenzy,frenzy,yes,no,legacy_spells.py; test_legacy_spells.c,requires explicit per-variant effect assertions
+src/magic.c,spell_darkblessing,darkblessing,yes,no,legacy_spells.py; test_legacy_spells.c,requires explicit per-variant effect assertions
+src/magic.c,spell_transport,transport,yes,no,,requires explicit per-variant effect assertions
+src/magic.c,spell_quest,quest,yes,no,,requires explicit per-variant effect assertions
+src/magic.c,spell_mount,mount,yes,no,,requires explicit per-variant effect assertions
+src/magic.c,spell_insert_page,insert page,yes,no,test_sorcerer_starter.c,requires explicit per-variant effect assertions
+src/magic.c,spell_remove_page,remove page,yes,no,,requires explicit per-variant effect assertions
+src/magic.c,spell_chaos_blast,chaos blast,yes,no,,requires explicit per-variant effect assertions
+src/magic.c,spell_web,web,yes,no,test_cyborg_completion.c; test_newclasses.c,requires explicit per-variant effect assertions
+src/magic.c,spell_find_familiar,find familiar,yes,no,,requires explicit per-variant effect assertions
+src/magic.c,spell_improve,improve,yes,no,,requires explicit per-variant effect assertions
+src/magic.c,spell_fear,fear,yes,no,test_reference_completion.c,requires explicit per-variant effect assertions
+src/magic.c,spell_tendrils,tendrils,yes,no,,requires explicit per-variant effect assertions
+src/reconstructed.c,do_disquiet,disquiet,yes,no,reconstructed_abilities.py,requires explicit per-variant effect assertions
+src/reconstructed.c,do_quicksand,quicksand,yes,no,reconstructed_abilities.py,requires explicit per-variant effect assertions
+src/reconstructed.c,do_scream,scream,yes,no,reconstructed_abilities.py,requires explicit per-variant effect assertions
+src/reconstructed.c,do_lycaon,lycaon,yes,no,reconstructed_abilities.py,requires explicit per-variant effect assertions
+src/reconstructed.c,do_totemgift,totemgift,yes,no,maintenance_fixes.py; reconstructed_abilities.py,requires explicit per-variant effect assertions
+src/reconstructed.c,do_horridreality,horridreality,yes,no,reconstructed_abilities.py,requires explicit per-variant effect assertions
+src/reconstructed.c,do_maskempathy,maskempathy,yes,no,reconstructed_abilities.py,requires explicit per-variant effect assertions
+src/more.c,do_mindblast,mindblast,yes,no,audit_legacy_coverage.py,requires explicit per-variant effect assertions
+src/more.c,do_malleable,malleable; changeling,yes,no,audit_legacy_coverage.py; class_abilities.py,requires explicit per-variant effect assertions
+src/more.c,do_fleshcraft,fleshcraft,yes,no,audit_legacy_coverage.py,requires explicit per-variant effect assertions
+src/more.c,do_bonecraft,bonecraft,yes,no,audit_legacy_coverage.py,requires explicit per-variant effect assertions
+src/more.c,do_zuloform,zuloform,yes,no,audit_legacy_coverage.py,requires explicit per-variant effect assertions
+src/more.c,do_plasmaform,plasmaform,yes,no,audit_legacy_coverage.py,requires explicit per-variant effect assertions
+src/more.c,do_conditioning,conditioning,yes,no,audit_legacy_coverage.py,requires explicit per-variant effect assertions
+src/more.c,do_tongue,tongue,yes,no,audit_legacy_coverage.py,requires explicit per-variant effect assertions
+src/more.c,do_mummify,mummify,yes,no,audit_legacy_coverage.py; reconstructed_abilities.py,requires explicit per-variant effect assertions
+src/more.c,do_controlbeast,controlbeast,yes,no,audit_legacy_coverage.py,requires explicit per-variant effect assertions
+src/more.c,do_shroudnight,shroudnight,yes,no,audit_legacy_coverage.py,requires explicit per-variant effect assertions
+src/more.c,do_silencedeath,silencedeath; silenceofdeath,yes,no,audit_legacy_coverage.py,requires explicit per-variant effect assertions
+src/more.c,do_weakness,weakness,yes,no,audit_legacy_coverage.py; maintenance_fixes.py,requires explicit per-variant effect assertions
+src/more.c,do_infirmity,infirmity,yes,no,audit_legacy_coverage.py,requires explicit per-variant effect assertions
+src/more.c,do_bloodagony,bloodagony,yes,no,audit_legacy_coverage.py,requires explicit per-variant effect assertions
+src/more.c,do_spit,spit; tastedeath,yes,no,audit_legacy_coverage.py,requires explicit per-variant effect assertions
+src/more.c,do_shadowbody,shadowbody,yes,no,audit_legacy_coverage.py,requires explicit per-variant effect assertions
+src/more.c,do_arms,armsabyss,yes,no,audit_legacy_coverage.py,requires explicit per-variant effect assertions
+src/more.c,do_lamprey,lamprey,yes,no,audit_legacy_coverage.py,requires explicit per-variant effect assertions
+src/more.c,do_thanatopsis,thanatopsis,yes,no,audit_legacy_coverage.py,requires explicit per-variant effect assertions
+src/more.c,do_spiritgate,spiritgate,yes,no,audit_legacy_coverage.py,requires explicit per-variant effect assertions
+src/more.c,do_preservation,preserve,yes,no,audit_legacy_coverage.py,requires explicit per-variant effect assertions
+src/more.c,do_zombie,zombie,yes,no,audit_legacy_coverage.py,requires explicit per-variant effect assertions
+src/more.c,do_spiritform,spiritform,yes,no,audit_legacy_coverage.py; reconstructed_abilities.py,requires explicit per-variant effect assertions
+src/more.c,do_spiritguardian,spiritguardian; spiritfriend,yes,no,audit_legacy_coverage.py; class_abilities.py,requires explicit per-variant effect assertions
+src/more.c,do_succulence,succulence,yes,no,audit_legacy_coverage.py,requires explicit per-variant effect assertions
+src/more.c,do_frenzy,frenzytrigger,yes,no,audit_legacy_coverage.py,requires explicit per-variant effect assertions
+src/more.c,do_shadowplay,shadowplay,yes,no,audit_legacy_coverage.py; class_abilities.py,requires explicit per-variant effect assertions
+src/more.c,do_shadowstep,shadowstep; step,yes,no,audit_legacy_coverage.py; class_abilities.py; test_legacy_variants.c,requires explicit per-variant effect assertions
+src/more.c,do_spiriteyes,spiriteyes,yes,no,audit_legacy_coverage.py,requires explicit per-variant effect assertions
+src/more.c,do_sbreath,sbreath,yes,no,audit_legacy_coverage.py,requires explicit per-variant effect assertions
+src/more.c,do_celerity,celerity,yes,no,audit_legacy_coverage.py,requires explicit per-variant effect assertions
+src/more.c,do_chiroptean,chiroptean,yes,no,audit_legacy_coverage.py,requires explicit per-variant effect assertions
+src/more.c,do_empathy,empathy,yes,no,audit_legacy_coverage.py,requires explicit per-variant effect assertions

@@ -1,0 +1,350 @@
+#HELPS
+
+0 CLASSES KITS CLASSKITS~
+Genesis has 19 standalone classes:
+Vampire, Werewolf, Sorcerer, Drow, Highlander, Mage, Dragon, Ninja, Monk,
+Elemental, Angel, Cyborg, Demon, Phoenix, Gargoyle, Kuei-jin, Deathknight,
+Moogle and Wraith.
+
+Use AUTOCLASS to inspect entry requirements and AUTOCLASS <class> to join.
+Sorcerer is the book mage; Mage is the separate sphere/Arete class.
+Chaos Book Mage is a Sorcerer playstyle, not a twentieth hybrid parent.
+Use HELP <class>, HELP BOOKMAGIC, HELP CYBORG or HELP KITSTATUS.
+Hybrid conversion, ascension and respec are not currently enabled.
+~
+
+0 VAMPIRE VAMPIRES VAMPIREKIT~
+Vampire uses generation, blood, Beast and disciplines. Use DISCIPLINES
+to inspect your character's available training and mastery.
+The kit includes Animalism, Auspex, Celerity, Chimerstry, Daimoinon,
+Dominate, Fortitude, Melpominee, Mortis, Necromancy, Obfuscate,
+Obtenebration, Potence, Presence, Protean, Quietus, Serpentis,
+Thaumaturgy and Vicissitude.
+Powers retain their blood, form, visibility, target and PK requirements;
+learning a discipline does not remove a power's individual prerequisites.
+Related: HELP DISCIPLINES, HELP FRENZY, HELP KITSTATUS.
+~
+
+0 WEREWOLF WEREWOLVES WEREWOLFKIT~
+Werewolf uses breed, auspice and tribe gifts in addition to shapeshifting.
+Progression and gift prerequisites remain separate: a tribe gift is not
+automatically available merely because another track has been mastered.
+The kit includes Primal Anger, Burrow, Spirit Ward, Jam Technology, Blur,
+Mother's Touch, Wyld gifts, spirit interaction and tribal attacks/defenses.
+Restored gifts use named effects, native costs/saving throws, cooldowns
+and the usual protected-target rules.
+Related: HELP BREED, HELP AUSPICE, HELP TRIBE, HELP RESTOREDGIFTS.
+~
+
+0 SORCERER SORCERERS BOOKMAGE BOOKMAGIC CHAOSMAGE CHAOSBOOKMAGE~
+Sorcerer is the book mage, distinct from the sphere-based Mage.
+AUTOCLASS SORCERER chooses normal book magic.
+AUTOCLASS CHAOSMAGE or AUTOCLASS SORCERER CHAOS chooses Chaos book magic.
+Existing Sorcerers may claim their once-per-character kit:
+  sorccreate starter
+It contains a primer, pen, instruction pages and three finished spells:
+  Spark (page 2, targeted damage), Mend (page 3, targeted healing),
+  Minor Ward (page 4, protective armor blessing).
+  hold primer
+  read primer
+  turn primer 0
+  turn primer 4
+  chant self
+The index is page 0. Read pages 1 and 5 for navigation and writing/binding.
+Normal mages start with at least rank 1 blue/green/yellow; Chaos starts
+with all six colors at rank 1. Higher existing mastery is preserved.
+Chaos books roll a fresh color on EACH chant; colors may repeat.
+Healing remains healing, attacks remain attacks and blessings keep their
+written purpose. Travel/action pages keep their written operation.
+Spark costs 200 mana, Mend 400, Minor Ward 1560 at normal starter mastery.
+Chaos damage/healing costs vary by rolled color. Minor Ward has two ticks
+of native duration and RAISES armor: higher armor improves Genesis defense.
+Do not put REVERSED on a protective armor script. Same-color wards do not
+stack. Read the actual primer for an executable spell-writing recipe.
+Other crafting still costs resources. Starter claims cannot be repeated.
+Utility: cast ventriloquate pen <message> creates explicit illusory speech.
+Related: HELP SORCCREATE, HELP CHANT, HELP WRITE, HELP COLORS.
+~
+
+0 MAGE MAGES MAGEKIT~
+Mage is the sphere/arete class, NOT the Sorcerer/book mage.
+Its kit uses Arete, sphere mastery, quintessence and paradox.
+MAGEPOWERS lists your learned abilities; SPHERE <name> shows the real power
+menu rather than the old placeholder. SPHERE <name> LEARN trains as before.
+Commands include rift, analyze, brittle bones, mutate ephemera, sculpture,
+alterweight, invisibility, spirit sense/caress, step sideways, dreamshell,
+heart's blood, holy smote, enchantment, paradox ward, healing, better body,
+polymorph, friction curse, electrical chaos, inferno and contingency.
+Use HELP <ability> for its existing command name and prerequisites.
+Friction Curse uses: frictioncurse <target> <nonnegative quintessence>.
+It checks costs and target protection before charging and restores the
+caster's original room after remote safety validation.
+Numeric quintessence inputs are validated before any paradox/cost effects.
+Other legacy argument/effect variants remain under verification; HELP KITSTATUS
+does not claim that all old sphere spells have been independently certified.
+~
+
+0 DROW DROWKIT~
+Drow has prayer/disciplines, acid bolt, faeriefire, spider summoning,
+globe of darkness, Door, armor and ranged shooting.
+Progression, required favor and target/room protections still apply.
+Use HELP DROWPOWERS and existing ability help for command details.
+Related: HELP PRAY, HELP FAERIEFIRE, HELP KITSTATUS.
+~
+
+0 HIGHLANDER HIGHLANDERS HIGHLANDERKIT~
+Highlander is the immortal blademaster class. Its kit includes Blade Flash,
+Bash, Hilt Twist, Judgement, Lunge and weapon forge/increase progression.
+Use HELP FORGE and HELP INCREASE for the existing progression rules.
+Weapon, stance and trained-stat requirements remain distinct.
+Related: HELP STANCE, HELP SKILL, HELP KITSTATUS.
+~
+
+0 DRAGON DRAGONS DRAGONKIT~
+Dragon uses dragonform, breath attacks, Dust, tail attacks, horns, wings
+and dragon-skill progression. Form and learned-power checks remain required.
+Use HELP DRAGONFORM and existing breath/dragon ability help for syntax.
+Related: HELP KITSTATUS.
+~
+
+0 NINJA NINJAS NINJAKIT~
+Ninja uses principles, michi, Ki and stealth/combat progression.
+The kit includes Kakusu, Mienaku, Tsumazuku, Tsume, Shuurai,
+Hakunetsu, Harakiri and the Bomuzite sleep bomb.
+Bomuzite requires its Sora tier and 20 Ki. It cannot sleep self, party
+members, protected/non-PK targets or already sleeping targets, and it ends
+the relevant native combat state before putting a valid target to sleep.
+Related: HELP MICHI, HELP PRINCIPLES, HELP KITSTATUS.
+~
+
+0 MONK MONKS MONKKIT~
+Monk is the unarmed martial/spiritual class. Its kit includes Aura Shot,
+Blitz, Cripple, Darkblaze, Stun Fist, Chimera, Healing Touch, Almighty,
+Celestial, Life Cloak and monk training.
+Support and group effects require valid recipients and sufficient resources;
+an already-active blessing does not justify charging for an empty recast.
+Related: HELP MONKTRAIN, HELP KITSTATUS.
+~
+
+0 ELEMENTAL ELEMENTALIST ELEMENTALKIT~
+Elemental uses independent elemental progression and native timed effects.
+Its kit includes Flare Arrow, Fireblade, Icicle Storm, Water Travel,
+Aqua Barrier, Wind Wings, Wind Blades, Stone Blast, Local Quake,
+Holy Aura, Solar Flash, Ultima Wave, Slow and elemental defenses/senses.
+Native effects persist through save/relogin and expire through character
+updates. Travel, combat safety and individual prerequisites still apply.
+Werewolf command: ELEMENTAL <fire|water|earth|air> <target> instead invokes
+the separate Lupus 5 gift; it does not select the Elemental parent.
+See HELP WOLFELEMENTAL for that legacy command.
+Related: HELP KITSTATUS.
+~
+
+0 ANGEL ANGELS ANGELKIT~
+Use ANGEL for the live ability menu; ANGEL TRAIN advances mastery to 8.
+The kit includes aura, claws, angelform, feet, nightsight, wings, might,
+toughness, speed, travel, shadowsight, emergency_inferno, windwall,
+heightened_senses, read_aura, spiritshare, strengthen, guardianangel,
+purifyspirit, empower, angelarmour and halo.
+Reference controls include scry, eyespy, cherub, unveil, astral_projection,
+weaponform, humanform, object_move, object_leap, object_magic,
+object_lifespan and inpart.
+Support requires willing/grouped recipients. Read Aura reports visible
+NPC alignment, not a restored player-alignment system.
+Object/familiar forms have ownership, room and safe return/cleanup rules.
+Use the live menu for rank/cost requirements. Hybrids remain disabled.
+~
+
+0 CYBORG CYBORGS CYBORGKIT~
+Cyborg's complete Genesis kit has 60 inventory entries, including components,
+training and management systems; that is not 60 different attacks.
+Use CYBORG STATUS. Every command below uses the CYBORG prefix.
+  install/uninstall <component>   implant/replace <component>
+  train                         convert <mana amount>
+  factory on/off                repair
+  taser/snipe <target>           cloak
+  radio <message>               bionics <XP amount>
+  face_implants improve/show    limb_implants improve/show
+  body_implants improve/show    demolitions improve/show
+  make_bomb                     arm / arm off
+  detonate <target>             mine
+  launch <target>               stuntubes/oilspit <target>
+  cubeform/terminator           mechsight
+  scry <target>                 read_aura <NPC>
+  lloth                        darkness
+  web <target>                  transmit <grouped player>
+  shadowwalk/upload             cyborgeq <piece>
+24 installed components have dependency, primal and humanity requirements.
+The normal 100-humanity budget requires a loadout, not simultaneous installation
+of every component. Safe uninstall refunds humanity once, never primal.
+Rifle and demolitions cap at 12; face/limbs/body at 5/5/6.
+Stored nanites cap at 10000, bombs at 20, bionics at 10000000.
+Mine is room-bound and defensive; missiles require both legs and targeting.
+Snipe is SAME ROOM. Transmit is protected travel to a willing party member.
+Oilspit/Stuntubes use removable named poison, not permanent raw flags.
+Armor, limb combat modifiers, weapon ceiling, regeneration and vision use
+native passive hooks. Total-darkness sight requires face 3 and Mechsight.
+Cyborgeq pieces: whip/ring/collar/armor/helmet/leggings/boots/gloves/sleeves/
+cloak/belt/bracer/mask; each costs 100 primal and duplicate carried pieces
+are refused. Systems persist across save/relogin; deployed mines do not.
+The class is a standalone and planned hybrid parent. Conversion remains off.
+~
+
+0 DEMON DEMONS DEMONKIT~
+Use DEMON for the live ability menu; DEMON TRAIN advances mastery to 8.
+The kit includes fangs, claws, demonform, hooves, wings, horns, tail,
+senses, might/toughness/speed, infernal attacks, curses and defensive aspects.
+Reference systems include souls, pact, offersoul, champions, inpart, warps,
+redeem and gifts. Their consent, authority, resources and variant requirements
+are enforced separately; use the live menus instead of guessing grant syntax.
+The unified Demon also has familiar/object forms, demon/animal shapes,
+weapon enchantments, wards, travel and courier functionality.
+Soul/pact powers do not bypass protected players or grant staff authority.
+All reference mechanics are Genesis adaptations; hybrid conversion remains off.
+~
+
+0 PHOENIX PHOENIXKIT~
+Use PHOENIX for the live menu and PHOENIX TRAIN for progression.
+Abilities: emberbolt, featherward, flamingwings, ashwalk, phoenixtears,
+solarflare, renewal and ascendantaspect.
+The kit uses native damage, named timed defenses/flight, healing and bounded
+travel. Existing effects cannot stack from duplicate casts or repeated load.
+Related: HELP KITSTATUS.
+~
+
+0 GARGOYLE GARGOYLEKIT~
+Use GARGOYLE for the live menu; visceratika trains the track to 5.
+Abilities: stonefist, wings, stone_rest, statue and statue back.
+Stone resilience reduces physical damage by 5% per rank, capped at 25%.
+Ground awareness starts at rank 2 when observer and target are grounded.
+Living Statue is a real owned object form with safe return/expiry cleanup.
+Related: HELP KITSTATUS.
+~
+
+0 KUEI-JIN KUEIJIN KUEIJINKIT~
+Use KUEIJIN for the live kit menu, track training and dharma progression.
+The kit has independent Chi/Dharma progression and 18 tracks, including
+Blood/Bone/Jade/Flesh/Ghost Shintai, Yin/Yang/Hun/Po, noble disciplines,
+battle aspects, spirit senses, travel, healing, chi crafting and Akuma.
+These are Genesis effects, not reused Vampire progression or flags.
+Use the live menu for the full ability list and current focus/costs.
+Related: HELP KITSTATUS.
+~
+
+0 DEATHKNIGHT DEATHKNIGHTKIT~
+Use DEATHKNIGHT for the live menu, training and focus.
+Deathknight has an independent Genesis-native kit: deathknight progression,
+runeblade combat, frost/unholy effects, dark defenses and bounded restoration.
+It is not an imported composite class-bit combination.
+Use the live menu for the exact abilities, costs and focus requirements.
+Related: HELP KITSTATUS.
+~
+
+0 MOOGLE MOOGLEKIT~
+Use MOOGLE for the live menu, training and focus.
+Moogle has an independent Genesis-native kit with supportive magic,
+combat, defensive aspects and bounded crafting/restoration.
+Use the live menu for the exact ability list and focus/currency requirements.
+Its identity and state do not alias another class.
+Related: HELP KITSTATUS.
+~
+
+0 WRAITH WRAITHKIT~
+Use WRAITH for the live menu and independent track progression.
+Wraith has its own Arcanos-style powers, spirit/object forms, phantasms,
+fire/force attacks, weather control and supportive Usury.
+Owned forms have safe return, expiry and load-cleanup rules.
+Use the live menu for the full abilities, costs and prerequisites.
+Related: HELP KITSTATUS.
+~
+
+0 HYBRID HYBRIDS ASCENSION RESPEC~
+Hybrid conversion, pure-class ascension and path respec are not enabled.
+HYBRID and HYBRID <parent> are read-only development previews.
+There are 19 planned parents and 171 distinct two-parent combinations.
+The intended design gives hybrids both parent kits; pure-class ascension
+is a separate balancing path. Previewing cannot convert or spend resources.
+~
+
+0 HYBRIDROSTER HYBRIDNAMES~
+The named Genesis Reforged roster contains all 171 distinct two-parent pairs
+from the 19 standalone classes. Parent order does not change the identity.
+Use hybrid roster to list every name, or hybrid roster <parent> for its 18
+combinations. Use hybrid pair <first parent> <second parent> for one pair.
+Examples: hybrid pair vampire werewolf shows Bloodfang;
+hybrid pair angel demon shows Nephilim.
+These commands are READ-ONLY previews. They cannot enroll a hybrid, grant
+inherited powers, spend resources, alter saves or change your existing class.
+Class Leader exclusion is a required future rule, not an active conversion.
+Pure-class ascension remains separate and unavailable.
+~
+
+0 KITSTATUS~
+All 19 standalone class identities have gameplay code. Defined Genesis
+catalogues include Angel 33, Demon 71 and Cyborg 60 implemented entries.
+New native kits and restored abilities
+have dedicated effect, safety, persistence and sanitizer regressions.
+This does NOT certify every legacy skill argument, every upstream variant,
+all multiplayer balance, or playable hybrids. Broader legacy verification
+is ongoing; developer coverage records explicitly retain unverified cases.
+Use each class's live menu and HELP KITS for current gameplay instructions.
+~
+
+0 BOOKWRITING WRITESPELL~
+Hold/read your primer and read its fifth page for a tested writing recipe.
+To make another Spark, remove the held book and hold the inscription pen:
+  remove primer
+  sorccreate page
+  hold pen
+  write page title My Spark
+  write page line start.damage.spell
+  write page line message.1: sparks
+  write page line message.2: You send sparks toward $N.
+  write page line message.3: $n sends sparks toward $N.
+  write page line end.yellow
+  remove pen
+  cast 'insert page' page primer
+  hold primer
+  turn primer 6
+  chant <enemy>
+Six assumes the original five-page primer. Use its index to find later pages.
+For a protective armor spell use start.affect.spell, apply: armor,
+duration: 2, the three messages, and end.green. Do not use reversed:
+Genesis armor is positive for defense. Crafting and casting costs still apply.
+~
+
+7 RELEVEL~
+Owner bootstrap: only the exact player name Admin (case-insensitive) may
+self-relevel to the highest rank, level 7. Prior name lists were removed.
+NPCs and switched descriptors cannot use the bootstrap.
+Secure the Admin account before public registration. This command does not
+reserve/create the account or demote existing staff. Save normally afterward.
+~
+
+0 KNOWALIGNMENT KNOW_ALIGNMENT~
+Know Alignment reads a visible NPC in your current room. It reports the
+NPC's area-defined alignment number and whether it is good, neutral or evil.
+It does not assign alignment to players or read distant/hidden targets.
+The spell name is 'know alignment'; access depends on normal spell or item
+requirements.
+~
+
+0 FRENZY FRENZYSPELL~
+Frenzy grants a named, timed battle-rage effect: +1 hitroll and +1 damroll.
+It does not force combat or toggle a Vampire/Werewolf class-rage state.
+Repeated applications do not stack. Expiry/removal restores the old values.
+The spell name is frenzy; normal spell or item requirements still apply.
+~
+
+0 DARKBLESSING DARKBLESS~
+Darkblessing supports evil NPCs only: their area alignment must be -350 or
+lower. Good/neutral NPCs and all players are ineligible.
+It grants +1 hitroll, +1 damroll and +10 armor as one timed named blessing.
+The armor stat rises, but current NPC avoidance uses level, not armor.
+The offensive bonuses are the NPC combat buff. Repeated applications do
+not stack; expiry/removal restores the old values.
+The spell name is darkblessing; normal spell or item requirements apply.
+~
+
+0 $~
+
+#$

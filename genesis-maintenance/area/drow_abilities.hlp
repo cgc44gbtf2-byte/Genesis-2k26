@@ -1,0 +1,118 @@
+#HELPS
+
+0 DINDUCT~
+Syntax: dinduct <room target>
+Drow house induction for a Drow whose native house rank is 3 or better.
+The target must be a Drow with no house and the native eligible-player flag.
+Copies your house to the target, sets its rank to 5 and saves it.
+This is house membership, not creation of a different class or hybrid.
+~
+
+0 PROMOTION~
+Syntax: promotion <room target>
+Drow house promotion. Requires a player Drow of your own house below you
+in its hierarchy. Raises the target one native rank and saves it.
+You cannot promote someone to your own rank or above.
+This is separate from Ninja PROMOTE.
+~
+
+0 FAILURE~
+Syntax: failure <room target>
+Drow house demotion. Requires a player Drow of your own house below you
+in its hierarchy. Lowers the target one rank, at most to native rank 5,
+and saves it. This is separate from Ninja DEMOTE.
+~
+
+0 ATTUNEMENT DROWATTUNE~
+Syntax: attunement <carried owned object>
+Requires the Attunement gift from PRAYER.
+Sets native item loyalty on an eligible object already claimed by you.
+Quest tokens, ammunition, eggs, voodoo items, money, treasure, pages and
+artifacts are excluded. It does not claim another player's equipment.
+The registered command is ATTUNEMENT.
+~
+
+0 ACIDBOLT~
+Syntax: acidbolt [room target]
+Requires the AcidBolt gift. Uses the current opponent first, otherwise a
+named room target. Performs the native acid-bolt combat attack and wait.
+Rejects self, group members, non-PK player combat and native safe targets
+before attempting to drop Majesty. It is not CAST 'acid blast'.
+~
+
+0 FAERIEFIRE~
+Syntax: faeriefire <room target>
+Requires the FaerieFire gift. Rejects self/group/non-PK/protected targets.
+Player anti-magic can resist. Applies native faerie-fire light plus
+-50 hitroll, damage roll and armor for 10 native affect durations.
+Cannot stack on an already outlined target; command wait applies.
+This Drow command is distinct from CAST 'faerie fire'.
+~
+
+0 SUMMONSPIDER~
+Syntax: summonspider
+Requires the SummonSpider gift and an unused native follower slot.
+Creates the fiendish spider with 30000 health, 1000 mana and combat
+ratings derived from yours, using the native guardian/charm framework.
+The shared follower limit applies; this is not an unlimited pet army.
+Missing mobile, staging-room or guardian-affect data fails before
+reserving a follower slot.
+~
+
+0 DROWARMOR~
+Syntax: drowarmor <cloak|helmet|breastplate|bracer|crossbow>
+Creates and claims the selected native Drow equipment template.
+Each item costs 8000 Drow points and 400 quest points; missing templates
+and invalid selections do not deduct the price.
+The crossbow is used by SHOOT, not as a replacement for CHANT or CAST.
+~
+
+0 DIMENSIONDOOR DROWDOOR~
+Syntax: dimensiondoor <world target>
+Base Drow travel to an eligible target's different room.
+Player targets must allow SUMMON. Native target-level, familiar-eye,
+illusion and destination-safe/private/solitary exclusions apply.
+Combat/timers, caster curse/web/root, disembodied forms, incompatible
+planes and either room's no-travel/private/solitary flags block travel.
+Moves only the caster; does not create a persistent portal or pull the
+target to you. The registered command is DIMENSIONDOOR.
+~
+
+0 SKIPDISC~
+Syntax: skipdisc
+Requires the SkipDisc gift. Toggles native flight on or off using the
+character's flying flag, not an unrelated equipment flag.
+The learned gift also contributes the native passive speed bonus.
+This does not train a spell, grant Dragon wings or change parent class.
+~
+
+0 DROWUPKEEP~
+Syntax: drowupkeep
+Displays your learned Drow gifts and native Speed rank.
+This is an inspection command, not a purchase, upkeep-fee setting or
+automatic claim that every gift is currently active.
+See HELP PRAYER for acquisition costs and command names.
+~
+
+0 GLOBEDARKNESS~
+Syntax: globedarkness
+Requires the Darkness gift (purchased through PRAYER).
+Activating the native globe costs 500 Drow points; using it again
+removes its active flag. Native visibility/combat rules use that flag.
+It is not an independent elemental shield or permanent room-area edit.
+~
+
+0 SHOOT~
+Syntax: shoot <north|east|south|west|up|down> <target>
+Drow crossbow attack into one adjacent room through an open exit.
+Hold an ITEM_MISSILE crossbow. A committed shot costs 500 Drow points;
+shots into walls/closed doors can waste that price.
+Protected rooms, safe/NOKILL targets, group members and non-PK player
+targets are rejected before payment; the shooter stays in its own room.
+Damage uses native damage roll (reduced against players). Survivors may
+receive the native sleep effect; Drow poison immunity resists that effect.
+It does not apply sleep to a dead or relocated victim.
+~
+
+0 $~
+#$
