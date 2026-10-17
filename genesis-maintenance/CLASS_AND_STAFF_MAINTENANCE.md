@@ -109,3 +109,47 @@ power exclusions remain as described above. The next balance review should
 compare progression/cap parity and class-optimized strategies, rather than
 changing individual spell damage based solely on these trials.
 No production gameplay code, class stats, costs, caps or balance rules changed.
+
+### Cyborg versus Demon, using available class armor
+
+Use `dueldemonbatch` instead of `duelbatch` in the command above. This runs
+the original 100-fight Wraith matrix as a regression, then 100 Demon fights.
+The Wraith rows, starting values and aggregates reproduced exactly.
+Both batches passed ASan/UBSan; the two real class-power actions per fight
+were verified to spend resources, not merely print success messages.
+
+Cyborg uses all 12 distinct wearable `cyborgeq` armor types, fabricated with
+the real handler for 100 primal each (armor value20). The neutral template
+matches `kavir.are` #30037. Duplicate-item restrictions leave the second
+ring, neck and wrist slots using benchmark armor15. Creation is fixture
+construction before timed combat preparation, not a live-server transaction.
+Demon has no class armor fabrication handler: `demonarmour` is a timed
++30 AC ward, used over benchmark armor. Both retain the same dual blades,
+Tiger stance, 200 weapon/stance/style mastery, HP/mana training caps and
+class-specific stat caps as the original experiment.
+
+Demon mastery is8, all five gifts owned, souls at the legitimate cap, with
+the legal maximum ten combat-oriented warps: chitin, scales, strongarms,
+spiketail, quickness, stamina, regeneration, damcap, horns and shards.
+This is one legal maximum build, not all mutually budgeted choices at once.
+Preparation is Terminator/Demon Armour followed by two minute updates.
+Demon's rotation is Netherflames, or Leech below75% HP; the ward is chosen
+instead of a simultaneous free form/Baal buff. Real cooldowns allowed one
+successful combat-power action per fighter in each of these100 fights.
+
+| Opening attacker | Fights | Cyborg wins | Demon wins | Mean Cyborg HP left | Mean seconds |
+|---|---:|---:|---:|---:|---:|
+| Cyborg | 50 | 50 | 0 | 75,777.80 | 49.695 |
+| Demon | 50 | 50 | 0 | 71,243.64 | 53.490 |
+| Overall | 100 | 100 | 0 | 73,510.72 | 51.5925 |
+
+No unresolved fights. Cyborg HP remaining ranged58,815..86,933;
+durations36..77.25 seconds. Starting Cyborg/Demon values:
+cap4100/2400, HR105/10, DR40/25, AC585/370, soak600/650, delay11/13.
+Default seed1792094400: Cyborg opening wins in71.75s with59,477HP;
+Demon opening still gives Cyborg victory in77.25s with58,815HP.
+
+The class-armor configuration differs from the earlier matched-armor Wraith
+experiment, so the results do not independently rank Demon against Wraith.
+Nor do they certify all Demon rotations or optimally timed buff combinations.
+No production gameplay source or balance rules changed.
