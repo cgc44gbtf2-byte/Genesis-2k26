@@ -153,3 +153,65 @@ The class-armor configuration differs from the earlier matched-armor Wraith
 experiment, so the results do not independently rank Demon against Wraith.
 Nor do they certify all Demon rotations or optimally timed buff combinations.
 No production gameplay source or balance rules changed.
+
+### Cyborg versus Book Mage: method
+
+`duelbookbatch` replays both previous100-fight matrices, then runs50 paired
+seeds against a normal, non-Chaos `CLASS_SORCERER` Book Mage. Sorcerer uses
+its native `LEV_SOR` command access (not staff access), all six colors5 and
+the same HP/mana/stat/weapon/stance/style training policy as earlier tests.
+Holding the book replaces its off-hand blade; active style is ONEHAND.
+Cyborg retains the prior legal implant build, fabricated class armor and
+dual blades. Book Mage retains benchmark armor under its crafted ward.
+
+The book and pen are created with `sorccreate`;21 pages are actually written
+with `write` and bound using `cast 'insert page'`. No page flags, damage
+coefficients or binding links are injected directly. Crafting is pre-owned
+fixture construction, before the timed preparation phase. Spell construction
+mana is restored before preparation, as if arriving with a prepared book.
+No resources or cooldowns are reset during preparation/combat.
+
+Page1: green War Ward, duration50, armor/hitroll/damroll and Sanctuary.
+At color5 its actual +50 AC/+50 HR/+50 DR and Sanctuary are asserted.
+It costs3000mana; no maximum-HP/mana bonuses are added.
+Pages2..11: ten linked red damage pages. Pages12..21: ten blue healing pages.
+Both chains stop at their tenth page. Each script includes its required
+messages, completion flags and binding-link assertions.
+
+Preparation is Terminator/War Ward plus two real minute updates. Combat
+rotation selects the red chain, or blue self-healing below75%HP. Native
+15-pulse chant wait is respected. Each full chain costs6000/4000mana;
+partially affordable chains are permitted, charged per funded page and
+verified to stop at the engine's insufficient-mana boundary. Only mana below
+the first page's cost causes the fixture to skip a chant and retain melee.
+The caster does not receive infinite mana or force simultaneous color wards.
+
+This is a deliberately specified combat-ready book, not starter Spark/Mend,
+not the sphere-based Mage and not an all-strategy/class-balance certification.
+The first diagnostic batch used a full-chain-only reserve guard; its results
+are superseded by the final batch that permits native partial chains.
+
+Final results (partial chains enabled):
+
+| Opening attacker | Fights | Book Mage wins | Cyborg wins | Mean seconds |
+|---|---:|---:|---:|---:|
+| Cyborg | 50 | 49 | 1 | 66.95 |
+| Book Mage | 50 | 50 | 0 | 58.51 |
+| Overall | 100 | 99 | 1 | 62.73 |
+
+No unresolved fights. Durations37.75..151.50seconds. Mean Book Mage HP
+remaining across all fights, defeated clamped0:72,640.90; among its99 wins,
+73,374.65. Starting Cyborg/Book Mage: cap4100/1600, HR105/50, DR40/50,
+AC585/350, soak600/400, attack delay11/17, mana97800/97000.
+Book Mage made11..21 successful combat chants per fight, charged per page;
+Cyborg made1..2 successful class combat actions. All100 processes passed
+ASan/UBSan, plus200 exact numerical/statistical Wraith/Demon regression
+replays. The full-chain-only diagnostic batch is not the delivered dataset.
+
+Default seed1792094400: Book Mage wins with75,065HP in52.75s when Cyborg
+opens; with79,055HP in56.50s when Book Mage opens. Sole Cyborg victory:
+seed1792260699, Cyborg opening,151.50s,1,780HP left; Book Mage ends
+with200mana, below the first page's minimum400 healing/600 attacking cost.
+These are recorded outcomes, not isolated causal tests of individual buffs.
+No production gameplay source, spell coefficients, class balance, live host
+or player data changed. This normal Book Mage fixture is not Chaos Mage.

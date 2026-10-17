@@ -13,6 +13,8 @@
 extern void init_mm(void);
 extern void char_update(void);
 extern OBJ_INDEX_DATA *obj_index_hash[MAX_KEY_HASH];
+extern OBJ_DATA *get_page(OBJ_DATA *,long);
+extern long chainspell;
 static CHAR_DATA fighter[2];
 static PC_DATA player[2];
 static DESCRIPTOR_DATA descriptor[2];
@@ -123,17 +125,62 @@ static void class_armor(void)
         ch->wait=0;
     }
 }
+static void book_loadout(void)
+{
+    CHAR_DATA *ch=&fighter[1];
+    OBJ_DATA *old,*book,*pen,*page;
+    char input[200];
+    int p;
+    /* Build and bind actual scripts with the public crafting commands.
+     * This is pre-battle fixture construction, not a combat cooldown reset. */
+    ch->level=LEV_SOR; ch->style[0]=STYLE_ONEHAND;
+    for(p=0;p<6;++p) player[1].colors[p]=5;
+    command(1,"sorccreate book"); book=get_obj_carry(ch,"book"); assert(book);
+    command(1,"sorccreate pen"); pen=get_obj_carry(ch,"pen"); assert(pen);
+    old=get_eq_char(ch,WEAR_HOLD); assert(old);
+    unequip_char(ch,old); obj_from_char(old); equip_char(ch,pen,WEAR_HOLD);
+    for(p=1;p<=21;++p) {
+        command(1,"sorccreate page"); page=get_obj_carry(ch,"page"); assert(page);
+        snprintf(input,sizeof(input),"write page title %s %d",p==1 ? "War Ward" : p<=11 ? "Red Assault" : "Blue Mend",p);
+        command(1,input);
+        command(1,p==1 ? "write page line start.affect.spell" : "write page line start.damage.spell");
+        if(p==1) {
+            command(1,"write page line apply: armor");
+            command(1,"write page line apply: hitroll");
+            command(1,"write page line apply: damroll");
+            command(1,"write page line affect: sanct");
+            command(1,"write page line duration: 50");
+        } else if(p!=11 && p!=21) command(1,"write page line next.page");
+        command(1,"write page line message.1: runic magic");
+        command(1,"write page line message.2: You release runic magic toward $N.");
+        command(1,"write page line message.3: $n releases runic magic toward $N.");
+        command(1,p==1 ? "write page line end.green" : p<=11 ? "write page line end.red" : "write page line end.blue");
+        assert(IS_SET(page->spectype,ADV_FINISHED) && !IS_SET(page->spectype,ADV_FAILED));
+        command(1,"cast 'insert page' page book");
+        assert(book->value[3]==p && get_page(book,p)==page);
+        assert(page->specpower==p+1);
+        ch->wait=0;
+    }
+    unequip_char(ch,pen); equip_char(ch,book,WEAR_HOLD);
+    assert(book->item_type==ITEM_BOOK && !IS_SET(book->spectype,ADV_CHAOS_BOOK));
+    assert(!IS_SET(get_page(book,11)->spectype,ADV_NEXT_PAGE));
+    assert(!IS_SET(get_page(book,21)->spectype,ADV_NEXT_PAGE));
+    /* Arrive with full mana, as the other pre-owned fixture builds do.
+     * No mana refill occurs during timed buff preparation or combat. */
+    ch->mana=ch->max_mana; ch->wait=0;
+}
 int main(int argc,char **argv)
 {
-    int i,pulse,opener=0,order,elapsed,demon=0,use_armor=0;
+    int i,pulse,opener=0,order,elapsed,demon=0,bookmage=0,use_armor=0,healing,funded,page_cost;
     long seed=1792094400;
     char *end,*opponent_key="wraith",*opponent_name="Wraith";
     char attack[100],kill[100],action[100];
     static const int warps[]={0,1,2,5,7,8,9,11,13,23};
-    long before[2],spent[2]={0,0};
-    if(argc>5) { fprintf(stderr,"Usage: duel [positive-seed] [cyborg|opponent] [wraith|demon] [class-armor]\n"); return 2; }
+    long before[2],spent[2]={0,0},ward_ac,ward_hr,ward_dr;
+    if(argc>5) { fprintf(stderr,"Usage: duel [positive-seed] [cyborg|opponent] [wraith|demon|bookmage] [class-armor]\n"); return 2; }
     if(argc>=4) {
         if(!strcmp(argv[3],"demon")) { demon=1; opponent_key="demon"; opponent_name="Demon"; }
+        else if(!strcmp(argv[3],"bookmage")) { bookmage=1; opponent_key="bookmage"; opponent_name="Bookmage"; }
         else if(strcmp(argv[3],"wraith")) { fprintf(stderr,"Invalid opponent.\n"); return 2; }
     }
     if(argc==5) {
@@ -157,14 +204,15 @@ int main(int argc,char **argv)
     arena.area=&area; arena.name="isolated benchmark arena"; arena.sector_type=SECT_FIELD;
     area.name=area.filename="benchmark"; arena.vnum=777; area.nplayer=2;
     weather_info.sunlight=SUN_LIGHT; prototype.vnum=12345;
-    if(use_armor) {
+    if(use_armor || bookmage) {
         /* kavir.are #30037: neutral protoplasm, no affects/extra flags. */
         prototype.vnum=OBJ_VNUM_PROTOPLASM;
         prototype.name=prototype.short_descr=prototype.description=str_empty;
         prototype.item_type=ITEM_TRASH; prototype.wear_flags=ITEM_TAKE;
         obj_index_hash[prototype.vnum%MAX_KEY_HASH]=&prototype;
     }
-    setup(0,CLASS_CYBORG,"Cyborg"); setup(1,demon ? CLASS_DEMON : CLASS_WRAITH,opponent_name);
+    setup(0,CLASS_CYBORG,"Cyborg");
+    setup(1,demon ? CLASS_DEMON : bookmage ? CLASS_SORCERER : CLASS_WRAITH,opponent_name);
     fighter[opener].next=&fighter[1-opener]; char_list=&fighter[opener];
     assert(cyborg_core_init(&player[0].cyborg,CY_COMPONENT_MASK,100)==CY_OK);
     for(i=0;i<CY_COMPONENT_COUNT;++i) {
@@ -183,17 +231,20 @@ int main(int argc,char **argv)
         for(i=0;i<10;++i) player[1].legacy.warps|=UINT32_C(1)<<warps[i];
         assert(reference_legacy_valid(&player[1].legacy));
         newclasses_restore_passives(&fighter[1]);
-    } else {
+    } else if(!bookmage) {
         player[1].lineage.parent=GEN_PARENT_WRAITH; player[1].lineage.energy=10000;
         for(i=0;i<lineage_track_count(GEN_PARENT_WRAITH);++i) player[1].lineage.tracks[i]=5;
         assert(lineage_state_valid(&player[1].lineage)); lineage_restore(&fighter[1]);
     }
     newclasses_restore_passives(&fighter[0]);
     if(use_armor) class_armor();
+    if(bookmage) book_loadout();
     printf("GENESIS: 2k26 | CYBORG vs %s | ENGINE-LINKED FIGHT SNAPSHOT\n",opponent_name);
     printf("Seed/current_time: %ld. Isolated in-memory PCs; no live-host changes.\n",seed);
     puts("Both: PK enabled, no staff flags; base HP/mana caps 100000; class-specific stat caps; all weapon/stance/style mastery 200.");
-    puts("Active configuration: Tiger stance, dual blades (180..220), benchmark armor 15 in slots without chosen class gear.");
+    puts("Active configuration: Tiger stance, blades (180..220), benchmark armor 15 in slots without chosen class gear.");
+    if(bookmage) puts("Bookmage must hold the book: one blade plus book, legal one-hand style; Cyborg retains dual blades.");
+    else puts("Both fighters use dual blades and two-weapon style.");
     if(use_armor) puts("Cyborg wears all 12 distinct fabricated Cyborgeq armor types (armor20); duplicate restrictions leave three benchmark slots. Fabrication costs paid.");
     puts("Benchmark gear is controlled/equal, NOT a claim of the strongest obtainable world equipment.");
     puts("Cyborg: rifle12 face5 limbs5 body6 demolition12, full starting nanites/bombs; 17 implants at 100/100 humanity spent.");
@@ -204,6 +255,11 @@ int main(int argc,char **argv)
         puts("No standalone wearable Demon armor fabrication exists; Demon Armour is a timed +30 AC ward over benchmark gear.");
         puts("Preparation: Terminator and Demon Armour, then two real minute ticks to clear recovery; no free resource refill.");
         puts("Combat rotation: Cyborg snipe or repair below 75% HP; Demon netherflames or leech below 75% HP.");
+    } else if(bookmage) {
+        puts("Bookmage: normal (non-Chaos) Sorcerer; all six colors5;21 pages crafted/bound through public commands.");
+        puts("Ward: green50tick duration, +50AC/+50HR/+50DR and Sanctuary; red10-page damage chain, blue10-page healing chain.");
+        puts("Preparation: Terminator and War Ward, then two real minute ticks; no mana refills after preparation starts.");
+        puts("Combat: Cyborg snipe/repair below75%; Bookmage red chain, or blue healing chain below75%.");
     } else {
         puts("Wraith: all 11 Arcanoi rank5, full starting pathos. Utility/travel/minion powers are not forced into a duel.");
         puts("Preparation: Terminator and Bodyshape, then two real minute ticks to clear their recovery; no free resource refill.");
@@ -211,9 +267,19 @@ int main(int argc,char **argv)
     }
     printf("Commands only attempted when wait/recovery allow them. Real violence/character updates; opener/command priority: %s.\n",
         fighter[opener].name);
-    command(0,"cyborg terminator"); command(1,demon ? "demon demonarmour" : "wraith bodyshape"); tick(); tick();
+    command(0,"cyborg terminator");
+    if(bookmage) {
+        ward_ac=fighter[1].armor; ward_hr=fighter[1].hitroll; ward_dr=fighter[1].damroll;
+        command(1,"turn book 1"); command(1,"chant self");
+        assert(chainspell==1 && IS_AFFECTED(&fighter[1],AFF_SANCTUARY));
+        assert(fighter[1].armor==ward_ac+50 && fighter[1].hitroll==ward_hr+50
+            && fighter[1].damroll==ward_dr+50);
+    } else command(1,demon ? "demon demonarmour" : "wraith bodyshape");
+    tick(); tick();
     discard(0); discard(1); stats(0); stats(1);
     if(demon) assert(is_affected(&fighter[1],skill_lookup("parent ward")));
+    if(bookmage) assert(IS_AFFECTED(&fighter[1],AFF_SANCTUARY)
+        && is_affected(&fighter[1],skill_lookup("green sorcery")));
     assert(!is_safe(&fighter[0],&fighter[1]));
     snprintf(kill,sizeof(kill),"kill %s",opener ? "Cyborg" : opponent_name);
     command(opener,kill);
@@ -232,7 +298,20 @@ int main(int argc,char **argv)
             snprintf(action,sizeof(action),"%s %s",opponent_key,
                 demon ? (ch->hit<ch->max_hit*3/4 ? "leech Cyborg" : "netherflames Cyborg")
                 : (ch->hit<ch->max_hit*3/4 ? "charitable" : "requiem Cyborg"));
-            command(i,i ? action : (ch->hit<ch->max_hit*3/4 ? "cyborg repair" : attack));
+            if(i==1 && bookmage) {
+                healing=ch->hit<ch->max_hit*3/4;
+                /* The engine charges per page and permits partial chains.
+                 * Do not artificially reserve otherwise usable late mana. */
+                page_cost=healing ? 400 : 600;
+                if(ch->mana<page_cost) continue;
+                funded=UMIN(10,ch->mana/page_cost);
+                command(1,healing ? "turn book 12" : "turn book 2");
+                command(1,healing ? "chant self" : "chant Cyborg");
+                /* A short chain attempts its next page, then stops on the
+                 * native insufficient-mana check without charging it. */
+                assert(chainspell==UMIN(10,funded+1));
+                assert(before[i]-ch->mana==page_cost*funded);
+            } else command(i,i ? action : (ch->hit<ch->max_hit*3/4 ? "cyborg repair" : attack));
             if(ch->mana+(i ? player[i].lineage.energy : player[i].cyber.nanites)<before[i]) ++spent[i];
         }
         if(fighter[0].hit<=0 || fighter[1].hit<=0) break;

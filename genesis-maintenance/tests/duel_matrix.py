@@ -14,7 +14,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("binary", type=Path)
     parser.add_argument("--output", type=Path)
-    parser.add_argument("--opponent", choices=("wraith", "demon"), default="wraith")
+    parser.add_argument("--opponent", choices=("wraith", "demon", "bookmage"), default="wraith")
     parser.add_argument("--class-armor", action="store_true")
     args = parser.parse_args()
     opponent = args.opponent
