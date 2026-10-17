@@ -1119,6 +1119,7 @@ void spell_dispel_evil( long sn, long level, CHAR_DATA *ch, void *vo )
 void spell_dispel_magic( long sn, long level, CHAR_DATA *ch, void *vo )
 {
     CHAR_DATA *victim = (CHAR_DATA *) vo;
+    AFFECT_DATA *af, *next;
 
     if (victim->position == POS_STUNNED) update_pos(victim);
 
@@ -1140,7 +1141,10 @@ void spell_dispel_magic( long sn, long level, CHAR_DATA *ch, void *vo )
 	return;
     }
 
-    while (victim->affected) affect_remove(victim, victim->affected);
+    for (af = victim->affected; af; af = next) {
+        next = af->next;
+        if (!combat_recovery_affect(af)) affect_remove(victim, af);
+    }
     newclasses_restore_passives(victim);
     REMOVE_BIT(victim->affected_by, AFF_FLAMING);
     REMOVE_BIT(victim->more, MORE_THINBLOOD);

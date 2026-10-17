@@ -1,5 +1,11 @@
 # Genesis MUD maintenance copy
 
+The current combat foundation repair is documented in
+[`COMBAT_BALANCE_FOUNDATION.md`](COMBAT_BALANCE_FOUNDATION.md): shared legacy
+class-defense handling, short pulse-based recovery, save-record migration,
+22 sanitizer regression suites and 300 controlled matchup reruns. This fixes
+shared-rule inconsistencies; it does not certify or equalize class balance.
+
 This is a legacy C/telnet MUD server and its area data. It is not a web app.
 This maintenance copy intentionally excludes the original compiled binary,
 object files, server logs, player backups, and private notes.

@@ -84,7 +84,17 @@ static void tick(void)
 {
     /* Real engine affect expiry, regeneration and Cyborg factory updates. */
     current_time+=60; char_update();
-    fighter[0].wait=fighter[1].wait=0;
+}
+static void prep_minute(void)
+{
+    int pulse,i;
+    for(pulse=0;pulse<PULSE_TICK;++pulse) {
+        for(i=0;i<2;++i) {
+            if(fighter[i].wait>0) --fighter[i].wait;
+            combat_recovery_tick(&fighter[i]);
+        }
+    }
+    tick();
 }
 static void stats(int id)
 {
@@ -275,7 +285,7 @@ int main(int argc,char **argv)
         assert(fighter[1].armor==ward_ac+50 && fighter[1].hitroll==ward_hr+50
             && fighter[1].damroll==ward_dr+50);
     } else command(1,demon ? "demon demonarmour" : "wraith bodyshape");
-    tick(); tick();
+    prep_minute(); prep_minute();
     discard(0); discard(1); stats(0); stats(1);
     if(demon) assert(is_affected(&fighter[1],skill_lookup("parent ward")));
     if(bookmage) assert(IS_AFFECTED(&fighter[1],AFF_SANCTUARY)
@@ -285,6 +295,7 @@ int main(int argc,char **argv)
     command(opener,kill);
     assert(fighter[0].fighting==&fighter[1]);
     for(pulse=1;pulse<=2400 && fighter[0].hit>0 && fighter[1].hit>0;++pulse) {
+        combat_recovery_tick(&fighter[0]); combat_recovery_tick(&fighter[1]);
         if(pulse%PULSE_TICK==0) tick();
         for(order=0;order<2;++order) {
             CHAR_DATA *ch;

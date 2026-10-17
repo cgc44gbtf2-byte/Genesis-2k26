@@ -133,7 +133,7 @@ static void craft_commit(CHAR_DATA *ch, const CRAFTED_POWER *p)
 {
     ch->mana -= p->mana; ch->pcdata->crafted.energy -= p->energy;
     WAIT_STATE(ch,12);
-    craft_affect(ch,"crafted recovery",APPLY_NONE,0,p->recovery,0);
+    combat_recovery_start(ch,craft_sn("crafted recovery"),p->recovery);
 }
 
 static CHAR_DATA *craft_ally(CHAR_DATA *ch, const char *arg)
@@ -251,7 +251,7 @@ static void crafted_command(CHAR_DATA *ch, char *argument, int parent)
             stc("You lack that much mana or enough free class-energy capacity.\n\r",ch); return;
         }
         ch->mana-=amount; s->energy+=amount; WAIT_STATE(ch,12);
-        craft_affect(ch,"crafted recovery",APPLY_NONE,0,1,0);
+        combat_recovery_start(ch,craft_sn("crafted recovery"),1);
         stc("You convert mana into class energy at one to one.\n\r",ch); return;
     }
     for (i=0;i<sizeof(crafted_powers)/sizeof(crafted_powers[0]);++i)

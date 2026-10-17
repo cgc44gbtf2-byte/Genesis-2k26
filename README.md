@@ -1,5 +1,18 @@
 # Genesis: 2k26
 
+### Current combat-rule maintenance
+
+Legacy hostile attacks now share Cyborg/lineage absorption with newer powers.
+Five recovery families use a three-second unit instead of minute ticks;
+existing command waits, long buffs, resource prices and class stat/damage
+caps remain unchanged. Saved recovery records migrate without a new format.
+
+All 22 sanitizer regression suites and 300 controlled fights passed.
+Cyborg won 100/100 against each tested Wraith, Demon and normal Book Mage
+build. This exposes remaining class-number imbalance, not a balance
+certification. See the [implementation, limits and results](genesis-maintenance/COMBAT_BALANCE_FOUNDATION.md).
+The previous frozen ZIPs do not contain this newer change.
+
 Genesis: 2k26 continues Genesis Reforged, a legacy C/telnet, GodWars-derived MUD.
 Maintained by **LaWaylon (aKa Yami)** · Contact: [lawaylon@icloud.com](mailto:lawaylon@icloud.com).
 This repository

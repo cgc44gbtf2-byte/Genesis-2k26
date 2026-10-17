@@ -659,6 +659,33 @@ equal/higher trust cannot be edited. Changes are logged and use normal
 save/autosave rules; pset does not immediately force a disk save.
 ~
 
+0 COMBATRECOVERY COMBATDEFENSE CLASSCOOLDOWN~
+COMBAT RECOVERY AND CLASS DEFENSES
+
+Combat cooldowns are separate from ordinary spell durations:
+
+  System                         Recovery unit
+  -----------------------------  ------------------------------
+  Angel / Demon / Cyborg          3 seconds per recovery unit
+  Phoenix                        3 seconds per recovery unit
+  Moogle / Deathknight            3 seconds per recovery unit
+  Gargoyle / Kuei-jin / Wraith     3 seconds per recovery unit
+  Reconstructed Werewolf areas    3-second cooldown; wait still applies
+  Book Mage damage chant         15 pulses / 3.75-second wait
+
+Existing recovery multipliers remain: two units = 6 seconds, three = 9.
+Mana, nanites, chi, pathos and other resource costs still apply.
+AFFects shows remaining combat cooldowns in seconds. Dispel Magic
+does not reset these cooldowns. Reconnecting preserves remaining time.
+Ordinary wards, forms and hostile effects still use their normal tick
+durations; their durations were not converted into seconds.
+
+Legacy hostile attacks now respect shared class absorption, including
+Cyborg body protection and physical Gargoyle resilience. Spells do not
+automatically use the melee damage cap. Backlash and raw self-harm remain
+separate. Class damage caps, stats and gear bonuses were not retuned.
+~
+
 0 $~
 
 #$

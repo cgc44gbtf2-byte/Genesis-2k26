@@ -1,5 +1,16 @@
 # Class, training and staff-menu follow-up
 
+## Latest combat foundation change
+
+The gameplay follow-up in `COMBAT_BALANCE_FOUNDATION.md` supersedes the
+earlier matchup outcomes below. Shared class absorption now also handles
+legacy hostile attacks; five recovery families use pulse-based three-second
+units. Class coefficients, stat/damage caps and resource costs were not
+retuned. The new run passed 22 sanitizer suites and 300 controlled fights:
+Cyborg won all 100 against each of Wraith, Demon and normal Book Mage.
+Historical sections below describe their original source revisions, not the
+current combat rules. This remains a draft change with no live-host rollout.
+
 ## Player-facing layout
 
 - `HELP CLASS` / `HELP CLASSES`: short overview, then 19 class bullets pointing

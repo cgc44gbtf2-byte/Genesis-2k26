@@ -512,11 +512,30 @@ void one_hit( CHAR_DATA *ch, CHAR_DATA *victim, long dt, char *message )
 /*
  * Inflict damage from a hit.
  */
+/* Shared, once-only class mitigation. Raw self-harm/backlash remains explicit.
+ * Legacy direct attacks keep their own messages/control/retaliation semantics,
+ * but may no longer silently bypass class absorption.
+ */
+long combat_damage_amount(CHAR_DATA *ch, CHAR_DATA *victim, long dam, long dt)
+{
+    if (!ch || !victim || dam <= 0) return 0;
+    if (ch == victim) return dam;
+    dam = cyborg_absorb_damage(victim, dam);
+    return lineage_absorb(victim, dam, dt);
+}
+
+void legacy_damage(CHAR_DATA *ch, CHAR_DATA *victim, long dam, long dt)
+{
+    if (!ch || !victim || victim->position == POS_DEAD || dam <= 0) return;
+    dam = combat_damage_amount(ch, victim, dam, dt);
+    if (ch != victim) dam = legacy_protected_damage(ch, victim, dam);
+    hurt_person(ch, victim, dam);
+}
+
 void damage( CHAR_DATA *ch, CHAR_DATA *victim, long dam, long dt, char *message )
 {
     if (victim == NULL || victim->position == POS_DEAD) return;
-    dam = cyborg_absorb_damage(victim, dam);
-    dam = lineage_absorb(victim,dam,dt);
+    dam = combat_damage_amount(ch, victim, dam, dt);
 
     if (victim != ch)
     {
@@ -606,7 +625,7 @@ dam_message(ch, victim, dam, dt, message);
 	act("Your burning form singes $n!", ch, NULL, victim, TO_VICT);
 	act("$N's burning form singes you!", ch, NULL, victim, TO_CHAR);
 	act("$N's burning form singes $n!", ch, NULL, victim, TO_NOTVICT);
-	hurt_person(victim, ch, number_range(200, 250));
+legacy_damage(victim, ch, number_range(200, 250), TYPE_SPELL);
     }
     if (IS_VAMPIRE(victim) && IS_CRAFT(victim, CRAFT_BONEQUILLS) && victim != ch && number_range(1, 6) == 1)
     {

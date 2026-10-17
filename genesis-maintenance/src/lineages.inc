@@ -170,7 +170,7 @@ static void lineage_commit(CHAR_DATA *ch,const LINEAGE_POWER *p,int own_mana)
     ch->pcdata->lineage.energy-=p->energy;
     affect_strip(ch,gsn_lineage_conceal);
     WAIT_STATE(ch,12);
-    craft_affect(ch,"lineage recovery",APPLY_NONE,0,p->kind==LP_AKUMA ? 3 : 1,0);
+    combat_recovery_start(ch,craft_sn("lineage recovery"),p->kind==LP_AKUMA ? 3 : 1);
 }
 static int lineage_ready(CHAR_DATA *ch,const LINEAGE_POWER *p,int transient)
 {
@@ -298,7 +298,7 @@ static void lineage_command(CHAR_DATA *ch,char *argument,int parent)
             stc("You lack that much mana or enough free class-energy capacity.\n\r",ch); return;
         }
         ch->mana-=amount; s->energy+=amount; WAIT_STATE(ch,12);
-        craft_affect(ch,"lineage recovery",APPLY_NONE,0,1,0);
+        combat_recovery_start(ch,craft_sn("lineage recovery"),1);
         stc("You convert mana into class energy at one to one.\n\r",ch); return;
     }
     if(!strcmp(cmd,"dharma") && parent==GEN_PARENT_KUEIJIN) {

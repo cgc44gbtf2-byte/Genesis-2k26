@@ -86,7 +86,7 @@ A track cannot exceed Dharma + 2.
 **Akuma is an original completed design**, not recovered upstream code.
 It requires Demon Art 5 and Dharma 5, spends 2,500 mana and 800 Chi,
 and grants a temporary STR +2 / damage-roll +50 aspect with an armor
-tradeoff and three-tick recovery. It does not change the player's class,
+tradeoff and nine-second combat recovery. It does not change the player's class,
 alignment, administrator rights or hybrid identity.
 
 `detatchment` retains the upstream command spelling. It uses an owned,

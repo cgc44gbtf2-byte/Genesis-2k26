@@ -29,6 +29,65 @@ static void legacy_menu(CHAR_DATA *ch);
 static int legacy_warp(CHAR_DATA *ch, int bit);
 static void legacy_clear(CHAR_DATA *ch);
 
+/* Save-compatible short cooldowns: only five private recovery skills use this
+ * marker (APPLY_NONE, modifier -1, no bits). duration then counts pulses, not
+ * minute ticks. Old modifier-zero saves are migrated on load. No new save
+ * fields, class numbers or ordinary buff/debuff clocks are introduced.
+ */
+static int combat_recovery_skill(long sn)
+{
+    const char *name;
+    if (sn < 0 || sn >= MAX_SKILL || !(name = skill_table[sn].name)) return 0;
+    return !strcmp(name,"gift recovery")
+        || !strcmp(name,"parent recovery") || !strcmp(name,"phoenix recovery")
+        || !strcmp(name,"crafted recovery") || !strcmp(name,"lineage recovery");
+}
+
+bool combat_recovery_affect(AFFECT_DATA *af)
+{
+    return af && combat_recovery_skill(af->type) && af->location == APPLY_NONE
+        && af->modifier == -1 && af->bitvector == 0;
+}
+
+void combat_recovery_start(CHAR_DATA *ch, long sn, long units)
+{
+    AFFECT_DATA af;
+    if (!ch || !combat_recovery_skill(sn)) return;
+    memset(&af, 0, sizeof(af));
+    af.type = sn; af.location = APPLY_NONE; af.modifier = -1;
+    af.duration = URANGE(1, units, 60) * 3 * PULSE_PER_SECOND;
+    affect_strip(ch, sn);
+    affect_to_char(ch, &af);
+}
+
+void combat_recovery_loaded(CHAR_DATA *ch)
+{
+    AFFECT_DATA *af;
+    if (!ch) return;
+    for (af = ch->affected; af; af = af->next) {
+        if (!combat_recovery_skill(af->type) || af->location != APPLY_NONE
+            || af->bitvector != 0) continue;
+        if (af->modifier != -1) {
+            /* Preserve a minimum full unit rather than reward a reconnect.
+             * Legacy recovery has no stat modifier or permanent form.
+             */
+            af->duration = URANGE(1, af->duration, 60) * 3 * PULSE_PER_SECOND;
+            af->modifier = -1;
+        } else af->duration = URANGE(1, af->duration, 60 * 3 * PULSE_PER_SECOND);
+    }
+}
+
+void combat_recovery_tick(CHAR_DATA *ch)
+{
+    AFFECT_DATA *af, *next;
+    if (!ch) return;
+    for (af = ch->affected; af; af = next) {
+        next = af->next;
+        if (combat_recovery_affect(af) && --af->duration <= 0)
+            affect_remove(ch, af);
+    }
+}
+
 static int parent_actor(CHAR_DATA *ch)
 {
     return ch != NULL && !IS_NPC(ch) && ch->pcdata != NULL
@@ -333,7 +392,7 @@ static void power_commit(CHAR_DATA *ch, long mana, long nanites, long recovery)
     if (nanites > 0) ch->pcdata->cyber.nanites -= nanites;
     affect_strip(ch, gsn_parent_cloak);
     WAIT_STATE(ch, 12);
-    parent_affect(ch, gsn_parent_recovery, APPLY_NONE, 0, recovery, 0);
+    combat_recovery_start(ch, gsn_parent_recovery, recovery);
 }
 
 static CHAR_DATA *parent_enemy(CHAR_DATA *ch, char *name)

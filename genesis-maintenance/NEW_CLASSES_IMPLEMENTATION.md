@@ -148,8 +148,8 @@ Spiritshare transfers only the actual healing delivered; it never removes
 extra caster HP. Purify Spirit retains the reference's two Beast paths:
 values 6..49 decrease by up to 5; values 51..89 increase by up to 10.
 Values <=5, 50, >=90, non-Vampires and unrelated players are free refusals.
-Grouping is the explicit ally opt-in. Healing/Beast powers add two ticks
-of shared recovery, Empower three. Body/ward/sight/attack powers add one.
+Grouping is the explicit ally opt-in. Healing/Beast powers add six seconds
+of shared recovery, Empower nine. Body/ward/sight/attack powers add three.
 Saves halve all new damage; a saved Frostbreath never adds chill.
 Soul Twist deliberately refuses player targets because player alignment
 has not been restored. None of these attacks directly subtracts victim HP

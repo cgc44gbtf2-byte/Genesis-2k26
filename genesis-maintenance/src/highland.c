@@ -175,7 +175,7 @@ void do_bash(CHAR_DATA *ch, char *argument)
 	act("You rush forward, slamming into $N! [#g$t#n]", ch, dam, victim, TO_CHAR);
 	act("$n rushes forward, slamming into $N!", ch, dam, victim, TO_NOTVICT);
 	act("$n rushes forward, slamming into you! [#r$t#n]", ch, dam, victim, TO_VICT);
-	hurt_person(ch, victim, damage);
+legacy_damage(ch, victim, damage, TYPE_BLUNT);
 	victim->wait += 10;
     }
     WAIT_STATE(ch, 20);

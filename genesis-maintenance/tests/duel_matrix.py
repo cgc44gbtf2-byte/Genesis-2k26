@@ -104,7 +104,7 @@ def main():
             writer.writeheader()
             writer.writerows(rows)
     print(json.dumps({"initial_stats": initial, "groups": groups}, indent=2))
-    print("PASS: 100 fresh-process fights, 50 paired seeds, both openers; no balance changes.")
+    print("PASS: 100 fresh-process fights, 50 paired seeds, both openers; current combat rules.")
 
 
 if __name__ == "__main__":

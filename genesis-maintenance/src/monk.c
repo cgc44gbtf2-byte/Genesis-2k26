@@ -307,7 +307,7 @@ void do_aurashot( CHAR_DATA *ch, char *argument )
 
     ch->hit += dam * .8;
     if (ch->hit > ch->max_hit) ch->hit = ch->max_hit;
-    hurt_person(ch, victim, dam);
+    legacy_damage(ch, victim, dam, TYPE_SPELL);
     return;
 }
 
@@ -362,7 +362,7 @@ void do_blitz( CHAR_DATA *ch, char *argument )
 	act(buf, ch, NULL, victim, TO_NOTVICT);
 	sprintf(buf, "$n wracks your body with a holy force! [#r%i#n]", damage);
 	act(buf, ch, NULL, victim, TO_VICT);
-	hurt_person(ch, victim, damage);
+legacy_damage(ch, victim, damage, TYPE_SPELL);
     }
 
     WAIT_STATE(ch, 18);
@@ -507,7 +507,7 @@ void do_cripple( CHAR_DATA *ch, char *argument )
     victim->mana -= dam * 3;
     if (victim->mana < 0) victim->mana = 0;
 
-    hurt_person(ch, victim, dam);
+    legacy_damage(ch, victim, dam, TYPE_BLUNT);
     return;
 }
 

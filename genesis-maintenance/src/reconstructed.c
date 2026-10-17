@@ -146,7 +146,7 @@ static void gift_area(CHAR_DATA *ch, long sn, long cost, bool mental)
     }
     ch->mana -= cost;
     WAIT_STATE(ch, 24);
-    gift_affect(ch, gsn_gift_recovery, APPLY_NONE, 0, 1, 0);
+    combat_recovery_start(ch, gsn_gift_recovery, 1);
     stc(mental ? "You unleash the Scream of Gaia.\n\r"
                : "You call spirit quicksand beneath your enemies.\n\r", ch);
     for (victim = ch->in_room->people; victim; victim = next)

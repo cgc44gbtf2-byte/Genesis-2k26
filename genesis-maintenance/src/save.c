@@ -1471,6 +1471,7 @@ void fread_char( CHAR_DATA *ch, FILE *fp )
             ch->atoningwinds_timer = 0;
         }
         else ch->atoningwinds_timer = UMIN(ch->atoningwinds_timer, 20);
+        combat_recovery_loaded(ch);
         newclasses_loaded(ch);
         return;
     }

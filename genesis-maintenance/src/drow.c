@@ -844,7 +844,7 @@ roll=URANGE(0,char_damroll(ch),LONG_MAX/20);
 damage = number_range(10 * roll, 20 * roll);
 	if (!IS_NPC(victim)) damage /= 10;
 
-	hurt_person(ch, victim, damage);
+legacy_damage(ch, victim, damage, TYPE_PIERCE);
 ch->in_room=location;
 if (victim->in_room!=to_room || victim->hit<=0 || victim->position==POS_DEAD) return;
 

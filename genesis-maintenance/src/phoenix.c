@@ -57,7 +57,7 @@ static void phoenix_commit(CHAR_DATA *ch, long cost, long recovery)
 {
     ch->mana -= cost;
     WAIT_STATE(ch, 12);
-    phoenix_affect(ch, gsn_phoenix_recovery, APPLY_NONE, 0, recovery, 0);
+    combat_recovery_start(ch, gsn_phoenix_recovery, recovery);
 }
 
 static CHAR_DATA *phoenix_enemy(CHAR_DATA *ch, char *argument)
