@@ -1963,6 +1963,12 @@ extern long gsn_detect_evil, gsn_detect_hidden, gsn_detect_magic;
 extern long gsn_protection, gsn_pass_door;
 bool legacy_is_evil args( ( CHAR_DATA *ch ) );
 long legacy_protected_damage args( ( CHAR_DATA *ch, CHAR_DATA *victim, long dam ) );
+long combat_damage_amount args( ( CHAR_DATA *ch, CHAR_DATA *victim, long dam, long dt ) );
+void legacy_damage args( ( CHAR_DATA *ch, CHAR_DATA *victim, long dam, long dt ) );
+bool combat_recovery_affect args( ( AFFECT_DATA *af ) );
+void combat_recovery_start args( ( CHAR_DATA *ch, long sn, long units ) );
+void combat_recovery_tick args( ( CHAR_DATA *ch ) );
+void combat_recovery_loaded args( ( CHAR_DATA *ch ) );
 extern	long	gsn_mass_invis;
 extern	long	gsn_poison;
 extern	long	gsn_sleep;
@@ -3211,6 +3217,9 @@ void class_menu_commands(CHAR_DATA *ch, const char *text);
 void class_menu_skill_line(CHAR_DATA *ch, const char *text);
 long class_training_cost(long rank, long cap, long base, bool squared);
 void class_training_header(CHAR_DATA *ch, const char *title);
+bool pset_parse_amount(const char *text, long *value);
+bool pset_currency_command(CHAR_DATA *ch, CHAR_DATA *victim, const char *field,
+                           const char *amount, bool extra);
 void class_training_row(CHAR_DATA *ch, const char *name, long rank, long cap,
                         long cost, const char *currency, long funds,
                         const char *blocked);

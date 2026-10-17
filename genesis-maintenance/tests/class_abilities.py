@@ -204,10 +204,19 @@ def main():
                                      "ninja_abilities.hlp","werewolf_abilities.hlp",
                                      "monk_abilities.hlp","elemental_abilities.hlp",
                                      "vampire_advanced.hlp","shared_abilities.hlp",
-                                     "legacy_class_helpers.hlp"):
+                                     "legacy_class_helpers.hlp","kits.hlp"):
                         entries.extend(re.findall(r"^0 ([^~]+)~\n(.*?)~",
                             (ROOT/"area"/filename).read_text(),re.M|re.S))
                     checked=0
+                    class_topics={"VAMPIRE","WEREWOLF","SORCERER","MAGE","DROW",
+                                  "HIGHLANDER","DRAGON","NINJA","MONK","ELEMENTAL",
+                                  "ANGEL","CYBORG","DEMON","PHOENIX","GARGOYLE",
+                                  "KUEI-JIN","DEATHKNIGHT","MOOGLE","WRAITH"}
+                    for keywords,body in entries:
+                        if keywords.split()[0] in class_topics|{"CLASSBONUSES"}:
+                            assert re.search(r"^-{4,}  -{4,}",body,re.M),keywords
+                            assert all(len(line)<=79 for line in body.splitlines()),keywords
+                    assert class_topics.issubset({k.split()[0] for k,_ in entries})
                     for keywords,body in entries:
                         if keywords=="$": continue
                         expected=body.strip().splitlines()[0].encode("ascii")
@@ -220,9 +229,9 @@ def main():
                     assert checked>=40
                     run("Wolfprobe","help elemental",b"Werewolf command: ELEMENTAL")
                     run("Wolfprobe","help abilitystatus",b"Restored commands:")
-                    print(f"Native legacy class/spell help passed:{len(entries)} "
+                    print(f"Native legacy/class table help passed:{len(entries)} "
                           f"entries/{checked} exact topics and aliases, including "
-                          "multiword spell names and ARMOR versus ARMORCLASS")
+                          "19 class tables, CLASSBONUSES, multiword spells and ARMOR versus ARMORCLASS")
                     return
                 # Development preview must not convert or debit a real player.
                 if roster_only:
@@ -476,9 +485,10 @@ def main():
                 run("Vampprobe", "changeling", b"Change to look like whom")
                 run("Wolfprobe", "illusionaryform", b"Who")
 
-                menu = run("Wolfprobe", "wwpowers", b"Wendigos:")
+                menu = run("Wolfprobe", "wwpowers", b"Wendigos")
+                assert b"Gift track" in menu and b"Known commands" in menu
                 assert b" Aeolus Bodywrack" in menu
-                assert b"Bone Gnawers: Friend Infest" in menu
+                assert re.search(rb"Bone Gnawers\s+Friend Infest",menu)
 
                 run("Dragprobe", "wings", b"grow wings")
                 assert number("Dragprobe", "DSkills") & constant("DRAG_WINGSOUT")

@@ -19,6 +19,16 @@ ordinary-player class power. Familiar control also checks ownership, refuses
 occupied bodies and avoids dereferencing a character removed by its action.
 See LEGACY_VERIFICATION.md for exact scope and reproducible checks.
 
+### Current class/staff maintenance follow-up
+
+The current source passes 21 linked sanitizer suites, expanded training feedback
+and exact-payment checks, derived-benefit checks, and role-filtered staff-menu
+checks. Native class gameplay and 295 public help entries / 662 exact topics
+and aliases also passed. See CLASS_AND_STAFF_MAINTENANCE.md and CLASS_BENEFITS.md.
+All 16 implemented Vampire discipline training tracks are exercised; the old
+help-only Daimoinon/Mortis/Melpominee names are not implemented or advertised.
+This does not close the full individual-ability/variant certification gap below.
+
 ### Previous named-roster follow-up
 
 Named hybrid follow-up: all 171 combinations now have stable registry

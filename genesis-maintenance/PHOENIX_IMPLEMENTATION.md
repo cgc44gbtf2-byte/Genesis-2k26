@@ -28,16 +28,17 @@ file migration and no new player-data field.
 
 | Rank | Command after `phoenix` | Mana | Effect | Recovery |
 |---|---|---:|---|---:|
-| 1 | `ember [enemy]` | 500 | Spell-pipeline attack, base `300 + 100 * mastery`; a save halves damage. | 1 tick |
-| 2 | `ward` | 750 | Protective AC +20 for 3 ticks, matching Genesis's positive-is-protective convention. | 1 tick |
-| 3 | `wings` | 1000 | Flight for 3 ticks; rejects preexisting flight and preserves other affect/equipment flight owners during expiry. | 1 tick |
-| 4 | `ashwalk` | 1500 | Return to the existing saved home through the recall engine. | 3 ticks |
-| 5 | `tears [ally]` | 1000 | Heal a living self/group ally by at most 10% maximum health, capped at 3000 and at maximum health. | 2 ticks |
-| 6 | `flare [enemy]` | 1500 | Spell-pipeline attack, base `200 + 60 * mastery`; a save halves damage, otherwise apply removable 1-tick blindness if not already blind. | 1 tick |
-| 7 | `renew` | 2000 | Out-of-combat self-healing, at most 20% maximum health, capped at 6000 and at maximum health. | 3 ticks |
-| 8 | `ascend` | 3000 | Hitroll +10 and damroll +10 for 3 ticks; no automatic extra attacks or other power grants. | 1 tick |
+| 1 | `ember [enemy]` | 500 | Spell-pipeline attack, base `300 + 100 * mastery`; a save halves damage. | 3 seconds |
+| 2 | `ward` | 750 | Protective AC +20 for 3 ticks, matching Genesis's positive-is-protective convention. | 3 seconds |
+| 3 | `wings` | 1000 | Flight for 3 ticks; rejects preexisting flight and preserves other affect/equipment flight owners during expiry. | 3 seconds |
+| 4 | `ashwalk` | 1500 | Return to the existing saved home through the recall engine. | 9 seconds |
+| 5 | `tears [ally]` | 1000 | Heal a living self/group ally by at most 10% maximum health, capped at 3000 and at maximum health. | 6 seconds |
+| 6 | `flare [enemy]` | 1500 | Spell-pipeline attack, base `200 + 60 * mastery`; a save halves damage, otherwise apply removable 1-tick blindness if not already blind. | 3 seconds |
+| 7 | `renew` | 2000 | Out-of-combat self-healing, at most 20% maximum health, capped at 6000 and at maximum health. | 9 seconds |
+| 8 | `ascend` | 3000 | Hitroll +10 and damroll +10 for 3 ticks; no automatic extra attacks or other power grants. | 3 seconds |
 
-Recovery is a shared named timed affect. Successful actions also apply the
+Recovery is a shared named pulse-timed affect, retained through reload and
+not reset by Dispel Magic. Successful actions also apply the
 normal 12-pulse command wait. Buffs cannot stack with another instance.
 Existing combat modifiers and protections still apply to spell damage.
 Genesis has no separate movement resource: Renewal restores health, not an

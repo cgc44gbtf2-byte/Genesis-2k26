@@ -397,26 +397,75 @@ CHAR_DATA   *victim;
 
 }
 
+static int wizhelp_compare(const void *left,const void *right)
+{
+    const struct cmd_type *a=*(const struct cmd_type *const *)left;
+    const struct cmd_type *b=*(const struct cmd_type *const *)right;
+    if(a->level!=b->level) return a->level<b->level ? -1 : 1;
+    return strcmp(a->name,b->name);
+}
+
+static const char *wizhelp_role(long level)
+{
+    switch(level) {
+    case LEV_BUI: return "Builder";
+    case LEV_IMM: return "Immortal";
+    case LEV_IMP: return "Implementor";
+    case LEV_ST: return "Storyteller";
+    default: return "Staff";
+    }
+}
+
 void do_wizhelp( CHAR_DATA *ch, char *argument )
 {
-    char buf[MAX_STRING_LENGTH];
-    long cmd;
-    long col;
- 
-    col = 0;
-    for ( cmd = 0; cmd_table[cmd].name[0] != '\0'; cmd++ )
-    {
-        if ( cmd_table[cmd].level >= LEV_BUI && cmd_table[cmd].level <= get_trust( ch ) )
-	{
-	    sprintf( buf, "%-12s", cmd_table[cmd].name );
-	    send_to_char( buf, ch );
-	    if ( ++col % 6 == 0 ) send_to_char( "\n\r", ch );
-	}
+    const struct cmd_type **visible;
+    char arg[MAX_INPUT_LENGTH],extra[MAX_INPUT_LENGTH],buf[128];
+    long cmd,count=0,total=0,filter=0,previous=-1,col=0,trust;
+    if(!ch) return;
+    trust=get_trust(ch);
+    if(trust<LEV_BUI) { stc("Staff command help requires Builder access or higher.\n\r",ch); return; }
+    if(!argument || strlen(argument)>=MAX_INPUT_LENGTH) {
+        stc("Syntax: wizhelp [all|builder|immortal|implementor|storyteller|4-7]\n\r",ch); return;
     }
- 
-    if ( col % 6 != 0 )
-	send_to_char( "\n\r", ch );
-    return;
+    argument=one_argument(argument,arg); one_argument(argument,extra);
+    if(!str_cmp(arg,"builder") || !strcmp(arg,"4")) filter=LEV_BUI;
+    else if(!str_cmp(arg,"immortal") || !strcmp(arg,"5")) filter=LEV_IMM;
+    else if(!str_cmp(arg,"implementor") || !strcmp(arg,"6")) filter=LEV_IMP;
+    else if(!str_cmp(arg,"storyteller") || !strcmp(arg,"7")) filter=LEV_ST;
+    else if(arg[0] && str_cmp(arg,"all")) filter=-1;
+    if(extra[0] || filter<0) {
+        stc("Syntax: wizhelp [all|builder|immortal|implementor|storyteller|4-7]\n\r",ch); return;
+    }
+    if(filter>trust) { stc("That access level is above your current trust.\n\r",ch); return; }
+    while(cmd_table[total].name[0]) ++total;
+    visible=malloc((size_t)total*sizeof(*visible));
+    if(!visible) { stc("Unable to build staff help; please try again.\n\r",ch); return; }
+    for(cmd=0;cmd<total;++cmd)
+        if(cmd_table[cmd].level>=LEV_BUI && cmd_table[cmd].level<=trust
+            && (!filter || cmd_table[cmd].level==filter) && cmd_table[cmd].do_fun!=do_huh)
+            visible[count++]=&cmd_table[cmd];
+    qsort(visible,(size_t)count,sizeof(*visible),wizhelp_compare);
+    snprintf(buf,sizeof(buf),"WIZHELP | YOUR EFFECTIVE TRUST: %ld\n\r",trust); stc(buf,ch);
+    for(cmd=0;cmd<count;++cmd) {
+        if(visible[cmd]->level!=previous) {
+            if(col) stc("\n\r",ch);
+            previous=visible[cmd]->level; col=0;
+            snprintf(buf,sizeof(buf),"\n\r%s | Required level %ld\n\r",wizhelp_role(previous),previous);
+            stc(buf,ch); stc("------------------------------------------------------------------------\n\r",ch);
+        }
+        if(strlen(visible[cmd]->name)>=18) {
+            if(col) stc("\n\r",ch);
+            stc(visible[cmd]->name,ch); stc("\n\r",ch); col=0;
+        } else {
+            snprintf(buf,sizeof(buf),"%-18s",visible[cmd]->name); stc(buf,ch);
+            if(++col==4) { stc("\n\r",ch); col=0; }
+        }
+    }
+    if(col) stc("\n\r",ch);
+    if(!count) stc("No staff commands match that access level.\n\r",ch);
+    free(visible);
+    stc("\n\rSyntax: wizhelp [all|builder|immortal|implementor|storyteller|4-7]\n\r"
+        "Levels are registered minimums; extra command checks still apply.\n\r",ch);
 }
 
 void do_bamfin( CHAR_DATA *ch, char *argument )

@@ -1,5 +1,18 @@
 # Genesis: 2k26
 
+### Current combat-rule maintenance
+
+Legacy hostile attacks now share Cyborg/lineage absorption with newer powers.
+Five recovery families use a three-second unit instead of minute ticks;
+existing command waits, long buffs, resource prices and class stat/damage
+caps remain unchanged. Saved recovery records migrate without a new format.
+
+All 22 sanitizer regression suites and 300 controlled fights passed.
+Cyborg won 100/100 against each tested Wraith, Demon and normal Book Mage
+build. This exposes remaining class-number imbalance, not a balance
+certification. See the [implementation, limits and results](genesis-maintenance/COMBAT_BALANCE_FOUNDATION.md).
+The previous frozen ZIPs do not contain this newer change.
+
 Genesis: 2k26 continues Genesis Reforged, a legacy C/telnet, GodWars-derived MUD.
 Maintained by **LaWaylon (aKa Yami)** · Contact: [lawaylon@icloud.com](mailto:lawaylon@icloud.com).
 This repository
@@ -46,15 +59,20 @@ record reference sources and current limitations.
 
 ## Connect
 
-**Address:** `159.223.164.151` · **Port:** `4000`
+**IPv6 address:** `2604:a880:400:d1:0:5:331d:4001` · **Port:** `4000`
 
 Connect with a MUD client, or:
 
 ```sh
-telnet 159.223.164.151 4000
+telnet -6 2604:a880:400:d1:0:5:331d:4001 4000
 ```
 
 This is the supplied connection address, not a guarantee of verified uptime.
+The server now uses a Linux dual-stack IPv6/IPv4 listener, with an explicit
+IPv4-only fallback when the IPv6 stack is unavailable. No source-level IP
+setting is needed. Players need IPv6 connectivity to reach an IPv6-only public
+address. See [IPv6 and staff currencies](genesis-maintenance/IPV6_AND_PSET.md)
+for listener/firewall checks, test limitations and the expanded `pset` editor.
 The [MUD listing draft](genesis-maintenance/MUD_LISTING.txt) still requires
 confirmation of the server's PK, roleplaying and live/testing policies.
 
@@ -131,18 +149,34 @@ replace an existing live data directory with a clean source checkout.
 
 The current gameplay source passed:
 
-- 17 linked AddressSanitizer/UndefinedBehaviorSanitizer regression suites,
+- 21 linked AddressSanitizer/UndefinedBehaviorSanitizer regression suites,
   including exact training quotes versus real deductions and 116 read-only
   older-class menu views. See
   [combat and menu maintenance](genesis-maintenance/COMBAT_STYLE_AND_MENUS.md).
-- Seven isolated native gameplay groups: runtime smoke, combat/system fixes,
-  legacy spells, reconstructed abilities, maintenance fixes, crafted classes
-  and class abilities.
-- A strict GNU89 build and an independent build from the extracted archive.
-- A 398/398 exact-topic legacy help audit and a native help lookup probe
-  covering 266 entries / 583 exact topics and aliases, plus two semantic checks.
-- Archive CRC, safe paths, source-only content, byte equality and SHA256
-  manifest checks.
+- A short `HELP CLASS` index, 19 detailed class tables, colored `AUTOCLASS`,
+  role-grouped staff menus and expanded rejection/payment feedback checks.
+  See [class/staff maintenance](genesis-maintenance/CLASS_AND_STAFF_MAINTENANCE.md)
+  for scope and the reproducible Cyborg/Wraith duel.
+- Observable class progression benefits and every combat stance/style's
+  derived benefit; fixes for Philodox's wrong skill-family lookup and
+  Theurge's unreachable spirit-order gate. See
+  [class benefit checks](genesis-maintenance/CLASS_BENEFITS.md) for precise scope.
+- Staff currency bounds/permissions and real save/relogin persistence across
+  nine class resource families. `pset Player currencies` lists balances;
+  `pset Player classpoints 50000` and `pset Player exp 5000000` set balances.
+- Real IPv4 socket/login checks and controlled IPv6 socket/formatting tests.
+  This environment has no IPv6 kernel support, so real IPv6 TCP and public
+  host reachability still require verification on an IPv6-enabled host.
+- Native new-character/login/command smoke, save/reload and save-error recovery,
+  plus the staff-only `help pset` lookup.
+- A strict GNU89 native build, a 398/398 exact-topic legacy help audit and
+  refreshed source SHA256 manifest checks.
+
+The earlier maintenance baseline also passed seven isolated native gameplay
+groups and a native public-help lookup probe covering 266 entries / 583 topics
+and aliases. The frozen ZIP snapshots passed extraction builds, CRC, safe-path,
+source-only, byte-equality and manifest checks at their creation. Those
+historical checks do not make the old ZIPs snapshots of this newer source.
 
 The validation environment linked its installed crypt shared library
 explicitly. On Debian/Ubuntu, install `libcrypt-dev` for the default `-lcrypt`

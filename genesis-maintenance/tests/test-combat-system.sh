@@ -2,6 +2,7 @@
 # Link the real game modules into the focused combat/skill/spell probe.
 # Build in isolation so the user's normal server binary and player data stay untouched.
 set -eu
+mode=${1-}
 root=$(CDPATH= cd -- "$(dirname -- "$0")/.." && pwd)
 test_names="test_combat_system"
 if [ "$#" -eq 1 ] && [ "${1-}" = legacy ]; then
@@ -36,11 +37,30 @@ elif [ "$#" -eq 1 ] && [ "${1-}" = training ]; then
     test_names="test_training_menus"
 elif [ "$#" -eq 1 ] && [ "${1-}" = oldmenus ]; then
     test_names="test_legacy_menus"
-elif [ "$#" -eq 1 ] && [ "${1-}" = all ]; then
+elif [ "$#" -eq 1 ] && [ "${1-}" = currencies ]; then
+    test_names="test_pset_currencies"
+elif [ "$#" -eq 1 ] && [ "${1-}" = network ]; then
+    test_names="test_network"
+elif [ "$#" -eq 1 ] && [ "${1-}" = benefits ]; then
+    test_names="test_class_benefits"
+elif [ "$#" -eq 1 ] && [ "${1-}" = staffmenus ]; then
+    test_names="test_staff_menus"
+elif [ "$#" -eq 1 ] && [ "${1-}" = balance ]; then
+    test_names="test_balance_foundation"
+elif [ "$#" -eq 1 ] && [ "${1-}" = duel ]; then
+    test_names="duel_cyborg_wraith"
+elif [ "$#" -eq 1 ] && [ "${1-}" = duelbatch ]; then
+    test_names="duel_cyborg_wraith"
+elif [ "$#" -eq 1 ] && [ "${1-}" = dueldemonbatch ]; then
+    test_names="duel_cyborg_wraith"
+elif [ "$#" -eq 1 ] && [ "${1-}" = duelbookbatch ]; then
+    test_names="duel_cyborg_wraith"
+elif [ "$#" -eq 1 ] && { [ "${1-}" = all ] || [ "${1-}" = balanceverify ]; }; then
     # Compile the large server once; each probe still runs in its own process.
-    test_names="test_combat_system test_legacy_spells test_parents test_phoenix test_newclasses test_crafted test_lineages test_reference_completion test_legacy_variants test_mage_variants test_sorcerer_starter test_cyborg_completion test_relevel test_attack_styles test_class_menus test_training_menus test_legacy_menus"
+    test_names="test_combat_system test_legacy_spells test_parents test_phoenix test_newclasses test_crafted test_lineages test_reference_completion test_legacy_variants test_mage_variants test_sorcerer_starter test_cyborg_completion test_relevel test_attack_styles test_class_menus test_training_menus test_legacy_menus test_pset_currencies test_network test_class_benefits test_staff_menus test_balance_foundation"
+    if [ "$mode" = balanceverify ]; then test_names="$test_names duel_cyborg_wraith"; fi
 elif [ "$#" -ne 0 ]; then
-    echo "Usage: sh tests/test-combat-system.sh [legacy|parents|phoenix|newclasses|crafted|lineages|reference|variants|mage|books|cyborg|relevel|styles|menus|training|oldmenus|all]" >&2
+    echo "Usage: sh tests/test-combat-system.sh [legacy|parents|phoenix|newclasses|crafted|lineages|reference|variants|mage|books|cyborg|relevel|styles|menus|training|oldmenus|currencies|network|benefits|staffmenus|balance|duel|duelbatch|dueldemonbatch|duelbookbatch|all|balanceverify]" >&2
     exit 2
 fi
 tmp=$(mktemp -d)
@@ -67,7 +87,37 @@ for test_name in $test_names; do
         status=1
         continue
     fi
-    if ! ASAN_OPTIONS=detect_leaks=0 UBSAN_OPTIONS=halt_on_error=1 "$tmp/$test_name"; then
+    if [ "$mode" = duelbookbatch ] || { [ "$mode" = balanceverify ] && [ "$test_name" = duel_cyborg_wraith ]; }; then
+        if ! python3 "$root/tests/duel_matrix.py" "$tmp/$test_name" \
+            --output "${GENESIS_DUEL_RESULTS:-$tmp/duel-results}/wraith-regression"; then
+            status=1
+        fi
+        if ! python3 "$root/tests/duel_matrix.py" "$tmp/$test_name" \
+            --opponent demon --class-armor \
+            --output "${GENESIS_DUEL_RESULTS:-$tmp/duel-results}/demon-regression"; then
+            status=1
+        fi
+        if ! python3 "$root/tests/duel_matrix.py" "$tmp/$test_name" \
+            --opponent bookmage --class-armor \
+            --output "${GENESIS_DUEL_RESULTS:-$tmp/duel-results}"; then
+            status=1
+        fi
+    elif [ "$mode" = dueldemonbatch ]; then
+        if ! python3 "$root/tests/duel_matrix.py" "$tmp/$test_name" \
+            --output "${GENESIS_DUEL_RESULTS:-$tmp/duel-results}/wraith-regression"; then
+            status=1
+        fi
+        if ! python3 "$root/tests/duel_matrix.py" "$tmp/$test_name" \
+            --opponent demon --class-armor \
+            --output "${GENESIS_DUEL_RESULTS:-$tmp/duel-results}"; then
+            status=1
+        fi
+    elif [ "$mode" = duelbatch ]; then
+        if ! python3 "$root/tests/duel_matrix.py" "$tmp/$test_name" \
+            --output "${GENESIS_DUEL_RESULTS:-$tmp/duel-results}"; then
+            status=1
+        fi
+    elif ! ASAN_OPTIONS=detect_leaks=0 UBSAN_OPTIONS=halt_on_error=1 "$tmp/$test_name"; then
         status=1
     fi
 done

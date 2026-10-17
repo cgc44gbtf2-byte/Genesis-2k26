@@ -175,18 +175,22 @@ For more information, check out the GODWARS-INFO help file.
 
 
 -1 WIZLIST~
-#L-------------------------------------------------------------------#n
-                            #7G #0E #7N #0E #7S #0I #7S#n
-#L-------------------------------------------------------------------#n
-Story Tellers:
-#r Akuma#n: #rWrapped#n around Chaos' little #rfinger#n.
-#7 Chaos#n: Akuma's #7One#n and #7Only#n.
-#C Dude#n: Oldest of the #CCoder-Bitches#n.  fire...
+GENESIS: 2k26 | STAFF AND ACCESS
 
-Implementors:
-#R Shane#n: That's Shane #RSlater#n.
-#0 Corruption#n: .........#0meh#n.
-#L-------------------------------------------------------------------#n
+Maintainer         LaWaylon (aKa Yami)
+Bootstrap account  Admin (name-restricted highest-access recovery)
+
+Access role     Level  Purpose
+--------------  -----  -------------------------------------------------
+Storyteller       7    Highest registered command access
+Implementor       6    Server administration and world management
+Immortal          5    Player support and administration
+Builder           4    Building, inspection and basic staff tools
+
+Staff: WIZHELP groups your available commands by minimum access level.
+Individual commands can have extra identity, state or authority checks.
+This is a maintained information page, not a list of currently online staff.
+See CREDITS and the license files for upstream authorship and terms.
 ~
 
 -1 GREETING~

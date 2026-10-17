@@ -3,7 +3,7 @@ Choose your class. Master its powers.
 
 LISTING DETAILS
 
-Mud Address: 159.223.164.151 4000
+Mud Address: 2604:a880:400:d1:0:5:331d:4001 4000 (IPv6)
 Web Address: [OFFICIAL WEBSITE, if available]
 Codebase: Genesis / GodWars-derived, modified
 Genre: Fantasy / Supernatural
@@ -49,11 +49,11 @@ two-class hybrids exists as a read-only preview. Hybrid conversion,
 combined ability inheritance and pure-class ascension are not active
 features and should not be listed as available gameplay yet.
 
-Connect: 159.223.164.151 4000
+Connect: 2604:a880:400:d1:0:5:331d:4001 4000 (IPv6)
 
 POSTING CHECKLIST — REMOVE THIS SECTION BEFORE PUBLISHING
 
-- Verify the supplied address and port are accepting player connections.
+- Verify IPv6 client connectivity to the supplied address and port.
 - Add the official website, or remove that field.
 - Confirm the PK, roleplaying and live/testing status fields.
 - Do not copy another MUD's population, founding date, uptime, policies,

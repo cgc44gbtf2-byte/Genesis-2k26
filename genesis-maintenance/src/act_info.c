@@ -4193,7 +4193,11 @@ void do_affects( CHAR_DATA *ch, char *argument )
 	    sprintf( buf, "Affect: '%s'", skill_table[paf->type].name );
 	    send_to_char( buf, ch );
 
-	    sprintf( buf, " %s %li for %li hours with bits %s.\n\r", affect_loc_name( paf->location ), paf->modifier, paf->duration, affect_bit_name( paf->bitvector ) );
+    if (combat_recovery_affect(paf))
+        sprintf(buf, " combat cooldown: %.2f seconds remaining.\n\r",
+            (double)paf->duration / PULSE_PER_SECOND);
+    else
+        sprintf( buf, " %s %li for %li hours with bits %s.\n\r", affect_loc_name( paf->location ), paf->modifier, paf->duration, affect_bit_name( paf->bitvector ) );
 	    send_to_char( buf, ch );
 	}
     }

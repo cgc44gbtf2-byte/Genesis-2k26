@@ -35,6 +35,39 @@ static void run(DO_FUN *fn, const char *text)
     char input[128];
     strcpy(input,text); desc.outtop=0; output[0]='\0';
     fn(&ch,input);
+    if(!desc.outtop) fprintf(stderr,"Silent class command: class=%li command='%s'\n",ch.class,text);
+    assert(desc.outtop>0);
+    assert((size_t)desc.outtop<sizeof(output)); output[desc.outtop]='\0';
+}
+
+static void rejected(DO_FUN *fn,const char *text)
+{
+    CHAR_DATA before=ch;
+    PC_DATA saved=pc;
+    run(fn,text);
+    if(memcmp(&ch,&before,sizeof(ch)) || memcmp(&pc,&saved,sizeof(pc)))
+        fprintf(stderr,"Rejected command changed state: class=%li command='%s'\n",ch.class,text);
+    assert(!memcmp(&ch,&before,sizeof(ch)) && !memcmp(&pc,&saved,sizeof(pc)));
+}
+
+static void malformed_training(void)
+{
+    static const struct { const char *name,*command; DO_FUN *fn; } cases[]={
+        {"phoenix","train nobody",do_phoenix},
+        {"angel","train nobody",do_angel},{"demon","train nobody",do_demon},
+        {"cyborg","train nobody",do_cyborg},{"moogle","train nobody",do_moogle},
+        {"deathknight","train nobody",do_deathknight},
+        {"gargoyle","train visceratika extra",do_gargoyle},
+        {"kueijin","train yin extra",do_kueijin},{"wraith","train argos extra",do_wraith}
+    };
+    size_t i;
+    reset(CLASS_PHOENIX); ch.level=LEV_BUI;
+    rejected(do_phoenix,"train");
+    for(i=0;i<sizeof(cases)/sizeof(cases[0]);++i) {
+        reset(CLASS_NONE); run(do_autoclass,cases[i].name);
+        rejected(cases[i].fn,cases[i].command);
+    }
+    puts("Malformed native training and Phoenix staff rejection: feedback, no cost/rank/stat changes");
 }
 
 static void readonly_command(DO_FUN *fn, const char *command)
@@ -157,6 +190,45 @@ static void clan_prices(void)
     puts("Vampire clan/Caitiff and Werewolf selected-gift prices/caps match actual purchases; Werewolf dispatch passed");
 }
 
+static void all_vampire_training(void)
+{
+    static const long tracks[]={DISC_ANIMALISM,DISC_AUSPEX,DISC_CELERITY,DISC_CHIMERSTRY,
+        DISC_DOMINATE,DISC_FORTITUDE,DISC_NECROMANCY,DISC_OBFUSCATE,DISC_OBTENEBRATION,
+        DISC_POTENCE,DISC_PRESENCE,DISC_PROTEAN,DISC_QUIETUS,DISC_SERPENTIS,
+        DISC_THAUMATURGY,DISC_VICISSITUDE};
+    long disc,rank,cap,unit,cost;
+    int variant;
+    size_t index;
+    char name[32];
+    for(index=0;index<sizeof(tracks)/sizeof(tracks[0]);++index) {
+        disc=tracks[index];
+        snprintf(name,sizeof(name),"%s",disc_name(disc)); assert(strcmp(name,"None"));
+        for(variant=0;variant<3;++variant) {
+            cap=variant==0 ? 5 : variant==1 ? 7 : 6; unit=variant==0 ? 15 : 5;
+            if(disc==DISC_THAUMATURGY) cap=5;
+            for(rank=-1;rank<=cap;++rank) {
+                if(rank==0) continue; /* Zero is intentionally ungranted/unavailable. */
+                reset(CLASS_VAMPIRE);
+                if(variant==1) pc.cland[0]=disc;
+                if(variant==2) ch.clan="Caitiff";
+                pc.powers[disc]=rank;
+                cost=rank<0 ? unit : (rank+1)*unit;
+                ch.primal=cost; readonly_menu(do_discipline);
+                quote(name,rank,cap,cost,"primal",rank==cap ? "MAXED" : "Affordable");
+                if(rank==cap) { rejected(do_discipline,name); continue; }
+                ch.primal=cost-1; rejected(do_discipline,name); ch.primal=cost;
+                run(do_discipline,name);
+                assert(pc.powers[disc]==(rank<0 ? 1 : rank+1) && !ch.primal);
+            }
+        }
+        reset(CLASS_VAMPIRE); rejected(do_discipline,name);
+    }
+    reset(CLASS_VAMPIRE); pc.powers[4]=1; readonly_menu(do_discipline);
+    assert(!strstr(output,"None"));
+    rejected(do_discipline,"daimoinon"); rejected(do_discipline,"mortis"); rejected(do_discipline,"melpominee");
+    puts("All 16 implemented Vampire disciplines: every trainable rank, clan/Caitiff prices, caps, one-short and ungranted rejection; reserved slots not advertised");
+}
+
 static void mage_prices(void)
 {
     long rank,cost,cap;
@@ -250,8 +322,15 @@ static void native_prices(void)
             quote(cases[i].label,rank,cases[i].cap,cost,"XP",
                 rank==cases[i].cap ? "MAXED" : "Affordable");
             if(rank<cases[i].cap) {
+                ch.exp=cost-1;
+                rejected(cases[i].menu,cases[i].command);
+                assert(strstr(output,"experience") || strstr(output,"XP"));
+                ch.exp=cost;
                 run(cases[i].menu,cases[i].command);
                 assert(*track==rank+1 && ch.exp==0);
+            } else {
+                rejected(cases[i].menu,cases[i].command);
+                assert(strstr(output,"complete") || strstr(output,"master") || strstr(output,"cap"));
             }
         }
     reset(CLASS_NONE); run(do_autoclass,"cyborg");
@@ -303,14 +382,116 @@ static void demon_purchase_prices(void)
     puts("Demon: gift/warp read-only quotes, exact primal/soul payments, one-short rejection and 1:1 XP conversion passed");
 }
 
+static void resource_feedback(void)
+{
+    static const struct { const char *name; DO_FUN *fn; } classes[]={
+        {"moogle",do_moogle},{"deathknight",do_deathknight},{"gargoyle",do_gargoyle},
+        {"kueijin",do_kueijin},{"wraith",do_wraith}
+    };
+    const char *bad[]={"focus 0","focus -1","focus 1.5","focus 10001","focus 99999999999999999999999"};
+    size_t i,j;
+    long *energy;
+    for(i=0;i<sizeof(classes)/sizeof(classes[0]);++i) {
+        reset(CLASS_NONE); run(do_autoclass,classes[i].name);
+        for(j=0;j<sizeof(bad)/sizeof(bad[0]);++j) rejected(classes[i].fn,bad[j]);
+        energy=i<2 ? &pc.crafted.energy : &pc.lineage.energy;
+        ch.mana=1; rejected(classes[i].fn,"focus 2");
+        *energy=10000; rejected(classes[i].fn,"focus 1"); *energy=0;
+        ch.fight_timer=1; rejected(classes[i].fn,"focus 1"); ch.fight_timer=0;
+        run(classes[i].fn,"focus 1"); assert(ch.mana==0 && *energy==1);
+        ch.mana=100; rejected(classes[i].fn,"focus 1");
+        assert(strstr(output,"recover"));
+    }
+    reset(CLASS_NONE); run(do_autoclass,"demon"); pc.powers[0]=8; ch.exp=10;
+    rejected(do_demon,"souls 0"); rejected(do_demon,"souls -1");
+    rejected(do_demon,"souls 1.5"); rejected(do_demon,"souls 99999999999999999999999");
+    rejected(do_demon,"souls 11"); pc.legacy.souls=REF_SOUL_CAP;
+    rejected(do_demon,"souls 1"); pc.legacy.souls=0;
+    run(do_demon,"souls 10"); assert(pc.legacy.souls==10 && ch.exp==0 && strstr(output,"convert"));
+    rejected(do_demon,"obtain"); rejected(do_demon,"redeem clumsy");
+    rejected(do_demon,"obtain nonsense"); rejected(do_demon,"champions nonsense");
+    ch.primal=50; run(do_demon,"gifts strength"); rejected(do_demon,"gifts strength");
+    pc.legacy.warps=UINT32_C(1)<<14; pc.legacy.souls=9999;
+    rejected(do_demon,"redeem clumsy"); pc.legacy.souls=10000;
+    run(do_demon,"redeem clumsy");
+    assert(!pc.legacy.warps && !pc.legacy.souls && strstr(output,"clumsy"));
+    pc.legacy.warps=(UINT32_C(1)<<10)-1; pc.legacy.souls=1000000;
+    rejected(do_demon,"obtain");
+    rejected(do_demon,"clearwarps"); run(do_demon,"clearwarps confirm");
+    assert(!pc.legacy.warps && pc.legacy.souls==800000 && strstr(output,"no refund"));
+    puts("Five focus systems and Demon purchases/conversions: meaningful feedback, invalid/capped/short/recovery no-charge paths");
+}
+
+static void implant_feedback(void)
+{
+    static const struct { const char *key; size_t offset; long cap; } tracks[]={
+        {"face_implants",offsetof(CYBORG_SYSTEMS,face),5},
+        {"limb_implants",offsetof(CYBORG_SYSTEMS,limbs),5},
+        {"body_implants",offsetof(CYBORG_SYSTEMS,body),6},
+        {"demolitions",offsetof(CYBORG_SYSTEMS,demolition),12}
+    };
+    size_t i;
+    long rank,cost,*track;
+    char input[80];
+    for(i=0;i<sizeof(tracks)/sizeof(tracks[0]);++i) for(rank=0;rank<=tracks[i].cap;++rank) {
+        reset(CLASS_NONE); run(do_autoclass,"cyborg");
+        if(i==0) { pc.cybernetics.body=4; pc.cybernetics.limbs=1; }
+        if(i==2) pc.cybernetics.limbs=1;
+        track=(long *)((char *)&pc.cybernetics+tracks[i].offset); *track=rank;
+        assert(cyborg_systems_valid(&pc.cybernetics));
+        cost=i==3 ? 15*(rank+1) : 12500L<<rank;
+        snprintf(input,sizeof(input),"%s show",tracks[i].key); run(do_cyborg,input);
+        if(rank==tracks[i].cap) assert(strstr(output,"no next cost") && !strstr(output,"next cost 0"));
+        snprintf(input,sizeof(input),"%s improve",tracks[i].key);
+        if(rank==tracks[i].cap) { rejected(do_cyborg,input); continue; }
+        if(i==3) ch.primal=cost-1; else pc.cybernetics.bionic=cost-1;
+        rejected(do_cyborg,input);
+        if(i==3) ch.primal=cost; else pc.cybernetics.bionic=cost;
+        run(do_cyborg,input); assert(*track==rank+1);
+        assert(i==3 ? ch.primal==0 : pc.cybernetics.bionic==0);
+        assert(strstr(output,"spent") && strstr(output,i==3 ? "primal" : "bionics"));
+    }
+    puts("Cyborg: all four systems/every rank, cap displays, one-short rejection, exact payment and receipts");
+}
+
+static void blocked_training(void)
+{
+    static const struct { const char *name,*command; DO_FUN *fn; } cases[]={
+        {"angel","train",do_angel},{"demon","train",do_demon},{"cyborg","train",do_cyborg},
+        {"phoenix","train",do_phoenix},{"moogle","train",do_moogle},{"deathknight","train",do_deathknight},
+        {"gargoyle","train visceratika",do_gargoyle},{"kueijin","train yin",do_kueijin},
+        {"wraith","train argos",do_wraith}
+    };
+    size_t i;
+    AFFECT_DATA af;
+    for(i=0;i<sizeof(cases)/sizeof(cases[0]);++i) {
+        reset(CLASS_NONE); run(do_autoclass,cases[i].name);
+        ch.fight_timer=1; rejected(cases[i].fn,cases[i].command); ch.fight_timer=0;
+        ch.position=POS_RESTING; rejected(cases[i].fn,cases[i].command); ch.position=POS_STANDING;
+        memset(&af,0,sizeof(af)); af.type=gsn_lycaon; af.duration=1;
+        affect_to_char(&ch,&af); rejected(cases[i].fn,cases[i].command); affect_strip(&ch,gsn_lycaon);
+        if(i>=4) {
+            af.type=skill_lookup(i<6 ? "crafted recovery" : "lineage recovery");
+            assert(af.type>=0); affect_to_char(&ch,&af);
+            rejected(cases[i].fn,cases[i].command); assert(strstr(output,"recover"));
+        }
+    }
+    reset(CLASS_NONE); run(do_autoclass,"kueijin"); pc.lineage.tracks[0]=2;
+    rejected(do_kueijin,"train yin"); assert(strstr(output,"Dharma"));
+    rejected(do_kueijin,"dharma wrong"); ch.exp=99999;
+    rejected(do_kueijin,"dharma train");
+    pc.lineage.dharma=5; rejected(do_kueijin,"dharma train"); assert(strstr(output,"complete"));
+    puts("Nine native kits: combat/posture/curse/recovery rejection; Dharma gates/syntax/cap feedback, unchanged state");
+}
+
 int main(void)
 {
     int i;
     init_mm();
     for(i=0;i<MAX_SKILL && skill_table[i].name;++i)
         if(skill_table[i].pgsn) *skill_table[i].pgsn=i;
-    linear_training(); clan_prices(); mage_prices(); dragon_prices(); native_prices();
-    demon_purchase_prices();
+    malformed_training(); linear_training(); clan_prices(); all_vampire_training(); mage_prices(); dragon_prices(); native_prices();
+    demon_purchase_prices(); resource_feedback(); implant_feedback(); blocked_training();
     reset(CLASS_NONE);
     return 0;
 }

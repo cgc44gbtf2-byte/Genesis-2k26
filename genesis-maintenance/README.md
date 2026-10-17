@@ -1,5 +1,11 @@
 # Genesis MUD maintenance copy
 
+The current combat foundation repair is documented in
+[`COMBAT_BALANCE_FOUNDATION.md`](COMBAT_BALANCE_FOUNDATION.md): shared legacy
+class-defense handling, short pulse-based recovery, save-record migration,
+22 sanitizer regression suites and 300 controlled matchup reruns. This fixes
+shared-rule inconsistencies; it does not certify or equalize class balance.
+
 This is a legacy C/telnet MUD server and its area data. It is not a web app.
 This maintenance copy intentionally excludes the original compiled binary,
 object files, server logs, player backups, and private notes.
@@ -37,9 +43,11 @@ identities and read-only previews; see `HYBRID_ROSTER.md`.
 See `PARENT_FRAMEWORK.md` for the foundation and remaining work.
 The finalized maintenance-only ZIP remains a separate, unchanged release.
 
-The current combat/menu update passes 17 linked ASan/UBSan suites with strict
+The current maintenance update passes 21 linked ASan/UBSan suites with strict
 GNU89 and `-Werror`, including exact training-price/deduction checks and
 116 read-only older-menu views. See `COMBAT_STYLE_AND_MENUS.md`.
+See `CLASS_AND_STAFF_MAINTENANCE.md` for the current class index, staff roles,
+training feedback coverage and reproducible Cyborg/Wraith combat experiment.
 The maintenance baseline also passed seven isolated native gameplay groups
 and a fresh-extraction build; those older ZIP snapshots are not replaced.
 The help audit covers 398/398 registered legacy topics. The native help probe
@@ -102,7 +110,7 @@ python3 tests/smoke_runtime.py
 Clean again before switching back to a normal build. These are focused regression
 checks, not a complete gameplay or security audit.
 
-Run all 17 linked gameplay sanitizer probes in one isolated build, plus the
+Run all 20 linked gameplay/network sanitizer probes in one isolated build, plus the
 separate component-codec and resolve probes:
 
 ```sh
@@ -171,15 +179,27 @@ python3 tests/legacy_spells.py
 
 ## Connect
 
-The supplied game address is **159.223.164.151**, port **4000**.
+The supplied replacement IPv6 address is **2604:a880:400:d1:0:5:331d:4001**,
+port **4000**.
 Use a MUD client or:
 
 ```sh
-telnet 159.223.164.151 4000
+telnet -6 2604:a880:400:d1:0:5:331d:4001 4000
 ```
 
 This documents the supplied endpoint; it is not a claim of verified uptime,
 server configuration or deployment. See `MUD_LISTING.txt` for the listing draft.
+The server supports a Linux dual-stack IPv6/IPv4 listener, with an explicit
+IPv4 fallback where IPv6 is unavailable. No source-level IP setting is needed.
+An IPv6-only public address requires IPv6 connectivity from the player's network.
+
+## Staff balance editing and IPv6 details
+
+Use `pset Player currencies` for a read-only resource table, or for example
+`pset Player classpoints 50000` / `pset Player exp 5000000` for absolute
+balances. Native class resources are class-gated; edits do not grant mastery.
+Staff permissions, bounds, persistence and local IPv6-test limitations are
+documented in `IPV6_AND_PSET.md`; in-game staff can use `help pset`.
 
 ## Run locally or on your own host
 

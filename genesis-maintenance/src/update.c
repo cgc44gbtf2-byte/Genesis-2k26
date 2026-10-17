@@ -256,7 +256,7 @@ void mobile_update( void )
 		    {
 			long dam = number_range(150, 300) * amount;
 			act("Your lips blister and burn as $N's blood enters your mouth!", ch, NULL, vch, TO_CHAR);
-			hurt_person(ch, vch, dam);
+legacy_damage(ch, vch, dam, TYPE_SPELL);
 			if (ch->position <= POS_STUNNED)
 			{
 			    act("$n keels over and collapses on the floor.",ch,NULL,NULL,TO_ROOM);
@@ -819,6 +819,7 @@ void mobile_update( void )
          for ( paf = ch->affected; paf != NULL; paf = paf_next )
          {
             paf_next	= paf->next;
+            if (combat_recovery_affect(paf)) continue;
             if ( paf->duration > 0 )
                paf->duration--;
             else if ( paf->duration < 0 )
@@ -1233,6 +1234,12 @@ void update_handler( void )
     static long pulse_mobile;
     static long pulse_violence;
     static long pulse_point;
+
+    {
+        CHAR_DATA *cooldown_ch;
+        for (cooldown_ch = char_list; cooldown_ch; cooldown_ch = cooldown_ch->next)
+            combat_recovery_tick(cooldown_ch);
+    }
 
     if (--pulse_gain_exp <= 0)
     {

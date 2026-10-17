@@ -733,7 +733,7 @@ void adv_spell_damage( CHAR_DATA *ch, OBJ_DATA *book, OBJ_DATA *page, char *argu
 		act2(buf, ch, NULL, victim, TO_NOTVICT);
 		sprintf(buf, "$n's %s strikes you incredibly hard! [#r%i#n]", page->chpoweroff, dam);
 		act2(buf, ch, NULL, victim, TO_VICT);
-		hurt_person(ch, victim, dam);
+legacy_damage(ch, victim, dam, TYPE_SPELL);
 	    }
 	}
     }
@@ -781,7 +781,7 @@ void adv_spell_damage( CHAR_DATA *ch, OBJ_DATA *book, OBJ_DATA *page, char *argu
 		    act2(buf, ch, NULL, vch, TO_NOTVICT);
 		    sprintf(buf, "$n's %s strikes you incredibly hard! [#r%i#n]", page->chpoweroff, dam);
 		    act2(buf, ch, NULL, vch, TO_VICT);
-		    hurt_person(ch, vch, dam);
+    legacy_damage(ch, vch, dam, TYPE_SPELL);
 		}
 	    }
 	}

@@ -1048,7 +1048,7 @@ void do_alterweight( CHAR_DATA *ch, char * argument)
     act( buf3, ch, NULL, victim, TO_VICT );
 
 
-    hurt_person(ch, victim, dam);
+    legacy_damage(ch, victim, dam, TYPE_SPELL);
     WAIT_STATE(ch, 8);
 
     if ((sn = skill_lookup("Alter Weight")) < 0)
@@ -2227,7 +2227,7 @@ void do_electrical_chaos( CHAR_DATA *ch, char *argument)
     act( buf2, ch, NULL, victim, TO_CHAR );
     act( buf3, ch, NULL, victim, TO_VICT );
 
-    hurt_person(ch, victim, dam);
+    legacy_damage(ch, victim, dam, TYPE_SPELL);
 
     WAIT_STATE(ch, 8);    
 }
@@ -2309,7 +2309,7 @@ void do_inferno( CHAR_DATA *ch, char *argument)
   	    act( buf2, ch, NULL, victim, TO_CHAR );
 	    act( buf3, ch, NULL, victim, TO_VICT );
 
-  	    hurt_person(ch, victim, dam);
+      legacy_damage(ch, victim, dam, TYPE_SPELL);
 
 
 	    if (IS_NPC(victim)) dam /= 2; //so the damage doesn't keep multiplying...
